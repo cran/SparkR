@@ -36,13 +36,8 @@ last(df$c, TRUE)
 }
 }
 \seealso{
-Other agg_funcs: \code{\link{agg}}, \code{\link{avg}},
-  \code{\link{countDistinct}}, \code{\link{count}},
-  \code{\link{first}}, \code{\link{kurtosis}},
-  \code{\link{max}}, \code{\link{mean}}, \code{\link{min}},
-  \code{\link{sd}}, \code{\link{skewness}},
-  \code{\link{stddev_pop}}, \code{\link{stddev_samp}},
-  \code{\link{sumDistinct}}, \code{\link{sum}},
-  \code{\link{var_pop}}, \code{\link{var_samp}},
-  \code{\link{var}}
+Other aggregate functions: \code{\link{avg}},
+  \code{\link{column_aggregate_functions}},
+  \code{\link{corr}}, \code{\link{count}},
+  \code{\link{cov}}, \code{\link{first}}
 }

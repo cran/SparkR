@@ -47,34 +47,19 @@ corr since 1.6.0
 corr since 1.6.0
 }
 \examples{
-\dontrun{corr(df$c, df$d)}
 \dontrun{
-df <- read.json("/path/to/file.json")
-corr <- corr(df, "title", "gender")
-corr <- corr(df, "title", "gender", method = "pearson")
-}
+df <- createDataFrame(cbind(model = rownames(mtcars), mtcars))
+head(select(df, corr(df$mpg, df$hp)))}
+
+\dontrun{
+corr(df, "mpg", "hp")
+corr(df, "mpg", "hp", method = "pearson")}
 }
 \seealso{
-Other math_funcs: \code{\link{acos}}, \code{\link{asin}},
-  \code{\link{atan2}}, \code{\link{atan}},
-  \code{\link{bin}}, \code{\link{bround}},
-  \code{\link{cbrt}}, \code{\link{ceil}},
-  \code{\link{conv}}, \code{\link{cosh}},
-  \code{\link{cos}}, \code{\link{covar_pop}},
-  \code{\link{cov}}, \code{\link{expm1}},
-  \code{\link{exp}}, \code{\link{factorial}},
-  \code{\link{floor}}, \code{\link{hex}},
-  \code{\link{hypot}}, \code{\link{log10}},
-  \code{\link{log1p}}, \code{\link{log2}},
-  \code{\link{log}}, \code{\link{pmod}},
-  \code{\link{rint}}, \code{\link{round}},
-  \code{\link{shiftLeft}},
-  \code{\link{shiftRightUnsigned}},
-  \code{\link{shiftRight}}, \code{\link{signum}},
-  \code{\link{sinh}}, \code{\link{sin}},
-  \code{\link{sqrt}}, \code{\link{tanh}},
-  \code{\link{tan}}, \code{\link{toDegrees}},
-  \code{\link{toRadians}}, \code{\link{unhex}}
+Other aggregate functions: \code{\link{avg}},
+  \code{\link{column_aggregate_functions}},
+  \code{\link{count}}, \code{\link{cov}},
+  \code{\link{first}}, \code{\link{last}}
 
 Other stat functions: \code{\link{approxQuantile}},
   \code{\link{cov}}, \code{\link{crosstab}},

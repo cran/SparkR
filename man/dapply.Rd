@@ -4,12 +4,13 @@
 \name{dapply}
 \alias{dapply}
 \alias{dapply}
-\alias{dapply,SparkDataFrame,function,structType-method}
+\alias{dapply,SparkDataFrame,function,characterOrstructType-method}
 \title{dapply}
 \usage{
 dapply(x, func, schema)
 
-\S4method{dapply}{SparkDataFrame,`function`,structType}(x, func, schema)
+\S4method{dapply}{SparkDataFrame,`function`,characterOrstructType}(x, func,
+  schema)
 }
 \arguments{
 \item{x}{A SparkDataFrame}
@@ -20,7 +21,8 @@ to each partition will be passed.
 The output of func should be a R data.frame.}
 
 \item{schema}{The schema of the resulting SparkDataFrame after the function is applied.
-It must match the output of func.}
+It must match the output of func. Since Spark 2.3, the DDL-formatted string
+is also supported for the schema.}
 }
 \description{
 Apply a function to each partition of a SparkDataFrame.
@@ -47,6 +49,17 @@ dapply since 2.0.0
              y <- cbind(y, y[1] + 1L)
            },
            schema)
+
+  # The schema also can be specified in a DDL-formatted string.
+  schema <- "a INT, d DOUBLE, c STRING, d INT"
+  df1 <- dapply(
+           df,
+           function(x) {
+             y <- x[x[1] > 1, ]
+             y <- cbind(y, y[1] + 1L)
+           },
+           schema)
+
   collect(df1)
   # the result
   #       a b c d
@@ -58,38 +71,45 @@ dapply since 2.0.0
 \link{dapplyCollect}
 
 Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
-  \code{\link{agg}}, \code{\link{arrange}},
-  \code{\link{as.data.frame}}, \code{\link{attach}},
-  \code{\link{cache}}, \code{\link{coalesce}},
+  \code{\link{agg}}, \code{\link{alias}},
+  \code{\link{arrange}}, \code{\link{as.data.frame}},
+  \code{\link{attach,SparkDataFrame-method}},
+  \code{\link{broadcast}}, \code{\link{cache}},
+  \code{\link{checkpoint}}, \code{\link{coalesce}},
   \code{\link{collect}}, \code{\link{colnames}},
   \code{\link{coltypes}},
   \code{\link{createOrReplaceTempView}},
-  \code{\link{crossJoin}}, \code{\link{dapplyCollect}},
-  \code{\link{describe}}, \code{\link{dim}},
-  \code{\link{distinct}}, \code{\link{dropDuplicates}},
-  \code{\link{dropna}}, \code{\link{drop}},
-  \code{\link{dtypes}}, \code{\link{except}},
-  \code{\link{explain}}, \code{\link{filter}},
-  \code{\link{first}}, \code{\link{gapplyCollect}},
-  \code{\link{gapply}}, \code{\link{getNumPartitions}},
-  \code{\link{group_by}}, \code{\link{head}},
+  \code{\link{crossJoin}}, \code{\link{cube}},
+  \code{\link{dapplyCollect}}, \code{\link{describe}},
+  \code{\link{dim}}, \code{\link{distinct}},
+  \code{\link{dropDuplicates}}, \code{\link{dropna}},
+  \code{\link{drop}}, \code{\link{dtypes}},
+  \code{\link{except}}, \code{\link{explain}},
+  \code{\link{filter}}, \code{\link{first}},
+  \code{\link{gapplyCollect}}, \code{\link{gapply}},
+  \code{\link{getNumPartitions}}, \code{\link{group_by}},
+  \code{\link{head}}, \code{\link{hint}},
   \code{\link{histogram}}, \code{\link{insertInto}},
   \code{\link{intersect}}, \code{\link{isLocal}},
-  \code{\link{join}}, \code{\link{limit}},
+  \code{\link{isStreaming}}, \code{\link{join}},
+  \code{\link{limit}}, \code{\link{localCheckpoint}},
   \code{\link{merge}}, \code{\link{mutate}},
   \code{\link{ncol}}, \code{\link{nrow}},
   \code{\link{persist}}, \code{\link{printSchema}},
   \code{\link{randomSplit}}, \code{\link{rbind}},
   \code{\link{registerTempTable}}, \code{\link{rename}},
-  \code{\link{repartition}}, \code{\link{sample}},
-  \code{\link{saveAsTable}}, \code{\link{schema}},
-  \code{\link{selectExpr}}, \code{\link{select}},
-  \code{\link{showDF}}, \code{\link{show}},
-  \code{\link{storageLevel}}, \code{\link{str}},
-  \code{\link{subset}}, \code{\link{take}},
+  \code{\link{repartition}}, \code{\link{rollup}},
+  \code{\link{sample}}, \code{\link{saveAsTable}},
+  \code{\link{schema}}, \code{\link{selectExpr}},
+  \code{\link{select}}, \code{\link{showDF}},
+  \code{\link{show}}, \code{\link{storageLevel}},
+  \code{\link{str}}, \code{\link{subset}},
+  \code{\link{summary}}, \code{\link{take}},
+  \code{\link{toJSON}}, \code{\link{unionByName}},
   \code{\link{union}}, \code{\link{unpersist}},
-  \code{\link{withColumn}}, \code{\link{with}},
-  \code{\link{write.df}}, \code{\link{write.jdbc}},
-  \code{\link{write.json}}, \code{\link{write.orc}},
-  \code{\link{write.parquet}}, \code{\link{write.text}}
+  \code{\link{withColumn}}, \code{\link{withWatermark}},
+  \code{\link{with}}, \code{\link{write.df}},
+  \code{\link{write.jdbc}}, \code{\link{write.json}},
+  \code{\link{write.orc}}, \code{\link{write.parquet}},
+  \code{\link{write.stream}}, \code{\link{write.text}}
 }

@@ -49,13 +49,8 @@ n since 1.4.0
 \dontrun{n(df$c)}
 }
 \seealso{
-Other agg_funcs: \code{\link{agg}}, \code{\link{avg}},
-  \code{\link{countDistinct}}, \code{\link{first}},
-  \code{\link{kurtosis}}, \code{\link{last}},
-  \code{\link{max}}, \code{\link{mean}}, \code{\link{min}},
-  \code{\link{sd}}, \code{\link{skewness}},
-  \code{\link{stddev_pop}}, \code{\link{stddev_samp}},
-  \code{\link{sumDistinct}}, \code{\link{sum}},
-  \code{\link{var_pop}}, \code{\link{var_samp}},
-  \code{\link{var}}
+Other aggregate functions: \code{\link{avg}},
+  \code{\link{column_aggregate_functions}},
+  \code{\link{corr}}, \code{\link{cov}},
+  \code{\link{first}}, \code{\link{last}}
 }

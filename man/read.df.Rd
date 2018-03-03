@@ -17,7 +17,7 @@
 
 \item{source}{The name of external data source}
 
-\item{schema}{The data schema defined in structType}
+\item{schema}{The data schema defined in structType or a DDL-formatted string.}
 
 \item{na.strings}{Default string value for NA when source is "csv"}
 
@@ -47,7 +47,12 @@ sparkR.session()
 df1 <- read.df("path/to/file.json", source = "json")
 schema <- structType(structField("name", "string"),
                      structField("info", "map<string,double>"))
-df2 <- read.df(mapTypeJsonPath, "json", schema)
+df2 <- read.df(mapTypeJsonPath, "json", schema, multiLine = TRUE)
 df3 <- loadDF("data/test_table", "parquet", mergeSchema = "true")
+stringSchema <- "name STRING, info MAP<STRING, DOUBLE>"
+df4 <- read.df(mapTypeJsonPath, "json", stringSchema, multiLine = TRUE)
 }
+}
+\seealso{
+\link{read.json}
 }

@@ -12,9 +12,11 @@
 \usage{
 arrange(x, col, ...)
 
-\S4method{arrange}{SparkDataFrame,Column}(x, col, ...)
+\S4method{arrange}{SparkDataFrame,Column}(x, col, ...,
+  withinPartitions = FALSE)
 
-\S4method{arrange}{SparkDataFrame,character}(x, col, ..., decreasing = FALSE)
+\S4method{arrange}{SparkDataFrame,character}(x, col, ..., decreasing = FALSE,
+  withinPartitions = FALSE)
 
 \S4method{orderBy}{SparkDataFrame,characterOrColumn}(x, col, ...)
 }
@@ -24,6 +26,8 @@ arrange(x, col, ...)
 \item{col}{a character or Column object indicating the fields to sort on}
 
 \item{...}{additional sorting fields}
+
+\item{withinPartitions}{a logical argument indicating whether to sort only within each partition}
 
 \item{decreasing}{a logical argument indicating sorting order for columns when
 a character vector is specified for col}
@@ -50,42 +54,51 @@ arrange(df, df$col1)
 arrange(df, asc(df$col1), desc(abs(df$col2)))
 arrange(df, "col1", decreasing = TRUE)
 arrange(df, "col1", "col2", decreasing = c(TRUE, FALSE))
+arrange(df, "col1", "col2", withinPartitions = TRUE)
 }
 }
 \seealso{
 Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
-  \code{\link{agg}}, \code{\link{as.data.frame}},
-  \code{\link{attach}}, \code{\link{cache}},
-  \code{\link{coalesce}}, \code{\link{collect}},
-  \code{\link{colnames}}, \code{\link{coltypes}},
+  \code{\link{agg}}, \code{\link{alias}},
+  \code{\link{as.data.frame}},
+  \code{\link{attach,SparkDataFrame-method}},
+  \code{\link{broadcast}}, \code{\link{cache}},
+  \code{\link{checkpoint}}, \code{\link{coalesce}},
+  \code{\link{collect}}, \code{\link{colnames}},
+  \code{\link{coltypes}},
   \code{\link{createOrReplaceTempView}},
-  \code{\link{crossJoin}}, \code{\link{dapplyCollect}},
-  \code{\link{dapply}}, \code{\link{describe}},
-  \code{\link{dim}}, \code{\link{distinct}},
-  \code{\link{dropDuplicates}}, \code{\link{dropna}},
-  \code{\link{drop}}, \code{\link{dtypes}},
-  \code{\link{except}}, \code{\link{explain}},
-  \code{\link{filter}}, \code{\link{first}},
-  \code{\link{gapplyCollect}}, \code{\link{gapply}},
-  \code{\link{getNumPartitions}}, \code{\link{group_by}},
-  \code{\link{head}}, \code{\link{histogram}},
+  \code{\link{crossJoin}}, \code{\link{cube}},
+  \code{\link{dapplyCollect}}, \code{\link{dapply}},
+  \code{\link{describe}}, \code{\link{dim}},
+  \code{\link{distinct}}, \code{\link{dropDuplicates}},
+  \code{\link{dropna}}, \code{\link{drop}},
+  \code{\link{dtypes}}, \code{\link{except}},
+  \code{\link{explain}}, \code{\link{filter}},
+  \code{\link{first}}, \code{\link{gapplyCollect}},
+  \code{\link{gapply}}, \code{\link{getNumPartitions}},
+  \code{\link{group_by}}, \code{\link{head}},
+  \code{\link{hint}}, \code{\link{histogram}},
   \code{\link{insertInto}}, \code{\link{intersect}},
-  \code{\link{isLocal}}, \code{\link{join}},
-  \code{\link{limit}}, \code{\link{merge}},
+  \code{\link{isLocal}}, \code{\link{isStreaming}},
+  \code{\link{join}}, \code{\link{limit}},
+  \code{\link{localCheckpoint}}, \code{\link{merge}},
   \code{\link{mutate}}, \code{\link{ncol}},
   \code{\link{nrow}}, \code{\link{persist}},
   \code{\link{printSchema}}, \code{\link{randomSplit}},
   \code{\link{rbind}}, \code{\link{registerTempTable}},
   \code{\link{rename}}, \code{\link{repartition}},
-  \code{\link{sample}}, \code{\link{saveAsTable}},
-  \code{\link{schema}}, \code{\link{selectExpr}},
-  \code{\link{select}}, \code{\link{showDF}},
-  \code{\link{show}}, \code{\link{storageLevel}},
-  \code{\link{str}}, \code{\link{subset}},
-  \code{\link{take}}, \code{\link{union}},
+  \code{\link{rollup}}, \code{\link{sample}},
+  \code{\link{saveAsTable}}, \code{\link{schema}},
+  \code{\link{selectExpr}}, \code{\link{select}},
+  \code{\link{showDF}}, \code{\link{show}},
+  \code{\link{storageLevel}}, \code{\link{str}},
+  \code{\link{subset}}, \code{\link{summary}},
+  \code{\link{take}}, \code{\link{toJSON}},
+  \code{\link{unionByName}}, \code{\link{union}},
   \code{\link{unpersist}}, \code{\link{withColumn}},
-  \code{\link{with}}, \code{\link{write.df}},
-  \code{\link{write.jdbc}}, \code{\link{write.json}},
-  \code{\link{write.orc}}, \code{\link{write.parquet}},
+  \code{\link{withWatermark}}, \code{\link{with}},
+  \code{\link{write.df}}, \code{\link{write.jdbc}},
+  \code{\link{write.json}}, \code{\link{write.orc}},
+  \code{\link{write.parquet}}, \code{\link{write.stream}},
   \code{\link{write.text}}
 }

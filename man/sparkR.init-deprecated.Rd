@@ -38,7 +38,7 @@ sc <- sparkR.init("yarn-client", "SparkR", "/home/spark",
                  list(spark.executor.memory="4g"),
                  list(LD_LIBRARY_PATH="/directory of JVM libraries (libjvm.so) on workers/"),
                  c("one.jar", "two.jar", "three.jar"),
-                 c("com.databricks:spark-avro_2.10:2.0.1"))
+                 c("com.databricks:spark-avro_2.11:2.0.1"))
 }
 }
 \seealso{

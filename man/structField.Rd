@@ -35,7 +35,7 @@ structField since 1.4.0
 field1 <- structField("a", "integer")
 field2 <- structField("c", "string")
 field3 <- structField("avg", "double")
-schema <-  structType(field1, field2, field3)
+schema <- structType(field1, field2, field3)
 df1 <- gapply(df, list("a", "c"),
               function(key, x) { y <- data.frame(key, mean(x$b), stringsAsFactors = FALSE) },
               schema)

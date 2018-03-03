@@ -58,7 +58,7 @@ hljs.initHighlightingOnLoad();
 </script>
 
 <!-- MathJax scripts -->
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
 
@@ -223,7 +223,7 @@ hr {
 
 <h2>Overview</h2>
 
-<p>SparkR is an R package that provides a light-weight frontend to use Apache Spark from R. With Spark 2.1.2, SparkR provides a distributed data frame implementation that supports data processing operations like selection, filtering, aggregation etc. and distributed machine learning using <a href="http://spark.apache.org/mllib/">MLlib</a>.</p>
+<p>SparkR is an R package that provides a light-weight frontend to use Apache Spark from R. With Spark 2.3.0, SparkR provides a distributed data frame implementation that supports data processing operations like selection, filtering, aggregation etc. and distributed machine learning using <a href="http://spark.apache.org/mllib/">MLlib</a>.</p>
 
 <h2>Getting Started</h2>
 
@@ -319,10 +319,10 @@ class(carsGP)
 ## -4.2893  -1.7085  -0.4713   1.5729   6.1004  
 ## 
 ## Coefficients:
-##              Estimate  Std. Error  t value  Pr(&gt;|t|)  
-## (Intercept)  39.686    1.715       23.141   0         
-## wt           -3.191    0.75691     -4.2158  0.00022202
-## cyl          -1.5078   0.41469     -3.636   0.0010643 
+##              Estimate  Std. Error  t value    Pr(&gt;|t|)
+## (Intercept)   39.6863     1.71498  23.1409  0.00000000
+## wt            -3.1910     0.75691  -4.2158  0.00022202
+## cyl           -1.5078     0.41469  -3.6360  0.00106428
 ## 
 ## (Dispersion parameter for gaussian family taken to be 6.592137)
 ## 
@@ -416,7 +416,7 @@ sparkR.session(spark.sql.warehouse.dir = spark_warehouse_path)
 
 <p>When connecting SparkR to a remote Spark cluster, make sure that the Spark version and Hadoop version on the machine match the corresponding versions on the cluster. Current SparkR package is compatible with</p>
 
-<pre><code>## [1] &quot;Spark 2.1.2&quot;
+<pre><code>## [1] &quot;Spark 2.3.0&quot;
 </code></pre>
 
 <p>It should be used both on the local computer and on the remote cluster.</p>
@@ -455,7 +455,7 @@ head(df)
 
 <h3>Data Sources</h3>
 
-<p>SparkR supports operating on a variety of data sources through the <code>SparkDataFrame</code> interface. You can check the Spark SQL programming guide for more <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html#manually-specifying-options">specific options</a> that are available for the built-in data sources.</p>
+<p>SparkR supports operating on a variety of data sources through the <code>SparkDataFrame</code> interface. You can check the Spark SQL Programming Guide for more <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html#manually-specifying-options">specific options</a> that are available for the built-in data sources.</p>
 
 <p>The general method for creating <code>SparkDataFrame</code> from data sources is <code>read.df</code>. This method takes in the path for the file to load and the type of data source, and the currently active Spark Session will be used automatically. SparkR supports reading CSV, JSON and Parquet files natively and through Spark Packages you can find data source connectors for popular file formats like Avro. These packages can be added with <code>sparkPackages</code> parameter when initializing SparkSession using <code>sparkR.session</code>.</p>
 
@@ -525,7 +525,7 @@ count(people)
 
 <h3>Hive Tables</h3>
 
-<p>You can also create SparkDataFrames from Hive tables. To do this we will need to create a SparkSession with Hive support which can access tables in the Hive MetaStore. Note that Spark should have been built with Hive support and more details can be found in the <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html">SQL programming guide</a>. In SparkR, by default it will attempt to create a SparkSession with Hive support enabled (<code>enableHiveSupport = TRUE</code>).</p>
+<p>You can also create SparkDataFrames from Hive tables. To do this we will need to create a SparkSession with Hive support which can access tables in the Hive MetaStore. Note that Spark should have been built with Hive support and more details can be found in the <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html">SQL Programming Guide</a>. In SparkR, by default it will attempt to create a SparkSession with Hive support enabled (<code>enableHiveSupport = TRUE</code>).</p>
 
 <pre><code class="r">sql(&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;)
 
@@ -653,6 +653,24 @@ head(numCyl)
 ## 3   6     7
 </code></pre>
 
+<p>Use <code>cube</code> or <code>rollup</code> to compute subtotals across multiple dimensions.</p>
+
+<pre><code class="r">mean(cube(carsDF, &quot;cyl&quot;, &quot;gear&quot;, &quot;am&quot;), &quot;mpg&quot;)
+</code></pre>
+
+<pre><code>## SparkDataFrame[cyl:double, gear:double, am:double, avg(mpg):double]
+</code></pre>
+
+<p>generates groupings for {(<code>cyl</code>, <code>gear</code>, <code>am</code>), (<code>cyl</code>, <code>gear</code>), (<code>cyl</code>), ()}, while</p>
+
+<pre><code class="r">mean(rollup(carsDF, &quot;cyl&quot;, &quot;gear&quot;, &quot;am&quot;), &quot;mpg&quot;)
+</code></pre>
+
+<pre><code>## SparkDataFrame[cyl:double, gear:double, am:double, avg(mpg):double]
+</code></pre>
+
+<p>generates groupings for all possible combinations of grouping columns.</p>
+
 <h4>Operating on Columns</h4>
 
 <p>SparkR also provides a number of functions that can directly applied to columns for data processing and during aggregation. The example below shows the use of basic arithmetic functions.</p>
@@ -738,8 +756,7 @@ head(carsRank, n = 20L)
 <p>We convert <code>mpg</code> to <code>kmpg</code> (kilometers per gallon). <code>carsSubDF</code> is a <code>SparkDataFrame</code> with a subset of <code>carsDF</code> columns.</p>
 
 <pre><code class="r">carsSubDF &lt;- select(carsDF, &quot;model&quot;, &quot;mpg&quot;)
-schema &lt;- structType(structField(&quot;model&quot;, &quot;string&quot;), structField(&quot;mpg&quot;, &quot;double&quot;),
-                     structField(&quot;kmpg&quot;, &quot;double&quot;))
+schema &lt;- &quot;model STRING, mpg DOUBLE, kmpg DOUBLE&quot;
 out &lt;- dapply(carsSubDF, function(x) { x &lt;- cbind(x, x$mpg * 1.61) }, schema)
 head(collect(out))
 </code></pre>
@@ -1010,7 +1027,7 @@ train &lt;- function(cost) {
 ## attr(,&quot;response&quot;)
 ## [1] 1
 ## attr(,&quot;.Environment&quot;)
-## &lt;environment: 0x5775ef8&gt;
+## &lt;environment: 0x7fd4895d9b18&gt;
 ## attr(,&quot;predvars&quot;)
 ## list(Species, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
 ## attr(,&quot;dataClasses&quot;)
@@ -1051,6 +1068,7 @@ head(teenagers)
 <h4>Classification</h4>
 
 <ul>
+<li><p>Linear Support Vector Machine (SVM) Classifier</p></li>
 <li><p>Logistic Regression</p></li>
 <li><p>Multilayer Perceptron (MLP)</p></li>
 <li><p>Naive Bayes</p></li>
@@ -1067,6 +1085,7 @@ head(teenagers)
 <h4>Tree - Classification and Regression</h4>
 
 <ul>
+<li><p>Decision Tree</p></li>
 <li><p>Gradient-Boosted Trees (GBT)</p></li>
 <li><p>Random Forest</p></li>
 </ul>
@@ -1074,6 +1093,7 @@ head(teenagers)
 <h4>Clustering</h4>
 
 <ul>
+<li><p>Bisecting \(k\)-means</p></li>
 <li><p>Gaussian Mixture Model (GMM)</p></li>
 <li><p>\(k\)-means Clustering</p></li>
 <li><p>Latent Dirichlet Allocation (LDA)</p></li>
@@ -1083,6 +1103,12 @@ head(teenagers)
 
 <ul>
 <li>Alternating Least Squares (ALS)</li>
+</ul>
+
+<h4>Frequent Pattern Mining</h4>
+
+<ul>
+<li>FP-growth</li>
 </ul>
 
 <h4>Statistics</h4>
@@ -1142,6 +1168,42 @@ carsDF_test &lt;- splitDF_list[[2]]
 
 <h3>Models and Algorithms</h3>
 
+<h4>Linear Support Vector Machine (SVM) Classifier</h4>
+
+<p><a href="https://en.wikipedia.org/wiki/Support_vector_machine#Linear_SVM">Linear Support Vector Machine (SVM)</a> classifier is an SVM classifier with linear kernels.
+This is a binary classifier. We use a simple example to show how to use <code>spark.svmLinear</code>
+for binary classification.</p>
+
+<pre><code class="r"># load training data and create a DataFrame
+t &lt;- as.data.frame(Titanic)
+training &lt;- createDataFrame(t)
+# fit a Linear SVM classifier model
+model &lt;- spark.svmLinear(training,  Survived ~ ., regParam = 0.01, maxIter = 10)
+summary(model)
+</code></pre>
+
+<pre><code>## $coefficients
+##                 Estimate
+## (Intercept)  0.155016898
+## Class_Crew   0.616590877
+## Class_1st    0.000000000
+## Class_3rd    0.148622548
+## Sex_Male     0.210290445
+## Age_Adult    0.323480802
+## Freq        -0.004794042
+## 
+## $numClasses
+## [1] 2
+## 
+## $numFeatures
+## [1] 6
+</code></pre>
+
+<p>Predict values on training data</p>
+
+<pre><code class="r">prediction &lt;- predict(model, training)
+</code></pre>
+
 <h4>Logistic Regression</h4>
 
 <p><a href="https://en.wikipedia.org/wiki/Logistic_regression">Logistic regression</a> is a widely-used model when the response is categorical. It can be seen as a special case of the <a href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized Linear Predictive Model</a>.
@@ -1154,20 +1216,21 @@ and 3). Obtain the coefficient matrix of the fitted model using <code>summary</c
 
 <p>Binomial logistic regression</p>
 
-<pre><code class="r">df &lt;- createDataFrame(iris)
-# Create a DataFrame containing two classes
-training &lt;- df[df$Species %in% c(&quot;versicolor&quot;, &quot;virginica&quot;), ]
-model &lt;- spark.logit(training, Species ~ ., regParam = 0.00042)
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+training &lt;- createDataFrame(t)
+model &lt;- spark.logit(training, Survived ~ ., regParam = 0.04741301)
 summary(model)
 </code></pre>
 
 <pre><code>## $coefficients
-##              Estimate 
-## (Intercept)  -27.4196 
-## Sepal_Length -1.8561  
-## Sepal_Width  -4.247894
-## Petal_Length 6.338409 
-## Petal_Width  11.96363
+##                 Estimate
+## (Intercept) -0.108748837
+## Class_Crew   0.152970953
+## Class_1st   -0.018199615
+## Class_3rd    0.116011205
+## Sex_Male     0.201436637
+## Age_Adult    0.326629954
+## Freq        -0.003310102
 </code></pre>
 
 <p>Predict values on training data</p>
@@ -1177,19 +1240,20 @@ summary(model)
 
 <p>Multinomial logistic regression against three classes</p>
 
-<pre><code class="r">df &lt;- createDataFrame(iris)
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+training &lt;- createDataFrame(t)
 # Note in this case, Spark infers it is multinomial logistic regression, so family = &quot;multinomial&quot; is optional.
-model &lt;- spark.logit(df, Species ~ ., regParam = 0.056)
+model &lt;- spark.logit(training, Class ~ ., regParam = 0.07815179)
 summary(model)
 </code></pre>
 
 <pre><code>## $coefficients
-##              versicolor virginica  setosa    
-## (Intercept)  2.833736   -5.723335  2.889599  
-## Sepal_Length 0.207914   0.4921251  -0.7000391
-## Sepal_Width  -0.972498  -0.3526212 1.325119  
-## Petal_Length 0.02735158 0.4710101  -0.4983617
-## Petal_Width  -0.3273323 1.405076   -1.077744
+##                     Crew          1st          3rd          2nd
+## (Intercept)  0.055749216 -0.036372587  0.020150962 -0.039527591
+## Sex_Male    -0.131326302  0.088032755 -0.059233656  0.102527203
+## Age_Adult   -0.208864050  0.141940085 -0.102563703  0.169487668
+## Survived_No -0.081293328  0.052721700 -0.029409091  0.057980720
+## Freq         0.002222453 -0.001555913  0.001303827 -0.001970366
 </code></pre>
 
 <h4>Multilayer Perceptron</h4>
@@ -1215,11 +1279,12 @@ f(z_i) = \frac{e^{z_i}}{\sum_{k=1}^N e^{z_k}}.
 
 <p><code>spark.mlp</code> requires at least two columns in <code>data</code>: one named <code>&quot;label&quot;</code> and the other one <code>&quot;features&quot;</code>. The <code>&quot;features&quot;</code> column should be in libSVM-format.</p>
 
-<p>We use iris data set to show how to use <code>spark.mlp</code> in classification.</p>
+<p>We use Titanic data set to show how to use <code>spark.mlp</code> in classification.</p>
 
-<pre><code class="r">df &lt;- createDataFrame(iris)
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+training &lt;- createDataFrame(t)
 # fit a Multilayer Perceptron Classification Model
-model &lt;- spark.mlp(df, Species ~ ., blockSize = 128, layers = c(4, 3), solver = &quot;l-bfgs&quot;, maxIter = 100, tol = 0.5, stepSize = 1, seed = 1, initialWeights = c(0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 9, 9, 9, 9, 9))
+model &lt;- spark.mlp(training, Survived ~ Age + Sex, blockSize = 128, layers = c(2, 3), solver = &quot;l-bfgs&quot;, maxIter = 100, tol = 0.5, stepSize = 1, seed = 1, initialWeights = c( 0, 0, 0, 5, 5, 5, 9, 9, 9))
 </code></pre>
 
 <p>To avoid lengthy display, we only present partial results of the model summary. You can check the full result from your sparkR shell.</p>
@@ -1229,45 +1294,45 @@ summary(model)
 </code></pre>
 
 <pre><code>## $numOfInputs
-## [1] 4
+## [1] 2
 ## 
 ## $numOfOutputs
 ## [1] 3
 ## 
 ## $layers
-## [1] 4 3
+## [1] 2 3
 ## 
 ## $weights
 ## $weights[[1]]
-## [1] 0.7807351
+## [1] 0
 ## 
 ## $weights[[2]]
-## [1] 0.3177425
+## [1] 0
 ## 
 ## $weights[[3]]
-## [1] -1.098478
+## [1] 0
 ## 
 ## $weights[[4]]
-## [1] 0.2643424
+## [1] 5
 ## 
 ## $weights[[5]]
-## [1] 0.18489
+## [1] 5
 ## 
-##  [ reached getOption(&quot;max.print&quot;) -- omitted 10 entries ]
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 4 entries ]
 </code></pre>
 
 <pre><code class="r"># make predictions use the fitted model
-predictions &lt;- predict(model, df)
+predictions &lt;- predict(model, training)
 head(select(predictions, predictions$prediction))
 </code></pre>
 
 <pre><code>##   prediction
-## 1     setosa
-## 2     setosa
-## 3     setosa
-## 4     setosa
-## 5     setosa
-## 6     setosa
+## 1         No
+## 2         No
+## 3         No
+## 4         No
+## 5         No
+## 6         No
 </code></pre>
 
 <h4>Naive Bayes</h4>
@@ -1362,6 +1427,10 @@ head(aftPredictions)
 <td>gamma</td>
 <td>inverse, identity, log</td>
 </tr>
+<tr>
+<td>tweedie</td>
+<td>power link function</td>
+</tr>
 </tbody></table>
 
 <p>There are three ways to specify the <code>family</code> argument.</p>
@@ -1369,7 +1438,10 @@ head(aftPredictions)
 <ul>
 <li><p>Family name as a character string, e.g. <code>family = &quot;gaussian&quot;</code>.</p></li>
 <li><p>Family function, e.g. <code>family = binomial</code>.</p></li>
-<li><p>Result returned by a family function, e.g. <code>family = poisson(link = log)</code></p></li>
+<li><p>Result returned by a family function, e.g. <code>family = poisson(link = log)</code>.</p></li>
+<li><p>Note that there are two ways to specify the tweedie family:
+a) Set <code>family = &quot;tweedie&quot;</code> and specify the <code>var.power</code> and <code>link.power</code>
+b) When package <code>statmod</code> is loaded, the tweedie family is specified using the family definition therein, i.e., <code>tweedie()</code>.</p></li>
 </ul>
 
 <p>For more information regarding the families and their link functions, see the Wikipedia page <a href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized Linear Model</a>.</p>
@@ -1387,10 +1459,10 @@ summary(gaussianGLM)
 ## -3.9410  -1.6499  -0.3267   1.0373   5.8538  
 ## 
 ## Coefficients:
-##              Estimate   Std. Error  t value  Pr(&gt;|t|)  
-## (Intercept)  37.227     1.5988      23.285   0         
-## wt           -3.8778    0.63273     -6.1287  1.1196e-06
-## hp           -0.031773  0.0090297   -3.5187  0.0014512 
+##               Estimate  Std. Error  t value    Pr(&gt;|t|)
+## (Intercept)  37.227270   1.5987875  23.2847  0.0000e+00
+## wt           -3.877831   0.6327335  -6.1287  1.1196e-06
+## hp           -0.031773   0.0090297  -3.5187  1.4512e-03
 ## 
 ## (Dispersion parameter for gaussian family taken to be 6.725785)
 ## 
@@ -1414,6 +1486,61 @@ head(select(gaussianFitted, &quot;model&quot;, &quot;prediction&quot;, &quot;mpg
 ## 4    Hornet 4 Drive   21.26502 21.4 3.215 110
 ## 5 Hornet Sportabout   18.32727 18.7 3.440 175
 ## 6           Valiant   20.47382 18.1 3.460 105
+</code></pre>
+
+<p>The following is the same fit using the tweedie family:</p>
+
+<pre><code class="r">tweedieGLM1 &lt;- spark.glm(carsDF, mpg ~ wt + hp, family = &quot;tweedie&quot;, var.power = 0.0)
+summary(tweedieGLM1)
+</code></pre>
+
+<pre><code>## 
+## Deviance Residuals: 
+## (Note: These are approximate quantiles with relative error &lt;= 0.01)
+##     Min       1Q   Median       3Q      Max  
+## -3.9410  -1.6499  -0.3267   1.0373   5.8538  
+## 
+## Coefficients:
+##               Estimate  Std. Error  t value    Pr(&gt;|t|)
+## (Intercept)  37.227270   1.5987875  23.2847  0.0000e+00
+## wt           -3.877831   0.6327335  -6.1287  1.1196e-06
+## hp           -0.031773   0.0090297  -3.5187  1.4512e-03
+## 
+## (Dispersion parameter for tweedie family taken to be 6.725785)
+## 
+##     Null deviance: 1126.05  on 31  degrees of freedom
+## Residual deviance:  195.05  on 29  degrees of freedom
+## AIC: 156.7
+## 
+## Number of Fisher Scoring iterations: 1
+</code></pre>
+
+<p>We can try other distributions in the tweedie family, for example, a compound Poisson distribution with a log link:</p>
+
+<pre><code class="r">tweedieGLM2 &lt;- spark.glm(carsDF, mpg ~ wt + hp, family = &quot;tweedie&quot;,
+                         var.power = 1.2, link.power = 0.0)
+summary(tweedieGLM2)
+</code></pre>
+
+<pre><code>## 
+## Deviance Residuals: 
+## (Note: These are approximate quantiles with relative error &lt;= 0.01)
+##      Min        1Q    Median        3Q       Max  
+## -0.58074  -0.25335  -0.09892   0.18608   0.82717  
+## 
+## Coefficients:
+##                Estimate  Std. Error  t value    Pr(&gt;|t|)
+## (Intercept)   3.8500849  0.06698272  57.4788  0.0000e+00
+## wt           -0.2018426  0.02897283  -6.9666  1.1691e-07
+## hp           -0.0016248  0.00041603  -3.9054  5.1697e-04
+## 
+## (Dispersion parameter for tweedie family taken to be 0.1340111)
+## 
+##     Null deviance: 29.8820  on 31  degrees of freedom
+## Residual deviance:  3.7739  on 29  degrees of freedom
+## AIC: NA
+## 
+## Number of Fisher Scoring iterations: 4
 </code></pre>
 
 <h4>Isotonic Regression</h4>
@@ -1470,44 +1597,84 @@ head(predict(isoregModel, newDF))
 ## 2 3.2       6.30
 </code></pre>
 
+<h4>Decision Tree</h4>
+
+<p><code>spark.decisionTree</code> fits a <a href="https://en.wikipedia.org/wiki/Decision_tree_learning">decision tree</a> classification or regression model on a <code>SparkDataFrame</code>.
+Users can call <code>summary</code> to get a summary of the fitted model, <code>predict</code> to make predictions, and <code>write.ml</code>/<code>read.ml</code> to save/load fitted models.</p>
+
+<p>We use the <code>Titanic</code> dataset to train a decision tree and make predictions:</p>
+
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+df &lt;- createDataFrame(t)
+dtModel &lt;- spark.decisionTree(df, Survived ~ ., type = &quot;classification&quot;, maxDepth = 2)
+summary(dtModel)
+</code></pre>
+
+<pre><code>## Formula:  Survived ~ .
+## Number of features:  6
+## Features:  Class_Crew Class_1st Class_3rd Sex_Male Age_Adult Freq
+## Feature importances:  (6,[4,5],[0.0821114369501465,0.9178885630498534])
+## Max Depth:  2
+##  DecisionTreeClassificationModel (uid=dtc_b2f6b40224dc) of depth 2 with 7 nodes
+##   If (feature 5 &lt;= 4.5)
+##    If (feature 4 in {1.0})
+##     Predict: 0.0
+##    Else (feature 4 not in {1.0})
+##     Predict: 0.0
+##   Else (feature 5 &gt; 4.5)
+##    If (feature 5 &lt;= 84.5)
+##     Predict: 1.0
+##    Else (feature 5 &gt; 84.5)
+##     Predict: 0.0
+## 
+</code></pre>
+
+<pre><code class="r">predictions &lt;- predict(dtModel, df)
+</code></pre>
+
 <h4>Gradient-Boosted Trees</h4>
 
 <p><code>spark.gbt</code> fits a <a href="https://en.wikipedia.org/wiki/Gradient_boosting">gradient-boosted tree</a> classification or regression model on a <code>SparkDataFrame</code>.
 Users can call <code>summary</code> to get a summary of the fitted model, <code>predict</code> to make predictions, and <code>write.ml</code>/<code>read.ml</code> to save/load fitted models.</p>
 
-<p>We use the <code>longley</code> dataset to train a gradient-boosted tree and make predictions:</p>
+<p>We use the <code>Titanic</code> dataset to train a gradient-boosted tree and make predictions:</p>
 
-<pre><code class="r">df &lt;- createDataFrame(longley)
-gbtModel &lt;- spark.gbt(df, Employed ~ ., type = &quot;regression&quot;, maxDepth = 2, maxIter = 2)
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+df &lt;- createDataFrame(t)
+gbtModel &lt;- spark.gbt(df, Survived ~ ., type = &quot;classification&quot;, maxDepth = 2, maxIter = 2)
 summary(gbtModel)
 </code></pre>
 
-<pre><code>## Formula:  Employed ~ .
+<pre><code>## Formula:  Survived ~ .
 ## Number of features:  6
-## Features:  GNP_deflator GNP Unemployed Armed_Forces Population Year
-## Feature importances:  (6,[0,2],[0.7532305586292881,0.24676944137071194])
+## Features:  Class_Crew Class_1st Class_3rd Sex_Male Age_Adult Freq
+## Feature importances:  (6,[0,4,5],[0.13232868918568455,0.04105571847507324,0.8266155923392422])
+## Max Depth:  2
 ## Number of trees:  2
 ## Tree weights:  1 0.1
-##  GBTRegressionModel (uid=gbtr_11248214901d) with 2 trees
+##  GBTClassificationModel (uid=gbtc_c57a2a2d102f) with 2 trees
 ##   Tree 0 (weight 1.0):
-##     If (feature 0 &lt;= 100.0)
-##      If (feature 0 &lt;= 89.5)
-##       Predict: 60.70075
-##      Else (feature 0 &gt; 89.5)
-##       Predict: 63.90250000000002
-##     Else (feature 0 &gt; 100.0)
-##      If (feature 0 &lt;= 110.8)
-##       Predict: 67.1395
-##      Else (feature 0 &gt; 110.8)
-##       Predict: 69.52525
+##     If (feature 5 &lt;= 4.5)
+##      If (feature 4 in {1.0})
+##       Predict: -1.0
+##      Else (feature 4 not in {1.0})
+##       Predict: -0.3333333333333333
+##     Else (feature 5 &gt; 4.5)
+##      If (feature 5 &lt;= 84.5)
+##       Predict: 0.5714285714285714
+##      Else (feature 5 &gt; 84.5)
+##       Predict: -0.42857142857142855
 ##   Tree 1 (weight 0.1):
-##     If (feature 2 &lt;= 187.0)
-##      Predict: 2.1729999999999734
-##     Else (feature 2 &gt; 187.0)
-##      If (feature 0 &lt;= 115.7)
-##       Predict: -0.3017500000000055
-##      Else (feature 0 &gt; 115.7)
-##       Predict: 2.0515000000000043
+##     If (feature 0 in {0.0})
+##      If (feature 5 &lt;= 0.5)
+##       Predict: -1.3569745249367313
+##      Else (feature 5 &gt; 0.5)
+##       Predict: 0.03904410748693565
+##     Else (feature 0 not in {0.0})
+##      If (feature 5 &lt;= 289.5)
+##       Predict: 0.8386754830442805
+##      Else (feature 5 &gt; 289.5)
+##       Predict: -1.1917465204842816
 ## 
 </code></pre>
 
@@ -1519,46 +1686,99 @@ summary(gbtModel)
 <p><code>spark.randomForest</code> fits a <a href="https://en.wikipedia.org/wiki/Random_forest">random forest</a> classification or regression model on a <code>SparkDataFrame</code>.
 Users can call <code>summary</code> to get a summary of the fitted model, <code>predict</code> to make predictions, and <code>write.ml</code>/<code>read.ml</code> to save/load fitted models.</p>
 
-<p>In the following example, we use the <code>longley</code> dataset to train a random forest and make predictions:</p>
+<p>In the following example, we use the <code>Titanic</code> dataset to train a random forest and make predictions:</p>
 
-<pre><code class="r">df &lt;- createDataFrame(longley)
-rfModel &lt;- spark.randomForest(df, Employed ~ ., type = &quot;regression&quot;, maxDepth = 2, numTrees = 2)
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+df &lt;- createDataFrame(t)
+rfModel &lt;- spark.randomForest(df, Survived ~ ., type = &quot;classification&quot;, maxDepth = 2, numTrees = 2)
 summary(rfModel)
 </code></pre>
 
-<pre><code>## Formula:  Employed ~ .
+<pre><code>## Formula:  Survived ~ .
 ## Number of features:  6
-## Features:  GNP_deflator GNP Unemployed Armed_Forces Population Year
-## Feature importances:  (6,[0,3,5],[0.12991108457335784,0.01100628953569743,0.8590826258909448])
+## Features:  Class_Crew Class_1st Class_3rd Sex_Male Age_Adult Freq
+## Feature importances:  (6,[1,3,5],[0.3283972370801142,0.005455825413586564,0.6661469375062993])
+## Max Depth:  2
 ## Number of trees:  2
 ## Tree weights:  1 1
-##  RandomForestRegressionModel (uid=rfr_7fb49347ae6b) with 2 trees
+##  RandomForestClassificationModel (uid=rfc_60715e79bd90) with 2 trees
 ##   Tree 0 (weight 1.0):
-##     If (feature 5 &lt;= 1954.0)
-##      If (feature 0 &lt;= 89.5)
-##       Predict: 61.13825
-##      Else (feature 0 &gt; 89.5)
-##       Predict: 63.807000000000016
-##     Else (feature 5 &gt; 1954.0)
-##      If (feature 0 &lt;= 110.8)
-##       Predict: 67.037
-##      Else (feature 0 &gt; 110.8)
-##       Predict: 69.05124999999998
+##     If (feature 5 &lt;= 0.5)
+##      If (feature 3 in {0.0})
+##       Predict: 0.0
+##      Else (feature 3 not in {0.0})
+##       Predict: 0.0
+##     Else (feature 5 &gt; 0.5)
+##      If (feature 1 in {1.0})
+##       Predict: 1.0
+##      Else (feature 1 not in {1.0})
+##       Predict: 0.0
 ##   Tree 1 (weight 1.0):
-##     If (feature 5 &lt;= 1952.0)
-##      If (feature 3 &lt;= 165.0)
-##       Predict: 60.7633
-##      Else (feature 3 &gt; 165.0)
-##       Predict: 63.63900000000001
-##     Else (feature 5 &gt; 1952.0)
-##      If (feature 0 &lt;= 110.8)
-##       Predict: 66.766
-##      Else (feature 0 &gt; 110.8)
-##       Predict: 69.86716666666666
+##     If (feature 5 &lt;= 84.5)
+##      If (feature 1 in {1.0})
+##       Predict: 0.0
+##      Else (feature 1 not in {1.0})
+##       Predict: 1.0
+##     Else (feature 5 &gt; 84.5)
+##      Predict: 0.0
 ## 
 </code></pre>
 
 <pre><code class="r">predictions &lt;- predict(rfModel, df)
+</code></pre>
+
+<h4>Bisecting k-Means</h4>
+
+<p><code>spark.bisectingKmeans</code> is a kind of <a href="https://en.wikipedia.org/wiki/Hierarchical_clustering">hierarchical clustering</a> using a divisive (or &ldquo;top-down&rdquo;) approach: all observations start in one cluster, and splits are performed recursively as one moves down the hierarchy.</p>
+
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+training &lt;- createDataFrame(t)
+model &lt;- spark.bisectingKmeans(training, Class ~ Survived, k = 4)
+summary(model)
+</code></pre>
+
+<pre><code>## $k
+## [1] 4
+## 
+## $coefficients
+##   Survived_No
+## 1 0          
+## 2 1          
+## 3 0          
+## 4 1          
+## 
+## $size
+## $size[[1]]
+## [1] 16
+## 
+## $size[[2]]
+## [1] 16
+## 
+## $size[[3]]
+## [1] 0
+## 
+## $size[[4]]
+## [1] 0
+## 
+## 
+## $cluster
+## SparkDataFrame[prediction:int]
+## 
+## $is.loaded
+## [1] FALSE
+</code></pre>
+
+<pre><code class="r">fitted &lt;- predict(model, training)
+head(select(fitted, &quot;Class&quot;, &quot;prediction&quot;))
+</code></pre>
+
+<pre><code>##   Class prediction
+## 1   1st          1
+## 2   2nd          1
+## 3   3rd          1
+## 4  Crew          1
+## 5   1st          1
+## 6   2nd          1
 </code></pre>
 
 <h4>Gaussian Mixture Model</h4>
@@ -1576,27 +1796,30 @@ summary(gmmModel)
 </code></pre>
 
 <pre><code>## $lambda
-## [1] 0.5010839 0.4989161
+## [1] 0.5536208 0.4463792
 ## 
 ## $mu
 ## $mu[[1]]
-## [1] 0.5641647 0.5646519
+## [1] 1.429689 1.569165
 ## 
 ## $mu[[2]]
-## [1] 3.483280 3.991236
+## [1] 2.413790 2.296108
 ## 
 ## 
 ## $sigma
 ## $sigma[[1]]
-##      [,1]      [,2]     
-## [1,] 0.7085658 0.4890998
-## [2,] 0.4890998 1.403063 
+##      [,1]     [,2]    
+## [1,] 1.67633  3.335639
+## [2,] 3.335639 7.063168
 ## 
 ## $sigma[[2]]
-##      [,1]       [,2]      
-## [1,] 0.6205835  -0.1600159
-## [2,] -0.1600159 0.3814251 
+##      [,1]     [,2]    
+## [1,] 5.279463 2.719007
+## [2,] 2.719007 1.486211
 ## 
+## 
+## $loglik
+## [1] -31.77761
 ## 
 ## $posterior
 ## SparkDataFrame[posterior:array&lt;double&gt;]
@@ -1609,13 +1832,13 @@ summary(gmmModel)
 head(select(gmmFitted, &quot;V1&quot;, &quot;V2&quot;, &quot;prediction&quot;))
 </code></pre>
 
-<pre><code>##           V1         V2 prediction
-## 1 -0.4845197  0.0252717          0
-## 2  1.7900664  0.4950326          0
-## 3  0.9623011  0.7974724          0
-## 4 -0.2625013 -1.0668576          0
-## 5  3.7658070  2.9288739          1
-## 6  0.7919637  2.5336437          0
+<pre><code>##            V1         V2 prediction
+## 1  0.87896096  0.4153526          0
+## 2 -0.04033495 -0.3142507          0
+## 3  0.14300284 -2.0576358          0
+## 4 -1.45542199  0.3614593          1
+## 5  4.88710614  3.9506910          1
+## 6  2.77808414  2.4819867          1
 </code></pre>
 
 <h4>k-Means Clustering</h4>
@@ -1630,10 +1853,10 @@ summary(kmeansModel)
 ## [1] 3
 ## 
 ## $coefficients
-##   mpg      hp       wt    
-## 1 23.28947 99.47368 2.692 
-## 2 15.45    205.75   4.0195
-## 3 15       335      3.57  
+##        mpg        hp     wt
+## 1 23.28947  99.47368 2.6920
+## 2 15.45000 205.75000 4.0195
+## 3 15.00000 335.00000 3.5700
 ## 
 ## $size
 ## $size[[1]]
@@ -1752,6 +1975,12 @@ summary(model)
 ## 
 ## $vocabulary
 ##  [1] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;9&quot; &quot;5&quot; &quot;8&quot; &quot;7&quot; &quot;6&quot;
+## 
+## $trainingLogLikelihood
+## [1] -239.5629
+## 
+## $logPrior
+## [1] -980.2974
 </code></pre>
 
 <pre><code class="r">posterior &lt;- spark.posterior(model, corpusDF)
@@ -1766,12 +1995,12 @@ head(posterior)
 ## 5 3 1 1 9 3 0 2 0 0 1 3
 ## 6 4 2 0 3 4 5 1 1 1 4 0
 ##                                       topicDistribution
-## 1 0.1972166, 0.1986693, 0.2022050, 0.2006532, 0.2012558
-## 2 0.1990011, 0.1988727, 0.2015975, 0.2006382, 0.1998904
-## 3 0.2020597, 0.2026094, 0.1968854, 0.1987294, 0.1997161
-## 4 0.2004090, 0.1981927, 0.2013015, 0.2006322, 0.1994646
-## 5 0.1971477, 0.1983960, 0.2023581, 0.2011573, 0.2009409
-## 6 0.2020249, 0.2041757, 0.1955412, 0.1997278, 0.1985303
+## 1 0.1972168, 0.1986637, 0.2022009, 0.2006592, 0.2012594
+## 2 0.1989981, 0.1988759, 0.2016026, 0.2006369, 0.1998866
+## 3 0.2020589, 0.2026099, 0.1968845, 0.1987297, 0.1997171
+## 4 0.2004073, 0.1981928, 0.2013019, 0.2006331, 0.1994649
+## 5 0.1971471, 0.1983961, 0.2023595, 0.2011584, 0.2009389
+## 6 0.2020246, 0.2041815, 0.1955392, 0.1997228, 0.1985320
 </code></pre>
 
 <pre><code class="r">perplexity &lt;- spark.perplexity(model, corpusDF)
@@ -1799,29 +2028,7 @@ model &lt;- spark.als(df, &quot;rating&quot;, &quot;user&quot;, &quot;item&quot;
 userFactors &lt;- stats$userFactors
 itemFactors &lt;- stats$itemFactors
 head(userFactors)
-</code></pre>
-
-<pre><code>##   id
-## 1  0
-## 2  1
-## 3  2
-##                                                                                                                           features
-## 1           0.36135060, 0.00000000, 0.14246520, 0.79222524, 0.25852802, 0.35938185, 1.02794230, 0.00000000, 0.40629458, 0.03039724
-## 2                     0.6459087, 0.0000000, 0.4240893, 0.5433040, 0.5990543, 0.2464622, 0.7952952, 0.0000000, 1.0376287, 0.3610190
-## 3 0.147648051, 0.000000000, 0.862470269, 0.008587426, 0.171784312, 0.003895568, 0.024497632, 0.000000000, 0.316428304, 1.357668996
-</code></pre>
-
-<pre><code class="r">head(itemFactors)
-</code></pre>
-
-<pre><code>##   id
-## 1  0
-## 2  1
-## 3  2
-##                                                                                                                 features
-## 1 0.65061080, 0.00000000, 0.26098290, 1.38994920, 0.47113958, 0.63053089, 1.80735207, 0.00000000, 0.74440372, 0.06321633
-## 2           0.5822609, 0.0000000, 0.3250861, 0.4984071, 0.5374193, 0.2260954, 0.7286831, 0.0000000, 0.9294589, 0.2301433
-## 3           0.6116845, 0.0000000, 1.5209249, 0.3454843, 0.6182634, 0.1567241, 0.5231636, 0.0000000, 1.0985043, 2.2063246
+head(itemFactors)
 </code></pre>
 
 <p>Make predictions.</p>
@@ -1830,13 +2037,58 @@ head(userFactors)
 head(predicted)
 </code></pre>
 
-<pre><code>##   user item rating prediction
-## 1    1    1      3   2.789444
-## 2    2    1      1   1.088244
-## 3    0    1      2   2.005431
-## 4    1    2      4   3.989237
-## 5    2    2      5   4.867724
-## 6    0    0      4   3.884059
+<h4>FP-growth</h4>
+
+<p><code>spark.fpGrowth</code> executes FP-growth algorithm to mine frequent itemsets on a <code>SparkDataFrame</code>. <code>itemsCol</code> should be an array of values.</p>
+
+<pre><code class="r">df &lt;- selectExpr(createDataFrame(data.frame(rawItems = c(
+  &quot;T,R,U&quot;, &quot;T,S&quot;, &quot;V,R&quot;, &quot;R,U,T,V&quot;, &quot;R,S&quot;, &quot;V,S,U&quot;, &quot;U,R&quot;, &quot;S,T&quot;, &quot;V,R&quot;, &quot;V,U,S&quot;,
+  &quot;T,V,U&quot;, &quot;R,V&quot;, &quot;T,S&quot;, &quot;T,S&quot;, &quot;S,T&quot;, &quot;S,U&quot;, &quot;T,R&quot;, &quot;V,R&quot;, &quot;S,V&quot;, &quot;T,S,U&quot;
+))), &quot;split(rawItems, &#39;,&#39;) AS items&quot;)
+
+fpm &lt;- spark.fpGrowth(df, minSupport = 0.2, minConfidence = 0.5)
+</code></pre>
+
+<p><code>spark.freqItemsets</code> method can be used to retrieve a <code>SparkDataFrame</code> with the frequent itemsets.</p>
+
+<pre><code class="r">head(spark.freqItemsets(fpm))
+</code></pre>
+
+<pre><code>##   items freq
+## 1     R    9
+## 2     U    8
+## 3  U, T    4
+## 4  U, V    4
+## 5  U, S    4
+## 6     T   10
+</code></pre>
+
+<p><code>spark.associationRules</code> returns a <code>SparkDataFrame</code> with the association rules.</p>
+
+<pre><code class="r">head(spark.associationRules(fpm))
+</code></pre>
+
+<pre><code>##   antecedent consequent confidence
+## 1          V          R  0.5555556
+## 2          S          T  0.5454545
+## 3          T          S  0.6000000
+## 4          R          V  0.5555556
+## 5          U          T  0.5000000
+## 6          U          V  0.5000000
+</code></pre>
+
+<p>We can make predictions based on the <code>antecedent</code>.</p>
+
+<pre><code class="r">head(predict(fpm, df))
+</code></pre>
+
+<pre><code>##        items prediction
+## 1    T, R, U       S, V
+## 2       T, S       NULL
+## 3       V, R       NULL
+## 4 R, U, T, V          S
+## 5       R, S       T, V
+## 6    V, S, U       R, T
 </code></pre>
 
 <h4>Kolmogorov-Smirnov Test</h4>
@@ -1846,33 +2098,35 @@ Given a <code>SparkDataFrame</code>, the test compares continuous data in a give
 specified by parameter <code>nullHypothesis</code>.
 Users can call <code>summary</code> to get a summary of the test results.</p>
 
-<p>In the following example, we test whether the <code>longley</code> dataset&#39;s <code>Armed_Forces</code> column
+<p>In the following example, we test whether the <code>Titanic</code> dataset&#39;s <code>Freq</code> column
 follows a normal distribution.  We set the parameters of the normal distribution using
 the mean and standard deviation of the sample.</p>
 
-<pre><code class="r">df &lt;- createDataFrame(longley)
-afStats &lt;- head(select(df, mean(df$Armed_Forces), sd(df$Armed_Forces)))
-afMean &lt;- afStats[1]
-afStd &lt;- afStats[2]
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+df &lt;- createDataFrame(t)
+freqStats &lt;- head(select(df, mean(df$Freq), sd(df$Freq)))
+freqMean &lt;- freqStats[1]
+freqStd &lt;- freqStats[2]
 
-test &lt;- spark.kstest(df, &quot;Armed_Forces&quot;, &quot;norm&quot;, c(afMean, afStd))
+test &lt;- spark.kstest(df, &quot;Freq&quot;, &quot;norm&quot;, c(freqMean, freqStd))
 testSummary &lt;- summary(test)
 testSummary
 </code></pre>
 
 <pre><code>## Kolmogorov-Smirnov test summary:
 ## degrees of freedom = 0 
-## statistic = 0.19702271425634826 
-## pValue = 0.5022066431881169 
-## No presumption against null hypothesis: Sample follows theoretical distribution.
+## statistic = 0.3065126710255011 
+## pValue = 0.0036336792155329256 
+## Very strong presumption against null hypothesis: Sample follows theoretical distribution.
 </code></pre>
 
 <h3>Model Persistence</h3>
 
 <p>The following example shows how to save/load an ML model in SparkR.</p>
 
-<pre><code class="r">irisDF &lt;- createDataFrame(iris)
-gaussianGLM &lt;- spark.glm(irisDF, Sepal_Length ~ Sepal_Width + Species, family = &quot;gaussian&quot;)
+<pre><code class="r">t &lt;- as.data.frame(Titanic)
+training &lt;- createDataFrame(t)
+gaussianGLM &lt;- spark.glm(training, Freq ~ Sex + Age, family = &quot;gaussian&quot;)
 
 # Save and then load a fitted MLlib model
 modelPath &lt;- tempfile(pattern = &quot;ml&quot;, fileext = &quot;.tmp&quot;)
@@ -1887,43 +2141,97 @@ summary(gaussianGLM2)
 ## Saved-loaded model does not support output &#39;Deviance Residuals&#39;.
 ## 
 ## Coefficients:
-##                     Estimate  Std. Error  t value  Pr(&gt;|t|)  
-## (Intercept)         2.2514    0.36975     6.0889   9.5681e-09
-## Sepal_Width         0.80356   0.10634     7.5566   4.1873e-12
-## Species_versicolor  1.4587    0.11211     13.012   0         
-## Species_virginica   1.9468    0.10001     19.465   0         
+##              Estimate  Std. Error   t value   Pr(&gt;|t|)
+## (Intercept)   -32.594      35.994  -0.90553  0.3726477
+## Sex_Male       78.812      41.562   1.89624  0.0679311
+## Age_Adult     123.938      41.562   2.98196  0.0057522
 ## 
-## (Dispersion parameter for gaussian family taken to be 0.1918059)
+## (Dispersion parameter for gaussian family taken to be 13819.52)
 ## 
-##     Null deviance: 102.168  on 149  degrees of freedom
-## Residual deviance:  28.004  on 146  degrees of freedom
-## AIC: 183.9
+##     Null deviance: 573341  on 31  degrees of freedom
+## Residual deviance: 400766  on 29  degrees of freedom
+## AIC: 400.7
 ## 
 ## Number of Fisher Scoring iterations: 1
 </code></pre>
 
 <pre><code class="r"># Check model prediction
-gaussianPredictions &lt;- predict(gaussianGLM2, irisDF)
+gaussianPredictions &lt;- predict(gaussianGLM2, training)
 head(gaussianPredictions)
 </code></pre>
 
-<pre><code>##   Sepal_Length Sepal_Width Petal_Length Petal_Width Species label
-## 1          5.1         3.5          1.4         0.2  setosa   5.1
-## 2          4.9         3.0          1.4         0.2  setosa   4.9
-## 3          4.7         3.2          1.3         0.2  setosa   4.7
-## 4          4.6         3.1          1.5         0.2  setosa   4.6
-## 5          5.0         3.6          1.4         0.2  setosa   5.0
-## 6          5.4         3.9          1.7         0.4  setosa   5.4
-##   prediction
-## 1   5.063856
-## 2   4.662076
-## 3   4.822788
-## 4   4.742432
-## 5   5.144212
-## 6   5.385281
+<pre><code>##   Class    Sex   Age Survived Freq label prediction
+## 1   1st   Male Child       No    0     0   46.21875
+## 2   2nd   Male Child       No    0     0   46.21875
+## 3   3rd   Male Child       No   35    35   46.21875
+## 4  Crew   Male Child       No    0     0   46.21875
+## 5   1st Female Child       No    0     0  -32.59375
+## 6   2nd Female Child       No    0     0  -32.59375
 </code></pre>
 
 <pre><code class="r">unlink(modelPath)
+</code></pre>
+
+<h2>Structured Streaming</h2>
+
+<p>SparkR supports the Structured Streaming API.</p>
+
+<p>You can check the Structured Streaming Programming Guide for <a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#programming-model">an introduction</a> to its programming model and basic concepts.</p>
+
+<h3>Simple Source and Sink</h3>
+
+<p>Spark has a few built-in input sources. As an example, to test with a socket source reading text into words and displaying the computed word counts:</p>
+
+<pre><code class="r"># Create DataFrame representing the stream of input lines from connection
+lines &lt;- read.stream(&quot;socket&quot;, host = hostname, port = port)
+
+# Split the lines into words
+words &lt;- selectExpr(lines, &quot;explode(split(value, &#39; &#39;)) as word&quot;)
+
+# Generate running word count
+wordCounts &lt;- count(groupBy(words, &quot;word&quot;))
+
+# Start running the query that prints the running counts to the console
+query &lt;- write.stream(wordCounts, &quot;console&quot;, outputMode = &quot;complete&quot;)
+</code></pre>
+
+<h3>Kafka Source</h3>
+
+<p>It is simple to read data from Kafka. For more information, see <a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#input-sources">Input Sources</a> supported by Structured Streaming.</p>
+
+<pre><code class="r">topic &lt;- read.stream(&quot;kafka&quot;,
+                     kafka.bootstrap.servers = &quot;host1:port1,host2:port2&quot;,
+                     subscribe = &quot;topic1&quot;)
+keyvalue &lt;- selectExpr(topic, &quot;CAST(key AS STRING)&quot;, &quot;CAST(value AS STRING)&quot;)
+</code></pre>
+
+<h3>Operations and Sinks</h3>
+
+<p>Most of the common operations on <code>SparkDataFrame</code> are supported for streaming, including selection, projection, and aggregation. Once you have defined the final result, to start the streaming computation, you will call the <code>write.stream</code> method setting a sink and <code>outputMode</code>.</p>
+
+<p>A streaming <code>SparkDataFrame</code> can be written for debugging to the console, to a temporary in-memory table, or for further processing in a fault-tolerant manner to a File Sink in different formats.</p>
+
+<pre><code class="r">noAggDF &lt;- select(where(deviceDataStreamingDf, &quot;signal &gt; 10&quot;), &quot;device&quot;)
+
+# Print new data to console
+write.stream(noAggDF, &quot;console&quot;)
+
+# Write new data to Parquet files
+write.stream(noAggDF,
+             &quot;parquet&quot;,
+             path = &quot;path/to/destination/dir&quot;,
+             checkpointLocation = &quot;path/to/checkpoint/dir&quot;)
+
+# Aggregate
+aggDF &lt;- count(groupBy(noAggDF, &quot;device&quot;))
+
+# Print updated aggregations to console
+write.stream(aggDF, &quot;console&quot;, outputMode = &quot;complete&quot;)
+
+# Have all the aggregates in an in memory table. The query name will be the table name
+write.stream(aggDF, &quot;memory&quot;, queryName = &quot;aggregates&quot;, outputMode = &quot;complete&quot;)
+
+head(sql(&quot;select * from aggregates&quot;))
 </code></pre>
 
 <h2>Advanced Topics</h2>

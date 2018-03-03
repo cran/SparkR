@@ -2,19 +2,22 @@
 % Please edit documentation in R/SQLContext.R
 \name{tableToDF}
 \alias{tableToDF}
-\title{Create a SparkDataFrame from a SparkSQL Table}
+\title{Create a SparkDataFrame from a SparkSQL table or view}
 \usage{
 tableToDF(tableName)
 }
 \arguments{
-\item{tableName}{The SparkSQL Table to convert to a SparkDataFrame.}
+\item{tableName}{the qualified or unqualified name that designates a table or view. If a database
+is specified, it identifies the table/view from the database.
+Otherwise, it first attempts to find a temporary view with the given name
+and then match the table/view from the current database.}
 }
 \value{
 SparkDataFrame
 }
 \description{
-Returns the specified Table as a SparkDataFrame.  The Table must have already been registered
-in the SparkSession.
+Returns the specified table or view as a SparkDataFrame. The table or view must already exist or
+have already been registered in the SparkSession.
 }
 \note{
 tableToDF since 2.0.0

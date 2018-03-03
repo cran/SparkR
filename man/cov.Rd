@@ -4,11 +4,13 @@
 \name{cov}
 \alias{cov}
 \alias{covar_samp}
+\alias{covar_pop}
 \alias{cov}
 \alias{cov,characterOrColumn-method}
 \alias{covar_samp}
 \alias{covar_samp,characterOrColumn,characterOrColumn-method}
-\alias{cov}
+\alias{covar_pop}
+\alias{covar_pop,characterOrColumn,characterOrColumn-method}
 \alias{cov,SparkDataFrame-method}
 \title{cov}
 \usage{
@@ -16,9 +18,13 @@ cov(x, ...)
 
 covar_samp(col1, col2)
 
+covar_pop(col1, col2)
+
 \S4method{cov}{characterOrColumn}(x, col2)
 
 \S4method{covar_samp}{characterOrColumn,characterOrColumn}(col1, col2)
+
+\S4method{covar_pop}{characterOrColumn,characterOrColumn}(col1, col2)
 
 \S4method{cov}{SparkDataFrame}(x, colName1, colName2)
 }
@@ -41,50 +47,43 @@ be provided.}
 The covariance of the two columns.
 }
 \description{
-Compute the sample covariance between two expressions.
+Compute the covariance between two expressions.
+}
+\details{
+\code{cov}: Compute the sample covariance between two expressions.
 
-Calculate the sample covariance of two numerical columns of a SparkDataFrame.
+\code{covar_sample}: Alias for \code{cov}.
+
+\code{covar_pop}: Computes the population covariance between two expressions.
+
+\code{cov}: When applied to SparkDataFrame, this calculates the sample covariance of two
+numerical columns of \emph{one} SparkDataFrame.
 }
 \note{
 cov since 1.6.0
 
 covar_samp since 2.0.0
 
+covar_pop since 2.0.0
+
 cov since 1.6.0
 }
 \examples{
 \dontrun{
-cov(df$c, df$d)
-cov("c", "d")
-covar_samp(df$c, df$d)
-covar_samp("c", "d")
-}
+df <- createDataFrame(cbind(model = rownames(mtcars), mtcars))
+head(select(df, cov(df$mpg, df$hp), cov("mpg", "hp"),
+                covar_samp(df$mpg, df$hp), covar_samp("mpg", "hp"),
+                covar_pop(df$mpg, df$hp), covar_pop("mpg", "hp")))}
+
 \dontrun{
-df <- read.json("/path/to/file.json")
-cov <- cov(df, "title", "gender")
-}
+cov(df, "mpg", "hp")
+cov(df, df$mpg, df$hp)}
 }
 \seealso{
-Other math_funcs: \code{\link{acos}}, \code{\link{asin}},
-  \code{\link{atan2}}, \code{\link{atan}},
-  \code{\link{bin}}, \code{\link{bround}},
-  \code{\link{cbrt}}, \code{\link{ceil}},
-  \code{\link{conv}}, \code{\link{corr}},
-  \code{\link{cosh}}, \code{\link{cos}},
-  \code{\link{covar_pop}}, \code{\link{expm1}},
-  \code{\link{exp}}, \code{\link{factorial}},
-  \code{\link{floor}}, \code{\link{hex}},
-  \code{\link{hypot}}, \code{\link{log10}},
-  \code{\link{log1p}}, \code{\link{log2}},
-  \code{\link{log}}, \code{\link{pmod}},
-  \code{\link{rint}}, \code{\link{round}},
-  \code{\link{shiftLeft}},
-  \code{\link{shiftRightUnsigned}},
-  \code{\link{shiftRight}}, \code{\link{signum}},
-  \code{\link{sinh}}, \code{\link{sin}},
-  \code{\link{sqrt}}, \code{\link{tanh}},
-  \code{\link{tan}}, \code{\link{toDegrees}},
-  \code{\link{toRadians}}, \code{\link{unhex}}
+Other aggregate functions: \code{\link{avg}},
+  \code{\link{column_aggregate_functions}},
+  \code{\link{corr}}, \code{\link{count}},
+  \code{\link{first}}, \code{\link{last}}
 
 Other stat functions: \code{\link{approxQuantile}},
   \code{\link{corr}}, \code{\link{crosstab}},

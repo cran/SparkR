@@ -20,8 +20,10 @@
 SparkDataFrame
 }
 \description{
-Loads a JSON file (\href{http://jsonlines.org/}{JSON Lines text format or newline-delimited JSON}
-), returning the result as a SparkDataFrame
+Loads a JSON file, returning the result as a SparkDataFrame
+By default, (\href{http://jsonlines.org/}{JSON Lines text format or newline-delimited JSON}
+) is supported. For JSON (one record per file), set a named property \code{multiLine} to
+\code{TRUE}.
 It goes through the entire dataset once to determine the schema.
 }
 \note{
@@ -34,6 +36,7 @@ jsonFile since 1.4.0
 sparkR.session()
 path <- "path/to/file.json"
 df <- read.json(path)
+df <- read.json(path, multiLine = TRUE)
 df <- jsonFile(path)
 }
 }

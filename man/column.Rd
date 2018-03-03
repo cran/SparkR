@@ -39,12 +39,6 @@ column since 1.6.0
 \dontrun{column("name")}
 }
 \seealso{
-Other normal_funcs: \code{\link{abs}},
-  \code{\link{bitwiseNOT}}, \code{\link{coalesce}},
-  \code{\link{expr}}, \code{\link{greatest}},
-  \code{\link{ifelse}}, \code{\link{isnan}},
-  \code{\link{least}}, \code{\link{lit}},
-  \code{\link{nanvl}}, \code{\link{negate}},
-  \code{\link{randn}}, \code{\link{rand}},
-  \code{\link{struct}}, \code{\link{when}}
+Other non-aggregate functions: \code{\link{column_nonaggregate_functions}},
+  \code{\link{not}}
 }

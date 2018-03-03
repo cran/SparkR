@@ -32,7 +32,8 @@ write.df(df, path = NULL, ...)
 
 \item{source}{a name for external data source.}
 
-\item{mode}{one of 'append', 'overwrite', 'error', 'ignore' save mode (it is 'error' by default)}
+\item{mode}{one of 'append', 'overwrite', 'error', 'errorifexists', 'ignore'
+save mode (it is 'error' by default)}
 }
 \description{
 The data source is specified by the \code{source} and a set of options (...).
@@ -43,11 +44,11 @@ spark.sql.sources.default will be used.
 Additionally, mode is used to specify the behavior of the save operation when data already
 exists in the data source. There are four modes:
 \itemize{
-  \item append: Contents of this SparkDataFrame are expected to be appended to existing data.
-  \item overwrite: Existing data is expected to be overwritten by the contents of this
+  \item 'append': Contents of this SparkDataFrame are expected to be appended to existing data.
+  \item 'overwrite': Existing data is expected to be overwritten by the contents of this
         SparkDataFrame.
-  \item error: An exception is expected to be thrown.
-  \item ignore: The save operation is expected to not save the contents of the SparkDataFrame
+  \item 'error' or 'errorifexists': An exception is expected to be thrown.
+  \item 'ignore': The save operation is expected to not save the contents of the SparkDataFrame
         and to not change the existing data.
 }
 }
@@ -62,43 +63,50 @@ sparkR.session()
 path <- "path/to/file.json"
 df <- read.json(path)
 write.df(df, "myfile", "parquet", "overwrite")
-saveDF(df, parquetPath2, "parquet", mode = saveMode, mergeSchema = mergeSchema)
+saveDF(df, parquetPath2, "parquet", mode = "append", mergeSchema = TRUE)
 }
 }
 \seealso{
 Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
-  \code{\link{agg}}, \code{\link{arrange}},
-  \code{\link{as.data.frame}}, \code{\link{attach}},
-  \code{\link{cache}}, \code{\link{coalesce}},
+  \code{\link{agg}}, \code{\link{alias}},
+  \code{\link{arrange}}, \code{\link{as.data.frame}},
+  \code{\link{attach,SparkDataFrame-method}},
+  \code{\link{broadcast}}, \code{\link{cache}},
+  \code{\link{checkpoint}}, \code{\link{coalesce}},
   \code{\link{collect}}, \code{\link{colnames}},
   \code{\link{coltypes}},
   \code{\link{createOrReplaceTempView}},
-  \code{\link{crossJoin}}, \code{\link{dapplyCollect}},
-  \code{\link{dapply}}, \code{\link{describe}},
-  \code{\link{dim}}, \code{\link{distinct}},
-  \code{\link{dropDuplicates}}, \code{\link{dropna}},
-  \code{\link{drop}}, \code{\link{dtypes}},
-  \code{\link{except}}, \code{\link{explain}},
-  \code{\link{filter}}, \code{\link{first}},
-  \code{\link{gapplyCollect}}, \code{\link{gapply}},
-  \code{\link{getNumPartitions}}, \code{\link{group_by}},
-  \code{\link{head}}, \code{\link{histogram}},
+  \code{\link{crossJoin}}, \code{\link{cube}},
+  \code{\link{dapplyCollect}}, \code{\link{dapply}},
+  \code{\link{describe}}, \code{\link{dim}},
+  \code{\link{distinct}}, \code{\link{dropDuplicates}},
+  \code{\link{dropna}}, \code{\link{drop}},
+  \code{\link{dtypes}}, \code{\link{except}},
+  \code{\link{explain}}, \code{\link{filter}},
+  \code{\link{first}}, \code{\link{gapplyCollect}},
+  \code{\link{gapply}}, \code{\link{getNumPartitions}},
+  \code{\link{group_by}}, \code{\link{head}},
+  \code{\link{hint}}, \code{\link{histogram}},
   \code{\link{insertInto}}, \code{\link{intersect}},
-  \code{\link{isLocal}}, \code{\link{join}},
-  \code{\link{limit}}, \code{\link{merge}},
+  \code{\link{isLocal}}, \code{\link{isStreaming}},
+  \code{\link{join}}, \code{\link{limit}},
+  \code{\link{localCheckpoint}}, \code{\link{merge}},
   \code{\link{mutate}}, \code{\link{ncol}},
   \code{\link{nrow}}, \code{\link{persist}},
   \code{\link{printSchema}}, \code{\link{randomSplit}},
   \code{\link{rbind}}, \code{\link{registerTempTable}},
   \code{\link{rename}}, \code{\link{repartition}},
-  \code{\link{sample}}, \code{\link{saveAsTable}},
-  \code{\link{schema}}, \code{\link{selectExpr}},
-  \code{\link{select}}, \code{\link{showDF}},
-  \code{\link{show}}, \code{\link{storageLevel}},
-  \code{\link{str}}, \code{\link{subset}},
-  \code{\link{take}}, \code{\link{union}},
+  \code{\link{rollup}}, \code{\link{sample}},
+  \code{\link{saveAsTable}}, \code{\link{schema}},
+  \code{\link{selectExpr}}, \code{\link{select}},
+  \code{\link{showDF}}, \code{\link{show}},
+  \code{\link{storageLevel}}, \code{\link{str}},
+  \code{\link{subset}}, \code{\link{summary}},
+  \code{\link{take}}, \code{\link{toJSON}},
+  \code{\link{unionByName}}, \code{\link{union}},
   \code{\link{unpersist}}, \code{\link{withColumn}},
-  \code{\link{with}}, \code{\link{write.jdbc}},
-  \code{\link{write.json}}, \code{\link{write.orc}},
-  \code{\link{write.parquet}}, \code{\link{write.text}}
+  \code{\link{withWatermark}}, \code{\link{with}},
+  \code{\link{write.jdbc}}, \code{\link{write.json}},
+  \code{\link{write.orc}}, \code{\link{write.parquet}},
+  \code{\link{write.stream}}, \code{\link{write.text}}
 }

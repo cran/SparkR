@@ -17,9 +17,9 @@
 }
 \value{
 a local R data.frame representing the contingency table. The first column of each row
-        will be the distinct values of \code{col1} and the column names will be the distinct values
-        of \code{col2}. The name of the first column will be "\code{col1}_\code{col2}". Pairs
-        that have no occurrences will have zero as their counts.
+        will be the distinct values of \code{col1} and the column names will be the distinct
+        values of \code{col2}. The name of the first column will be "\code{col1}_\code{col2}".
+        Pairs that have no occurrences will have zero as their counts.
 }
 \description{
 Computes a pair-wise frequency table of the given columns. Also known as a contingency
