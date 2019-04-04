@@ -3,7 +3,6 @@
 \docType{methods}
 \name{partitionBy}
 \alias{partitionBy}
-\alias{partitionBy}
 \alias{partitionBy,WindowSpec-method}
 \title{partitionBy}
 \usage{
@@ -37,3 +36,4 @@ partitionBy(WindowSpec) since 2.0.0
 Other windowspec_method: \code{\link{orderBy}},
   \code{\link{rangeBetween}}, \code{\link{rowsBetween}}
 }
+\concept{windowspec_method}

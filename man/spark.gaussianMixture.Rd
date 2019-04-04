@@ -3,10 +3,8 @@
 \docType{methods}
 \name{spark.gaussianMixture}
 \alias{spark.gaussianMixture}
-\alias{spark.gaussianMixture}
 \alias{spark.gaussianMixture,SparkDataFrame,formula-method}
 \alias{summary,GaussianMixtureModel-method}
-\alias{spark.gaussianMixture,SparkDataFrame,formula-method}
 \alias{predict,GaussianMixtureModel-method}
 \alias{predict,GaussianMixtureModel,SparkDataFrame-method}
 \alias{write.ml,GaussianMixtureModel,character-method}
@@ -14,8 +12,8 @@
 \usage{
 spark.gaussianMixture(data, formula, ...)
 
-\S4method{spark.gaussianMixture}{SparkDataFrame,formula}(data, formula, k = 2,
-  maxIter = 100, tol = 0.01)
+\S4method{spark.gaussianMixture}{SparkDataFrame,formula}(data, formula,
+  k = 2, maxIter = 100, tol = 0.01)
 
 \S4method{summary}{GaussianMixtureModel}(object)
 

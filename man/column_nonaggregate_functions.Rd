@@ -169,6 +169,7 @@ This expression would return the following IDs:
 0, 1, 2, 8589934592 (1L << 33), 8589934593, 8589934594.
 This is equivalent to the MONOTONICALLY_INCREASING_ID function in SQL.
 The method should be used with no argument.
+Note: the function is non-deterministic because its result depends on partition IDs.
 
 \code{negate}: Unary minus, i.e. negate the expression.
 
@@ -194,9 +195,11 @@ This function takes at least 2 parameters. It will return null if all parameters
 
 \code{rand}: Generates a random column with independent and identically distributed (i.i.d.)
 samples from U[0.0, 1.0].
+Note: the function is non-deterministic in general case.
 
 \code{randn}: Generates a column with independent and identically distributed (i.i.d.) samples
 from the standard normal distribution.
+Note: the function is non-deterministic in general case.
 
 \code{when}: Evaluates a list of conditions and returns one of multiple possible result
 expressions. For unmatched expressions null is returned.
@@ -306,3 +309,4 @@ coalesce,SparkDataFrame-method
 Other non-aggregate functions: \code{\link{column}},
   \code{\link{not}}
 }
+\concept{non-aggregate functions}

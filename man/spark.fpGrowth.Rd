@@ -5,7 +5,6 @@
 \alias{spark.fpGrowth}
 \alias{spark.freqItemsets}
 \alias{spark.associationRules}
-\alias{spark.fpGrowth}
 \alias{spark.fpGrowth,SparkDataFrame-method}
 \alias{spark.freqItemsets,FPGrowthModel-method}
 \alias{freqItemsets,FPGrowthModel-method}
@@ -30,7 +29,8 @@ spark.associationRules(object)
 
 \S4method{predict}{FPGrowthModel}(object, newData)
 
-\S4method{write.ml}{FPGrowthModel,character}(object, path, overwrite = FALSE)
+\S4method{write.ml}{FPGrowthModel,character}(object, path,
+  overwrite = FALSE)
 }
 \arguments{
 \item{data}{A SparkDataFrame for training.}
@@ -64,10 +64,11 @@ A \code{SparkDataFrame} with frequent itemsets.
         and \code{freq} (frequency of the itemset).
 
 A \code{SparkDataFrame} with association rules.
-        The \code{SparkDataFrame} contains three columns:
+        The \code{SparkDataFrame} contains four columns:
         \code{antecedent} (an array of the same type as the input column),
         \code{consequent} (an array of the same type as the input column),
-        and \code{condfidence} (confidence).
+        \code{condfidence} (confidence for the rule)
+        and \code{lift} (lift for the rule)
 
 \code{predict} returns a SparkDataFrame containing predicted values.
 }

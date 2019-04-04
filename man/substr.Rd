@@ -11,7 +11,7 @@
 \arguments{
 \item{x}{a Column.}
 
-\item{start}{starting position.}
+\item{start}{starting position. It should be 1-base.}
 
 \item{stop}{ending position.}
 }
@@ -21,9 +21,17 @@ An expression that returns a substring.
 \note{
 substr since 1.4.0
 }
+\examples{
+\dontrun{
+df <- createDataFrame(list(list(a="abcdef")))
+collect(select(df, substr(df$a, 1, 4))) # the result is `abcd`.
+collect(select(df, substr(df$a, 2, 4))) # the result is `bcd`.
+}
+}
 \seealso{
 Other colum_func: \code{\link{alias}},
   \code{\link{between}}, \code{\link{cast}},
   \code{\link{endsWith}}, \code{\link{otherwise}},
   \code{\link{over}}, \code{\link{startsWith}}
 }
+\concept{colum_func}

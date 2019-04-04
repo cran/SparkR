@@ -6,8 +6,8 @@
 \alias{approxQuantile,SparkDataFrame,character,numeric,numeric-method}
 \title{Calculates the approximate quantiles of numerical columns of a SparkDataFrame}
 \usage{
-\S4method{approxQuantile}{SparkDataFrame,character,numeric,numeric}(x, cols,
-  probabilities, relativeError)
+\S4method{approxQuantile}{SparkDataFrame,character,numeric,numeric}(x,
+  cols, probabilities, relativeError)
 }
 \arguments{
 \item{x}{A SparkDataFrame.}
@@ -54,3 +54,4 @@ Other stat functions: \code{\link{corr}},
   \code{\link{cov}}, \code{\link{crosstab}},
   \code{\link{freqItems}}, \code{\link{sampleBy}}
 }
+\concept{stat functions}

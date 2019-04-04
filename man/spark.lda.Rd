@@ -19,10 +19,11 @@ spark.posterior(object, newData)
 
 spark.perplexity(object, data)
 
-\S4method{spark.lda}{SparkDataFrame}(data, features = "features", k = 10,
-  maxIter = 20, optimizer = c("online", "em"), subsamplingRate = 0.05,
-  topicConcentration = -1, docConcentration = -1,
-  customizedStopWords = "", maxVocabSize = bitwShiftL(1, 18))
+\S4method{spark.lda}{SparkDataFrame}(data, features = "features",
+  k = 10, maxIter = 20, optimizer = c("online", "em"),
+  subsamplingRate = 0.05, topicConcentration = -1,
+  docConcentration = -1, customizedStopWords = "",
+  maxVocabSize = bitwShiftL(1, 18))
 
 \S4method{summary}{LDAModel}(object, maxTermsPerTopic)
 

@@ -4,7 +4,8 @@
 \alias{createTable}
 \title{Creates a table based on the dataset in a data source}
 \usage{
-createTable(tableName, path = NULL, source = NULL, schema = NULL, ...)
+createTable(tableName, path = NULL, source = NULL, schema = NULL,
+  ...)
 }
 \arguments{
 \item{tableName}{the qualified or unqualified name that designates a table. If no database
@@ -42,7 +43,4 @@ df <- createTable("myjson", path="path/to/json", source="json", schema)
 createTable("people", source = "json", schema = schema)
 insertInto(df, "people")
 }
-}
-\seealso{
-\link{createExternalTable}
 }

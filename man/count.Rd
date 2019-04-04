@@ -5,9 +5,7 @@
 \alias{count}
 \alias{n}
 \alias{count,GroupedData-method}
-\alias{count}
 \alias{count,Column-method}
-\alias{n}
 \alias{n,Column-method}
 \title{Count}
 \usage{
@@ -54,3 +52,4 @@ Other aggregate functions: \code{\link{avg}},
   \code{\link{corr}}, \code{\link{cov}},
   \code{\link{first}}, \code{\link{last}}
 }
+\concept{aggregate functions}

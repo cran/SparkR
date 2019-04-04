@@ -3,7 +3,6 @@
 \docType{methods}
 \name{rowsBetween}
 \alias{rowsBetween}
-\alias{rowsBetween}
 \alias{rowsBetween,WindowSpec,numeric,numeric-method}
 \title{rowsBetween}
 \usage{
@@ -43,3 +42,4 @@ rowsBetween since 2.0.0
 Other windowspec_method: \code{\link{orderBy}},
   \code{\link{partitionBy}}, \code{\link{rangeBetween}}
 }
+\concept{windowspec_method}

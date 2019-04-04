@@ -3,7 +3,6 @@
 \docType{methods}
 \name{rangeBetween}
 \alias{rangeBetween}
-\alias{rangeBetween}
 \alias{rangeBetween,WindowSpec,numeric,numeric-method}
 \title{rangeBetween}
 \usage{
@@ -43,3 +42,4 @@ rangeBetween since 2.0.0
 Other windowspec_method: \code{\link{orderBy}},
   \code{\link{partitionBy}}, \code{\link{rowsBetween}}
 }
+\concept{windowspec_method}

@@ -3,9 +3,7 @@
 \docType{methods}
 \name{not}
 \alias{not}
-\alias{not}
 \alias{!,Column-method}
-\alias{not}
 \alias{not,Column-method}
 \title{!}
 \usage{
@@ -54,3 +52,4 @@ head(select(df, not(cast(df$flag, "boolean"))))
 Other non-aggregate functions: \code{\link{column_nonaggregate_functions}},
   \code{\link{column}}
 }
+\concept{non-aggregate functions}

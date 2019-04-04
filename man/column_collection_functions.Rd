@@ -3,20 +3,66 @@
 \docType{methods}
 \name{column_collection_functions}
 \alias{column_collection_functions}
+\alias{reverse,Column-method}
+\alias{reverse}
 \alias{to_json,Column-method}
 \alias{to_json}
+\alias{concat,Column-method}
+\alias{concat}
 \alias{from_json,Column,characterOrstructType-method}
 \alias{from_json}
 \alias{array_contains,Column-method}
 \alias{array_contains}
+\alias{array_distinct,Column-method}
+\alias{array_distinct}
+\alias{array_except,Column,Column-method}
+\alias{array_except}
+\alias{array_except,Column-method}
+\alias{array_intersect,Column,Column-method}
+\alias{array_intersect}
+\alias{array_intersect,Column-method}
+\alias{array_join,Column,character-method}
+\alias{array_join}
+\alias{array_join,Column-method}
+\alias{array_max,Column-method}
+\alias{array_max}
+\alias{array_min,Column-method}
+\alias{array_min}
+\alias{array_position,Column-method}
+\alias{array_position}
+\alias{array_remove,Column-method}
+\alias{array_remove}
+\alias{array_repeat,Column,numericOrColumn-method}
+\alias{array_repeat}
+\alias{array_sort,Column-method}
+\alias{array_sort}
+\alias{arrays_overlap,Column,Column-method}
+\alias{arrays_overlap}
+\alias{arrays_overlap,Column-method}
+\alias{array_union,Column,Column-method}
+\alias{array_union}
+\alias{array_union,Column-method}
+\alias{arrays_zip,Column-method}
+\alias{arrays_zip}
+\alias{shuffle,Column-method}
+\alias{shuffle}
+\alias{flatten,Column-method}
+\alias{flatten}
+\alias{map_from_arrays,Column,Column-method}
+\alias{map_from_arrays}
+\alias{map_from_arrays,Column-method}
 \alias{map_keys,Column-method}
 \alias{map_keys}
 \alias{map_values,Column-method}
 \alias{map_values}
+\alias{element_at,Column-method}
+\alias{element_at}
 \alias{explode,Column-method}
 \alias{explode}
 \alias{size,Column-method}
 \alias{size}
+\alias{slice,Column-method}
+\alias{slice}
 \alias{sort_array,Column-method}
 \alias{sort_array}
 \alias{posexplode,Column-method}
@@ -29,11 +75,45 @@
 \usage{
 array_contains(x, value)
 
+array_distinct(x)
+
+array_except(x, y)
+
+array_intersect(x, y)
+
+array_join(x, delimiter, ...)
+
+array_max(x)
+
+array_min(x)
+
+array_position(x, value)
+
+array_remove(x, value)
+
+array_repeat(x, count)
+
+array_sort(x)
+
+arrays_overlap(x, y)
+
+array_union(x, y)
+
+arrays_zip(x, ...)
+
+concat(x, ...)
+
+element_at(x, extraction)
+
 explode(x)
 
 explode_outer(x)
 
+flatten(x)
+
 from_json(x, schema, ...)
+
+map_from_arrays(x, y)
 
 map_keys(x)
 
@@ -43,26 +123,73 @@ posexplode(x)
 
 posexplode_outer(x)
 
+reverse(x)
+
+shuffle(x)
+
 size(x)
+
+slice(x, start, length)
 
 sort_array(x, asc = TRUE)
 
 to_json(x, ...)
 
+\S4method{reverse}{Column}(x)
+
 \S4method{to_json}{Column}(x, ...)
+
+\S4method{concat}{Column}(x, ...)
 
 \S4method{from_json}{Column,characterOrstructType}(x, schema,
   as.json.array = FALSE, ...)
 
 \S4method{array_contains}{Column}(x, value)
 
+\S4method{array_distinct}{Column}(x)
+
+\S4method{array_except}{Column,Column}(x, y)
+
+\S4method{array_intersect}{Column,Column}(x, y)
+
+\S4method{array_join}{Column,character}(x, delimiter,
+  nullReplacement = NULL)
+
+\S4method{array_max}{Column}(x)
+
+\S4method{array_min}{Column}(x)
+
+\S4method{array_position}{Column}(x, value)
+
+\S4method{array_remove}{Column}(x, value)
+
+\S4method{array_repeat}{Column,numericOrColumn}(x, count)
+
+\S4method{array_sort}{Column}(x)
+
+\S4method{arrays_overlap}{Column,Column}(x, y)
+
+\S4method{array_union}{Column,Column}(x, y)
+
+\S4method{arrays_zip}{Column}(x, ...)
+
+\S4method{shuffle}{Column}(x)
+
+\S4method{flatten}{Column}(x)
+
+\S4method{map_from_arrays}{Column,Column}(x, y)
+
 \S4method{map_keys}{Column}(x)
 
 \S4method{map_values}{Column}(x)
 
+\S4method{element_at}{Column}(x, extraction)
+
 \S4method{explode}{Column}(x)
 
 \S4method{size}{Column}(x)
+
+\S4method{slice}{Column}(x, start, length)
 
 \S4method{sort_array}{Column}(x, asc = TRUE)
 
@@ -80,28 +207,53 @@ to_json(x, ...)
 \item \code{from_json}: it is the column containing the JSON string.
 }}
 
-\item{value}{a value to be checked if contained in the column}
+\item{value}{A value to compute on.
+\itemize{
+\item \code{array_contains}: a value to be checked if contained in the column.
+\item \code{array_position}: a value to locate in the given array.
+\item \code{array_remove}: a value to remove in the given array.
+}}
+
+\item{y}{Column to compute on.}
+
+\item{delimiter}{a character string that is used to concatenate the elements of column.}
+
+\item{...}{additional argument(s). In \code{to_json} and \code{from_json}, this contains
+additional named properties to control how it is converted, accepts the same
+options as the JSON data source.  In \code{arrays_zip}, this contains additional
+Columns of arrays to be merged.}
+
+\item{count}{a Column or constant determining the number of repetitions.}
+
+\item{extraction}{index to check for in array or key to check for in map}
 
 \item{schema}{a structType object to use as the schema to use when parsing the JSON string.
 Since Spark 2.3, the DDL-formatted string is also supported for the schema.}
 
-\item{...}{additional argument(s). In \code{to_json} and \code{from_json}, this contains
-additional named properties to control how it is converted, accepts the same
-options as the JSON data source.}
+\item{start}{an index indicating the first element occurring in the result.}
+
+\item{length}{a number of consecutive elements chosen to the result.}
 
 \item{asc}{a logical flag indicating the sorting order.
 TRUE, sorting is in ascending order.
 FALSE, sorting is in descending order.}
 
 \item{as.json.array}{indicating if input string is JSON array of objects or a single object.}
+
+\item{nullReplacement}{an optional character string that is used to replace the Null values.}
 }
 \description{
 Collection functions defined for \code{Column}.
 }
 \details{
-\code{to_json}: Converts a column containing a \code{structType}, array of \code{structType},
-a \code{mapType} or array of \code{mapType} into a Column of JSON string.
+\code{reverse}: Returns a reversed string or an array with reverse order of elements.
+
+\code{to_json}: Converts a column containing a \code{structType}, a \code{mapType}
+or an \code{arrayType} into a Column of JSON string.
 Resolving the Column can fail if an unsupported type is encountered.
+
+\code{concat}: Concatenates multiple input columns together into a single column.
+The function works with strings, binary and compatible array columns.
 
 \code{from_json}: Parses a column containing a JSON string into a Column of \code{structType}
 with the specified \code{schema} or array of \code{structType} if \code{as.json.array} is set
@@ -110,16 +262,71 @@ to \code{TRUE}. If the string is unparseable, the Column will contain the value 
 \code{array_contains}: Returns null if the array is null, true if the array contains
 the value, and false otherwise.
 
+\code{array_distinct}: Removes duplicate values from the array.
+
+\code{array_except}: Returns an array of the elements in the first array but not in the second
+ array, without duplicates. The order of elements in the result is not determined.
+
+\code{array_intersect}: Returns an array of the elements in the intersection of the given two
+ arrays, without duplicates.
+
+\code{array_join}: Concatenates the elements of column using the delimiter.
+Null values are replaced with nullReplacement if set, otherwise they are ignored.
+
+\code{array_max}: Returns the maximum value of the array.
+
+\code{array_min}: Returns the minimum value of the array.
+
+\code{array_position}: Locates the position of the first occurrence of the given value
+in the given array. Returns NA if either of the arguments are NA.
+Note: The position is not zero based, but 1 based index. Returns 0 if the given
+value could not be found in the array.
+
+\code{array_remove}: Removes all elements that equal to element from the given array.
+
+\code{array_repeat}: Creates an array containing \code{x} repeated the number of times
+given by \code{count}.
+
+\code{array_sort}: Sorts the input array in ascending order. The elements of the input array
+must be orderable. NA elements will be placed at the end of the returned array.
+
+\code{arrays_overlap}: Returns true if the input arrays have at least one non-null element in
+common. If not and both arrays are non-empty and any of them contains a null, it returns null.
+It returns false otherwise.
+
+\code{array_union}: Returns an array of the elements in the union of the given two arrays,
+ without duplicates.
+
+\code{arrays_zip}: Returns a merged array of structs in which the N-th struct contains all N-th
+values of input arrays.
+
+\code{shuffle}: Returns a random permutation of the given array.
+
+\code{flatten}: Creates a single array from an array of arrays.
+If a structure of nested arrays is deeper than two levels, only one level of nesting is removed.
+
+\code{map_from_arrays}: Creates a new map column. The array in the first column is used for
+keys. The array in the second column is used for values. All elements in the array for key
+should not be null.
+
 \code{map_keys}: Returns an unordered array containing the keys of the map.
 
 \code{map_values}: Returns an unordered array containing the values of the map.
+
+\code{element_at}: Returns element of array at given index in \code{extraction} if
+\code{x} is array. Returns value for the given key in \code{extraction} if \code{x} is map.
+Note: The position is not zero based, but 1 based index.
 
 \code{explode}: Creates a new row for each element in the given array or map column.
 
 \code{size}: Returns length of array or map.
 
-\code{sort_array}: Sorts the input array in ascending or descending order according
-to the natural ordering of the array elements.
+\code{slice}: Returns an array containing all the elements in x from the index start
+(or starting from the end if start is negative) with the specified length.
+
+\code{sort_array}: Sorts the input array in ascending or descending order according to
+the natural ordering of the array elements. NA elements will be placed at the beginning of
+the returned array in ascending order or at the end of the returned array in descending order.
 
 \code{posexplode}: Creates a new row for each element with position in the given array
 or map column.
@@ -133,19 +340,59 @@ array or map column. Unlike \code{posexplode}, if the array/map is \code{null} o
 then the row (\code{null}, \code{null}) is produced.
 }
 \note{
+reverse since 1.5.0
+
 to_json since 2.2.0
+
+concat since 1.5.0
 
 from_json since 2.2.0
 
 array_contains since 1.6.0
 
+array_distinct since 2.4.0
+
+array_except since 2.4.0
+
+array_intersect since 2.4.0
+
+array_join since 2.4.0
+
+array_max since 2.4.0
+
+array_min since 2.4.0
+
+array_position since 2.4.0
+
+array_remove since 2.4.0
+
+array_repeat since 2.4.0
+
+array_sort since 2.4.0
+
+arrays_overlap since 2.4.0
+
+array_union since 2.4.0
+
+arrays_zip since 2.4.0
+
+shuffle since 2.4.0
+
+flatten since 2.4.0
+
+map_from_arrays since 2.4.0
+
 map_keys since 2.3.0
 
 map_values since 2.3.0
 
+element_at since 2.4.0
+
 explode since 1.5.0
 
 size since 1.5.0
+
+slice since 2.4.0
 
 sort_array since 1.6.0
 
@@ -160,15 +407,27 @@ posexplode_outer since 2.3.0
 # Dataframe used throughout this doc
 df <- createDataFrame(cbind(model = rownames(mtcars), mtcars))
 tmp <- mutate(df, v1 = create_array(df$mpg, df$cyl, df$hp))
-head(select(tmp, array_contains(tmp$v1, 21), size(tmp$v1)))
+head(select(tmp, array_contains(tmp$v1, 21), size(tmp$v1), shuffle(tmp$v1)))
+head(select(tmp, array_max(tmp$v1), array_min(tmp$v1), array_distinct(tmp$v1)))
+head(select(tmp, array_position(tmp$v1, 21), array_repeat(df$mpg, 3), array_sort(tmp$v1)))
+head(select(tmp, flatten(tmp$v1), reverse(tmp$v1), array_remove(tmp$v1, 21)))
 tmp2 <- mutate(tmp, v2 = explode(tmp$v1))
 head(tmp2)
 head(select(tmp, posexplode(tmp$v1)))
+head(select(tmp, slice(tmp$v1, 2L, 2L)))
 head(select(tmp, sort_array(tmp$v1)))
 head(select(tmp, sort_array(tmp$v1, asc = FALSE)))
 tmp3 <- mutate(df, v3 = create_map(df$model, df$cyl))
-head(select(tmp3, map_keys(tmp3$v3)))
-head(select(tmp3, map_values(tmp3$v3)))}
+head(select(tmp3, map_keys(tmp3$v3), map_values(tmp3$v3)))
+head(select(tmp3, element_at(tmp3$v3, "Valiant")))
+tmp4 <- mutate(df, v4 = create_array(df$mpg, df$cyl), v5 = create_array(df$cyl, df$hp))
+head(select(tmp4, concat(tmp4$v4, tmp4$v5), arrays_overlap(tmp4$v4, tmp4$v5)))
+head(select(tmp4, array_except(tmp4$v4, tmp4$v5), array_intersect(tmp4$v4, tmp4$v5)))
+head(select(tmp4, array_union(tmp4$v4, tmp4$v5)))
+head(select(tmp4, arrays_zip(tmp4$v4, tmp4$v5), map_from_arrays(tmp4$v4, tmp4$v5)))
+head(select(tmp, concat(df$mpg, df$cyl, df$hp)))
+tmp5 <- mutate(df, v6 = create_array(df$model, df$model))
+head(select(tmp5, array_join(tmp5$v6, "#"), array_join(tmp5$v6, "#", "NULL")))}
 
 \dontrun{
 # Converts a struct into a JSON object
@@ -206,3 +465,4 @@ df2 <- createDataFrame(data.frame(
 head(select(df2, df2$id, explode_outer(split_string(df2$text, ","))))
 head(select(df2, df2$id, posexplode_outer(split_string(df2$text, ","))))}
 }
+\concept{collection functions}

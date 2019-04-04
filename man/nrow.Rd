@@ -4,7 +4,6 @@
 \name{nrow}
 \alias{nrow}
 \alias{count,SparkDataFrame-method}
-\alias{nrow}
 \alias{nrow,SparkDataFrame-method}
 \title{Returns the number of rows in a SparkDataFrame}
 \usage{
@@ -46,20 +45,21 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{describe}}, \code{\link{dim}},
   \code{\link{distinct}}, \code{\link{dropDuplicates}},
   \code{\link{dropna}}, \code{\link{drop}},
-  \code{\link{dtypes}}, \code{\link{except}},
-  \code{\link{explain}}, \code{\link{filter}},
-  \code{\link{first}}, \code{\link{gapplyCollect}},
-  \code{\link{gapply}}, \code{\link{getNumPartitions}},
-  \code{\link{group_by}}, \code{\link{head}},
-  \code{\link{hint}}, \code{\link{histogram}},
-  \code{\link{insertInto}}, \code{\link{intersect}},
+  \code{\link{dtypes}}, \code{\link{exceptAll}},
+  \code{\link{except}}, \code{\link{explain}},
+  \code{\link{filter}}, \code{\link{first}},
+  \code{\link{gapplyCollect}}, \code{\link{gapply}},
+  \code{\link{getNumPartitions}}, \code{\link{group_by}},
+  \code{\link{head}}, \code{\link{hint}},
+  \code{\link{histogram}}, \code{\link{insertInto}},
+  \code{\link{intersectAll}}, \code{\link{intersect}},
   \code{\link{isLocal}}, \code{\link{isStreaming}},
   \code{\link{join}}, \code{\link{limit}},
   \code{\link{localCheckpoint}}, \code{\link{merge}},
   \code{\link{mutate}}, \code{\link{ncol}},
   \code{\link{persist}}, \code{\link{printSchema}},
   \code{\link{randomSplit}}, \code{\link{rbind}},
-  \code{\link{registerTempTable}}, \code{\link{rename}},
+  \code{\link{rename}}, \code{\link{repartitionByRange}},
   \code{\link{repartition}}, \code{\link{rollup}},
   \code{\link{sample}}, \code{\link{saveAsTable}},
   \code{\link{schema}}, \code{\link{selectExpr}},
@@ -75,3 +75,4 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{write.orc}}, \code{\link{write.parquet}},
   \code{\link{write.stream}}, \code{\link{write.text}}
 }
+\concept{SparkDataFrame functions}

@@ -3,14 +3,13 @@
 \docType{methods}
 \name{sampleBy}
 \alias{sampleBy}
-\alias{sampleBy}
 \alias{sampleBy,SparkDataFrame,character,list,numeric-method}
 \title{Returns a stratified sample without replacement}
 \usage{
 sampleBy(x, col, fractions, seed)
 
-\S4method{sampleBy}{SparkDataFrame,character,list,numeric}(x, col, fractions,
-  seed)
+\S4method{sampleBy}{SparkDataFrame,character,list,numeric}(x, col,
+  fractions, seed)
 }
 \arguments{
 \item{x}{A SparkDataFrame}
@@ -43,3 +42,4 @@ Other stat functions: \code{\link{approxQuantile}},
   \code{\link{corr}}, \code{\link{cov}},
   \code{\link{crosstab}}, \code{\link{freqItems}}
 }
+\concept{stat functions}

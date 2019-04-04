@@ -3,7 +3,6 @@
 \docType{methods}
 \name{otherwise}
 \alias{otherwise}
-\alias{otherwise}
 \alias{otherwise,Column-method}
 \title{otherwise}
 \usage{
@@ -30,3 +29,4 @@ Other colum_func: \code{\link{alias}},
   \code{\link{endsWith}}, \code{\link{over}},
   \code{\link{startsWith}}, \code{\link{substr}}
 }
+\concept{colum_func}

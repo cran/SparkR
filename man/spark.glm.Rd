@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.glm}
 \alias{spark.glm}
-\alias{spark.glm}
 \alias{spark.glm,SparkDataFrame,formula-method}
 \alias{summary,GeneralizedLinearRegressionModel-method}
 \alias{print.summary.GeneralizedLinearRegressionModel}
@@ -13,11 +12,11 @@
 \usage{
 spark.glm(data, formula, ...)
 
-\S4method{spark.glm}{SparkDataFrame,formula}(data, formula, family = gaussian,
-  tol = 1e-06, maxIter = 25, weightCol = NULL, regParam = 0,
-  var.power = 0, link.power = 1 - var.power,
-  stringIndexerOrderType = c("frequencyDesc", "frequencyAsc", "alphabetDesc",
-  "alphabetAsc"), offsetCol = NULL)
+\S4method{spark.glm}{SparkDataFrame,formula}(data, formula,
+  family = gaussian, tol = 1e-06, maxIter = 25, weightCol = NULL,
+  regParam = 0, var.power = 0, link.power = 1 - var.power,
+  stringIndexerOrderType = c("frequencyDesc", "frequencyAsc",
+  "alphabetDesc", "alphabetAsc"), offsetCol = NULL)
 
 \S4method{summary}{GeneralizedLinearRegressionModel}(object)
 
@@ -25,8 +24,8 @@ spark.glm(data, formula, ...)
 
 \S4method{predict}{GeneralizedLinearRegressionModel}(object, newData)
 
-\S4method{write.ml}{GeneralizedLinearRegressionModel,character}(object, path,
-  overwrite = FALSE)
+\S4method{write.ml}{GeneralizedLinearRegressionModel,character}(object,
+  path, overwrite = FALSE)
 }
 \arguments{
 \item{data}{a SparkDataFrame for training.}

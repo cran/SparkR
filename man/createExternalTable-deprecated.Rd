@@ -5,8 +5,8 @@
 \alias{createExternalTable.default}
 \title{(Deprecated) Create an external table}
 \usage{
-\method{createExternalTable}{default}(tableName, path = NULL, source = NULL,
-  schema = NULL, ...)
+\method{createExternalTable}{default}(tableName, path = NULL,
+  source = NULL, schema = NULL, ...)
 }
 \arguments{
 \item{tableName}{a name of the table.}

@@ -5,11 +5,8 @@
 \alias{cov}
 \alias{covar_samp}
 \alias{covar_pop}
-\alias{cov}
 \alias{cov,characterOrColumn-method}
-\alias{covar_samp}
 \alias{covar_samp,characterOrColumn,characterOrColumn-method}
-\alias{covar_pop}
 \alias{covar_pop,characterOrColumn,characterOrColumn-method}
 \alias{cov,SparkDataFrame-method}
 \title{cov}
@@ -89,3 +86,5 @@ Other stat functions: \code{\link{approxQuantile}},
   \code{\link{corr}}, \code{\link{crosstab}},
   \code{\link{freqItems}}, \code{\link{sampleBy}}
 }
+\concept{aggregate functions}
+\concept{stat functions}

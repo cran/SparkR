@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.mlp}
 \alias{spark.mlp}
-\alias{spark.mlp}
 \alias{spark.mlp,SparkDataFrame,formula-method}
 \alias{summary,MultilayerPerceptronClassificationModel-method}
 \alias{predict,MultilayerPerceptronClassificationModel-method}
@@ -19,9 +18,11 @@ spark.mlp(data, formula, ...)
 
 \S4method{summary}{MultilayerPerceptronClassificationModel}(object)
 
-\S4method{predict}{MultilayerPerceptronClassificationModel}(object, newData)
+\S4method{predict}{MultilayerPerceptronClassificationModel}(object,
+  newData)
 
-\S4method{write.ml}{MultilayerPerceptronClassificationModel,character}(object,
+
+  \S4method{write.ml}{MultilayerPerceptronClassificationModel,character}(object,
   path, overwrite = FALSE)
 }
 \arguments{

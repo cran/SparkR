@@ -3,7 +3,6 @@
 \docType{methods}
 \name{queryName}
 \alias{queryName}
-\alias{queryName}
 \alias{queryName,StreamingQuery-method}
 \title{queryName}
 \usage{
@@ -38,3 +37,4 @@ Other StreamingQuery methods: \code{\link{awaitTermination}},
   \code{\link{lastProgress}}, \code{\link{status}},
   \code{\link{stopQuery}}
 }
+\concept{StreamingQuery methods}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.gbt}
 \alias{spark.gbt}
-\alias{spark.gbt}
 \alias{spark.gbt,SparkDataFrame,formula-method}
 \alias{summary,GBTRegressionModel-method}
 \alias{print.summary.GBTRegressionModel}
@@ -18,11 +17,11 @@
 spark.gbt(data, formula, ...)
 
 \S4method{spark.gbt}{SparkDataFrame,formula}(data, formula,
-  type = c("regression", "classification"), maxDepth = 5, maxBins = 32,
-  maxIter = 20, stepSize = 0.1, lossType = NULL, seed = NULL,
-  subsamplingRate = 1, minInstancesPerNode = 1, minInfoGain = 0,
-  checkpointInterval = 10, maxMemoryInMB = 256, cacheNodeIds = FALSE,
-  handleInvalid = c("error", "keep", "skip"))
+  type = c("regression", "classification"), maxDepth = 5,
+  maxBins = 32, maxIter = 20, stepSize = 0.1, lossType = NULL,
+  seed = NULL, subsamplingRate = 1, minInstancesPerNode = 1,
+  minInfoGain = 0, checkpointInterval = 10, maxMemoryInMB = 256,
+  cacheNodeIds = FALSE, handleInvalid = c("error", "keep", "skip"))
 
 \S4method{summary}{GBTRegressionModel}(object)
 

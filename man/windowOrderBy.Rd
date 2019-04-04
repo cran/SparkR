@@ -3,9 +3,7 @@
 \docType{methods}
 \name{windowOrderBy}
 \alias{windowOrderBy}
-\alias{windowOrderBy}
 \alias{windowOrderBy,character-method}
-\alias{windowOrderBy}
 \alias{windowOrderBy,Column-method}
 \title{windowOrderBy}
 \usage{

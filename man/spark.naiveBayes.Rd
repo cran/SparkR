@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.naiveBayes}
 \alias{spark.naiveBayes}
-\alias{spark.naiveBayes}
 \alias{spark.naiveBayes,SparkDataFrame,formula-method}
 \alias{summary,NaiveBayesModel-method}
 \alias{predict,NaiveBayesModel-method}

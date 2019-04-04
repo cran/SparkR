@@ -3,7 +3,6 @@
 \docType{methods}
 \name{awaitTermination}
 \alias{awaitTermination}
-\alias{awaitTermination}
 \alias{awaitTermination,StreamingQuery-method}
 \title{awaitTermination}
 \usage{
@@ -15,7 +14,7 @@ awaitTermination(x, timeout = NULL)
 \item{x}{a StreamingQuery.}
 
 \item{timeout}{time to wait in milliseconds, if omitted, wait indefinitely until \code{stopQuery}
-is called or an error has occured.}
+is called or an error has occurred.}
 }
 \value{
 TRUE if query has terminated within the timeout period; nothing if timeout is not
@@ -42,3 +41,4 @@ Other StreamingQuery methods: \code{\link{explain}},
   \code{\link{queryName}}, \code{\link{status}},
   \code{\link{stopQuery}}
 }
+\concept{StreamingQuery methods}

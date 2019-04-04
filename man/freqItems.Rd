@@ -38,3 +38,4 @@ Other stat functions: \code{\link{approxQuantile}},
   \code{\link{corr}}, \code{\link{cov}},
   \code{\link{crosstab}}, \code{\link{sampleBy}}
 }
+\concept{stat functions}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{avg}
 \alias{avg}
-\alias{avg}
 \alias{avg,Column-method}
 \title{avg}
 \usage{
@@ -31,3 +30,4 @@ Other aggregate functions: \code{\link{column_aggregate_functions}},
   \code{\link{cov}}, \code{\link{first}},
   \code{\link{last}}
 }
+\concept{aggregate functions}

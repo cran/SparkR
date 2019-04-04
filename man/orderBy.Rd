@@ -3,9 +3,7 @@
 \docType{methods}
 \name{orderBy}
 \alias{orderBy}
-\alias{orderBy}
 \alias{orderBy,WindowSpec,character-method}
-\alias{orderBy}
 \alias{orderBy,WindowSpec,Column-method}
 \title{Ordering Columns in a WindowSpec}
 \usage{
@@ -45,3 +43,4 @@ See \link{arrange} for use in sorting a SparkDataFrame
 Other windowspec_method: \code{\link{partitionBy}},
   \code{\link{rangeBetween}}, \code{\link{rowsBetween}}
 }
+\concept{windowspec_method}

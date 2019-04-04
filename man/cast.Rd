@@ -3,7 +3,6 @@
 \docType{methods}
 \name{cast}
 \alias{cast}
-\alias{cast}
 \alias{cast,Column-method}
 \title{Casts the column to a different data type.}
 \usage{
@@ -36,3 +35,4 @@ Other colum_func: \code{\link{alias}},
   \code{\link{otherwise}}, \code{\link{over}},
   \code{\link{startsWith}}, \code{\link{substr}}
 }
+\concept{colum_func}

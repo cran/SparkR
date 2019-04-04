@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.bisectingKmeans}
 \alias{spark.bisectingKmeans}
-\alias{spark.bisectingKmeans}
 \alias{spark.bisectingKmeans,SparkDataFrame,formula-method}
 \alias{summary,BisectingKMeansModel-method}
 \alias{predict,BisectingKMeansModel-method}
@@ -13,8 +12,8 @@
 \usage{
 spark.bisectingKmeans(data, formula, ...)
 
-\S4method{spark.bisectingKmeans}{SparkDataFrame,formula}(data, formula, k = 4,
-  maxIter = 20, seed = NULL, minDivisibleClusterSize = 1)
+\S4method{spark.bisectingKmeans}{SparkDataFrame,formula}(data, formula,
+  k = 4, maxIter = 20, seed = NULL, minDivisibleClusterSize = 1)
 
 \S4method{summary}{BisectingKMeansModel}(object)
 

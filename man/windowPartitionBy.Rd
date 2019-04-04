@@ -3,9 +3,7 @@
 \docType{methods}
 \name{windowPartitionBy}
 \alias{windowPartitionBy}
-\alias{windowPartitionBy}
 \alias{windowPartitionBy,character-method}
-\alias{windowPartitionBy}
 \alias{windowPartitionBy,Column-method}
 \title{windowPartitionBy}
 \usage{

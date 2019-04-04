@@ -3,7 +3,6 @@
 \docType{methods}
 \name{isActive}
 \alias{isActive}
-\alias{isActive}
 \alias{isActive,StreamingQuery-method}
 \title{isActive}
 \usage{
@@ -34,3 +33,4 @@ Other StreamingQuery methods: \code{\link{awaitTermination}},
   \code{\link{queryName}}, \code{\link{status}},
   \code{\link{stopQuery}}
 }
+\concept{StreamingQuery methods}

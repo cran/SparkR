@@ -3,9 +3,7 @@
 \docType{methods}
 \name{corr}
 \alias{corr}
-\alias{corr}
 \alias{corr,Column-method}
-\alias{corr}
 \alias{corr,SparkDataFrame-method}
 \title{corr}
 \usage{
@@ -13,7 +11,8 @@ corr(x, ...)
 
 \S4method{corr}{Column}(x, col2)
 
-\S4method{corr}{SparkDataFrame}(x, colName1, colName2, method = "pearson")
+\S4method{corr}{SparkDataFrame}(x, colName1, colName2,
+  method = "pearson")
 }
 \arguments{
 \item{x}{a Column or a SparkDataFrame.}
@@ -36,10 +35,6 @@ The Pearson Correlation Coefficient as a Double.
 }
 \description{
 Computes the Pearson Correlation Coefficient for two Columns.
-
-Calculates the correlation of two columns of a SparkDataFrame.
-Currently only supports the Pearson Correlation Coefficient.
-For Spearman Correlation, consider using RDD methods found in MLlib's Statistics.
 }
 \note{
 corr since 1.6.0
@@ -65,3 +60,5 @@ Other stat functions: \code{\link{approxQuantile}},
   \code{\link{cov}}, \code{\link{crosstab}},
   \code{\link{freqItems}}, \code{\link{sampleBy}}
 }
+\concept{aggregate functions}
+\concept{stat functions}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.randomForest}
 \alias{spark.randomForest}
-\alias{spark.randomForest}
 \alias{spark.randomForest,SparkDataFrame,formula-method}
 \alias{summary,RandomForestRegressionModel-method}
 \alias{print.summary.RandomForestRegressionModel}
@@ -18,11 +17,12 @@
 spark.randomForest(data, formula, ...)
 
 \S4method{spark.randomForest}{SparkDataFrame,formula}(data, formula,
-  type = c("regression", "classification"), maxDepth = 5, maxBins = 32,
-  numTrees = 20, impurity = NULL, featureSubsetStrategy = "auto",
-  seed = NULL, subsamplingRate = 1, minInstancesPerNode = 1,
-  minInfoGain = 0, checkpointInterval = 10, maxMemoryInMB = 256,
-  cacheNodeIds = FALSE, handleInvalid = c("error", "keep", "skip"))
+  type = c("regression", "classification"), maxDepth = 5,
+  maxBins = 32, numTrees = 20, impurity = NULL,
+  featureSubsetStrategy = "auto", seed = NULL, subsamplingRate = 1,
+  minInstancesPerNode = 1, minInfoGain = 0, checkpointInterval = 10,
+  maxMemoryInMB = 256, cacheNodeIds = FALSE,
+  handleInvalid = c("error", "keep", "skip"))
 
 \S4method{summary}{RandomForestRegressionModel}(object)
 
@@ -39,8 +39,8 @@ spark.randomForest(data, formula, ...)
 \S4method{write.ml}{RandomForestRegressionModel,character}(object, path,
   overwrite = FALSE)
 
-\S4method{write.ml}{RandomForestClassificationModel,character}(object, path,
-  overwrite = FALSE)
+\S4method{write.ml}{RandomForestClassificationModel,character}(object,
+  path, overwrite = FALSE)
 }
 \arguments{
 \item{data}{a SparkDataFrame for training.}
@@ -65,7 +65,18 @@ For regression, must be "variance". For classification, must be one of
 "entropy" and "gini", default is "gini".}
 
 \item{featureSubsetStrategy}{The number of features to consider for splits at each tree node.
-Supported options: "auto", "all", "onethird", "sqrt", "log2", (0.0-1.0], [1-n].}
+Supported options: "auto" (choose automatically for task: If
+                   numTrees == 1, set to "all." If numTrees > 1
+                   (forest), set to "sqrt" for classification and
+                   to "onethird" for regression),
+                   "all" (use all features),
+                   "onethird" (use 1/3 of the features),
+                   "sqrt" (use sqrt(number of features)),
+                   "log2" (use log2(number of features)),
+                   "n": (when n is in the range (0, 1.0], use
+                   n * number of features. When n is in the range
+                   (1, number of features), use n features).
+                   Default is "auto".}
 
 \item{seed}{integer seed for random number generation.}
 

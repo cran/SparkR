@@ -3,7 +3,6 @@
 \docType{methods}
 \name{between}
 \alias{between}
-\alias{between}
 \alias{between,Column-method}
 \title{between}
 \usage{
@@ -28,3 +27,4 @@ Other colum_func: \code{\link{alias}}, \code{\link{cast}},
   \code{\link{over}}, \code{\link{startsWith}},
   \code{\link{substr}}
 }
+\concept{colum_func}

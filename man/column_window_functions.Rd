@@ -153,3 +153,4 @@ tmp <- mutate(df, dist = over(cume_dist(), ws), dense_rank = over(dense_rank(), 
 tmp <- mutate(tmp, ntile = over(ntile(4), ws))
 head(tmp)}
 }
+\concept{window functions}

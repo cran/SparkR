@@ -6,10 +6,11 @@
 \alias{glm}
 \title{Generalized Linear Models (R-compliant)}
 \usage{
-\S4method{glm}{formula,ANY,SparkDataFrame}(formula, family = gaussian, data,
-  epsilon = 1e-06, maxit = 25, weightCol = NULL, var.power = 0,
-  link.power = 1 - var.power, stringIndexerOrderType = c("frequencyDesc",
-  "frequencyAsc", "alphabetDesc", "alphabetAsc"), offsetCol = NULL)
+\S4method{glm}{formula,ANY,SparkDataFrame}(formula, family = gaussian,
+  data, epsilon = 1e-06, maxit = 25, weightCol = NULL,
+  var.power = 0, link.power = 1 - var.power,
+  stringIndexerOrderType = c("frequencyDesc", "frequencyAsc",
+  "alphabetDesc", "alphabetAsc"), offsetCol = NULL)
 }
 \arguments{
 \item{formula}{a symbolic description of the model to be fitted. Currently only a few formula

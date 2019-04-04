@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.als}
 \alias{spark.als}
-\alias{spark.als}
 \alias{spark.als,SparkDataFrame-method}
 \alias{summary,ALSModel-method}
 \alias{predict,ALSModel-method}
@@ -14,9 +13,9 @@ spark.als(data, ...)
 
 \S4method{spark.als}{SparkDataFrame}(data, ratingCol = "rating",
   userCol = "user", itemCol = "item", rank = 10, regParam = 0.1,
-  maxIter = 10, nonnegative = FALSE, implicitPrefs = FALSE, alpha = 1,
-  numUserBlocks = 10, numItemBlocks = 10, checkpointInterval = 10,
-  seed = 0)
+  maxIter = 10, nonnegative = FALSE, implicitPrefs = FALSE,
+  alpha = 1, numUserBlocks = 10, numItemBlocks = 10,
+  checkpointInterval = 10, seed = 0)
 
 \S4method{summary}{ALSModel}(object)
 

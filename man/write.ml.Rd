@@ -2,7 +2,6 @@
 % Please edit documentation in R/generics.R, R/mllib_utils.R
 \name{write.ml}
 \alias{write.ml}
-\alias{write.ml}
 \title{Saves the MLlib model to the input path}
 \usage{
 write.ml(object, path, ...)

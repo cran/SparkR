@@ -215,14 +215,14 @@ Math functions defined for \code{Column}.
 \details{
 \code{abs}: Computes the absolute value.
 
-\code{acos}: Computes the cosine inverse of the given value; the returned angle is in
-the range 0.0 through pi.
+\code{acos}: Returns the inverse cosine of the given value,
+as if computed by \code{java.lang.Math.acos()}
 
-\code{asin}: Computes the sine inverse of the given value; the returned angle is in
-the range -pi/2 through pi/2.
+\code{asin}: Returns the inverse sine of the given value,
+as if computed by \code{java.lang.Math.asin()}
 
-\code{atan}: Computes the tangent inverse of the given value; the returned angle is in the range
--pi/2 through pi/2.
+\code{atan}: Returns the inverse tangent of the given value,
+as if computed by \code{java.lang.Math.atan()}
 
 \code{bin}: Returns the string representation of the binary value
 of the given long column. For example, bin("12") returns "1100".
@@ -233,9 +233,11 @@ of the given long column. For example, bin("12") returns "1100".
 
 \code{ceiling}: Alias for \code{ceil}.
 
-\code{cos}: Computes the cosine of the given value. Units in radians.
+\code{cos}: Returns the cosine of the given value,
+as if computed by \code{java.lang.Math.cos()}. Units in radians.
 
-\code{cosh}: Computes the hyperbolic cosine of the given value.
+\code{cosh}: Returns the hyperbolic cosine of the given value,
+as if computed by \code{java.lang.Math.cosh()}.
 
 \code{exp}: Computes the exponential of the given value.
 
@@ -270,15 +272,20 @@ bround(2.5, 0) = 2, bround(3.5, 0) = 4.
 
 \code{sign}: Alias for \code{signum}.
 
-\code{sin}: Computes the sine of the given value. Units in radians.
+\code{sin}: Returns the sine of the given value,
+as if computed by \code{java.lang.Math.sin()}. Units in radians.
 
-\code{sinh}: Computes the hyperbolic sine of the given value.
+\code{sinh}: Returns the hyperbolic sine of the given value,
+as if computed by \code{java.lang.Math.sinh()}.
 
 \code{sqrt}: Computes the square root of the specified float value.
 
-\code{tan}: Computes the tangent of the given value. Units in radians.
+\code{tan}: Returns the tangent of the given value,
+as if computed by \code{java.lang.Math.tan()}.
+Units in radians.
 
-\code{tanh}: Computes the hyperbolic tangent of the given value.
+\code{tanh}: Returns the hyperbolic tangent of the given value,
+as if computed by \code{java.lang.Math.tanh()}.
 
 \code{toDegrees}: Converts an angle measured in radians to an approximately equivalent angle
 measured in degrees.
@@ -290,7 +297,8 @@ measured in radians.
 and converts to the byte representation of number.
 
 \code{atan2}: Returns the angle theta from the conversion of rectangular coordinates
-(x, y) to polar coordinates (r, theta). Units in radians.
+(x, y) to polar coordinates (r, theta),
+as if computed by \code{java.lang.Math.atan2()}. Units in radians.
 
 \code{hypot}: Computes "sqrt(a^2 + b^2)" without intermediate overflow or underflow.
 
@@ -400,3 +408,4 @@ tmp <- mutate(df, v1 = log(df$mpg), v2 = cbrt(df$disp),
                   v13 = sqrt(df$disp), v14 = ceil(df$wt))
 head(tmp)}
 }
+\concept{math functions}

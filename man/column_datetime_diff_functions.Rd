@@ -76,8 +76,12 @@ Date time arithmetic functions defined for \code{Column}.
 }
 \details{
 \code{datediff}: Returns the number of days from \code{y} to \code{x}.
+If \code{y} is later than \code{x} then the result is positive.
 
 \code{months_between}: Returns number of months between dates \code{y} and \code{x}.
+If \code{y} is later than \code{x}, then the result is positive. If \code{y} and \code{x}
+are on the same day of month, or both are the last day of month, time of day will be ignored.
+Otherwise, the difference is calculated based on 31 days per month, and rounded to 8 digits.
 
 \code{date_format}: Converts a date/timestamp/string to a value of string in the format
 specified by the date format given by the second argument. A pattern could be for instance
@@ -86,9 +90,16 @@ pattern letters of \code{java.text.SimpleDateFormat} can be used.
 Note: Use when ever possible specialized functions like \code{year}. These benefit from a
 specialized implementation.
 
-\code{from_utc_timestamp}: Given a timestamp like '2017-07-14 02:40:00.0', interprets it as a
-time in UTC, and renders that time as a timestamp in the given time zone. For example, 'GMT+1'
-would yield '2017-07-14 03:40:00.0'.
+\code{from_utc_timestamp}: This is a common function for databases supporting TIMESTAMP WITHOUT
+TIMEZONE. This function takes a timestamp which is timezone-agnostic, and interprets it as a
+timestamp in UTC, and renders that timestamp as a timestamp in the given time zone.
+However, timestamp in Spark represents number of microseconds from the Unix epoch, which is not
+timezone-agnostic. So in Spark this function just shift the timestamp value from UTC timezone to
+the given timezone.
+This function may return confusing result if the input is a string with timezone, e.g.
+(\code{2018-03-13T06:18:23+00:00}). The reason is that, Spark firstly cast the string to
+timestamp according to the timezone in the string, and finally display the result by converting
+the timestamp to string according to the session local timezone.
 
 \code{next_day}: Given a date column, returns the first date which is later than the value of
 the date column that is on the specified day of the week. For example,
@@ -96,9 +107,16 @@ the date column that is on the specified day of the week. For example,
 after 2015-07-27. Day of the week parameter is case insensitive, and accepts first three or
 two characters: "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun".
 
-\code{to_utc_timestamp}: Given a timestamp like '2017-07-14 02:40:00.0', interprets it as a
-time in the given time zone, and renders that time as a timestamp in UTC. For example, 'GMT+1'
-would yield '2017-07-14 01:40:00.0'.
+\code{to_utc_timestamp}: This is a common function for databases supporting TIMESTAMP WITHOUT
+TIMEZONE. This function takes a timestamp which is timezone-agnostic, and interprets it as a
+timestamp in the given timezone, and renders that timestamp as a timestamp in UTC.
+However, timestamp in Spark represents number of microseconds from the Unix epoch, which is not
+timezone-agnostic. So in Spark this function just shift the timestamp value from the given
+timezone to UTC timezone.
+This function may return confusing result if the input is a string with timezone, e.g.
+(\code{2018-03-13T06:18:23+00:00}). The reason is that, Spark firstly cast the string to
+timestamp according to the timezone in the string, and finally display the result by converting
+the timestamp to string according to the session local timezone.
 
 \code{add_months}: Returns the date that is numMonths (\code{x}) after startDate (\code{y}).
 
@@ -157,3 +175,4 @@ head(tmp)}
 \seealso{
 Other data time functions: \code{\link{column_datetime_functions}}
 }
+\concept{data time functions}

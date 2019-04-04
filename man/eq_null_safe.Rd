@@ -3,7 +3,6 @@
 \docType{methods}
 \name{\%<=>\%}
 \alias{\%<=>\%}
-\alias{\%<=>\%}
 \alias{\%<=>\%,Column-method}
 \title{\%<=>\%}
 \usage{

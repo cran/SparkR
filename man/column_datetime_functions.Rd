@@ -126,7 +126,8 @@ year(x)
 
 \S4method{unix_timestamp}{Column,missing}(x, format)
 
-\S4method{unix_timestamp}{Column,character}(x, format = "yyyy-MM-dd HH:mm:ss")
+\S4method{unix_timestamp}{Column,character}(x,
+  format = "yyyy-MM-dd HH:mm:ss")
 
 \S4method{trunc}{Column}(x, format)
 
@@ -357,3 +358,4 @@ head(select(df, current_date(), current_timestamp()))}
 \seealso{
 Other data time functions: \code{\link{column_datetime_diff_functions}}
 }
+\concept{data time functions}

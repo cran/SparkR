@@ -3,7 +3,6 @@
 \docType{methods}
 \name{over}
 \alias{over}
-\alias{over}
 \alias{over,Column,WindowSpec-method}
 \title{over}
 \usage{
@@ -43,3 +42,4 @@ Other colum_func: \code{\link{alias}},
   \code{\link{endsWith}}, \code{\link{otherwise}},
   \code{\link{startsWith}}, \code{\link{substr}}
 }
+\concept{colum_func}

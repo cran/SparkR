@@ -13,7 +13,7 @@ read.stream(source = NULL, schema = NULL, ...)
 required for file-based streaming data source}
 
 \item{...}{additional external data source specific named options, for instance \code{path} for
-file-based streaming data source. \code{timeZone} to indicate a timezone to be used to 
+file-based streaming data source. \code{timeZone} to indicate a timezone to be used to
 parse timestamps in the JSON/CSV data sources or partition values; If it isn't set, it
 uses the default value, session local timezone.}
 }

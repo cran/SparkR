@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.svmLinear}
 \alias{spark.svmLinear}
-\alias{spark.svmLinear}
 \alias{spark.svmLinear,SparkDataFrame,formula-method}
 \alias{predict,LinearSVCModel-method}
 \alias{predict,LinearSVCModel,SparkDataFrame-method}
@@ -22,7 +21,8 @@ spark.svmLinear(data, formula, ...)
 
 \S4method{summary}{LinearSVCModel}(object)
 
-\S4method{write.ml}{LinearSVCModel,character}(object, path, overwrite = FALSE)
+\S4method{write.ml}{LinearSVCModel,character}(object, path,
+  overwrite = FALSE)
 }
 \arguments{
 \item{data}{SparkDataFrame for training.}

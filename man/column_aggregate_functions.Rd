@@ -35,7 +35,6 @@
 \alias{var_pop}
 \alias{var_samp,Column-method}
 \alias{var_samp}
-\alias{approxCountDistinct,Column-method}
 \alias{countDistinct,Column-method}
 \alias{countDistinct}
 \alias{n_distinct,Column-method}
@@ -180,8 +179,12 @@ Aggregate functions defined for \code{Column}.
 \code{n_distinct}: Returns the number of distinct items in a group.
 
 \code{collect_list}: Creates a list of objects with duplicates.
+Note: the function is non-deterministic because the order of collected results depends
+on order of rows which may be non-deterministic after a shuffle.
 
 \code{collect_set}: Creates a list of objects with duplicate elements eliminated.
+Note: the function is non-deterministic because the order of collected results depends
+on order of rows which may be non-deterministic after a shuffle.
 
 \code{grouping_bit}: Indicates whether a specified column in a GROUP BY list is aggregated or
 not, returns 1 for aggregated or 0 for not aggregated in the result set. Same as \code{GROUPING}
@@ -316,3 +319,4 @@ Other aggregate functions: \code{\link{avg}},
   \code{\link{cov}}, \code{\link{first}},
   \code{\link{last}}
 }
+\concept{aggregate functions}

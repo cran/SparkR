@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.logit}
 \alias{spark.logit}
-\alias{spark.logit}
 \alias{spark.logit,SparkDataFrame,formula-method}
 \alias{summary,LogisticRegressionModel-method}
 \alias{predict,LogisticRegressionModel-method}
@@ -13,13 +12,13 @@
 \usage{
 spark.logit(data, formula, ...)
 
-\S4method{spark.logit}{SparkDataFrame,formula}(data, formula, regParam = 0,
-  elasticNetParam = 0, maxIter = 100, tol = 1e-06, family = "auto",
-  standardization = TRUE, thresholds = 0.5, weightCol = NULL,
-  aggregationDepth = 2, lowerBoundsOnCoefficients = NULL,
-  upperBoundsOnCoefficients = NULL, lowerBoundsOnIntercepts = NULL,
-  upperBoundsOnIntercepts = NULL, handleInvalid = c("error", "keep",
-  "skip"))
+\S4method{spark.logit}{SparkDataFrame,formula}(data, formula,
+  regParam = 0, elasticNetParam = 0, maxIter = 100, tol = 1e-06,
+  family = "auto", standardization = TRUE, thresholds = 0.5,
+  weightCol = NULL, aggregationDepth = 2,
+  lowerBoundsOnCoefficients = NULL, upperBoundsOnCoefficients = NULL,
+  lowerBoundsOnIntercepts = NULL, upperBoundsOnIntercepts = NULL,
+  handleInvalid = c("error", "keep", "skip"))
 
 \S4method{summary}{LogisticRegressionModel}(object)
 

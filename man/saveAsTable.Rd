@@ -3,14 +3,13 @@
 \docType{methods}
 \name{saveAsTable}
 \alias{saveAsTable}
-\alias{saveAsTable}
 \alias{saveAsTable,SparkDataFrame,character-method}
 \title{Save the contents of the SparkDataFrame to a data source as a table}
 \usage{
 saveAsTable(df, tableName, source = NULL, mode = "error", ...)
 
-\S4method{saveAsTable}{SparkDataFrame,character}(df, tableName, source = NULL,
-  mode = "error", ...)
+\S4method{saveAsTable}{SparkDataFrame,character}(df, tableName,
+  source = NULL, mode = "error", ...)
 }
 \arguments{
 \item{df}{a SparkDataFrame.}
@@ -65,32 +64,35 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{describe}}, \code{\link{dim}},
   \code{\link{distinct}}, \code{\link{dropDuplicates}},
   \code{\link{dropna}}, \code{\link{drop}},
-  \code{\link{dtypes}}, \code{\link{except}},
-  \code{\link{explain}}, \code{\link{filter}},
-  \code{\link{first}}, \code{\link{gapplyCollect}},
-  \code{\link{gapply}}, \code{\link{getNumPartitions}},
-  \code{\link{group_by}}, \code{\link{head}},
-  \code{\link{hint}}, \code{\link{histogram}},
-  \code{\link{insertInto}}, \code{\link{intersect}},
+  \code{\link{dtypes}}, \code{\link{exceptAll}},
+  \code{\link{except}}, \code{\link{explain}},
+  \code{\link{filter}}, \code{\link{first}},
+  \code{\link{gapplyCollect}}, \code{\link{gapply}},
+  \code{\link{getNumPartitions}}, \code{\link{group_by}},
+  \code{\link{head}}, \code{\link{hint}},
+  \code{\link{histogram}}, \code{\link{insertInto}},
+  \code{\link{intersectAll}}, \code{\link{intersect}},
   \code{\link{isLocal}}, \code{\link{isStreaming}},
   \code{\link{join}}, \code{\link{limit}},
   \code{\link{localCheckpoint}}, \code{\link{merge}},
   \code{\link{mutate}}, \code{\link{ncol}},
   \code{\link{nrow}}, \code{\link{persist}},
   \code{\link{printSchema}}, \code{\link{randomSplit}},
-  \code{\link{rbind}}, \code{\link{registerTempTable}},
-  \code{\link{rename}}, \code{\link{repartition}},
-  \code{\link{rollup}}, \code{\link{sample}},
-  \code{\link{schema}}, \code{\link{selectExpr}},
-  \code{\link{select}}, \code{\link{showDF}},
-  \code{\link{show}}, \code{\link{storageLevel}},
-  \code{\link{str}}, \code{\link{subset}},
-  \code{\link{summary}}, \code{\link{take}},
-  \code{\link{toJSON}}, \code{\link{unionByName}},
-  \code{\link{union}}, \code{\link{unpersist}},
-  \code{\link{withColumn}}, \code{\link{withWatermark}},
-  \code{\link{with}}, \code{\link{write.df}},
-  \code{\link{write.jdbc}}, \code{\link{write.json}},
-  \code{\link{write.orc}}, \code{\link{write.parquet}},
-  \code{\link{write.stream}}, \code{\link{write.text}}
+  \code{\link{rbind}}, \code{\link{rename}},
+  \code{\link{repartitionByRange}},
+  \code{\link{repartition}}, \code{\link{rollup}},
+  \code{\link{sample}}, \code{\link{schema}},
+  \code{\link{selectExpr}}, \code{\link{select}},
+  \code{\link{showDF}}, \code{\link{show}},
+  \code{\link{storageLevel}}, \code{\link{str}},
+  \code{\link{subset}}, \code{\link{summary}},
+  \code{\link{take}}, \code{\link{toJSON}},
+  \code{\link{unionByName}}, \code{\link{union}},
+  \code{\link{unpersist}}, \code{\link{withColumn}},
+  \code{\link{withWatermark}}, \code{\link{with}},
+  \code{\link{write.df}}, \code{\link{write.jdbc}},
+  \code{\link{write.json}}, \code{\link{write.orc}},
+  \code{\link{write.parquet}}, \code{\link{write.stream}},
+  \code{\link{write.text}}
 }
+\concept{SparkDataFrame functions}

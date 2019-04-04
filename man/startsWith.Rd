@@ -3,7 +3,6 @@
 \docType{methods}
 \name{startsWith}
 \alias{startsWith}
-\alias{startsWith}
 \alias{startsWith,Column-method}
 \title{startsWith}
 \usage{
@@ -29,3 +28,4 @@ Other colum_func: \code{\link{alias}},
   \code{\link{endsWith}}, \code{\link{otherwise}},
   \code{\link{over}}, \code{\link{substr}}
 }
+\concept{colum_func}

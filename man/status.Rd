@@ -3,7 +3,6 @@
 \docType{methods}
 \name{status}
 \alias{status}
-\alias{status}
 \alias{status,StreamingQuery-method}
 \title{status}
 \usage{
@@ -31,3 +30,4 @@ Other StreamingQuery methods: \code{\link{awaitTermination}},
   \code{\link{lastProgress}}, \code{\link{queryName}},
   \code{\link{stopQuery}}
 }
+\concept{StreamingQuery methods}

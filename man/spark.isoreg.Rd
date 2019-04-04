@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.isoreg}
 \alias{spark.isoreg}
-\alias{spark.isoreg}
 \alias{spark.isoreg,SparkDataFrame,formula-method}
 \alias{summary,IsotonicRegressionModel-method}
 \alias{predict,IsotonicRegressionModel-method}

@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.kmeans}
 \alias{spark.kmeans}
-\alias{spark.kmeans}
 \alias{spark.kmeans,SparkDataFrame,formula-method}
 \alias{summary,KMeansModel-method}
 \alias{predict,KMeansModel-method}
@@ -20,7 +19,8 @@ spark.kmeans(data, formula, ...)
 
 \S4method{predict}{KMeansModel}(object, newData)
 
-\S4method{write.ml}{KMeansModel,character}(object, path, overwrite = FALSE)
+\S4method{write.ml}{KMeansModel,character}(object, path,
+  overwrite = FALSE)
 }
 \arguments{
 \item{data}{a SparkDataFrame for training.}

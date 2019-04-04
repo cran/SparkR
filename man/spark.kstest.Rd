@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.kstest}
 \alias{spark.kstest}
-\alias{spark.kstest}
 \alias{spark.kstest,SparkDataFrame-method}
 \alias{summary,KSTest-method}
 \alias{print.summary.KSTest}

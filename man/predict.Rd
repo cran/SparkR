@@ -2,7 +2,6 @@
 % Please edit documentation in R/generics.R, R/mllib_utils.R
 \name{predict}
 \alias{predict}
-\alias{predict}
 \title{Makes predictions from a MLlib model}
 \usage{
 predict(object, ...)

@@ -40,3 +40,4 @@ Other stat functions: \code{\link{approxQuantile}},
   \code{\link{corr}}, \code{\link{cov}},
   \code{\link{freqItems}}, \code{\link{sampleBy}}
 }
+\concept{stat functions}

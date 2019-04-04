@@ -20,8 +20,6 @@
 \alias{ltrim,Column,missing-method}
 \alias{ltrim}
 \alias{ltrim,Column,character-method}
-\alias{reverse,Column-method}
-\alias{reverse}
 \alias{rtrim,Column,missing-method}
 \alias{rtrim}
 \alias{rtrim,Column,character-method}
@@ -36,8 +34,6 @@
 \alias{upper}
 \alias{levenshtein,Column-method}
 \alias{levenshtein}
-\alias{concat,Column-method}
-\alias{concat}
 \alias{instr,Column,character-method}
 \alias{instr}
 \alias{format_number,Column,numeric-method}
@@ -72,8 +68,6 @@ ascii(x)
 
 base64(x)
 
-concat(x, ...)
-
 concat_ws(sep, x, ...)
 
 decode(x, charset)
@@ -103,8 +97,6 @@ regexp_extract(x, pattern, idx)
 regexp_replace(x, pattern, replacement)
 
 repeat_string(x, n)
-
-reverse(x)
 
 rpad(x, len, pad)
 
@@ -142,8 +134,6 @@ upper(x)
 
 \S4method{ltrim}{Column,character}(x, trimString)
 
-\S4method{reverse}{Column}(x)
-
 \S4method{rtrim}{Column,missing}(x, trimString)
 
 \S4method{rtrim}{Column,character}(x, trimString)
@@ -160,8 +150,6 @@ upper(x)
 
 \S4method{levenshtein}{Column}(y, x)
 
-\S4method{concat}{Column}(x, ...)
-
 \S4method{instr}{Column,character}(y, x)
 
 \S4method{format_number}{Column,numeric}(y, x)
@@ -176,7 +164,8 @@ upper(x)
 
 \S4method{regexp_extract}{Column,character,numeric}(x, pattern, idx)
 
-\S4method{regexp_replace}{Column,character,character}(x, pattern, replacement)
+\S4method{regexp_replace}{Column,character,character}(x, pattern,
+  replacement)
 
 \S4method{rpad}{Column,numeric,character}(x, len, pad)
 
@@ -197,9 +186,9 @@ upper(x)
      format to. See 'Details'.
 }}
 
-\item{...}{additional Columns.}
-
 \item{sep}{separator to use.}
+
+\item{...}{additional Columns.}
 
 \item{charset}{character set to use (one of "US-ASCII", "ISO-8859-1", "UTF-8", "UTF-16BE",
 "UTF-16LE", "UTF-16").}
@@ -269,8 +258,6 @@ The length of binary data includes binary zeros.
 \code{ltrim}: Trims the spaces from left end for the specified string value. Optionally a
 \code{trimString} can be specified.
 
-\code{reverse}: Reverses the string column and returns it as a new string column.
-
 \code{rtrim}: Trims the spaces from right end for the specified string value. Optionally a
 \code{trimString} can be specified.
 
@@ -285,9 +272,6 @@ This is the reverse of base64.
 \code{upper}: Converts a string column to upper case.
 
 \code{levenshtein}: Computes the Levenshtein distance of the two given string columns.
-
-\code{concat}: Concatenates multiple input columns together into a single column.
-If all inputs are binary, concat returns an output as binary. Otherwise, it returns as string.
 
 \code{instr}: Locates the position of the first occurrence of a substring (\code{x})
 in the given string column (\code{y}). Returns null if either of the arguments are null.
@@ -357,8 +341,6 @@ ltrim since 1.5.0
 
 ltrim(Column, character) since 2.3.0
 
-reverse since 1.5.0
-
 rtrim since 1.5.0
 
 rtrim(Column, character) since 2.3.0
@@ -374,8 +356,6 @@ unbase64 since 1.5.0
 upper since 1.4.0
 
 levenshtein since 1.5.0
-
-concat since 1.5.0
 
 instr since 1.5.0
 
@@ -445,15 +425,6 @@ tmp <- mutate(df, d1 = levenshtein(df$Class, df$Sex),
 head(tmp)}
 
 \dontrun{
-# concatenate strings
-tmp <- mutate(df, s1 = concat(df$Class, df$Sex),
-                  s2 = concat(df$Class, df$Sex, df$Age),
-                  s3 = concat(df$Class, df$Sex, df$Age, df$Class),
-                  s4 = concat_ws("_", df$Class, df$Sex),
-                  s5 = concat_ws("+", df$Class, df$Sex, df$Age, df$Survived))
-head(tmp)}
-
-\dontrun{
 tmp <- mutate(df, s1 = instr(df$Sex, "m"), s2 = instr(df$Sex, "M"),
                   s3 = locate("m", df$Sex), s4 = locate("m", df$Sex, pos = 4))
 head(tmp)}
@@ -462,6 +433,12 @@ head(tmp)}
 tmp <- mutate(df, v1 = df$Freq/3)
 head(select(tmp, format_number(tmp$v1, 0), format_number(tmp$v1, 2),
                  format_string("\%4.2f \%s", tmp$v1, tmp$Sex)), 10)}
+
+\dontrun{
+# concatenate strings
+tmp <- mutate(df, s1 = concat_ws("_", df$Class, df$Sex),
+                  s2 = concat_ws("+", df$Class, df$Sex, df$Age, df$Survived))
+head(tmp)}
 
 \dontrun{
 tmp <- mutate(df, s1 = regexp_extract(df$Class, "(\\\\d+)\\\\w+", 1),
@@ -484,3 +461,4 @@ head(select(df, repeat_string(df$Class, 3)))
 # This is equivalent to the following SQL expression
 head(selectExpr(df, "repeat(Class, 3)"))}
 }
+\concept{string functions}

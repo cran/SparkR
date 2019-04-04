@@ -3,15 +3,15 @@
 \docType{methods}
 \name{merge}
 \alias{merge}
-\alias{merge}
 \alias{merge,SparkDataFrame,SparkDataFrame-method}
 \title{Merges two data frames}
 \usage{
 merge(x, y, ...)
 
-\S4method{merge}{SparkDataFrame,SparkDataFrame}(x, y, by = intersect(names(x),
-  names(y)), by.x = by, by.y = by, all = FALSE, all.x = all,
-  all.y = all, sort = TRUE, suffixes = c("_x", "_y"), ...)
+\S4method{merge}{SparkDataFrame,SparkDataFrame}(x, y,
+  by = intersect(names(x), names(y)), by.x = by, by.y = by,
+  all = FALSE, all.x = all, all.y = all, sort = TRUE,
+  suffixes = c("_x", "_y"), ...)
 }
 \arguments{
 \item{x}{the first data frame to be joined.}
@@ -90,20 +90,21 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{describe}}, \code{\link{dim}},
   \code{\link{distinct}}, \code{\link{dropDuplicates}},
   \code{\link{dropna}}, \code{\link{drop}},
-  \code{\link{dtypes}}, \code{\link{except}},
-  \code{\link{explain}}, \code{\link{filter}},
-  \code{\link{first}}, \code{\link{gapplyCollect}},
-  \code{\link{gapply}}, \code{\link{getNumPartitions}},
-  \code{\link{group_by}}, \code{\link{head}},
-  \code{\link{hint}}, \code{\link{histogram}},
-  \code{\link{insertInto}}, \code{\link{intersect}},
+  \code{\link{dtypes}}, \code{\link{exceptAll}},
+  \code{\link{except}}, \code{\link{explain}},
+  \code{\link{filter}}, \code{\link{first}},
+  \code{\link{gapplyCollect}}, \code{\link{gapply}},
+  \code{\link{getNumPartitions}}, \code{\link{group_by}},
+  \code{\link{head}}, \code{\link{hint}},
+  \code{\link{histogram}}, \code{\link{insertInto}},
+  \code{\link{intersectAll}}, \code{\link{intersect}},
   \code{\link{isLocal}}, \code{\link{isStreaming}},
   \code{\link{join}}, \code{\link{limit}},
   \code{\link{localCheckpoint}}, \code{\link{mutate}},
   \code{\link{ncol}}, \code{\link{nrow}},
   \code{\link{persist}}, \code{\link{printSchema}},
   \code{\link{randomSplit}}, \code{\link{rbind}},
-  \code{\link{registerTempTable}}, \code{\link{rename}},
+  \code{\link{rename}}, \code{\link{repartitionByRange}},
   \code{\link{repartition}}, \code{\link{rollup}},
   \code{\link{sample}}, \code{\link{saveAsTable}},
   \code{\link{schema}}, \code{\link{selectExpr}},
@@ -119,3 +120,4 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{write.orc}}, \code{\link{write.parquet}},
   \code{\link{write.stream}}, \code{\link{write.text}}
 }
+\concept{SparkDataFrame functions}

@@ -10,7 +10,8 @@
 \method{read.df}{default}(path = NULL, source = NULL, schema = NULL,
   na.strings = "NA", ...)
 
-\method{loadDF}{default}(path = NULL, source = NULL, schema = NULL, ...)
+\method{loadDF}{default}(path = NULL, source = NULL, schema = NULL,
+  ...)
 }
 \arguments{
 \item{path}{The path of files to load}

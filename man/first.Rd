@@ -3,9 +3,7 @@
 \docType{methods}
 \name{first}
 \alias{first}
-\alias{first}
 \alias{first,SparkDataFrame-method}
-\alias{first}
 \alias{first,characterOrColumn-method}
 \title{Return the first row of a SparkDataFrame}
 \usage{
@@ -24,13 +22,13 @@ first(x, ...)
 before the computation proceeds.}
 }
 \description{
-Return the first row of a SparkDataFrame
-
 Aggregate function: returns the first value in a group.
 }
 \details{
 The function by default returns the first values it sees. It will return the first non-missing
 value it sees when na.rm is set to true. If all values are missing, then NA is returned.
+Note: the function is non-deterministic because its results depends on order of rows which
+may be non-deterministic after a shuffle.
 }
 \note{
 first(SparkDataFrame) since 1.4.0
@@ -64,12 +62,13 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{describe}}, \code{\link{dim}},
   \code{\link{distinct}}, \code{\link{dropDuplicates}},
   \code{\link{dropna}}, \code{\link{drop}},
-  \code{\link{dtypes}}, \code{\link{except}},
-  \code{\link{explain}}, \code{\link{filter}},
-  \code{\link{gapplyCollect}}, \code{\link{gapply}},
-  \code{\link{getNumPartitions}}, \code{\link{group_by}},
-  \code{\link{head}}, \code{\link{hint}},
-  \code{\link{histogram}}, \code{\link{insertInto}},
+  \code{\link{dtypes}}, \code{\link{exceptAll}},
+  \code{\link{except}}, \code{\link{explain}},
+  \code{\link{filter}}, \code{\link{gapplyCollect}},
+  \code{\link{gapply}}, \code{\link{getNumPartitions}},
+  \code{\link{group_by}}, \code{\link{head}},
+  \code{\link{hint}}, \code{\link{histogram}},
+  \code{\link{insertInto}}, \code{\link{intersectAll}},
   \code{\link{intersect}}, \code{\link{isLocal}},
   \code{\link{isStreaming}}, \code{\link{join}},
   \code{\link{limit}}, \code{\link{localCheckpoint}},
@@ -77,7 +76,7 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{ncol}}, \code{\link{nrow}},
   \code{\link{persist}}, \code{\link{printSchema}},
   \code{\link{randomSplit}}, \code{\link{rbind}},
-  \code{\link{registerTempTable}}, \code{\link{rename}},
+  \code{\link{rename}}, \code{\link{repartitionByRange}},
   \code{\link{repartition}}, \code{\link{rollup}},
   \code{\link{sample}}, \code{\link{saveAsTable}},
   \code{\link{schema}}, \code{\link{selectExpr}},
@@ -98,3 +97,5 @@ Other aggregate functions: \code{\link{avg}},
   \code{\link{corr}}, \code{\link{count}},
   \code{\link{cov}}, \code{\link{last}}
 }
+\concept{SparkDataFrame functions}
+\concept{aggregate functions}

@@ -4,9 +4,7 @@
 \name{filter}
 \alias{filter}
 \alias{where}
-\alias{filter}
 \alias{filter,SparkDataFrame,characterOrColumn-method}
-\alias{where}
 \alias{where,SparkDataFrame,characterOrColumn-method}
 \title{Filter}
 \usage{
@@ -59,12 +57,13 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{describe}}, \code{\link{dim}},
   \code{\link{distinct}}, \code{\link{dropDuplicates}},
   \code{\link{dropna}}, \code{\link{drop}},
-  \code{\link{dtypes}}, \code{\link{except}},
-  \code{\link{explain}}, \code{\link{first}},
-  \code{\link{gapplyCollect}}, \code{\link{gapply}},
-  \code{\link{getNumPartitions}}, \code{\link{group_by}},
-  \code{\link{head}}, \code{\link{hint}},
-  \code{\link{histogram}}, \code{\link{insertInto}},
+  \code{\link{dtypes}}, \code{\link{exceptAll}},
+  \code{\link{except}}, \code{\link{explain}},
+  \code{\link{first}}, \code{\link{gapplyCollect}},
+  \code{\link{gapply}}, \code{\link{getNumPartitions}},
+  \code{\link{group_by}}, \code{\link{head}},
+  \code{\link{hint}}, \code{\link{histogram}},
+  \code{\link{insertInto}}, \code{\link{intersectAll}},
   \code{\link{intersect}}, \code{\link{isLocal}},
   \code{\link{isStreaming}}, \code{\link{join}},
   \code{\link{limit}}, \code{\link{localCheckpoint}},
@@ -72,7 +71,7 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
   \code{\link{ncol}}, \code{\link{nrow}},
   \code{\link{persist}}, \code{\link{printSchema}},
   \code{\link{randomSplit}}, \code{\link{rbind}},
-  \code{\link{registerTempTable}}, \code{\link{rename}},
+  \code{\link{rename}}, \code{\link{repartitionByRange}},
   \code{\link{repartition}}, \code{\link{rollup}},
   \code{\link{sample}}, \code{\link{saveAsTable}},
   \code{\link{schema}}, \code{\link{selectExpr}},
@@ -91,3 +90,5 @@ Other SparkDataFrame functions: \code{\link{SparkDataFrame-class}},
 Other subsetting functions: \code{\link{select}},
   \code{\link{subset}}
 }
+\concept{SparkDataFrame functions}
+\concept{subsetting functions}

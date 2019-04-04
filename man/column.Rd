@@ -4,9 +4,7 @@
 \name{column}
 \alias{column}
 \alias{Column-class}
-\alias{column}
 \alias{column,jobj-method}
-\alias{column}
 \alias{column,character-method}
 \title{S4 class that represents a SparkDataFrame column}
 \usage{
@@ -42,3 +40,4 @@ column since 1.6.0
 Other non-aggregate functions: \code{\link{column_nonaggregate_functions}},
   \code{\link{not}}
 }
+\concept{non-aggregate functions}

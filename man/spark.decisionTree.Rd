@@ -3,7 +3,6 @@
 \docType{methods}
 \name{spark.decisionTree}
 \alias{spark.decisionTree}
-\alias{spark.decisionTree}
 \alias{spark.decisionTree,SparkDataFrame,formula-method}
 \alias{summary,DecisionTreeRegressionModel-method}
 \alias{print.summary.DecisionTreeRegressionModel}
@@ -18,10 +17,11 @@
 spark.decisionTree(data, formula, ...)
 
 \S4method{spark.decisionTree}{SparkDataFrame,formula}(data, formula,
-  type = c("regression", "classification"), maxDepth = 5, maxBins = 32,
-  impurity = NULL, seed = NULL, minInstancesPerNode = 1,
-  minInfoGain = 0, checkpointInterval = 10, maxMemoryInMB = 256,
-  cacheNodeIds = FALSE, handleInvalid = c("error", "keep", "skip"))
+  type = c("regression", "classification"), maxDepth = 5,
+  maxBins = 32, impurity = NULL, seed = NULL,
+  minInstancesPerNode = 1, minInfoGain = 0, checkpointInterval = 10,
+  maxMemoryInMB = 256, cacheNodeIds = FALSE,
+  handleInvalid = c("error", "keep", "skip"))
 
 \S4method{summary}{DecisionTreeRegressionModel}(object)
 
@@ -38,8 +38,8 @@ spark.decisionTree(data, formula, ...)
 \S4method{write.ml}{DecisionTreeRegressionModel,character}(object, path,
   overwrite = FALSE)
 
-\S4method{write.ml}{DecisionTreeClassificationModel,character}(object, path,
-  overwrite = FALSE)
+\S4method{write.ml}{DecisionTreeClassificationModel,character}(object,
+  path, overwrite = FALSE)
 }
 \arguments{
 \item{data}{a SparkDataFrame for training.}

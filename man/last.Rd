@@ -3,7 +3,6 @@
 \docType{methods}
 \name{last}
 \alias{last}
-\alias{last}
 \alias{last,characterOrColumn-method}
 \title{last}
 \usage{
@@ -25,6 +24,8 @@ Aggregate function: returns the last value in a group.
 \details{
 The function by default returns the last values it sees. It will return the last non-missing
 value it sees when na.rm is set to true. If all values are missing, then NA is returned.
+Note: the function is non-deterministic because its results depends on order of rows which
+may be non-deterministic after a shuffle.
 }
 \note{
 last since 1.4.0
@@ -41,3 +42,4 @@ Other aggregate functions: \code{\link{avg}},
   \code{\link{corr}}, \code{\link{count}},
   \code{\link{cov}}, \code{\link{first}}
 }
+\concept{aggregate functions}

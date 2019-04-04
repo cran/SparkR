@@ -82,3 +82,4 @@ tmp <- mutate(df, v1 = crc32(df$model), v2 = hash(df$model),
                   v5 = sha1(df$model), v6 = sha2(df$model, 256))
 head(tmp)}
 }
+\concept{misc functions}
