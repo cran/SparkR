@@ -1,4 +1,4 @@
-c5dff9cdc155b21ec68aa81c68cf52de *DESCRIPTION
+d9c0e6b86d15bb54dd549136af93cc5a *DESCRIPTION
 ce5b3098761aa5365186153ae2380073 *NAMESPACE
 1d6b5f4fe7c645d89f9d13ed5ba62524 *R/DataFrame.R
 6777aace5d53020a27a6acb20f391729 *R/RDD.R
@@ -34,10 +34,10 @@ ed26b86ad54b978a09e84ee58156c69b *R/streaming.R
 ca57e1baf55054826be50eb6c7b2d0e1 *R/types.R
 2c373654b4bf0297e08ec19808d00503 *R/utils.R
 1c7be6ace44708f1f17c79cc3d557925 *R/window.R
-072102635b66b55cee18584d7dbd5bb5 *build/vignette.rds
+5c6b424391aa65adc6b6ba0838299d2d *build/vignette.rds
 ce7a963db13a78b2ced315279b503596 *inst/doc/sparkr-vignettes.R
 e7a86d38e10b13891a09964fd88b1bb7 *inst/doc/sparkr-vignettes.Rmd
-c4c0e408cd946a267100f2a1cd96ab64 *inst/doc/sparkr-vignettes.html
+6844ea9a09d1a9530ea794291b0fceed *inst/doc/sparkr-vignettes.html
 7050cf3c29c10f2e5fb070a6261b00c0 *inst/profile/general.R
 d4fe53d042885b3cf5b1f7cc7a50ffbe *inst/profile/shell.R
 250dfd97b7d2373c6d30a37029de1a79 *inst/tests/testthat/test_basic.R
