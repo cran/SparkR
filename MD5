@@ -1,4 +1,4 @@
-d9c0e6b86d15bb54dd549136af93cc5a *DESCRIPTION
+9e791fb6d330411685e6b8dc44dc8584 *DESCRIPTION
 ce5b3098761aa5365186153ae2380073 *NAMESPACE
 1d6b5f4fe7c645d89f9d13ed5ba62524 *R/DataFrame.R
 6777aace5d53020a27a6acb20f391729 *R/RDD.R
@@ -9,7 +9,7 @@ c02b0f2d00f0fdf4436a97b72c4aad69 *R/backend.R
 0f004c5a9cdacf18faf2169f924e20ae *R/catalog.R
 d63f00e1f1da230bc1a961bc2dbc4969 *R/client.R
 49d033ff8a3db45015e36f6299153c31 *R/column.R
-9daa4d117eab5d620adc91e079657e5f *R/context.R
+22857981a3df656d8145cf527de7e1b9 *R/context.R
 f74e03c37fd4028bfd4b9263281a86fe *R/deserialize.R
 034eeabf32c90fe99aecd1a68ab62c8d *R/functions.R
 ef071d30459c71e822835c08b6fe4b5e *R/generics.R
@@ -37,7 +37,7 @@ ca57e1baf55054826be50eb6c7b2d0e1 *R/types.R
 5c6b424391aa65adc6b6ba0838299d2d *build/vignette.rds
 ce7a963db13a78b2ced315279b503596 *inst/doc/sparkr-vignettes.R
 e7a86d38e10b13891a09964fd88b1bb7 *inst/doc/sparkr-vignettes.Rmd
-6844ea9a09d1a9530ea794291b0fceed *inst/doc/sparkr-vignettes.html
+208f35924945001cbc4894a751557e58 *inst/doc/sparkr-vignettes.html
 7050cf3c29c10f2e5fb070a6261b00c0 *inst/profile/general.R
 d4fe53d042885b3cf5b1f7cc7a50ffbe *inst/profile/shell.R
 250dfd97b7d2373c6d30a37029de1a79 *inst/tests/testthat/test_basic.R
@@ -207,7 +207,7 @@ cd2668c4af008648e924c4a530914ef4 *man/setJobGroup.Rd
 9ad16cce1a9aa8322087aad52e42a7ad *man/setLogLevel.Rd
 34aeeef67f3adb8fb4f45b794bbb2815 *man/show.Rd
 096b3db8832e82c02769acaa391b2607 *man/showDF.Rd
-36c2880192a45014d5b233c79be566f4 *man/spark.addFile.Rd
+ebc5d511b8e3bb44ab076578daebdc6f *man/spark.addFile.Rd
 50c6670bfa1dd7bb0ea70218c7c68026 *man/spark.als.Rd
 88143649394b65020313b85553379ec7 *man/spark.bisectingKmeans.Rd
 6f6222f8da4e0b49694321afb0376557 *man/spark.decisionTree.Rd
