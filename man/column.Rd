@@ -37,7 +37,8 @@ column since 1.6.0
 \dontrun{column("name")}
 }
 \seealso{
-Other non-aggregate functions: \code{\link{column_nonaggregate_functions}},
-  \code{\link{not}}
+Other non-aggregate functions: 
+\code{\link{column_nonaggregate_functions}},
+\code{\link{not}()}
 }
 \concept{non-aggregate functions}

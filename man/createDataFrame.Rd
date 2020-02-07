@@ -7,11 +7,9 @@
 \alias{as.DataFrame}
 \title{Create a SparkDataFrame}
 \usage{
-\method{createDataFrame}{default}(data, schema = NULL,
-  samplingRatio = 1, numPartitions = NULL)
+\method{createDataFrame}{default}(data, schema = NULL, samplingRatio = 1, numPartitions = NULL)
 
-\method{as.DataFrame}{default}(data, schema = NULL, samplingRatio = 1,
-  numPartitions = NULL)
+\method{as.DataFrame}{default}(data, schema = NULL, samplingRatio = 1, numPartitions = NULL)
 
 as.DataFrame(data, ...)
 }

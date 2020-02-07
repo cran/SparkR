@@ -4,8 +4,12 @@
 \alias{install.spark}
 \title{Download and Install Apache Spark to a Local Directory}
 \usage{
-install.spark(hadoopVersion = "2.7", mirrorUrl = NULL,
-  localDir = NULL, overwrite = FALSE)
+install.spark(
+  hadoopVersion = "2.7",
+  mirrorUrl = NULL,
+  localDir = NULL,
+  overwrite = FALSE
+)
 }
 \arguments{
 \item{hadoopVersion}{Version of Hadoop to install. Default is \code{"2.7"}. It can take other

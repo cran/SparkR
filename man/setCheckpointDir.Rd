@@ -11,7 +11,7 @@ setCheckpointDir(directory)
 }
 \description{
 Set the directory under which SparkDataFrame are going to be checkpointed. The directory must be
-a HDFS path if running on a cluster.
+an HDFS path if running on a cluster.
 }
 \note{
 setCheckpointDir since 2.2.0

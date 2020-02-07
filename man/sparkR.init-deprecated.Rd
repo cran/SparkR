@@ -4,9 +4,15 @@
 \alias{sparkR.init}
 \title{(Deprecated) Initialize a new Spark Context}
 \usage{
-sparkR.init(master = "", appName = "SparkR",
-  sparkHome = Sys.getenv("SPARK_HOME"), sparkEnvir = list(),
-  sparkExecutorEnv = list(), sparkJars = "", sparkPackages = "")
+sparkR.init(
+  master = "",
+  appName = "SparkR",
+  sparkHome = Sys.getenv("SPARK_HOME"),
+  sparkEnvir = list(),
+  sparkExecutorEnv = list(),
+  sparkJars = "",
+  sparkPackages = ""
+)
 }
 \arguments{
 \item{master}{The Spark master URL}

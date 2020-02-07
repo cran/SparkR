@@ -4,15 +4,24 @@
 \alias{read.jdbc}
 \title{Create a SparkDataFrame representing the database table accessible via JDBC URL}
 \usage{
-read.jdbc(url, tableName, partitionColumn = NULL, lowerBound = NULL,
-  upperBound = NULL, numPartitions = 0L, predicates = list(), ...)
+read.jdbc(
+  url,
+  tableName,
+  partitionColumn = NULL,
+  lowerBound = NULL,
+  upperBound = NULL,
+  numPartitions = 0L,
+  predicates = list(),
+  ...
+)
 }
 \arguments{
 \item{url}{JDBC database url of the form \code{jdbc:subprotocol:subname}}
 
 \item{tableName}{the name of the table in the external database}
 
-\item{partitionColumn}{the name of a column of integral type that will be used for partitioning}
+\item{partitionColumn}{the name of a column of numeric, date, or timestamp type
+that will be used for partitioning.}
 
 \item{lowerBound}{the minimum value of \code{partitionColumn} used to decide partition stride}
 

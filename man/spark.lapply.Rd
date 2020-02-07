@@ -30,7 +30,7 @@ Known limitations:
    should be stored into temporary variables outside the function, and not directly accessed
    within the function.
 
-\item loading external packages: In order to use a package, you need to load it inside the
+  \item loading external packages: In order to use a package, you need to load it inside the
   closure. For example, if you rely on the MASS module, here is how you would use it:
   \preformatted{
     train <- function(hyperparam) {
@@ -47,6 +47,6 @@ spark.lapply since 2.0.0
 \examples{
 \dontrun{
 sparkR.session()
-doubled <- spark.lapply(1:10, function(x){2 * x})
+doubled <- spark.lapply(1:10, function(x) {2 * x})
 }
 }

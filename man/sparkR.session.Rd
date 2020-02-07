@@ -4,9 +4,16 @@
 \alias{sparkR.session}
 \title{Get the existing SparkSession or initialize a new SparkSession.}
 \usage{
-sparkR.session(master = "", appName = "SparkR",
-  sparkHome = Sys.getenv("SPARK_HOME"), sparkConfig = list(),
-  sparkJars = "", sparkPackages = "", enableHiveSupport = TRUE, ...)
+sparkR.session(
+  master = "",
+  appName = "SparkR",
+  sparkHome = Sys.getenv("SPARK_HOME"),
+  sparkConfig = list(),
+  sparkJars = "",
+  sparkPackages = "",
+  enableHiveSupport = TRUE,
+  ...
+)
 }
 \arguments{
 \item{master}{the Spark master URL.}
