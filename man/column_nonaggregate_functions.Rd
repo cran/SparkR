@@ -193,7 +193,7 @@ This function takes at least 2 parameters. It will return null if all parameters
 \code{SparkDataFrame.selectExpr}
 
 \code{rand}: Generates a random column with independent and identically distributed (i.i.d.)
-samples from U[0.0, 1.0].
+samples uniformly distributed in [0.0, 1.0).
 Note: the function is non-deterministic in general case.
 
 \code{randn}: Generates a column with independent and identically distributed (i.i.d.) samples

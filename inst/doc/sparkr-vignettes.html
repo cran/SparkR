@@ -188,7 +188,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 -->
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>SparkR is an R package that provides a light-weight frontend to use Apache Spark from R. With Spark 2.4.5, SparkR provides a distributed data frame implementation that supports data processing operations like selection, filtering, aggregation etc. and distributed machine learning using <a href="https://spark.apache.org/mllib/">MLlib</a>.</p>
+<p>SparkR is an R package that provides a light-weight frontend to use Apache Spark from R. With Spark 2.4.6, SparkR provides a distributed data frame implementation that supports data processing operations like selection, filtering, aggregation etc. and distributed machine learning using <a href="https://spark.apache.org/mllib/">MLlib</a>.</p>
 </div>
 <div id="getting-started" class="section level2">
 <h2>Getting Started</h2>
@@ -324,7 +324,7 @@ carsSubDF &lt;-<span class="st"> </span><span class="kw">filter</span>(carsSubDF
 <h4>Cluster Mode</h4>
 <p>SparkR can connect to remote Spark clusters. <a href="https://spark.apache.org/docs/latest/cluster-overview.html">Cluster Mode Overview</a> is a good introduction to different Spark cluster modes.</p>
 <p>When connecting SparkR to a remote Spark cluster, make sure that the Spark version and Hadoop version on the machine match the corresponding versions on the cluster. Current SparkR package is compatible with</p>
-<pre><code>## [1] &quot;Spark 2.4.5&quot;</code></pre>
+<pre><code>## [1] &quot;Spark 2.4.6&quot;</code></pre>
 <p>It should be used both on the local computer and on the remote cluster.</p>
 <p>To connect, pass the URL of the master node to <code>sparkR.session</code>. A complete list can be seen in <a href="https://spark.apache.org/docs/latest/submitting-applications.html#master-urls">Spark Master URLs</a>. For example, to connect to a local standalone Spark master, we can call</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sparkR.session</span>(<span class="dt">master =</span> <span class="st">&quot;spark://local:7077&quot;</span>)</code></pre></div>
@@ -802,7 +802,7 @@ train &lt;-<span class="st"> </span>function(cost) {
 ## attr(,&quot;response&quot;)
 ## [1] 1
 ## attr(,&quot;.Environment&quot;)
-## &lt;environment: 0x450cc90&gt;
+## &lt;environment: 0x3161940&gt;
 ## attr(,&quot;predvars&quot;)
 ## list(Species, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
 ## attr(,&quot;dataClasses&quot;)
@@ -1276,7 +1276,7 @@ dtModel &lt;-<span class="st"> </span><span class="kw">spark.decisionTree</span>
 ## Features:  Class_Crew Class_1st Class_3rd Sex_Male Age_Adult Freq
 ## Feature importances:  (6,[5],[1.0])
 ## Max Depth:  2
-##  DecisionTreeClassificationModel (uid=dtc_e688261b77ed) of depth 2 with 5 nodes
+##  DecisionTreeClassificationModel (uid=dtc_e48a58151308) of depth 2 with 5 nodes
 ##   If (feature 5 &lt;= 4.5)
 ##    Predict: 0.0
 ##   Else (feature 5 &gt; 4.5)
@@ -1310,7 +1310,7 @@ gbtModel &lt;-<span class="st"> </span><span class="kw">spark.gbt</span>(df, Sur
 ## Max Depth:  2
 ## Number of trees:  2
 ## Tree weights:  1 0.1
-##  GBTClassificationModel (uid=gbtc_b5080411dd1f) with 2 trees
+##  GBTClassificationModel (uid=gbtc_79d0eb3dc568) with 2 trees
 ##   Tree 0 (weight 1.0):
 ##     If (feature 5 &lt;= 4.5)
 ##      If (feature 4 in {1.0})
@@ -1359,7 +1359,7 @@ rfModel &lt;-<span class="st"> </span><span class="kw">spark.randomForest</span>
 ## Max Depth:  2
 ## Number of trees:  2
 ## Tree weights:  1 1
-##  RandomForestClassificationModel (uid=rfc_81bab6f2b291) with 2 trees
+##  RandomForestClassificationModel (uid=rfc_aef42cb97220) with 2 trees
 ##   Tree 0 (weight 1.0):
 ##     If (feature 5 &lt;= 0.5)
 ##      Predict: 0.0
@@ -1444,30 +1444,30 @@ df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(data)
 gmmModel &lt;-<span class="st"> </span><span class="kw">spark.gaussianMixture</span>(df, ~<span class="st"> </span>V1 +<span class="st"> </span>V2, <span class="dt">k =</span> <span class="dv">2</span>)
 <span class="kw">summary</span>(gmmModel)</code></pre></div>
 <pre><code>## $lambda
-## [1] 0.3997489 0.6002511
+## [1] 0.4 0.6
 ## 
 ## $mu
 ## $mu[[1]]
-## [1] 1.0106845 0.5967374
+## [1] -0.4276707  0.4366670
 ## 
 ## $mu[[2]]
-## [1] 3.224601 4.162114
+## [1] 3.392521 3.500786
 ## 
 ## 
 ## $sigma
 ## $sigma[[1]]
-##      [,1]     [,2]     
-## [1,] 1.467878 0.261229 
-## [2,] 0.261229 0.1154393
+##      [,1]       [,2]      
+## [1,] 0.566911   -0.3786895
+## [2,] -0.3786895 0.9832479 
 ## 
 ## $sigma[[2]]
-##      [,1]       [,2]      
-## [1,] 1.221224   -0.7876766
-## [2,] -0.7876766 1.409518  
+##      [,1]        [,2]       
+## [1,] 0.7178286   -0.08640876
+## [2,] -0.08640876 0.07402954 
 ## 
 ## 
 ## $loglik
-## [1] -30.79993
+## [1] -24.08647
 ## 
 ## $posterior
 ## SparkDataFrame[posterior:array&lt;double&gt;]
@@ -1476,13 +1476,13 @@ gmmModel &lt;-<span class="st"> </span><span class="kw">spark.gaussianMixture</s
 ## [1] FALSE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gmmFitted &lt;-<span class="st"> </span><span class="kw">predict</span>(gmmModel, df)
 <span class="kw">head</span>(<span class="kw">select</span>(gmmFitted, <span class="st">&quot;V1&quot;</span>, <span class="st">&quot;V2&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
-<pre><code>##           V1        V2 prediction
-## 1  2.6137720 1.1512413          0
-## 2 -0.7973174 0.4711024          0
-## 3  1.1966580 0.2288760          0
-## 4  1.0335713 0.5370774          0
-## 5  2.5618584 3.7360369          1
-## 6  4.6031307 4.8524869          1</code></pre>
+<pre><code>##            V1          V2 prediction
+## 1 -1.01032155  1.81989956          0
+## 2 -1.30079527  0.01143861          0
+## 3  0.53062385 -0.87298369          0
+## 4  0.06981002  0.78831354          0
+## 5  3.06486500  3.72902869          1
+## 6  2.04644938  3.40323307          1</code></pre>
 </div>
 <div id="k-means-clustering" class="section level4">
 <h4>k-Means Clustering</h4>
@@ -1609,12 +1609,12 @@ model &lt;-<span class="st"> </span><span class="kw">spark.lda</span>(<span clas
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">posterior &lt;-<span class="st"> </span><span class="kw">spark.posterior</span>(model, corpusDF)
 <span class="kw">head</span>(posterior)</code></pre></div>
 <pre><code>##                features                                     topicDistribution
-## 1 1 2 6 0 2 3 1 1 0 0 3 0.1972170, 0.1986656, 0.2022027, 0.2006575, 0.2012572
-## 2 1 3 0 1 3 0 0 2 0 0 1 0.1989974, 0.1988751, 0.2015978, 0.2006377, 0.1998920
-## 3 1 4 1 0 0 4 9 0 1 2 0 0.2020599, 0.2026103, 0.1968844, 0.1987290, 0.1997164
-## 4 2 1 0 3 0 0 5 0 2 3 9 0.2004068, 0.1981946, 0.2013025, 0.2006311, 0.1994650
-## 5 3 1 1 9 3 0 2 0 0 1 3 0.1971475, 0.1983966, 0.2023591, 0.2011582, 0.2009386
-## 6 4 2 0 3 4 5 1 1 1 4 0 0.2020227, 0.2041844, 0.1955398, 0.1997227, 0.1985305</code></pre>
+## 1 1 2 6 0 2 3 1 1 0 0 3 0.1972184, 0.1986638, 0.2021999, 0.2006561, 0.2012619
+## 2 1 3 0 1 3 0 0 2 0 0 1 0.1989991, 0.1988731, 0.2015953, 0.2006363, 0.1998962
+## 3 1 4 1 0 0 4 9 0 1 2 0 0.2020618, 0.2026065, 0.1968833, 0.1987281, 0.1997203
+## 4 2 1 0 3 0 0 5 0 2 3 9 0.2004085, 0.1981929, 0.2013000, 0.2006297, 0.1994689
+## 5 3 1 1 9 3 0 2 0 0 1 3 0.1971490, 0.1983949, 0.2023562, 0.2011568, 0.2009432
+## 6 4 2 0 3 4 5 1 1 1 4 0 0.2020250, 0.2041799, 0.1955392, 0.1997217, 0.1985343</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">perplexity &lt;-<span class="st"> </span><span class="kw">spark.perplexity</span>(model, corpusDF)
 perplexity</code></pre></div>
 <pre><code>## [1] 2.676476</code></pre>

@@ -1,6 +1,6 @@
-6d249c633e9163efab8fc00bdc4e7302 *DESCRIPTION
+8b04c33e58c14019dd4bd0f104f35854 *DESCRIPTION
 ce5b3098761aa5365186153ae2380073 *NAMESPACE
-e0a5405ab5a46e0bb186e96d1bcee450 *R/DataFrame.R
+3ee4d33284c44258af15aab162cbaf06 *R/DataFrame.R
 6777aace5d53020a27a6acb20f391729 *R/RDD.R
 fce8f23f6c2cc4296ec22037f0115867 *R/SQLContext.R
 cd66ea4ff7eb4b450b07233640bbbf09 *R/WindowSpec.R
@@ -11,7 +11,7 @@ d63f00e1f1da230bc1a961bc2dbc4969 *R/client.R
 49d033ff8a3db45015e36f6299153c31 *R/column.R
 e1513087ade773bd4775b2d4e9f53ce3 *R/context.R
 f74e03c37fd4028bfd4b9263281a86fe *R/deserialize.R
-a25c33f6d686609fefc2008fc42589e7 *R/functions.R
+425bc805b5ffd10d72b6671a4d3e32a5 *R/functions.R
 ef071d30459c71e822835c08b6fe4b5e *R/generics.R
 b704bb92a126c1eede94b6eb0847abec *R/group.R
 47782df067a9ca767c64ea7537436456 *R/install.R
@@ -37,7 +37,7 @@ c8da7c1c075073f952abd2ecebe2a984 *R/utils.R
 5c6b424391aa65adc6b6ba0838299d2d *build/vignette.rds
 2dfbad93c42107f948f342ab9591ff65 *inst/doc/sparkr-vignettes.R
 e7a86d38e10b13891a09964fd88b1bb7 *inst/doc/sparkr-vignettes.Rmd
-fb2508fb250d90b6ec6b81cbee6afd68 *inst/doc/sparkr-vignettes.html
+ff92f55a05c29fb17be68fc34234c227 *inst/doc/sparkr-vignettes.html
 7050cf3c29c10f2e5fb070a6261b00c0 *inst/profile/general.R
 d4fe53d042885b3cf5b1f7cc7a50ffbe *inst/profile/shell.R
 250dfd97b7d2373c6d30a37029de1a79 *inst/tests/testthat/test_basic.R
@@ -93,7 +93,7 @@ f443d188664e0532439427a042d71af0 *man/column_datetime_diff_functions.Rd
 bcf5f25183876f29111c6ad036b4077a *man/column_datetime_functions.Rd
 f4c95d4a83ad9f1be9982f27057a7752 *man/column_math_functions.Rd
 aea95b57f4d954adb8379b80ee83a091 *man/column_misc_functions.Rd
-10462aac6e058656b73f076579afe841 *man/column_nonaggregate_functions.Rd
+b672e98b8cb55f90eaf8ae01001f1c82 *man/column_nonaggregate_functions.Rd
 3d48bc6426ab09ca3c0eb2771b292d1e *man/column_string_functions.Rd
 1c52512ef7bfa6f60118e7aea31de7fd *man/column_window_functions.Rd
 bc24bb9ff7ea67ba426aa184d6e7da26 *man/columnfunctions.Rd
@@ -128,8 +128,8 @@ a3b6d78ef9dcede8c6ba5ebcb046ff16 *man/filter.Rd
 422fba1069a11720f767eace54c82306 *man/first.Rd
 0d43f3856fe0c387d4f77195be491f9d *man/fitted.Rd
 c802194dc02fea5ccbd2b2b633a49970 *man/freqItems.Rd
-c5d760475852a7bb4105874dc31ed00b *man/gapply.Rd
-d3fc0f27e762da3b12225598ffa3f338 *man/gapplyCollect.Rd
+c6cf91abd52d0872800cb88a49e02b31 *man/gapply.Rd
+bd9394742a716f6e51fa65a5f5766b83 *man/gapplyCollect.Rd
 dcbc8e6c866b12f5a203b90d27d352f8 *man/getLocalProperty.Rd
 efbb20bf916642d476d1bb1b7eac89d7 *man/getNumPartitions.Rd
 cabbc6b0e34bda2c037dfddb74144b16 *man/glm.Rd
