@@ -2,10 +2,9 @@
 % Please edit documentation in R/catalog.R
 \name{tableNames}
 \alias{tableNames}
-\alias{tableNames.default}
 \title{Table Names}
 \usage{
-\method{tableNames}{default}(databaseName = NULL)
+tableNames(databaseName = NULL)
 }
 \arguments{
 \item{databaseName}{(optional) name of the database}

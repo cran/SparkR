@@ -28,13 +28,30 @@ Defines the frame boundaries, from \code{start} (inclusive) to \code{end} (inclu
 Both \code{start} and \code{end} are relative positions from the current row. For example,
 "0" means "current row", while "-1" means the row before the current row, and "5" means the
 fifth row after the current row.
+
+We recommend users use \code{Window.unboundedPreceding}, \code{Window.unboundedFollowing},
+and \code{Window.currentRow} to specify special boundary values, rather than using long values
+directly.
+
+A row based boundary is based on the position of the row within the partition.
+An offset indicates the number of rows above or below the current row, the frame for the
+current row starts or ends. For instance, given a row based sliding frame with a lower bound
+offset of -1 and a upper bound offset of +2. The frame for row with index 5 would range from
+index 4 to index 6.
 }
 \note{
 rowsBetween since 2.0.0
 }
 \examples{
 \dontrun{
-  rowsBetween(ws, 0, 3)
+  id <- c(rep(1, 3), rep(2, 3), 3)
+  desc <- c('New', 'New', 'Good', 'New', 'Good', 'Good', 'New')
+  df <- data.frame(id, desc)
+  df <- createDataFrame(df)
+  w1 <- orderBy(windowPartitionBy('desc'), df$id)
+  w2 <- rowsBetween(w1, 0, 3)
+  df1 <- withColumn(df, "sum", over(sum(df$id), w2))
+  head(df1)
 }
 }
 \seealso{

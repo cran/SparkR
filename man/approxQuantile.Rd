@@ -33,7 +33,7 @@ error err, then the algorithm will return a sample x from the SparkDataFrame so 
 *exact* rank of x is close to (p * N). More precisely,
   floor((p - err) * N) <= rank(x) <= ceil((p + err) * N).
 This method implements a variation of the Greenwald-Khanna algorithm (with some speed
-optimizations). The algorithm was first present in [[http://dx.doi.org/10.1145/375663.375670
+optimizations). The algorithm was first present in [[https://doi.org/10.1145/375663.375670
 Space-efficient Online Computation of Quantile Summaries]] by Greenwald and Khanna.
 Note that NA values will be ignored in numerical columns before calculation. For
   columns only containing NA values, an empty list is returned.

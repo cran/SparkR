@@ -15,8 +15,6 @@ a SparkDataFrame
 }
 \description{
 Converts a SparkDataFrame into a SparkDataFrame of JSON string.
-}
-\details{
 Each row is turned into a JSON document with columns as different fields.
 The returned SparkDataFrame has a single character column with the name \code{value}
 }
@@ -102,6 +100,7 @@ Other SparkDataFrame functions:
 \code{\link{subset}()},
 \code{\link{summary}()},
 \code{\link{take}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

@@ -2,10 +2,9 @@
 % Please edit documentation in R/SQLContext.R
 \name{sql}
 \alias{sql}
-\alias{sql.default}
 \title{SQL Query}
 \usage{
-\method{sql}{default}(sqlQuery)
+sql(sqlQuery)
 }
 \arguments{
 \item{sqlQuery}{A character vector containing the SQL query}

@@ -2,18 +2,12 @@
 % Please edit documentation in R/generics.R, R/DataFrame.R
 \name{union}
 \alias{union}
-\alias{unionAll}
 \alias{union,SparkDataFrame,SparkDataFrame-method}
-\alias{unionAll,SparkDataFrame,SparkDataFrame-method}
 \title{Return a new SparkDataFrame containing the union of rows}
 \usage{
 union(x, y)
 
-unionAll(x, y)
-
 \S4method{union}{SparkDataFrame,SparkDataFrame}(x, y)
-
-\S4method{unionAll}{SparkDataFrame,SparkDataFrame}(x, y)
 }
 \arguments{
 \item{x}{A SparkDataFrame}
@@ -34,8 +28,6 @@ Also as standard in SQL, this function resolves columns by position (not by name
 }
 \note{
 union since 2.0.0
-
-unionAll since 1.4.0
 }
 \examples{
 \dontrun{
@@ -120,6 +112,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{unpersist}()},
 \code{\link{withColumn}()},

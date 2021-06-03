@@ -20,7 +20,7 @@ write.json(x, path, ...)
 save mode (it is 'error' by default)}
 }
 \description{
-Save the contents of a SparkDataFrame as a JSON file (\href{http://jsonlines.org/}{
+Save the contents of a SparkDataFrame as a JSON file (\href{https://jsonlines.org/}{
 JSON Lines text format or newline-delimited JSON}). Files written out
 with this method can be read back in as a SparkDataFrame using read.json().
 }
@@ -107,6 +107,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

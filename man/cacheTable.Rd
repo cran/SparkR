@@ -2,10 +2,9 @@
 % Please edit documentation in R/catalog.R
 \name{cacheTable}
 \alias{cacheTable}
-\alias{cacheTable.default}
 \title{Cache Table}
 \usage{
-\method{cacheTable}{default}(tableName)
+cacheTable(tableName)
 }
 \arguments{
 \item{tableName}{the qualified or unqualified name that designates a table. If no database

@@ -10,6 +10,9 @@
 \alias{lag}
 \alias{lead,characterOrColumn,numeric-method}
 \alias{lead}
+\alias{nth_value,characterOrColumn,numeric-method}
+\alias{nth_value}
+\alias{nth_value,characterOrColumn-method}
 \alias{ntile,numeric-method}
 \alias{ntile}
 \alias{percent_rank,missing-method}
@@ -29,6 +32,8 @@ lag(x, ...)
 
 lead(x, offset, defaultValue = NULL)
 
+nth_value(x, offset, ...)
+
 ntile(x)
 
 percent_rank(x = "missing")
@@ -44,6 +49,8 @@ row_number(x = "missing")
 \S4method{lag}{characterOrColumn}(x, offset = 1, defaultValue = NULL)
 
 \S4method{lead}{characterOrColumn,numeric}(x, offset = 1, defaultValue = NULL)
+
+\S4method{nth_value}{characterOrColumn,numeric}(x, offset, na.rm = FALSE)
 
 \S4method{ntile}{numeric}(x)
 
@@ -61,11 +68,12 @@ to compute on. In \code{ntile}, it is the number of ntile groups.}
 
 \item{...}{additional argument(s).}
 
-\item{offset}{In \code{lag}, the number of rows back from the current row from which to obtain
-a value. In \code{lead}, the number of rows after the current row from which to
-obtain a value. If not specified, the default is 1.}
+\item{offset}{a numeric indicating number of row to use as the value}
 
 \item{defaultValue}{(optional) default to use when the offset row does not exist.}
+
+\item{na.rm}{a logical which indicates that the Nth value should skip null in the
+determination of which row to use}
 }
 \description{
 Window functions defined for \code{Column}.
@@ -96,6 +104,10 @@ This is equivalent to the \code{LAG} function in SQL.
 For example, an \code{offset} of one will return the next row at any given point
 in the window partition.
 This is equivalent to the \code{LEAD} function in SQL.
+
+\code{nth_value}: Window function: returns the value that is the \code{offset}th
+row of the window frame# (counting from 1), and \code{null} if the size of window
+frame is less than \code{offset} rows.
 
 \code{ntile}: Returns the ntile group id (from 1 to n inclusive) in an ordered window
 partition. For example, if n is 4, the first quarter of the rows will get value 1, the second
@@ -130,6 +142,8 @@ lag since 1.6.0
 
 lead since 1.6.0
 
+nth_value since 3.1.0
+
 ntile since 1.6.0
 
 percent_rank since 1.6.0
@@ -146,7 +160,8 @@ ws <- orderBy(windowPartitionBy("am"), "hp")
 tmp <- mutate(df, dist = over(cume_dist(), ws), dense_rank = over(dense_rank(), ws),
               lag = over(lag(df$mpg), ws), lead = over(lead(df$mpg, 1), ws),
               percent_rank = over(percent_rank(), ws),
-              rank = over(rank(), ws), row_number = over(row_number(), ws))
+              rank = over(rank(), ws), row_number = over(row_number(), ws),
+              nth_value = over(nth_value(df$mpg, 3), ws))
 # Get ntile group id (1-4) for hp
 tmp <- mutate(tmp, ntile = over(ntile(4), ws))
 head(tmp)}

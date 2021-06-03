@@ -2,10 +2,9 @@
 % Please edit documentation in R/catalog.R
 \name{uncacheTable}
 \alias{uncacheTable}
-\alias{uncacheTable.default}
 \title{Uncache Table}
 \usage{
-\method{uncacheTable}{default}(tableName)
+uncacheTable(tableName)
 }
 \arguments{
 \item{tableName}{the qualified or unqualified name that designates a table. If no database

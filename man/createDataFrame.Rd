@@ -2,16 +2,12 @@
 % Please edit documentation in R/SQLContext.R
 \name{createDataFrame}
 \alias{createDataFrame}
-\alias{createDataFrame.default}
-\alias{as.DataFrame.default}
 \alias{as.DataFrame}
 \title{Create a SparkDataFrame}
 \usage{
-\method{createDataFrame}{default}(data, schema = NULL, samplingRatio = 1, numPartitions = NULL)
+createDataFrame(data, schema = NULL, samplingRatio = 1, numPartitions = NULL)
 
-\method{as.DataFrame}{default}(data, schema = NULL, samplingRatio = 1, numPartitions = NULL)
-
-as.DataFrame(data, ...)
+as.DataFrame(data, schema = NULL, samplingRatio = 1, numPartitions = NULL)
 }
 \arguments{
 \item{data}{a list or data.frame.}
@@ -22,8 +18,6 @@ as.DataFrame(data, ...)
 
 \item{numPartitions}{the number of partitions of the SparkDataFrame. Defaults to 1, this is
 limited by length of the list or number of rows of the data.frame}
-
-\item{...}{additional argument(s).}
 }
 \value{
 A SparkDataFrame.

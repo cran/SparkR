@@ -2,14 +2,9 @@
 % Please edit documentation in R/SQLContext.R
 \name{read.json}
 \alias{read.json}
-\alias{read.json.default}
-\alias{jsonFile}
-\alias{jsonFile.default}
 \title{Create a SparkDataFrame from a JSON file.}
 \usage{
-\method{read.json}{default}(path, ...)
-
-\method{jsonFile}{default}(path)
+read.json(path, ...)
 }
 \arguments{
 \item{path}{Path of file to read. A vector of multiple paths is allowed.}
@@ -21,15 +16,13 @@ SparkDataFrame
 }
 \description{
 Loads a JSON file, returning the result as a SparkDataFrame
-By default, (\href{http://jsonlines.org/}{JSON Lines text format or newline-delimited JSON}
+By default, (\href{https://jsonlines.org/}{JSON Lines text format or newline-delimited JSON}
 ) is supported. For JSON (one record per file), set a named property \code{multiLine} to
 \code{TRUE}.
 It goes through the entire dataset once to determine the schema.
 }
 \note{
 read.json since 1.6.0
-
-jsonFile since 1.4.0
 }
 \examples{
 \dontrun{
@@ -37,6 +30,5 @@ sparkR.session()
 path <- "path/to/file.json"
 df <- read.json(path)
 df <- read.json(path, multiLine = TRUE)
-df <- jsonFile(path)
 }
 }

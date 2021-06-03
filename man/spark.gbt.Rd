@@ -54,7 +54,7 @@ spark.gbt(data, formula, ...)
 \item{data}{a SparkDataFrame for training.}
 
 \item{formula}{a symbolic description of the model to be fitted. Currently only a few formula
-operators are supported, including '~', ':', '+', and '-'.}
+operators are supported, including '~', ':', '+', '-', '*', and '^'.}
 
 \item{...}{additional arguments passed to the method.}
 
@@ -90,7 +90,7 @@ minInstancesPerNode, the split will be discarded as invalid. Should be
 Note: this setting will be ignored if the checkpoint directory is not
 set.}
 
-\item{maxMemoryInMB}{Maximum memory in MB allocated to histogram aggregation.}
+\item{maxMemoryInMB}{Maximum memory in MiB allocated to histogram aggregation.}
 
 \item{cacheNodeIds}{If FALSE, the algorithm will pass trees to executors to match instances with
 nodes. If TRUE, the algorithm will cache node IDs for each instance. Caching
@@ -134,9 +134,9 @@ SparkDataFrame. Users can call \code{summary} to get a summary of the fitted
 Gradient Boosted Tree model, \code{predict} to make predictions on new data, and
 \code{write.ml}/\code{read.ml} to save/load fitted models.
 For more details, see
-\href{http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-tree-regression}{
+\href{https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-tree-regression}{
 GBT Regression} and
-\href{http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-tree-classifier}{
+\href{https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-tree-classifier}{
 GBT Classification}
 }
 \note{

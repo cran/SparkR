@@ -29,7 +29,7 @@ cast since 1.4.0
 }
 }
 \seealso{
-Other colum_func: 
+Other column_func: 
 \code{\link{alias}()},
 \code{\link{between}()},
 \code{\link{endsWith}()},
@@ -38,4 +38,4 @@ Other colum_func:
 \code{\link{startsWith}()},
 \code{\link{substr}()}
 }
-\concept{colum_func}
+\concept{column_func}

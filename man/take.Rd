@@ -99,6 +99,7 @@ Other SparkDataFrame functions:
 \code{\link{subset}()},
 \code{\link{summary}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

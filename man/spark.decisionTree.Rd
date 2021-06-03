@@ -77,7 +77,7 @@ For regression, must be "variance". For classification, must be one of
 Note: this setting will be ignored if the checkpoint directory is not
 set.}
 
-\item{maxMemoryInMB}{Maximum memory in MB allocated to histogram aggregation.}
+\item{maxMemoryInMB}{Maximum memory in MiB allocated to histogram aggregation.}
 
 \item{cacheNodeIds}{If FALSE, the algorithm will pass trees to executors to match instances with
 nodes. If TRUE, the algorithm will cache node IDs for each instance. Caching
@@ -121,9 +121,9 @@ a SparkDataFrame. Users can call \code{summary} to get a summary of the fitted D
 model, \code{predict} to make predictions on new data, and \code{write.ml}/\code{read.ml} to
 save/load fitted models.
 For more details, see
-\href{http://spark.apache.org/docs/latest/ml-classification-regression.html#decision-tree-regression}{
+\href{https://spark.apache.org/docs/latest/ml-classification-regression.html#decision-tree-regression}{
 Decision Tree Regression} and
-\href{http://spark.apache.org/docs/latest/ml-classification-regression.html#decision-tree-classifier}{
+\href{https://spark.apache.org/docs/latest/ml-classification-regression.html#decision-tree-classifier}{
 Decision Tree Classification}
 }
 \note{

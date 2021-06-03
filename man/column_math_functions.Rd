@@ -6,10 +6,16 @@
 \alias{abs}
 \alias{acos,Column-method}
 \alias{acos}
+\alias{acosh,Column-method}
+\alias{acosh}
 \alias{asin,Column-method}
 \alias{asin}
+\alias{asinh,Column-method}
+\alias{asinh}
 \alias{atan,Column-method}
 \alias{atan}
+\alias{atanh,Column-method}
+\alias{atanh}
 \alias{bin,Column-method}
 \alias{bin}
 \alias{cbrt,Column-method}
@@ -62,8 +68,12 @@
 \alias{tanh}
 \alias{toDegrees,Column-method}
 \alias{toDegrees}
+\alias{degrees,Column-method}
+\alias{degrees}
 \alias{toRadians,Column-method}
 \alias{toRadians}
+\alias{radians,Column-method}
+\alias{radians}
 \alias{unhex,Column-method}
 \alias{unhex}
 \alias{atan2,Column-method}
@@ -108,7 +118,11 @@ shiftRightUnsigned(y, x)
 
 signum(x)
 
+degrees(x)
+
 toDegrees(x)
+
+radians(x)
 
 toRadians(x)
 
@@ -118,9 +132,15 @@ unhex(x)
 
 \S4method{acos}{Column}(x)
 
+\S4method{acosh}{Column}(x)
+
 \S4method{asin}{Column}(x)
 
+\S4method{asinh}{Column}(x)
+
 \S4method{atan}{Column}(x)
+
+\S4method{atanh}{Column}(x)
 
 \S4method{bin}{Column}(x)
 
@@ -174,7 +194,11 @@ unhex(x)
 
 \S4method{toDegrees}{Column}(x)
 
+\S4method{degrees}{Column}(x)
+
 \S4method{toRadians}{Column}(x)
+
+\S4method{radians}{Column}(x)
 
 \S4method{unhex}{Column}(x)
 
@@ -217,11 +241,17 @@ Math functions defined for \code{Column}.
 \code{acos}: Returns the inverse cosine of the given value,
 as if computed by \code{java.lang.Math.acos()}
 
+\code{acosh}: Computes inverse hyperbolic cosine of the input column.
+
 \code{asin}: Returns the inverse sine of the given value,
 as if computed by \code{java.lang.Math.asin()}
 
+\code{asinh}: Computes inverse hyperbolic sine of the input column.
+
 \code{atan}: Returns the inverse tangent of the given value,
 as if computed by \code{java.lang.Math.atan()}
+
+\code{atanh}: Computes inverse hyperbolic tangent of the input column.
 
 \code{bin}: Returns the string representation of the binary value
 of the given long column. For example, bin("12") returns "1100".
@@ -289,7 +319,13 @@ as if computed by \code{java.lang.Math.tanh()}.
 \code{toDegrees}: Converts an angle measured in radians to an approximately equivalent angle
 measured in degrees.
 
+\code{degrees}: Converts an angle measured in radians to an approximately equivalent angle
+measured in degrees.
+
 \code{toRadians}: Converts an angle measured in degrees to an approximately equivalent angle
+measured in radians.
+
+\code{radians}: Converts an angle measured in degrees to an approximately equivalent angle
 measured in radians.
 
 \code{unhex}: Inverse of hex. Interprets each pair of characters as a hexadecimal number
@@ -310,7 +346,7 @@ this function will return a long value else it will return an integer value.
 \code{shiftRight}: (Signed) shifts the given value numBits right. If the given value is a long
 value, it will return a long value else it will return an integer value.
 
-\code{shiftRightUnsigned}: (Unigned) shifts the given value numBits right. If the given value is
+\code{shiftRightUnsigned}: (Unsigned) shifts the given value numBits right. If the given value is
 a long value, it will return a long value else it will return an integer value.
 
 \code{conv}: Converts a number in a string column from one base to another.
@@ -320,9 +356,15 @@ abs since 1.5.0
 
 acos since 1.5.0
 
+acosh since 3.1.0
+
 asin since 1.5.0
 
+asinh since 3.1.0
+
 atan since 1.5.0
+
+atanh since 3.1.0
 
 bin since 1.5.0
 
@@ -376,7 +418,11 @@ tanh since 1.5.0
 
 toDegrees since 1.4.0
 
+degrees since 3.0.0
+
 toRadians since 1.4.0
+
+radians since 3.0.0
 
 unhex since 1.5.0
 
@@ -400,7 +446,7 @@ conv since 1.5.0
 df <- createDataFrame(cbind(model = rownames(mtcars), mtcars))
 tmp <- mutate(df, v1 = log(df$mpg), v2 = cbrt(df$disp),
                   v3 = bround(df$wt, 1), v4 = bin(df$cyl),
-                  v5 = hex(df$wt), v6 = toDegrees(df$gear),
+                  v5 = hex(df$wt), v6 = degrees(df$gear),
                   v7 = atan2(df$cyl, df$am), v8 = hypot(df$cyl, df$am),
                   v9 = pmod(df$hp, df$cyl), v10 = shiftLeft(df$disp, 1),
                   v11 = conv(df$hp, 10, 16), v12 = sign(df$vs - 0.5),

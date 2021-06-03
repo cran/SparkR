@@ -2,18 +2,12 @@
 % Please edit documentation in R/generics.R, R/DataFrame.R
 \name{write.parquet}
 \alias{write.parquet}
-\alias{saveAsParquetFile}
 \alias{write.parquet,SparkDataFrame,character-method}
-\alias{saveAsParquetFile,SparkDataFrame,character-method}
 \title{Save the contents of SparkDataFrame as a Parquet file, preserving the schema.}
 \usage{
 write.parquet(x, path, ...)
 
-saveAsParquetFile(x, path)
-
 \S4method{write.parquet}{SparkDataFrame,character}(x, path, mode = "error", ...)
-
-\S4method{saveAsParquetFile}{SparkDataFrame,character}(x, path)
 }
 \arguments{
 \item{x}{A SparkDataFrame}
@@ -31,8 +25,6 @@ with this method can be read back in as a SparkDataFrame using read.parquet().
 }
 \note{
 write.parquet since 1.6.0
-
-saveAsParquetFile since 1.4.0
 }
 \examples{
 \dontrun{
@@ -40,7 +32,6 @@ sparkR.session()
 path <- "path/to/file.json"
 df <- read.json(path)
 write.parquet(df, "/tmp/sparkr-tmp1/")
-saveAsParquetFile(df, "/tmp/sparkr-tmp2/")
 }
 }
 \seealso{
@@ -115,6 +106,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

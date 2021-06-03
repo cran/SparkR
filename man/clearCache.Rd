@@ -2,10 +2,9 @@
 % Please edit documentation in R/catalog.R
 \name{clearCache}
 \alias{clearCache}
-\alias{clearCache.default}
 \title{Clear Cache}
 \usage{
-\method{clearCache}{default}()
+clearCache()
 }
 \description{
 Removes all cached tables from the in-memory cache.

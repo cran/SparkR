@@ -32,7 +32,7 @@ spark.bisectingKmeans(data, formula, ...)
 \item{data}{a SparkDataFrame for training.}
 
 \item{formula}{a symbolic description of the model to be fitted. Currently only a few formula
-operators are supported, including '~', '.', ':', '+', and '-'.
+operators are supported, including '~', '.', ':', '+', '-', '*', and '^'.
 Note that the response variable of formula is empty in spark.bisectingKmeans.}
 
 \item{...}{additional argument(s) passed to the method.}

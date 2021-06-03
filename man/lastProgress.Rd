@@ -13,7 +13,7 @@ lastProgress(x)
 \item{x}{a StreamingQuery.}
 }
 \description{
-Prints the most recent progess update of this streaming query in JSON format.
+Prints the most recent progress update of this streaming query in JSON format.
 }
 \note{
 lastProgress(StreamingQuery) since 2.2.0

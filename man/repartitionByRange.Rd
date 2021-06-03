@@ -26,6 +26,14 @@ The following options for repartition by range are possible:
  \item{2.} {Return a new SparkDataFrame range partitioned by the given column(s),
                      using \code{spark.sql.shuffle.partitions} as number of partitions.}
 }
+At least one partition-by expression must be specified.
+When no explicit sort order is specified, "ascending nulls first" is assumed.
+}
+\details{
+Note that due to performance reasons this method uses sampling to estimate the ranges.
+Hence, the output may not be consistent, since sampling can return different values.
+The sample size can be controlled by the config
+\code{spark.sql.execution.rangeExchange.sampleSizePerPartition}.
 }
 \note{
 repartitionByRange since 2.4.0
@@ -112,6 +120,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

@@ -2,19 +2,14 @@
 % Please edit documentation in R/SQLContext.R
 \name{read.parquet}
 \alias{read.parquet}
-\alias{read.parquet.default}
-\alias{parquetFile}
-\alias{parquetFile.default}
 \title{Create a SparkDataFrame from a Parquet file.}
 \usage{
-\method{read.parquet}{default}(path, ...)
-
-\method{parquetFile}{default}(...)
+read.parquet(path, ...)
 }
 \arguments{
 \item{path}{path of file to read. A vector of multiple paths is allowed.}
 
-\item{...}{argument(s) passed to the method.}
+\item{...}{additional data source specific named properties.}
 }
 \value{
 SparkDataFrame
@@ -24,6 +19,4 @@ Loads a Parquet file, returning the result as a SparkDataFrame.
 }
 \note{
 read.parquet since 1.6.0
-
-parquetFile since 1.4.0
 }

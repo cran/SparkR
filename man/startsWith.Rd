@@ -22,7 +22,7 @@ where strings are recycled to common lengths.
 startsWith since 1.4.0
 }
 \seealso{
-Other colum_func: 
+Other column_func: 
 \code{\link{alias}()},
 \code{\link{between}()},
 \code{\link{cast}()},
@@ -31,4 +31,4 @@ Other colum_func:
 \code{\link{over}()},
 \code{\link{substr}()}
 }
-\concept{colum_func}
+\concept{column_func}

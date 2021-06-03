@@ -2,10 +2,9 @@
 % Please edit documentation in R/sparkR.R
 \name{cancelJobGroup}
 \alias{cancelJobGroup}
-\alias{cancelJobGroup.default}
 \title{Cancel active jobs for the specified group}
 \usage{
-\method{cancelJobGroup}{default}(groupId)
+cancelJobGroup(groupId)
 }
 \arguments{
 \item{groupId}{the ID of job group to be cancelled}

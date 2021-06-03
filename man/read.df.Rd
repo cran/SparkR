@@ -2,14 +2,12 @@
 % Please edit documentation in R/SQLContext.R
 \name{read.df}
 \alias{read.df}
-\alias{read.df.default}
 \alias{loadDF}
-\alias{loadDF.default}
 \title{Load a SparkDataFrame}
 \usage{
-\method{read.df}{default}(path = NULL, source = NULL, schema = NULL, na.strings = "NA", ...)
+read.df(path = NULL, source = NULL, schema = NULL, na.strings = "NA", ...)
 
-\method{loadDF}{default}(path = NULL, source = NULL, schema = NULL, ...)
+loadDF(path = NULL, source = NULL, schema = NULL, ...)
 }
 \arguments{
 \item{path}{The path of files to load}

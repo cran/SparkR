@@ -16,12 +16,12 @@ install.spark(
 version number in the format of "x.y" where x and y are integer.
 If \code{hadoopVersion = "without"}, "Hadoop free" build is installed.
 See
-\href{http://spark.apache.org/docs/latest/hadoop-provided.html}{
+\href{https://spark.apache.org/docs/latest/hadoop-provided.html}{
 "Hadoop Free" Build} for more information.
 Other patched version names can also be used, e.g. \code{"cdh4"}}
 
 \item{mirrorUrl}{base URL of the repositories to use. The directory layout should follow
-\href{http://www.apache.org/dyn/closer.lua/spark/}{Apache mirrors}.}
+\href{https://www.apache.org/dyn/closer.lua/spark/}{Apache mirrors}.}
 
 \item{localDir}{a local directory where Spark is installed. The directory contains
 version-specific folders of Spark packages. Default is path to
@@ -65,5 +65,5 @@ install.spark()
 }
 \seealso{
 See available Hadoop versions:
-         \href{http://spark.apache.org/downloads.html}{Apache Spark}
+         \href{https://spark.apache.org/downloads.html}{Apache Spark}
 }

@@ -34,7 +34,7 @@ date_sub(y, x)
 
 from_utc_timestamp(y, x)
 
-months_between(y, x)
+months_between(y, x, ...)
 
 next_day(y, x)
 
@@ -42,7 +42,7 @@ to_utc_timestamp(y, x)
 
 \S4method{datediff}{Column}(y, x)
 
-\S4method{months_between}{Column}(y, x)
+\S4method{months_between}{Column}(y, x, roundOff = NULL)
 
 \S4method{date_format}{Column,character}(y, x)
 
@@ -66,9 +66,23 @@ with column \code{y}. For class \code{numeric}, it is the number of months or
 days to be added to or subtracted from \code{y}. For class \code{character}, it is
 \itemize{
 \item \code{date_format}: date format specification.
-\item \code{from_utc_timestamp}, \code{to_utc_timestamp}: time zone to use.
+\item \code{from_utc_timestamp}, \code{to_utc_timestamp}: A string detailing
+  the time zone ID that the input should be adjusted to. It should be in the format
+  of either region-based zone IDs or zone offsets. Region IDs must have the form
+  'area/city', such as 'America/Los_Angeles'. Zone offsets must be in the format
+  (+|-)HH:mm', for example '-08:00' or '+01:00'. Also 'UTC' and 'Z' are supported
+  as aliases of '+00:00'. Other short names are not recommended to use
+  because they can be ambiguous.
 \item \code{next_day}: day of the week string.
 }}
+
+\item{...}{additional argument(s).
+\itemize{
+\item \code{months_between}, this contains an optional parameter to specify the
+    the result is rounded off to 8 digits.
+}}
+
+\item{roundOff}{an optional parameter to specify if the result is rounded off to 8 digits}
 }
 \description{
 Date time arithmetic functions defined for \code{Column}.
@@ -85,7 +99,7 @@ Otherwise, the difference is calculated based on 31 days per month, and rounded 
 \code{date_format}: Converts a date/timestamp/string to a value of string in the format
 specified by the date format given by the second argument. A pattern could be for instance
 \code{dd.MM.yyyy} and could return a string like '18.03.1993'. All
-pattern letters of \code{java.text.SimpleDateFormat} can be used.
+pattern letters of \code{java.time.format.DateTimeFormatter} can be used.
 Note: Use when ever possible specialized functions like \code{year}. These benefit from a
 specialized implementation.
 
@@ -173,6 +187,6 @@ head(tmp)}
 }
 \seealso{
 Other data time functions: 
-\code{\link{column_datetime_functions}}
+\code{\link{timestamp_seconds}()}
 }
 \concept{data time functions}

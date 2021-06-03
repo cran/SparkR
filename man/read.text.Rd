@@ -2,10 +2,9 @@
 % Please edit documentation in R/SQLContext.R
 \name{read.text}
 \alias{read.text}
-\alias{read.text.default}
 \title{Create a SparkDataFrame from a text file.}
 \usage{
-\method{read.text}{default}(path, ...)
+read.text(path, ...)
 }
 \arguments{
 \item{path}{Path of file to read. A vector of multiple paths is allowed.}
@@ -18,7 +17,7 @@ SparkDataFrame
 \description{
 Loads text files and returns a SparkDataFrame whose schema starts with
 a string column named "value", and followed by partitioned columns if
-there are any.
+there are any. The text files must be encoded as UTF-8.
 }
 \details{
 Each line in the text file is a new row in the resulting SparkDataFrame.

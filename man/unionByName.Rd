@@ -5,14 +5,18 @@
 \alias{unionByName,SparkDataFrame,SparkDataFrame-method}
 \title{Return a new SparkDataFrame containing the union of rows, matched by column names}
 \usage{
-unionByName(x, y)
+unionByName(x, y, ...)
 
-\S4method{unionByName}{SparkDataFrame,SparkDataFrame}(x, y)
+\S4method{unionByName}{SparkDataFrame,SparkDataFrame}(x, y, allowMissingColumns = FALSE)
 }
 \arguments{
 \item{x}{A SparkDataFrame}
 
 \item{y}{A SparkDataFrame}
+
+\item{...}{further arguments to be passed to or from other methods.}
+
+\item{allowMissingColumns}{logical}
 }
 \value{
 A SparkDataFrame containing the result of the union.
@@ -24,6 +28,11 @@ and another SparkDataFrame. This is different from \code{union} function, and bo
 into account. Input SparkDataFrames can have different data types in the schema.
 }
 \details{
+When the parameter allowMissingColumns is `TRUE`, the set of column names
+in x and y can differ; missing columns will be filled as null.
+Further, the missing columns of x will be added at the end
+in the schema of the union result.
+
 Note: This does not remove duplicate rows across the two SparkDataFrames.
 This function resolves columns by name (not by position).
 }
@@ -36,6 +45,9 @@ sparkR.session()
 df1 <- select(createDataFrame(mtcars), "carb", "am", "gear")
 df2 <- select(createDataFrame(mtcars), "am", "gear", "carb")
 head(unionByName(df1, df2))
+
+df3 <- select(createDataFrame(mtcars), "carb")
+head(unionByName(df1, df3, allowMissingColumns = TRUE))
 }
 }
 \seealso{
@@ -112,6 +124,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},
 \code{\link{withColumn}()},

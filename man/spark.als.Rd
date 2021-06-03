@@ -94,11 +94,18 @@ to make predictions on new data, and \code{write.ml}/\code{read.ml} to save/load
 }
 \details{
 For more details, see
-\href{http://spark.apache.org/docs/latest/ml-collaborative-filtering.html}{MLlib:
+\href{https://spark.apache.org/docs/latest/ml-collaborative-filtering.html}{MLlib:
 Collaborative Filtering}.
 }
 \note{
 spark.als since 2.1.0
+
+the input rating dataframe to the ALS implementation should be deterministic.
+      Nondeterministic data can cause failure during fitting ALS model. For example,
+      an order-sensitive operation like sampling after a repartition makes dataframe output
+      nondeterministic, like \code{sample(repartition(df, 2L), FALSE, 0.5, 1618L)}.
+      Checkpointing sampled dataframe or adding a sort before sampling can help make the
+      dataframe deterministic.
 
 summary(ALSModel) since 2.1.0
 

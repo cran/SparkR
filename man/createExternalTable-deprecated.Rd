@@ -2,10 +2,9 @@
 % Please edit documentation in R/catalog.R
 \name{createExternalTable}
 \alias{createExternalTable}
-\alias{createExternalTable.default}
 \title{(Deprecated) Create an external table}
 \usage{
-\method{createExternalTable}{default}(tableName, path = NULL, source = NULL, schema = NULL, ...)
+createExternalTable(tableName, path = NULL, source = NULL, schema = NULL, ...)
 }
 \arguments{
 \item{tableName}{a name of the table.}

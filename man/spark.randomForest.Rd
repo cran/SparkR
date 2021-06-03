@@ -31,7 +31,8 @@ spark.randomForest(data, formula, ...)
   checkpointInterval = 10,
   maxMemoryInMB = 256,
   cacheNodeIds = FALSE,
-  handleInvalid = c("error", "keep", "skip")
+  handleInvalid = c("error", "keep", "skip"),
+  bootstrap = TRUE
 )
 
 \S4method{summary}{RandomForestRegressionModel}(object)
@@ -99,7 +100,7 @@ range (0, 1].}
 Note: this setting will be ignored if the checkpoint directory is not
 set.}
 
-\item{maxMemoryInMB}{Maximum memory in MB allocated to histogram aggregation.}
+\item{maxMemoryInMB}{Maximum memory in MiB allocated to histogram aggregation.}
 
 \item{cacheNodeIds}{If FALSE, the algorithm will pass trees to executors to match instances with
 nodes. If TRUE, the algorithm will cache node IDs for each instance. Caching
@@ -112,6 +113,8 @@ Supported options: "skip" (filter out rows with invalid data),
                    "error" (throw an error), "keep" (put invalid data in
                    a special additional bucket, at index numLabels). Default
                    is "error".}
+
+\item{bootstrap}{Whether bootstrap samples are used when building trees.}
 
 \item{object}{A fitted Random Forest regression model or classification model.}
 
@@ -143,9 +146,9 @@ a SparkDataFrame. Users can call \code{summary} to get a summary of the fitted R
 model, \code{predict} to make predictions on new data, and \code{write.ml}/\code{read.ml} to
 save/load fitted models.
 For more details, see
-\href{http://spark.apache.org/docs/latest/ml-classification-regression.html#random-forest-regression}{
+\href{https://spark.apache.org/docs/latest/ml-classification-regression.html#random-forest-regression}{
 Random Forest Regression} and
-\href{http://spark.apache.org/docs/latest/ml-classification-regression.html#random-forest-classifier}{
+\href{https://spark.apache.org/docs/latest/ml-classification-regression.html#random-forest-classifier}{
 Random Forest Classification}
 }
 \note{

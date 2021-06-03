@@ -2,11 +2,10 @@
 % Please edit documentation in R/sparkR.R
 \name{setJobGroup}
 \alias{setJobGroup}
-\alias{setJobGroup.default}
 \title{Assigns a group ID to all the jobs started by this thread until the group ID is set to a
 different value or cleared.}
 \usage{
-\method{setJobGroup}{default}(groupId, description, interruptOnCancel)
+setJobGroup(groupId, description, interruptOnCancel)
 }
 \arguments{
 \item{groupId}{the ID to be assigned to job groups.}

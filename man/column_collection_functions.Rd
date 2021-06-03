@@ -6,10 +6,20 @@
 \alias{reverse}
 \alias{to_json,Column-method}
 \alias{to_json}
+\alias{to_csv,Column-method}
+\alias{to_csv}
 \alias{concat,Column-method}
 \alias{concat}
-\alias{from_json,Column,characterOrstructType-method}
+\alias{from_json,Column,characterOrstructTypeOrColumn-method}
 \alias{from_json}
+\alias{schema_of_json,characterOrColumn-method}
+\alias{schema_of_json}
+\alias{from_csv,Column,characterOrstructTypeOrColumn-method}
+\alias{from_csv}
+\alias{schema_of_csv,characterOrColumn-method}
+\alias{schema_of_csv}
+\alias{array_aggregate,characterOrColumn,Column,function-method}
+\alias{array_aggregate}
 \alias{array_contains,Column-method}
 \alias{array_contains}
 \alias{array_distinct,Column-method}
@@ -17,6 +27,12 @@
 \alias{array_except,Column,Column-method}
 \alias{array_except}
 \alias{array_except,Column-method}
+\alias{array_exists,characterOrColumn,function-method}
+\alias{array_exists}
+\alias{array_filter,characterOrColumn,function-method}
+\alias{array_filter}
+\alias{array_forall,characterOrColumn,function-method}
+\alias{array_forall}
 \alias{array_intersect,Column,Column-method}
 \alias{array_intersect}
 \alias{array_intersect,Column-method}
@@ -35,6 +51,9 @@
 \alias{array_repeat}
 \alias{array_sort,Column-method}
 \alias{array_sort}
+\alias{array_transform,characterOrColumn,function-method}
+\alias{array_transform}
+\alias{array_transform,characterOrColumn,characterOrColumn,function-method}
 \alias{arrays_overlap,Column,Column-method}
 \alias{arrays_overlap}
 \alias{arrays_overlap,Column-method}
@@ -43,17 +62,33 @@
 \alias{array_union,Column-method}
 \alias{arrays_zip,Column-method}
 \alias{arrays_zip}
+\alias{arrays_zip_with,characterOrColumn,characterOrColumn,function-method}
+\alias{arrays_zip_with}
 \alias{shuffle,Column-method}
 \alias{shuffle}
 \alias{flatten,Column-method}
 \alias{flatten}
+\alias{map_concat,Column-method}
+\alias{map_concat}
+\alias{map_entries,Column-method}
+\alias{map_entries}
+\alias{map_filter,characterOrColumn,function-method}
+\alias{map_filter}
 \alias{map_from_arrays,Column,Column-method}
 \alias{map_from_arrays}
 \alias{map_from_arrays,Column-method}
+\alias{map_from_entries,Column-method}
+\alias{map_from_entries}
 \alias{map_keys,Column-method}
 \alias{map_keys}
+\alias{transform_keys,characterOrColumn,function-method}
+\alias{transform_keys}
+\alias{transform_values,characterOrColumn,function-method}
+\alias{transform_values}
 \alias{map_values,Column-method}
 \alias{map_values}
+\alias{map_zip_with,characterOrColumn,characterOrColumn,function-method}
+\alias{map_zip_with}
 \alias{element_at,Column-method}
 \alias{element_at}
 \alias{explode,Column-method}
@@ -72,11 +107,19 @@
 \alias{posexplode_outer}
 \title{Collection functions for Column operations}
 \usage{
+array_aggregate(x, initialValue, merge, ...)
+
 array_contains(x, value)
 
 array_distinct(x)
 
 array_except(x, y)
+
+array_exists(x, f)
+
+array_forall(x, f)
+
+array_filter(x, f)
 
 array_intersect(x, y)
 
@@ -94,11 +137,15 @@ array_repeat(x, count)
 
 array_sort(x)
 
+array_transform(x, f)
+
 arrays_overlap(x, y)
 
 array_union(x, y)
 
 arrays_zip(x, ...)
+
+arrays_zip_with(x, y, f)
 
 concat(x, ...)
 
@@ -112,17 +159,33 @@ flatten(x)
 
 from_json(x, schema, ...)
 
+from_csv(x, schema, ...)
+
+map_concat(x, ...)
+
+map_entries(x)
+
+map_filter(x, f)
+
 map_from_arrays(x, y)
+
+map_from_entries(x)
 
 map_keys(x)
 
 map_values(x)
+
+map_zip_with(x, y, f)
 
 posexplode(x)
 
 posexplode_outer(x)
 
 reverse(x)
+
+schema_of_csv(x, ...)
+
+schema_of_json(x, ...)
 
 shuffle(x)
 
@@ -132,21 +195,43 @@ slice(x, start, length)
 
 sort_array(x, asc = TRUE)
 
+transform_keys(x, f)
+
+transform_values(x, f)
+
 to_json(x, ...)
+
+to_csv(x, ...)
 
 \S4method{reverse}{Column}(x)
 
 \S4method{to_json}{Column}(x, ...)
 
+\S4method{to_csv}{Column}(x, ...)
+
 \S4method{concat}{Column}(x, ...)
 
-\S4method{from_json}{Column,characterOrstructType}(x, schema, as.json.array = FALSE, ...)
+\S4method{from_json}{Column,characterOrstructTypeOrColumn}(x, schema, as.json.array = FALSE, ...)
+
+\S4method{schema_of_json}{characterOrColumn}(x, ...)
+
+\S4method{from_csv}{Column,characterOrstructTypeOrColumn}(x, schema, ...)
+
+\S4method{schema_of_csv}{characterOrColumn}(x, ...)
+
+\S4method{array_aggregate}{characterOrColumn,Column,`function`}(x, initialValue, merge, finish = NULL)
 
 \S4method{array_contains}{Column}(x, value)
 
 \S4method{array_distinct}{Column}(x)
 
 \S4method{array_except}{Column,Column}(x, y)
+
+\S4method{array_exists}{characterOrColumn,`function`}(x, f)
+
+\S4method{array_filter}{characterOrColumn,`function`}(x, f)
+
+\S4method{array_forall}{characterOrColumn,`function`}(x, f)
 
 \S4method{array_intersect}{Column,Column}(x, y)
 
@@ -164,21 +249,39 @@ to_json(x, ...)
 
 \S4method{array_sort}{Column}(x)
 
+\S4method{array_transform}{characterOrColumn,`function`}(x, f)
+
 \S4method{arrays_overlap}{Column,Column}(x, y)
 
 \S4method{array_union}{Column,Column}(x, y)
 
 \S4method{arrays_zip}{Column}(x, ...)
 
+\S4method{arrays_zip_with}{characterOrColumn,characterOrColumn,`function`}(x, y, f)
+
 \S4method{shuffle}{Column}(x)
 
 \S4method{flatten}{Column}(x)
 
+\S4method{map_concat}{Column}(x, ...)
+
+\S4method{map_entries}{Column}(x)
+
+\S4method{map_filter}{characterOrColumn,`function`}(x, f)
+
 \S4method{map_from_arrays}{Column,Column}(x, y)
+
+\S4method{map_from_entries}{Column}(x)
 
 \S4method{map_keys}{Column}(x)
 
+\S4method{transform_keys}{characterOrColumn,`function`}(x, f)
+
+\S4method{transform_values}{characterOrColumn,`function`}(x, f)
+
 \S4method{map_values}{Column}(x)
+
+\S4method{map_zip_with}{characterOrColumn,characterOrColumn,`function`}(x, y, f)
 
 \S4method{element_at}{Column}(x, extraction)
 
@@ -201,7 +304,29 @@ to_json(x, ...)
 \itemize{
 \item \code{to_json}: it is the column containing the struct, array of the structs,
     the map or array of maps.
+\item \code{to_csv}: it is the column containing the struct.
 \item \code{from_json}: it is the column containing the JSON string.
+\item \code{from_csv}: it is the column containing the CSV string.
+}}
+
+\item{initialValue}{a \code{Column} used as the initial value in \code{array_aggregate}}
+
+\item{merge}{a \code{function} a binary function \code{(Column, Column) -> Column}
+used in \code{array_aggregate}to merge values (the second argument)
+into accumulator (the first argument).}
+
+\item{...}{additional argument(s).
+\itemize{
+\item \code{to_json}, \code{from_json} and \code{schema_of_json}: this contains
+    additional named properties to control how it is converted and accepts the
+    same options as the JSON data source.
+\item \code{to_json}: it supports the "pretty" option which enables pretty
+    JSON generation.
+\item \code{to_csv}, \code{from_csv} and \code{schema_of_csv}: this contains
+    additional named properties to control how it is converted and accepts the
+    same options as the CSV data source.
+\item \code{arrays_zip}, this contains additional Columns of arrays to be merged.
+\item \code{map_concat}, this contains additional Columns of maps to be unioned.
 }}
 
 \item{value}{A value to compute on.
@@ -213,19 +338,41 @@ to_json(x, ...)
 
 \item{y}{Column to compute on.}
 
-\item{delimiter}{a character string that is used to concatenate the elements of column.}
+\item{f}{a \code{function} mapping from \code{Column(s)} to \code{Column}.
+\itemize{
+\item \code{array_exists}
+\item \code{array_filter} the Boolean \code{function} used to filter the data.
+  Either unary or binary. In the latter case the second argument
+  is the index in the array (0-based).
+\item \code{array_forall} the Boolean unary \code{function} used to filter the data.
+\item \code{array_transform} a \code{function} used to transform the data.
+  Either unary or binary. In the latter case the second argument
+  is the index in the array (0-based).
+\item \code{arrays_zip_with}
+\item \code{map_zip_with}
+\item \code{map_filter} the Boolean binary \code{function} used to filter the data.
+  The first argument is the key, the second argument is the value.
+\item \code{transform_keys} a binary \code{function}
+  used to transform the data.  The first argument is the key, the second argument
+  is the value.
+\item \code{transform_values} a binary \code{function}
+  used to transform the data.  The first argument is the key, the second argument
+  is the value.
+}}
 
-\item{...}{additional argument(s). In \code{to_json} and \code{from_json}, this contains
-additional named properties to control how it is converted, accepts the same
-options as the JSON data source.  In \code{arrays_zip}, this contains additional
-Columns of arrays to be merged.}
+\item{delimiter}{a character string that is used to concatenate the elements of column.}
 
 \item{count}{a Column or constant determining the number of repetitions.}
 
 \item{extraction}{index to check for in array or key to check for in map}
 
-\item{schema}{a structType object to use as the schema to use when parsing the JSON string.
-Since Spark 2.3, the DDL-formatted string is also supported for the schema.}
+\item{schema}{\itemize{
+\item \code{from_json}: a structType object to use as the schema to use
+    when parsing the JSON string. Since Spark 2.3, the DDL-formatted string is
+    also supported for the schema. Since Spark 3.0, \code{schema_of_json} or
+    the DDL-formatted string literal can also be accepted.
+\item \code{from_csv}: a structType object, DDL-formatted string or \code{schema_of_csv}
+}}
 
 \item{start}{the starting index}
 
@@ -236,6 +383,9 @@ TRUE, sorting is in ascending order.
 FALSE, sorting is in descending order.}
 
 \item{as.json.array}{indicating if input string is JSON array of objects or a single object.}
+
+\item{finish}{an unary \code{function} \code{(Column) -> Column} used to
+apply final transformation on the accumulated data in \code{array_aggregate}.}
 
 \item{nullReplacement}{an optional character string that is used to replace the Null values.}
 }
@@ -249,12 +399,28 @@ Collection functions defined for \code{Column}.
 or an \code{arrayType} into a Column of JSON string.
 Resolving the Column can fail if an unsupported type is encountered.
 
+\code{to_csv}: Converts a column containing a \code{structType} into a Column of CSV string.
+Resolving the Column can fail if an unsupported type is encountered.
+
 \code{concat}: Concatenates multiple input columns together into a single column.
 The function works with strings, binary and compatible array columns.
 
 \code{from_json}: Parses a column containing a JSON string into a Column of \code{structType}
 with the specified \code{schema} or array of \code{structType} if \code{as.json.array} is set
 to \code{TRUE}. If the string is unparseable, the Column will contain the value NA.
+
+\code{schema_of_json}: Parses a JSON string and infers its schema in DDL format.
+
+\code{from_csv}: Parses a column containing a CSV string into a Column of \code{structType}
+with the specified \code{schema}.
+If the string is unparseable, the Column will contain the value NA.
+
+\code{schema_of_csv}: Parses a CSV string and infers its schema in DDL format.
+
+\code{array_aggregate}  Applies a binary operator to an initial state
+and all elements in the array, and reduces this to a single state.
+The final state is converted into the final result by applying
+a finish function.
 
 \code{array_contains}: Returns null if the array is null, true if the array contains
 the value, and false otherwise.
@@ -263,6 +429,12 @@ the value, and false otherwise.
 
 \code{array_except}: Returns an array of the elements in the first array but not in the second
  array, without duplicates. The order of elements in the result is not determined.
+
+\code{array_exists} Returns whether a predicate holds for one or more elements in the array.
+
+\code{array_filter} Returns an array of elements for which a predicate holds in a given array.
+
+\code{array_forall} Returns whether a predicate holds for every element in the array.
 
 \code{array_intersect}: Returns an array of the elements in the intersection of the given two
  arrays, without duplicates.
@@ -287,6 +459,9 @@ given by \code{count}.
 \code{array_sort}: Sorts the input array in ascending order. The elements of the input array
 must be orderable. NA elements will be placed at the end of the returned array.
 
+\code{array_transform}  Returns an array of elements after applying
+a transformation to each element in the input array.
+
 \code{arrays_overlap}: Returns true if the input arrays have at least one non-null element in
 common. If not and both arrays are non-empty and any of them contains a null, it returns null.
 It returns false otherwise.
@@ -297,24 +472,46 @@ It returns false otherwise.
 \code{arrays_zip}: Returns a merged array of structs in which the N-th struct contains all N-th
 values of input arrays.
 
+\code{arrays_zip_with} Merge two given arrays, element-wise, into a single array
+using a function. If one array is shorter, nulls are appended at the end
+to match the length of the longer array, before applying the function.
+
 \code{shuffle}: Returns a random permutation of the given array.
 
 \code{flatten}: Creates a single array from an array of arrays.
 If a structure of nested arrays is deeper than two levels, only one level of nesting is removed.
 
+\code{map_concat}: Returns the union of all the given maps.
+
+\code{map_entries}: Returns an unordered array of all entries in the given map.
+
+\code{map_filter} Returns a map whose key-value pairs satisfy a predicate.
+
 \code{map_from_arrays}: Creates a new map column. The array in the first column is used for
 keys. The array in the second column is used for values. All elements in the array for key
 should not be null.
 
+\code{map_from_entries}: Returns a map created from the given array of entries.
+
 \code{map_keys}: Returns an unordered array containing the keys of the map.
 
+\code{transform_keys} Applies a function to every key-value pair in a map and returns
+a map with the results of those applications as the new keys for the pairs.
+
+\code{transform_values}    Applies a function to every key-value pair in a map and returns
+a map with the results of those applications as the new values for the pairs.
+
 \code{map_values}: Returns an unordered array containing the values of the map.
+
+\code{map_zip} Merge two given maps, key-wise into a single map using a function.
 
 \code{element_at}: Returns element of array at given index in \code{extraction} if
 \code{x} is array. Returns value for the given key in \code{extraction} if \code{x} is map.
 Note: The position is not zero based, but 1 based index.
 
 \code{explode}: Creates a new row for each element in the given array or map column.
+Uses the default column name \code{col} for elements in the array and
+\code{key} and \code{value} for elements in the map unless specified otherwise.
 
 \code{size}: Returns length of array or map.
 
@@ -326,30 +523,53 @@ the natural ordering of the array elements. NA elements will be placed at the be
 the returned array in ascending order or at the end of the returned array in descending order.
 
 \code{posexplode}: Creates a new row for each element with position in the given array
-or map column.
+or map column. Uses the default column name \code{pos} for position, and \code{col}
+for elements in the array and \code{key} and \code{value} for elements in the map
+unless specified otherwise.
 
 \code{explode}: Creates a new row for each element in the given array or map column.
 Unlike \code{explode}, if the array/map is \code{null} or empty
 then \code{null} is produced.
+Uses the default column name \code{col} for elements in the array and
+\code{key} and \code{value} for elements in the map unless specified otherwise.
 
 \code{posexplode_outer}: Creates a new row for each element with position in the given
 array or map column. Unlike \code{posexplode}, if the array/map is \code{null} or empty
 then the row (\code{null}, \code{null}) is produced.
+Uses the default column name \code{pos} for position, and \code{col}
+for elements in the array and \code{key} and \code{value} for elements in the map
+unless specified otherwise.
 }
 \note{
 reverse since 1.5.0
 
 to_json since 2.2.0
 
+to_csv since 3.0.0
+
 concat since 1.5.0
 
 from_json since 2.2.0
+
+schema_of_json since 3.0.0
+
+from_csv since 3.0.0
+
+schema_of_csv since 3.0.0
+
+array_aggregate since 3.1.0
 
 array_contains since 1.6.0
 
 array_distinct since 2.4.0
 
 array_except since 2.4.0
+
+array_exists since 3.1.0
+
+array_filter since 3.1.0
+
+array_forall since 3.1.0
 
 array_intersect since 2.4.0
 
@@ -367,21 +587,39 @@ array_repeat since 2.4.0
 
 array_sort since 2.4.0
 
+array_transform since 3.1.0
+
 arrays_overlap since 2.4.0
 
 array_union since 2.4.0
 
 arrays_zip since 2.4.0
 
+zip_with since 3.1.0
+
 shuffle since 2.4.0
 
 flatten since 2.4.0
 
+map_concat since 3.0.0
+
+map_entries since 3.0.0
+
+map_filter since 3.1.0
+
 map_from_arrays since 2.4.0
+
+map_from_entries since 3.0.0
 
 map_keys since 2.3.0
 
+transform_keys since 3.1.0
+
+transform_values since 3.1.0
+
 map_values since 2.3.0
+
+map_zip_with since 3.1.0
 
 element_at since 2.4.0
 
@@ -407,7 +645,15 @@ tmp <- mutate(df, v1 = create_array(df$mpg, df$cyl, df$hp))
 head(select(tmp, array_contains(tmp$v1, 21), size(tmp$v1), shuffle(tmp$v1)))
 head(select(tmp, array_max(tmp$v1), array_min(tmp$v1), array_distinct(tmp$v1)))
 head(select(tmp, array_position(tmp$v1, 21), array_repeat(df$mpg, 3), array_sort(tmp$v1)))
-head(select(tmp, flatten(tmp$v1), reverse(tmp$v1), array_remove(tmp$v1, 21)))
+head(select(tmp, reverse(tmp$v1), array_remove(tmp$v1, 21)))
+head(select(tmp, array_transform("v1", function(x) x * 10)))
+head(select(tmp, array_exists("v1", function(x) x > 120)))
+head(select(tmp, array_forall("v1", function(x) x >= 8.0)))
+head(select(tmp, array_filter("v1", function(x) x < 10)))
+head(select(tmp, array_aggregate("v1", lit(0), function(acc, y) acc + y)))
+head(select(
+  tmp,
+  array_aggregate("v1", lit(0), function(acc, y) acc + y, function(acc) acc / 10)))
 tmp2 <- mutate(tmp, v2 = explode(tmp$v1))
 head(tmp2)
 head(select(tmp, posexplode(tmp$v1)))
@@ -415,16 +661,27 @@ head(select(tmp, slice(tmp$v1, 2L, 2L)))
 head(select(tmp, sort_array(tmp$v1)))
 head(select(tmp, sort_array(tmp$v1, asc = FALSE)))
 tmp3 <- mutate(df, v3 = create_map(df$model, df$cyl))
-head(select(tmp3, map_keys(tmp3$v3), map_values(tmp3$v3)))
-head(select(tmp3, element_at(tmp3$v3, "Valiant")))
+head(select(tmp3, map_entries(tmp3$v3), map_keys(tmp3$v3), map_values(tmp3$v3)))
+head(select(tmp3, element_at(tmp3$v3, "Valiant"), map_concat(tmp3$v3, tmp3$v3)))
+head(select(tmp3, transform_keys("v3", function(k, v) upper(k))))
+head(select(tmp3, transform_values("v3", function(k, v) v * 10)))
+head(select(tmp3, map_filter("v3", function(k, v) v < 42)))
 tmp4 <- mutate(df, v4 = create_array(df$mpg, df$cyl), v5 = create_array(df$cyl, df$hp))
 head(select(tmp4, concat(tmp4$v4, tmp4$v5), arrays_overlap(tmp4$v4, tmp4$v5)))
 head(select(tmp4, array_except(tmp4$v4, tmp4$v5), array_intersect(tmp4$v4, tmp4$v5)))
 head(select(tmp4, array_union(tmp4$v4, tmp4$v5)))
-head(select(tmp4, arrays_zip(tmp4$v4, tmp4$v5), map_from_arrays(tmp4$v4, tmp4$v5)))
+head(select(tmp4, arrays_zip(tmp4$v4, tmp4$v5)))
 head(select(tmp, concat(df$mpg, df$cyl, df$hp)))
+head(select(tmp4, arrays_zip_with(tmp4$v4, tmp4$v5, function(x, y) x * y)))
 tmp5 <- mutate(df, v6 = create_array(df$model, df$model))
-head(select(tmp5, array_join(tmp5$v6, "#"), array_join(tmp5$v6, "#", "NULL")))}
+head(select(tmp5, array_join(tmp5$v6, "#"), array_join(tmp5$v6, "#", "NULL")))
+tmp6 <- mutate(df, v7 = create_array(create_array(df$model, df$model)))
+head(select(tmp6, flatten(tmp6$v7)))
+tmp7 <- mutate(df, v8 = create_array(df$model, df$cyl), v9 = create_array(df$model, df$hp))
+head(select(tmp7, arrays_zip_with("v8", "v9", function(x, y) (x * y) \%\% 3)))
+head(select(tmp7, map_from_arrays(tmp7$v8, tmp7$v9)))
+tmp8 <- mutate(df, v10 = create_array(struct(df$model, df$cyl)))
+head(select(tmp8, map_from_entries(tmp8$v10)))}
 
 \dontrun{
 # Converts a struct into a JSON object
@@ -436,12 +693,21 @@ df2 <- sql("SELECT array(named_struct('name', 'Bob'), named_struct('name', 'Alic
 df2 <- mutate(df2, people_json = to_json(df2$people))
 
 # Converts a map into a JSON object
-df2 <- sql("SELECT map('name', 'Bob')) as people")
+df2 <- sql("SELECT map('name', 'Bob') as people")
 df2 <- mutate(df2, people_json = to_json(df2$people))
 
 # Converts an array of maps into a JSON array
 df2 <- sql("SELECT array(map('name', 'Bob'), map('name', 'Alice')) as people")
-df2 <- mutate(df2, people_json = to_json(df2$people))}
+df2 <- mutate(df2, people_json = to_json(df2$people))
+
+# Converts a map into a pretty JSON object
+df2 <- sql("SELECT map('name', 'Bob') as people")
+df2 <- mutate(df2, people_json = to_json(df2$people, pretty = TRUE))}
+
+\dontrun{
+# Converts a struct into a CSV string
+df2 <- sql("SELECT named_struct('date', cast('2000-01-01' as date)) as d")
+select(df2, to_csv(df2$d, dateFormat = 'dd/MM/yyyy'))}
 
 \dontrun{
 df2 <- sql("SELECT named_struct('date', cast('2000-01-01' as date)) as d")
@@ -452,7 +718,26 @@ df2 <- sql("SELECT named_struct('name', 'Bob') as people")
 df2 <- mutate(df2, people_json = to_json(df2$people))
 schema <- structType(structField("name", "string"))
 head(select(df2, from_json(df2$people_json, schema)))
-head(select(df2, from_json(df2$people_json, "name STRING")))}
+head(select(df2, from_json(df2$people_json, "name STRING")))
+head(select(df2, from_json(df2$people_json, schema_of_json(head(df2)$people_json))))}
+
+\dontrun{
+json <- "{\"name\":\"Bob\"}"
+df <- sql("SELECT * FROM range(1)")
+head(select(df, schema_of_json(json)))}
+
+\dontrun{
+csv <- "Amsterdam,2018"
+df <- sql(paste0("SELECT '", csv, "' as csv"))
+schema <- "city STRING, year INT"
+head(select(df, from_csv(df$csv, schema)))
+head(select(df, from_csv(df$csv, structType(schema))))
+head(select(df, from_csv(df$csv, schema_of_csv(csv))))}
+
+\dontrun{
+csv <- "Amsterdam,2018"
+df <- sql("SELECT * FROM range(1)")
+head(select(df, schema_of_csv(csv)))}
 
 \dontrun{
 df2 <- createDataFrame(data.frame(

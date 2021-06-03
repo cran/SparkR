@@ -22,7 +22,7 @@ save mode (it is 'error' by default)}
 \description{
 Save the content of the SparkDataFrame in a text file at the specified path.
 The SparkDataFrame must have only one column of string type with the name "value".
-Each row becomes a new line in the output file.
+Each row becomes a new line in the output file. The text files will be encoded as UTF-8.
 }
 \note{
 write.text since 2.0.0
@@ -107,6 +107,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

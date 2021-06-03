@@ -14,7 +14,7 @@ write.jdbc(x, url, tableName, mode = "error", ...)
 
 \item{url}{JDBC database url of the form \code{jdbc:subprotocol:subname}.}
 
-\item{tableName}{yhe name of the table in the external database.}
+\item{tableName}{the name of the table in the external database.}
 
 \item{mode}{one of 'append', 'overwrite', 'error', 'errorifexists', 'ignore'
 save mode (it is 'error' by default)}
@@ -119,6 +119,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

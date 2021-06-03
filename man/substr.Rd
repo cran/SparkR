@@ -28,7 +28,7 @@ collect(select(df, substr(df$a, 2, 4))) # the result is `bcd`.
 }
 }
 \seealso{
-Other colum_func: 
+Other column_func: 
 \code{\link{alias}()},
 \code{\link{between}()},
 \code{\link{cast}()},
@@ -37,4 +37,4 @@ Other colum_func:
 \code{\link{over}()},
 \code{\link{startsWith}()}
 }
-\concept{colum_func}
+\concept{column_func}

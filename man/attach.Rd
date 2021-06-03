@@ -8,7 +8,7 @@
 \S4method{attach}{SparkDataFrame}(
   what,
   pos = 2L,
-  name = deparse(substitute(what), backtick = FALSE),
+  name = paste(deparse(substitute(what), backtick = FALSE), collapse = " "),
   warn.conflicts = TRUE
 )
 }
@@ -110,6 +110,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

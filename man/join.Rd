@@ -17,8 +17,9 @@ Column expression. If joinExpr is omitted, the default, inner join is attempted 
 thrown if it would be a Cartesian Product. For Cartesian join, use crossJoin instead.}
 
 \item{joinType}{The type of join to perform, default 'inner'.
-Must be one of: 'inner', 'cross', 'outer', 'full', 'full_outer',
-'left', 'left_outer', 'right', 'right_outer', 'left_semi', or 'left_anti'.}
+Must be one of: 'inner', 'cross', 'outer', 'full', 'fullouter', 'full_outer',
+'left', 'leftouter', 'left_outer', 'right', 'rightouter', 'right_outer', 'semi',
+'leftsemi', 'left_semi', 'anti', 'leftanti', 'left_anti'.}
 }
 \value{
 A SparkDataFrame containing the result of the join operation.
@@ -112,6 +113,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

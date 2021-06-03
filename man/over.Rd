@@ -36,7 +36,7 @@ over since 2.0.0
 }
 }
 \seealso{
-Other colum_func: 
+Other column_func: 
 \code{\link{alias}()},
 \code{\link{between}()},
 \code{\link{cast}()},
@@ -45,4 +45,4 @@ Other colum_func:
 \code{\link{startsWith}()},
 \code{\link{substr}()}
 }
-\concept{colum_func}
+\concept{column_func}

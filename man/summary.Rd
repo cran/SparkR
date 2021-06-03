@@ -25,7 +25,7 @@ Computes specified statistics for numeric and string columns. Available statisti
 \item stddev
 \item min
 \item max
-\item arbitrary approximate percentiles specified as a percentage (eg, "75\%")
+\item arbitrary approximate percentiles specified as a percentage (e.g., "75\%")
 }
 If no statistics are given, this function computes count, mean, stddev, min,
 approximate quartiles (percentiles at 25\%, 50\%, and 75\%), and max.
@@ -122,6 +122,7 @@ Other SparkDataFrame functions:
 \code{\link{subset}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

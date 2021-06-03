@@ -43,7 +43,7 @@ head(join(df, avg_mpg, column("mtcars.cyl") == column("avg_mpg.cyl")))
 }
 }
 \seealso{
-Other colum_func: 
+Other column_func: 
 \code{\link{between}()},
 \code{\link{cast}()},
 \code{\link{endsWith}()},
@@ -122,6 +122,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},
@@ -137,4 +138,4 @@ Other SparkDataFrame functions:
 \code{\link{write.text}()}
 }
 \concept{SparkDataFrame functions}
-\concept{colum_func}
+\concept{column_func}

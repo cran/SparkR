@@ -2,10 +2,9 @@
 % Please edit documentation in R/sparkR.R
 \name{clearJobGroup}
 \alias{clearJobGroup}
-\alias{clearJobGroup.default}
 \title{Clear current job group ID and its description}
 \usage{
-\method{clearJobGroup}{default}()
+clearJobGroup()
 }
 \description{
 Clear current job group ID and its description

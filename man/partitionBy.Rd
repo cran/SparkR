@@ -14,7 +14,7 @@ partitionBy(x, ...)
 
 \item{...}{additional column(s) to partition on.}
 
-\item{col}{a column to partition on (desribed by the name or Column).}
+\item{col}{a column to partition on (described by the name or Column).}
 }
 \value{
 A WindowSpec.

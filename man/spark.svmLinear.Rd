@@ -34,7 +34,7 @@ spark.svmLinear(data, formula, ...)
 \item{data}{SparkDataFrame for training.}
 
 \item{formula}{A symbolic description of the model to be fitted. Currently only a few formula
-operators are supported, including '~', '.', ':', '+', and '-'.}
+operators are supported, including '~', '.', ':', '+', '-', '*', and '^'.}
 
 \item{...}{additional arguments passed to the method.}
 

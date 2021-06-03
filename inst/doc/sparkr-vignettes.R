@@ -93,7 +93,7 @@ df <- as.DataFrame(faithful)
 head(df)
 
 ## ---- eval=FALSE--------------------------------------------------------------
-#  sparkR.session(sparkPackages = "com.databricks:spark-avro_2.11:3.0.0")
+#  sparkR.session(sparkPackages = "com.databricks:spark-avro_2.12:3.0.0")
 
 ## ---- eval=FALSE--------------------------------------------------------------
 #  df <- read.df(csvPath, "csv", header = "true", inferSchema = "true", na.strings = "NA")
@@ -308,6 +308,16 @@ summary(naiveBayesModel)
 naiveBayesPrediction <- predict(naiveBayesModel, titanicDF)
 head(select(naiveBayesPrediction, "Class", "Sex", "Age", "Survived", "prediction"))
 
+## -----------------------------------------------------------------------------
+t <- as.data.frame(Titanic)
+training <- createDataFrame(t)
+
+model <- spark.fmClassifier(training, Survived ~ Age + Sex)
+summary(model)
+
+predictions <- predict(model, training)
+head(select(predictions, predictions$prediction))
+
 ## ---- warning=FALSE-----------------------------------------------------------
 library(survival)
 ovarianDF <- createDataFrame(ovarian)
@@ -346,6 +356,19 @@ head(select(isoregFitted, "x", "y", "prediction"))
 ## -----------------------------------------------------------------------------
 newDF <- createDataFrame(data.frame(x = c(1.5, 3.2)))
 head(predict(isoregModel, newDF))
+
+## -----------------------------------------------------------------------------
+model <- spark.lm(carsDF, mpg ~ wt + hp)
+
+summary(model)
+predictions <- predict(model, carsDF)
+head(select(predictions, predictions$prediction))
+
+## -----------------------------------------------------------------------------
+model <- spark.fmRegressor(carsDF, mpg ~ wt + hp)
+summary(model)
+predictions <- predict(model, carsDF)
+head(select(predictions, predictions$prediction))
 
 ## -----------------------------------------------------------------------------
 t <- as.data.frame(Titanic)
@@ -439,6 +462,13 @@ perplexity
 #  head(predicted)
 
 ## -----------------------------------------------------------------------------
+df <- createDataFrame(list(list(0L, 1L, 1.0), list(0L, 2L, 1.0),
+                           list(1L, 2L, 1.0), list(3L, 4L, 1.0),
+                           list(4L, 0L, 0.1)),
+                      schema = c("src", "dst", "weight"))
+head(spark.assignClusters(df, initMode = "degree", weightCol = "weight"))
+
+## -----------------------------------------------------------------------------
 df <- selectExpr(createDataFrame(data.frame(rawItems = c(
   "T,R,U", "T,S", "V,R", "R,U,T,V", "R,S", "V,S,U", "U,R", "S,T", "V,R", "V,U,S",
   "T,V,U", "R,V", "T,S", "T,S", "S,T", "S,U", "T,R", "V,R", "S,V", "T,S,U"
@@ -454,6 +484,14 @@ head(spark.associationRules(fpm))
 
 ## -----------------------------------------------------------------------------
 head(predict(fpm, df))
+
+## -----------------------------------------------------------------------------
+df <- createDataFrame(list(list(list(list(1L, 2L), list(3L))),
+                           list(list(list(1L), list(3L, 2L), list(1L, 2L))),
+                           list(list(list(1L, 2L), list(5L))),
+                           list(list(list(6L)))),
+                      schema = c("sequence"))
+head(spark.findFrequentSequentialPatterns(df, minSupport = 0.5, maxPatternLength = 5L))
 
 ## -----------------------------------------------------------------------------
 t <- as.data.frame(Titanic)

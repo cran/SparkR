@@ -90,7 +90,7 @@ Users can call \code{summary} to print a summary of the fitted model, \code{pred
 predictions on new data, and \code{write.ml}/\code{read.ml} to save/load fitted models.
 Only categorical data is supported.
 For more details, see
-\href{http://spark.apache.org/docs/latest/ml-classification-regression.html}{
+\href{https://spark.apache.org/docs/latest/ml-classification-regression.html}{
   Multilayer Perceptron}
 }
 \note{

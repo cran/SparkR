@@ -26,8 +26,8 @@ Aggregate function: returns the first value in a group.
 \details{
 The function by default returns the first values it sees. It will return the first non-missing
 value it sees when na.rm is set to true. If all values are missing, then NA is returned.
-Note: the function is non-deterministic because its results depends on order of rows which
-may be non-deterministic after a shuffle.
+Note: the function is non-deterministic because its results depends on the order of the rows
+which may be non-deterministic after a shuffle.
 }
 \note{
 first(SparkDataFrame) since 1.4.0
@@ -117,6 +117,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

@@ -21,7 +21,8 @@ a local R data.frame with the frequent items in each column
 \description{
 Finding frequent items for columns, possibly with false positives.
 Using the frequent element count algorithm described in
-\url{http://dx.doi.org/10.1145/762471.762473}, proposed by Karp, Schenker, and Papadimitriou.
+\url{https://dl.acm.org/doi/10.1145/762471.762473}, proposed by Karp, Schenker,
+and Papadimitriou.
 }
 \note{
 freqItems since 1.6.0

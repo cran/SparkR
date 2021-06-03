@@ -24,7 +24,9 @@
 \item{object}{a Spark object. Can be a SparkDataFrame, Column, GroupedData, WindowSpec.}
 }
 \description{
-Print class and type information of a Spark object.
+If eager evaluation is enabled and the Spark object is a SparkDataFrame, evaluate the
+SparkDataFrame and print top rows of the SparkDataFrame, otherwise, print the class
+and type information of the Spark object.
 }
 \note{
 show(Column) since 1.4.0
@@ -116,6 +118,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

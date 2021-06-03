@@ -13,7 +13,14 @@ saveDF(df, path, source = NULL, mode = "error", ...)
 
 write.df(df, path = NULL, ...)
 
-\S4method{write.df}{SparkDataFrame}(df, path = NULL, source = NULL, mode = "error", ...)
+\S4method{write.df}{SparkDataFrame}(
+  df,
+  path = NULL,
+  source = NULL,
+  mode = "error",
+  partitionBy = NULL,
+  ...
+)
 
 \S4method{saveDF}{SparkDataFrame,character}(df, path, source = NULL, mode = "error", ...)
 }
@@ -28,6 +35,10 @@ write.df(df, path = NULL, ...)
 
 \item{mode}{one of 'append', 'overwrite', 'error', 'errorifexists', 'ignore'
 save mode (it is 'error' by default)}
+
+\item{partitionBy}{a name or a list of names of columns to partition the output by on the file
+system. If specified, the output is laid out on the file system similar
+to Hive's partitioning scheme.}
 }
 \description{
 The data source is specified by the \code{source} and a set of options (...).
@@ -56,7 +67,7 @@ saveDF since 1.4.0
 sparkR.session()
 path <- "path/to/file.json"
 df <- read.json(path)
-write.df(df, "myfile", "parquet", "overwrite")
+write.df(df, "myfile", "parquet", "overwrite", partitionBy = c("col1", "col2"))
 saveDF(df, parquetPath2, "parquet", mode = "append", mergeSchema = TRUE)
 }
 }
@@ -132,6 +143,7 @@ Other SparkDataFrame functions:
 \code{\link{summary}()},
 \code{\link{take}()},
 \code{\link{toJSON}()},
+\code{\link{unionAll}()},
 \code{\link{unionByName}()},
 \code{\link{union}()},
 \code{\link{unpersist}()},

@@ -15,44 +15,86 @@
 <title>SparkR - Practical Guide</title>
 
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 
 </style>
 <script>
@@ -79,7 +121,188 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -138,9 +361,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#logistic-regression">Logistic Regression</a></li>
 <li><a href="#multilayer-perceptron">Multilayer Perceptron</a></li>
 <li><a href="#naive-bayes">Naive Bayes</a></li>
+<li><a href="#factorization-machines-classifier">Factorization Machines Classifier</a></li>
 <li><a href="#accelerated-failure-time-survival-model">Accelerated Failure Time Survival Model</a></li>
 <li><a href="#generalized-linear-model">Generalized Linear Model</a></li>
 <li><a href="#isotonic-regression">Isotonic Regression</a></li>
+<li><a href="#linear-regression">Linear Regression</a></li>
+<li><a href="#factorization-machines-regressor">Factorization Machines Regressor</a></li>
 <li><a href="#decision-tree">Decision Tree</a></li>
 <li><a href="#gradient-boosted-trees">Gradient-Boosted Trees</a></li>
 <li><a href="#random-forest">Random Forest</a></li>
@@ -149,7 +375,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#k-means-clustering">k-Means Clustering</a></li>
 <li><a href="#latent-dirichlet-allocation">Latent Dirichlet Allocation</a></li>
 <li><a href="#alternating-least-squares">Alternating Least Squares</a></li>
+<li><a href="#power-iteration-clustering">Power Iteration Clustering</a></li>
 <li><a href="#fp-growth">FP-growth</a></li>
+<li><a href="#prefixspan">PrefixSpan</a></li>
 <li><a href="#kolmogorov-smirnov-test">Kolmogorov-Smirnov Test</a></li>
 </ul></li>
 <li><a href="#model-persistence">Model Persistence</a></li>
@@ -188,22 +416,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 -->
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>SparkR is an R package that provides a light-weight frontend to use Apache Spark from R. With Spark 2.4.6, SparkR provides a distributed data frame implementation that supports data processing operations like selection, filtering, aggregation etc. and distributed machine learning using <a href="https://spark.apache.org/mllib/">MLlib</a>.</p>
+<p>SparkR is an R package that provides a light-weight frontend to use Apache Spark from R. With Spark 3.1.2, SparkR provides a distributed data frame implementation that supports data processing operations like selection, filtering, aggregation etc. and distributed machine learning using <a href="https://spark.apache.org/mllib/">MLlib</a>.</p>
 </div>
 <div id="getting-started" class="section level2">
 <h2>Getting Started</h2>
 <p>We begin with an example running on the local machine and provide an overview of the use of SparkR: data ingestion, data processing and machine learning.</p>
 <p>First, let’s load and attach the package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SparkR)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(SparkR)</a></code></pre></div>
 <p><code>SparkSession</code> is the entry point into SparkR which connects your R program to a Spark cluster. You can create a <code>SparkSession</code> using <code>sparkR.session</code> and pass in options such as the application name, any Spark packages depended on, etc.</p>
 <p>We use default settings in which it runs in local mode. It auto downloads Spark package in the background if no previous installation is found. For more details about setup, see <a href="#SetupSparkSession">Spark Session</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sparkR.session</span>()</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">sparkR.session</span>()</a></code></pre></div>
 <p>The operations in SparkR are centered around an R class called <code>SparkDataFrame</code>. It is a distributed collection of data organized into named columns, which is conceptually equivalent to a table in a relational database or a data frame in R, but with richer optimizations under the hood.</p>
 <p><code>SparkDataFrame</code> can be constructed from a wide array of sources such as: structured data files, tables in Hive, external databases, or existing local R data frames. For example, we create a <code>SparkDataFrame</code> from a local R data frame,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cars &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">model =</span> <span class="kw">rownames</span>(mtcars), mtcars)
-carsDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(cars)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">cars &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">model =</span> <span class="kw">rownames</span>(mtcars), mtcars)</a>
+<a class="sourceLine" id="cb3-2" title="2">carsDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(cars)</a></code></pre></div>
 <p>We can view the first few rows of the <code>SparkDataFrame</code> by <code>head</code> or <code>showDF</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(carsDF)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">head</span>(carsDF)</a></code></pre></div>
 <pre><code>##               model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## 1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## 2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -212,9 +440,9 @@ carsDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(car
 ## 5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ## 6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <p>Common data processing operations such as <code>filter</code> and <code>select</code> are supported on the <code>SparkDataFrame</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">carsSubDF &lt;-<span class="st"> </span><span class="kw">select</span>(carsDF, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;hp&quot;</span>)
-carsSubDF &lt;-<span class="st"> </span><span class="kw">filter</span>(carsSubDF, carsSubDF$hp &gt;=<span class="st"> </span><span class="dv">200</span>)
-<span class="kw">head</span>(carsSubDF)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">carsSubDF &lt;-<span class="st"> </span><span class="kw">select</span>(carsDF, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;hp&quot;</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2">carsSubDF &lt;-<span class="st"> </span><span class="kw">filter</span>(carsSubDF, carsSubDF<span class="op">$</span>hp <span class="op">&gt;=</span><span class="st"> </span><span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">head</span>(carsSubDF)</a></code></pre></div>
 <pre><code>##                 model  mpg  hp
 ## 1          Duster 360 14.3 245
 ## 2  Cadillac Fleetwood 10.4 205
@@ -223,21 +451,21 @@ carsSubDF &lt;-<span class="st"> </span><span class="kw">filter</span>(carsSubDF
 ## 5          Camaro Z28 13.3 245
 ## 6      Ford Pantera L 15.8 264</code></pre>
 <p>SparkR can use many common aggregation functions after grouping.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">carsGPDF &lt;-<span class="st"> </span><span class="kw">summarize</span>(<span class="kw">groupBy</span>(carsDF, carsDF$gear), <span class="dt">count =</span> <span class="kw">n</span>(carsDF$gear))
-<span class="kw">head</span>(carsGPDF)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">carsGPDF &lt;-<span class="st"> </span><span class="kw">summarize</span>(<span class="kw">groupBy</span>(carsDF, carsDF<span class="op">$</span>gear), <span class="dt">count =</span> <span class="kw">n</span>(carsDF<span class="op">$</span>gear))</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">head</span>(carsGPDF)</a></code></pre></div>
 <pre><code>##   gear count
 ## 1    4    12
 ## 2    3    15
 ## 3    5     5</code></pre>
 <p>The results <code>carsDF</code> and <code>carsSubDF</code> are <code>SparkDataFrame</code> objects. To convert back to R <code>data.frame</code>, we can use <code>collect</code>. <strong>Caution</strong>: This can cause your interactive environment to run out of memory, though, because <code>collect()</code> fetches the entire distributed <code>DataFrame</code> to your client, which is acting as a Spark driver.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">carsGP &lt;-<span class="st"> </span><span class="kw">collect</span>(carsGPDF)
-<span class="kw">class</span>(carsGP)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">carsGP &lt;-<span class="st"> </span><span class="kw">collect</span>(carsGPDF)</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">class</span>(carsGP)</a></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>SparkR supports a number of commonly used machine learning algorithms. Under the hood, SparkR uses MLlib to train the model. Users can call <code>summary</code> to print a summary of the fitted model, <code>predict</code> to make predictions on new data, and <code>write.ml</code>/<code>read.ml</code> to save/load fitted models.</p>
 <p>SparkR supports a subset of R formula operators for model fitting, including ‘~’, ‘.’, ‘:’, ‘+’, and ‘-‘. We use linear regression as an example.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(carsDF, mpg ~<span class="st"> </span>wt +<span class="st"> </span>cyl)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">model &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(carsDF, mpg <span class="op">~</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>cyl)</a></code></pre></div>
 <p>The result matches that returned by R <code>glm</code> function applied to the corresponding <code>data.frame</code> <code>mtcars</code> of <code>carsDF</code>. In fact, for Generalized Linear Model, we specifically expose <code>glm</code> for <code>SparkDataFrame</code> as well so that the above is equivalent to <code>model &lt;- glm(mpg ~ wt + cyl, data = carsDF)</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(model)</code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">summary</span>(model)</a></code></pre></div>
 <pre><code>## 
 ## Deviance Residuals: 
 ## (Note: These are approximate quantiles with relative error &lt;= 0.01)
@@ -258,19 +486,19 @@ carsSubDF &lt;-<span class="st"> </span><span class="kw">filter</span>(carsSubDF
 ## 
 ## Number of Fisher Scoring iterations: 1</code></pre>
 <p>The model can be saved by <code>write.ml</code> and loaded back using <code>read.ml</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.ml</span>(model, <span class="dt">path =</span> <span class="st">&quot;/HOME/tmp/mlModel/glmModel&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">write.ml</span>(model, <span class="dt">path =</span> <span class="st">&quot;/HOME/tmp/mlModel/glmModel&quot;</span>)</a></code></pre></div>
 <p>In the end, we can stop Spark Session by running</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sparkR.session.stop</span>()</code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">sparkR.session.stop</span>()</a></code></pre></div>
 </div>
 <div id="setup" class="section level2">
 <h2>Setup</h2>
 <div id="installation" class="section level3">
 <h3>Installation</h3>
 <p>Different from many other R packages, to use SparkR, you need an additional installation of Apache Spark. The Spark installation will be used to run a backend process that will compile and execute SparkR programs.</p>
-<p>After installing the SparkR package, you can call <code>sparkR.session</code> as explained in the previous section to start and it will check for the Spark installation. If you are working with SparkR from an interactive shell (eg. R, RStudio) then Spark is downloaded and cached automatically if it is not found. Alternatively, we provide an easy-to-use function <code>install.spark</code> for running this manually. If you don’t have Spark installed on the computer, you may download it from <a href="https://spark.apache.org/downloads.html">Apache Spark Website</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.spark</span>()</code></pre></div>
+<p>After installing the SparkR package, you can call <code>sparkR.session</code> as explained in the previous section to start and it will check for the Spark installation. If you are working with SparkR from an interactive shell (e.g. R, RStudio) then Spark is downloaded and cached automatically if it is not found. Alternatively, we provide an easy-to-use function <code>install.spark</code> for running this manually. If you don’t have Spark installed on the computer, you may download it from <a href="https://spark.apache.org/downloads.html">Apache Spark Website</a>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">install.spark</span>()</a></code></pre></div>
 <p>If you already have Spark installed, you don’t have to install again and can pass the <code>sparkHome</code> argument to <code>sparkR.session</code> to let SparkR know where the existing Spark installation is.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sparkR.session</span>(<span class="dt">sparkHome =</span> <span class="st">&quot;/HOME/spark&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">sparkR.session</span>(<span class="dt">sparkHome =</span> <span class="st">&quot;/HOME/spark&quot;</span>)</a></code></pre></div>
 </div>
 <div id="SetupSparkSession" class="section level3">
 <h3>Spark Session</h3>
@@ -279,57 +507,57 @@ carsSubDF &lt;-<span class="st"> </span><span class="kw">filter</span>(carsSubDF
 <table>
 <thead>
 <tr class="header">
-<th align="left">Property Name</th>
-<th align="left">Property group</th>
-<th align="left">spark-submit equivalent</th>
+<th>Property Name</th>
+<th>Property group</th>
+<th>spark-submit equivalent</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>spark.driver.memory</code></td>
-<td align="left">Application Properties</td>
-<td align="left"><code>--driver-memory</code></td>
+<td><code>spark.driver.memory</code></td>
+<td>Application Properties</td>
+<td><code>--driver-memory</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>spark.driver.extraClassPath</code></td>
-<td align="left">Runtime Environment</td>
-<td align="left"><code>--driver-class-path</code></td>
+<td><code>spark.driver.extraClassPath</code></td>
+<td>Runtime Environment</td>
+<td><code>--driver-class-path</code></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>spark.driver.extraJavaOptions</code></td>
-<td align="left">Runtime Environment</td>
-<td align="left"><code>--driver-java-options</code></td>
+<td><code>spark.driver.extraJavaOptions</code></td>
+<td>Runtime Environment</td>
+<td><code>--driver-java-options</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>spark.driver.extraLibraryPath</code></td>
-<td align="left">Runtime Environment</td>
-<td align="left"><code>--driver-library-path</code></td>
+<td><code>spark.driver.extraLibraryPath</code></td>
+<td>Runtime Environment</td>
+<td><code>--driver-library-path</code></td>
 </tr>
 <tr class="odd">
-<td align="left"><code>spark.yarn.keytab</code></td>
-<td align="left">Application Properties</td>
-<td align="left"><code>--keytab</code></td>
+<td><code>spark.kerberos.keytab</code></td>
+<td>Application Properties</td>
+<td><code>--keytab</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>spark.yarn.principal</code></td>
-<td align="left">Application Properties</td>
-<td align="left"><code>--principal</code></td>
+<td><code>spark.kerberos.principal</code></td>
+<td>Application Properties</td>
+<td><code>--principal</code></td>
 </tr>
 </tbody>
 </table>
 <p><strong>For Windows users</strong>: Due to different file prefixes across operating systems, to avoid the issue of potential wrong prefix, a current workaround is to specify <code>spark.sql.warehouse.dir</code> when starting the <code>SparkSession</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">spark_warehouse_path &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">path.expand</span>(<span class="st">'~'</span>), <span class="st">&quot;spark-warehouse&quot;</span>)
-<span class="kw">sparkR.session</span>(<span class="dt">spark.sql.warehouse.dir =</span> spark_warehouse_path)</code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">spark_warehouse_path &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">path.expand</span>(<span class="st">&#39;~&#39;</span>), <span class="st">&quot;spark-warehouse&quot;</span>)</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="kw">sparkR.session</span>(<span class="dt">spark.sql.warehouse.dir =</span> spark_warehouse_path)</a></code></pre></div>
 <div id="cluster-mode" class="section level4">
 <h4>Cluster Mode</h4>
 <p>SparkR can connect to remote Spark clusters. <a href="https://spark.apache.org/docs/latest/cluster-overview.html">Cluster Mode Overview</a> is a good introduction to different Spark cluster modes.</p>
 <p>When connecting SparkR to a remote Spark cluster, make sure that the Spark version and Hadoop version on the machine match the corresponding versions on the cluster. Current SparkR package is compatible with</p>
-<pre><code>## [1] &quot;Spark 2.4.6&quot;</code></pre>
+<pre><code>## [1] &quot;Spark 3.1.2&quot;</code></pre>
 <p>It should be used both on the local computer and on the remote cluster.</p>
 <p>To connect, pass the URL of the master node to <code>sparkR.session</code>. A complete list can be seen in <a href="https://spark.apache.org/docs/latest/submitting-applications.html#master-urls">Spark Master URLs</a>. For example, to connect to a local standalone Spark master, we can call</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sparkR.session</span>(<span class="dt">master =</span> <span class="st">&quot;spark://local:7077&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">sparkR.session</span>(<span class="dt">master =</span> <span class="st">&quot;spark://local:7077&quot;</span>)</a></code></pre></div>
 <p>For YARN cluster, SparkR supports the client mode with the master set as “yarn”.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sparkR.session</span>(<span class="dt">master =</span> <span class="st">&quot;yarn&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">sparkR.session</span>(<span class="dt">master =</span> <span class="st">&quot;yarn&quot;</span>)</a></code></pre></div>
 <p>Yarn cluster mode is not supported in the current version.</p>
 </div>
 </div>
@@ -339,8 +567,8 @@ carsSubDF &lt;-<span class="st"> </span><span class="kw">filter</span>(carsSubDF
 <div id="local-data-frame" class="section level3">
 <h3>Local Data Frame</h3>
 <p>The simplest way is to convert a local R data frame into a <code>SparkDataFrame</code>. Specifically we can use <code>as.DataFrame</code> or <code>createDataFrame</code> and pass in the local R data frame to create a <code>SparkDataFrame</code>. As an example, the following creates a <code>SparkDataFrame</code> based using the <code>faithful</code> dataset from R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">as.DataFrame</span>(faithful)
-<span class="kw">head</span>(df)</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">df &lt;-<span class="st"> </span><span class="kw">as.DataFrame</span>(faithful)</a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">head</span>(df)</a></code></pre></div>
 <pre><code>##   eruptions waiting
 ## 1     3.600      79
 ## 2     1.800      54
@@ -353,51 +581,51 @@ carsSubDF &lt;-<span class="st"> </span><span class="kw">filter</span>(carsSubDF
 <h3>Data Sources</h3>
 <p>SparkR supports operating on a variety of data sources through the <code>SparkDataFrame</code> interface. You can check the Spark SQL Programming Guide for more <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html#manually-specifying-options">specific options</a> that are available for the built-in data sources.</p>
 <p>The general method for creating <code>SparkDataFrame</code> from data sources is <code>read.df</code>. This method takes in the path for the file to load and the type of data source, and the currently active Spark Session will be used automatically. SparkR supports reading CSV, JSON and Parquet files natively and through Spark Packages you can find data source connectors for popular file formats like Avro. These packages can be added with <code>sparkPackages</code> parameter when initializing SparkSession using <code>sparkR.session</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sparkR.session</span>(<span class="dt">sparkPackages =</span> <span class="st">&quot;com.databricks:spark-avro_2.11:3.0.0&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">sparkR.session</span>(<span class="dt">sparkPackages =</span> <span class="st">&quot;com.databricks:spark-avro_2.12:3.0.0&quot;</span>)</a></code></pre></div>
 <p>We can see how to use data sources using an example CSV input file. For more information please refer to SparkR <a href="https://spark.apache.org/docs/latest/api/R/read.df.html">read.df</a> API documentation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.df</span>(csvPath, <span class="st">&quot;csv&quot;</span>, <span class="dt">header =</span> <span class="st">&quot;true&quot;</span>, <span class="dt">inferSchema =</span> <span class="st">&quot;true&quot;</span>, <span class="dt">na.strings =</span> <span class="st">&quot;NA&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read.df</span>(csvPath, <span class="st">&quot;csv&quot;</span>, <span class="dt">header =</span> <span class="st">&quot;true&quot;</span>, <span class="dt">inferSchema =</span> <span class="st">&quot;true&quot;</span>, <span class="dt">na.strings =</span> <span class="st">&quot;NA&quot;</span>)</a></code></pre></div>
 <p>The data sources API natively supports JSON formatted input files. Note that the file that is used here is not a typical JSON file. Each line in the file must contain a separate, self-contained valid JSON object. As a consequence, a regular multi-line JSON file will most often fail.</p>
 <p>Let’s take a look at the first two lines of the raw JSON file used here.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">filePath &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">sparkR.conf</span>(<span class="st">&quot;spark.home&quot;</span>),
-                         <span class="st">&quot;/examples/src/main/resources/people.json&quot;</span>)
-<span class="kw">readLines</span>(filePath, <span class="dt">n =</span> 2L)</code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">filePath &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">sparkR.conf</span>(<span class="st">&quot;spark.home&quot;</span>),</a>
+<a class="sourceLine" id="cb27-2" title="2">                         <span class="st">&quot;/examples/src/main/resources/people.json&quot;</span>)</a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="kw">readLines</span>(filePath, <span class="dt">n =</span> 2L)</a></code></pre></div>
 <pre><code>## [1] &quot;{\&quot;name\&quot;:\&quot;Michael\&quot;}&quot;          &quot;{\&quot;name\&quot;:\&quot;Andy\&quot;, \&quot;age\&quot;:30}&quot;</code></pre>
 <p>We use <code>read.df</code> to read that into a <code>SparkDataFrame</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">people &lt;-<span class="st"> </span><span class="kw">read.df</span>(filePath, <span class="st">&quot;json&quot;</span>)
-<span class="kw">count</span>(people)</code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">people &lt;-<span class="st"> </span><span class="kw">read.df</span>(filePath, <span class="st">&quot;json&quot;</span>)</a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="kw">count</span>(people)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(people)</code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">head</span>(people)</a></code></pre></div>
 <pre><code>##   age    name
 ## 1  NA Michael
 ## 2  30    Andy
 ## 3  19  Justin</code></pre>
 <p>SparkR automatically infers the schema from the JSON file.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">printSchema</span>(people)</code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">printSchema</span>(people)</a></code></pre></div>
 <pre><code>## root
 ##  |-- age: long (nullable = true)
 ##  |-- name: string (nullable = true)</code></pre>
 <p>If we want to read multiple JSON files, <code>read.json</code> can be used.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">people &lt;-<span class="st"> </span><span class="kw">read.json</span>(<span class="kw">paste0</span>(<span class="kw">Sys.getenv</span>(<span class="st">&quot;SPARK_HOME&quot;</span>),
-                           <span class="kw">c</span>(<span class="st">&quot;/examples/src/main/resources/people.json&quot;</span>,
-                             <span class="st">&quot;/examples/src/main/resources/people.json&quot;</span>)))
-<span class="kw">count</span>(people)</code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">people &lt;-<span class="st"> </span><span class="kw">read.json</span>(<span class="kw">paste0</span>(<span class="kw">Sys.getenv</span>(<span class="st">&quot;SPARK_HOME&quot;</span>),</a>
+<a class="sourceLine" id="cb35-2" title="2">                           <span class="kw">c</span>(<span class="st">&quot;/examples/src/main/resources/people.json&quot;</span>,</a>
+<a class="sourceLine" id="cb35-3" title="3">                             <span class="st">&quot;/examples/src/main/resources/people.json&quot;</span>)))</a>
+<a class="sourceLine" id="cb35-4" title="4"><span class="kw">count</span>(people)</a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>The data sources API can also be used to save out <code>SparkDataFrames</code> into multiple file formats. For example we can save the <code>SparkDataFrame</code> from the previous example to a Parquet file using <code>write.df</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.df</span>(people, <span class="dt">path =</span> <span class="st">&quot;people.parquet&quot;</span>, <span class="dt">source =</span> <span class="st">&quot;parquet&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;overwrite&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">write.df</span>(people, <span class="dt">path =</span> <span class="st">&quot;people.parquet&quot;</span>, <span class="dt">source =</span> <span class="st">&quot;parquet&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;overwrite&quot;</span>)</a></code></pre></div>
 </div>
 <div id="hive-tables" class="section level3">
 <h3>Hive Tables</h3>
 <p>You can also create SparkDataFrames from Hive tables. To do this we will need to create a SparkSession with Hive support which can access tables in the Hive MetaStore. Note that Spark should have been built with Hive support and more details can be found in the <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html">SQL Programming Guide</a>. In SparkR, by default it will attempt to create a SparkSession with Hive support enabled (<code>enableHiveSupport = TRUE</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sql</span>(<span class="st">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span>)
-
-txtPath &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">sparkR.conf</span>(<span class="st">&quot;spark.home&quot;</span>), <span class="st">&quot;/examples/src/main/resources/kv1.txt&quot;</span>)
-sqlCMD &lt;-<span class="st"> </span><span class="kw">sprintf</span>(<span class="st">&quot;LOAD DATA LOCAL INPATH '%s' INTO TABLE src&quot;</span>, txtPath)
-<span class="kw">sql</span>(sqlCMD)
-
-results &lt;-<span class="st"> </span><span class="kw">sql</span>(<span class="st">&quot;FROM src SELECT key, value&quot;</span>)
-
-<span class="co"># results is now a SparkDataFrame</span>
-<span class="kw">head</span>(results)</code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">sql</span>(<span class="st">&quot;CREATE TABLE IF NOT EXISTS src (key INT, value STRING)&quot;</span>)</a>
+<a class="sourceLine" id="cb38-2" title="2"></a>
+<a class="sourceLine" id="cb38-3" title="3">txtPath &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">sparkR.conf</span>(<span class="st">&quot;spark.home&quot;</span>), <span class="st">&quot;/examples/src/main/resources/kv1.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb38-4" title="4">sqlCMD &lt;-<span class="st"> </span><span class="kw">sprintf</span>(<span class="st">&quot;LOAD DATA LOCAL INPATH &#39;%s&#39; INTO TABLE src&quot;</span>, txtPath)</a>
+<a class="sourceLine" id="cb38-5" title="5"><span class="kw">sql</span>(sqlCMD)</a>
+<a class="sourceLine" id="cb38-6" title="6"></a>
+<a class="sourceLine" id="cb38-7" title="7">results &lt;-<span class="st"> </span><span class="kw">sql</span>(<span class="st">&quot;FROM src SELECT key, value&quot;</span>)</a>
+<a class="sourceLine" id="cb38-8" title="8"></a>
+<a class="sourceLine" id="cb38-9" title="9"><span class="co"># results is now a SparkDataFrame</span></a>
+<a class="sourceLine" id="cb38-10" title="10"><span class="kw">head</span>(results)</a></code></pre></div>
 </div>
 </div>
 <div id="data-processing" class="section level2">
@@ -408,34 +636,34 @@ results &lt;-<span class="st"> </span><span class="kw">sql</span>(<span class="s
 <li><p>describe conditions. In SparkR, the Column object representation can be inserted into the condition directly, or we can use a character string to describe the condition, without referring to the <code>SparkDataFrame</code> used. For example, to select rows with value &gt; 1, we can write <code>filter(df, df$col &gt; 1)</code> or <code>filter(df, &quot;col &gt; 1&quot;)</code>.</p></li>
 </ol>
 <p>Here are more concrete examples.</p>
-<table style="width:26%;">
+<table>
 <colgroup>
-<col width="12%"></col>
-<col width="13%"></col>
+<col width="47%"></col>
+<col width="52%"></col>
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">dplyr</th>
-<th align="left">SparkR</th>
+<th>dplyr</th>
+<th>SparkR</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>select(mtcars, mpg, hp)</code></td>
-<td align="left"><code>select(carsDF, &quot;mpg&quot;, &quot;hp&quot;)</code></td>
+<td><code>select(mtcars, mpg, hp)</code></td>
+<td><code>select(carsDF, &quot;mpg&quot;, &quot;hp&quot;)</code></td>
 </tr>
 <tr class="even">
-<td align="left"><code>filter(mtcars, mpg &gt; 20, hp &gt; 100)</code></td>
-<td align="left"><code>filter(carsDF, carsDF$mpg &gt; 20, carsDF$hp &gt; 100)</code></td>
+<td><code>filter(mtcars, mpg &gt; 20, hp &gt; 100)</code></td>
+<td><code>filter(carsDF, carsDF$mpg &gt; 20, carsDF$hp &gt; 100)</code></td>
 </tr>
 </tbody>
 </table>
 <p>Other differences will be mentioned in the specific methods.</p>
 <p>We use the <code>SparkDataFrame</code> <code>carsDF</code> created above. We can get basic information about the <code>SparkDataFrame</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">carsDF</code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">carsDF</a></code></pre></div>
 <pre><code>## SparkDataFrame[model:string, mpg:double, cyl:double, disp:double, hp:double, drat:double, wt:double, qsec:double, vs:double, am:double, gear:double, carb:double]</code></pre>
 <p>Print out the schema in tree format.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">printSchema</span>(carsDF)</code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">printSchema</span>(carsDF)</a></code></pre></div>
 <pre><code>## root
 ##  |-- model: string (nullable = true)
 ##  |-- mpg: double (nullable = true)
@@ -455,7 +683,7 @@ results &lt;-<span class="st"> </span><span class="kw">sql</span>(<span class="s
 <h4>Selecting rows, columns</h4>
 <p>SparkDataFrames support a number of functions to do structured data processing. Here we include some basic examples and a complete list can be found in the <a href="https://spark.apache.org/docs/latest/api/R/index.html">API</a> docs:</p>
 <p>You can also pass in column name as strings.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">select</span>(carsDF, <span class="st">&quot;mpg&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">head</span>(<span class="kw">select</span>(carsDF, <span class="st">&quot;mpg&quot;</span>))</a></code></pre></div>
 <pre><code>##    mpg
 ## 1 21.0
 ## 2 21.0
@@ -464,7 +692,7 @@ results &lt;-<span class="st"> </span><span class="kw">sql</span>(<span class="s
 ## 5 18.7
 ## 6 18.1</code></pre>
 <p>Filter the SparkDataFrame to only retain rows with mpg less than 20 miles/gallon.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">filter</span>(carsDF, carsDF$mpg &lt;<span class="st"> </span><span class="dv">20</span>))</code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">head</span>(<span class="kw">filter</span>(carsDF, carsDF<span class="op">$</span>mpg <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>))</a></code></pre></div>
 <pre><code>##               model  mpg cyl  disp  hp drat   wt  qsec vs am gear carb
 ## 1 Hornet Sportabout 18.7   8 360.0 175 3.15 3.44 17.02  0  0    3    2
 ## 2           Valiant 18.1   6 225.0 105 2.76 3.46 20.22  1  0    3    1
@@ -482,26 +710,26 @@ results &lt;-<span class="st"> </span><span class="kw">sql</span>(<span class="s
 </ol>
 <p>A number of widely used functions are supported to aggregate data after grouping, including <code>avg</code>, <code>countDistinct</code>, <code>count</code>, <code>first</code>, <code>kurtosis</code>, <code>last</code>, <code>max</code>, <code>mean</code>, <code>min</code>, <code>sd</code>, <code>skewness</code>, <code>stddev_pop</code>, <code>stddev_samp</code>, <code>sumDistinct</code>, <code>sum</code>, <code>var_pop</code>, <code>var_samp</code>, <code>var</code>. See the <a href="https://spark.apache.org/docs/latest/api/R/column_aggregate_functions.html">API doc for aggregate functions</a> linked there.</p>
 <p>For example we can compute a histogram of the number of cylinders in the <code>mtcars</code> dataset as shown below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">numCyl &lt;-<span class="st"> </span><span class="kw">summarize</span>(<span class="kw">groupBy</span>(carsDF, carsDF$cyl), <span class="dt">count =</span> <span class="kw">n</span>(carsDF$cyl))
-<span class="kw">head</span>(numCyl)</code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">numCyl &lt;-<span class="st"> </span><span class="kw">summarize</span>(<span class="kw">groupBy</span>(carsDF, carsDF<span class="op">$</span>cyl), <span class="dt">count =</span> <span class="kw">n</span>(carsDF<span class="op">$</span>cyl))</a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="kw">head</span>(numCyl)</a></code></pre></div>
 <pre><code>##   cyl count
 ## 1   8    14
 ## 2   4    11
 ## 3   6     7</code></pre>
 <p>Use <code>cube</code> or <code>rollup</code> to compute subtotals across multiple dimensions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">cube</span>(carsDF, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;gear&quot;</span>, <span class="st">&quot;am&quot;</span>), <span class="st">&quot;mpg&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">mean</span>(<span class="kw">cube</span>(carsDF, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;gear&quot;</span>, <span class="st">&quot;am&quot;</span>), <span class="st">&quot;mpg&quot;</span>)</a></code></pre></div>
 <pre><code>## SparkDataFrame[cyl:double, gear:double, am:double, avg(mpg):double]</code></pre>
 <p>generates groupings for {(<code>cyl</code>, <code>gear</code>, <code>am</code>), (<code>cyl</code>, <code>gear</code>), (<code>cyl</code>), ()}, while</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">rollup</span>(carsDF, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;gear&quot;</span>, <span class="st">&quot;am&quot;</span>), <span class="st">&quot;mpg&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">mean</span>(<span class="kw">rollup</span>(carsDF, <span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;gear&quot;</span>, <span class="st">&quot;am&quot;</span>), <span class="st">&quot;mpg&quot;</span>)</a></code></pre></div>
 <pre><code>## SparkDataFrame[cyl:double, gear:double, am:double, avg(mpg):double]</code></pre>
 <p>generates groupings for all possible combinations of grouping columns.</p>
 </div>
 <div id="operating-on-columns" class="section level4">
 <h4>Operating on Columns</h4>
 <p>SparkR also provides a number of functions that can directly applied to columns for data processing and during aggregation. The example below shows the use of basic arithmetic functions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">carsDF_km &lt;-<span class="st"> </span>carsDF
-carsDF_km$kmpg &lt;-<span class="st"> </span>carsDF_km$mpg *<span class="st"> </span><span class="fl">1.61</span>
-<span class="kw">head</span>(<span class="kw">select</span>(carsDF_km, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;kmpg&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">carsDF_km &lt;-<span class="st"> </span>carsDF</a>
+<a class="sourceLine" id="cb53-2" title="2">carsDF_km<span class="op">$</span>kmpg &lt;-<span class="st"> </span>carsDF_km<span class="op">$</span>mpg <span class="op">*</span><span class="st"> </span><span class="fl">1.61</span></a>
+<a class="sourceLine" id="cb53-3" title="3"><span class="kw">head</span>(<span class="kw">select</span>(carsDF_km, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;kmpg&quot;</span>))</a></code></pre></div>
 <pre><code>##               model  mpg   kmpg
 ## 1         Mazda RX4 21.0 33.810
 ## 2     Mazda RX4 Wag 21.0 33.810
@@ -521,10 +749,10 @@ carsDF_km$kmpg &lt;-<span class="st"> </span>carsDF_km$mpg *<span class="st"> </
 <p>Formally, the <em>group</em> mentioned above is called the <em>frame</em>. Every input row can have a unique frame associated with it and the output of the window function on that row is based on the rows confined in that frame.</p>
 <p>Window functions are often used in conjunction with the following functions: <code>windowPartitionBy</code>, <code>windowOrderBy</code>, <code>partitionBy</code>, <code>orderBy</code>, <code>over</code>. To illustrate this we next look at an example.</p>
 <p>We still use the <code>mtcars</code> dataset. The corresponding <code>SparkDataFrame</code> is <code>carsDF</code>. Suppose for each number of cylinders, we want to calculate the rank of each car in <code>mpg</code> within the group.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">carsSubDF &lt;-<span class="st"> </span><span class="kw">select</span>(carsDF, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>)
-ws &lt;-<span class="st"> </span><span class="kw">orderBy</span>(<span class="kw">windowPartitionBy</span>(<span class="st">&quot;cyl&quot;</span>), <span class="st">&quot;mpg&quot;</span>)
-carsRank &lt;-<span class="st"> </span><span class="kw">withColumn</span>(carsSubDF, <span class="st">&quot;rank&quot;</span>, <span class="kw">over</span>(<span class="kw">rank</span>(), ws))
-<span class="kw">head</span>(carsRank, <span class="dt">n =</span> 20L)</code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">carsSubDF &lt;-<span class="st"> </span><span class="kw">select</span>(carsDF, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;cyl&quot;</span>)</a>
+<a class="sourceLine" id="cb55-2" title="2">ws &lt;-<span class="st"> </span><span class="kw">orderBy</span>(<span class="kw">windowPartitionBy</span>(<span class="st">&quot;cyl&quot;</span>), <span class="st">&quot;mpg&quot;</span>)</a>
+<a class="sourceLine" id="cb55-3" title="3">carsRank &lt;-<span class="st"> </span><span class="kw">withColumn</span>(carsSubDF, <span class="st">&quot;rank&quot;</span>, <span class="kw">over</span>(<span class="kw">rank</span>(), ws))</a>
+<a class="sourceLine" id="cb55-4" title="4"><span class="kw">head</span>(carsRank, <span class="dt">n =</span> 20L)</a></code></pre></div>
 <pre><code>##                  model  mpg cyl rank
 ## 1   Cadillac Fleetwood 10.4   8    1
 ## 2  Lincoln Continental 10.4   8    1
@@ -562,10 +790,10 @@ carsRank &lt;-<span class="st"> </span><span class="kw">withColumn</span>(carsSu
 <h4>Apply by Partition</h4>
 <p><code>dapply</code> can apply a function to each partition of a <code>SparkDataFrame</code>. The function to be applied to each partition of the <code>SparkDataFrame</code> should have only one parameter, a <code>data.frame</code> corresponding to a partition, and the output should be a <code>data.frame</code> as well. Schema specifies the row format of the resulting a <code>SparkDataFrame</code>. It must match to data types of returned value. See <a href="#DataTypes">here</a> for mapping between R and Spark.</p>
 <p>We convert <code>mpg</code> to <code>kmpg</code> (kilometers per gallon). <code>carsSubDF</code> is a <code>SparkDataFrame</code> with a subset of <code>carsDF</code> columns.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">carsSubDF &lt;-<span class="st"> </span><span class="kw">select</span>(carsDF, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>)
-schema &lt;-<span class="st"> &quot;model STRING, mpg DOUBLE, kmpg DOUBLE&quot;</span>
-out &lt;-<span class="st"> </span><span class="kw">dapply</span>(carsSubDF, function(x) { x &lt;-<span class="st"> </span><span class="kw">cbind</span>(x, x$mpg *<span class="st"> </span><span class="fl">1.61</span>) }, schema)
-<span class="kw">head</span>(<span class="kw">collect</span>(out))</code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1">carsSubDF &lt;-<span class="st"> </span><span class="kw">select</span>(carsDF, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>)</a>
+<a class="sourceLine" id="cb57-2" title="2">schema &lt;-<span class="st"> &quot;model STRING, mpg DOUBLE, kmpg DOUBLE&quot;</span></a>
+<a class="sourceLine" id="cb57-3" title="3">out &lt;-<span class="st"> </span><span class="kw">dapply</span>(carsSubDF, <span class="cf">function</span>(x) { x &lt;-<span class="st"> </span><span class="kw">cbind</span>(x, x<span class="op">$</span>mpg <span class="op">*</span><span class="st"> </span><span class="fl">1.61</span>) }, schema)</a>
+<a class="sourceLine" id="cb57-4" title="4"><span class="kw">head</span>(<span class="kw">collect</span>(out))</a></code></pre></div>
 <pre><code>##               model  mpg   kmpg
 ## 1         Mazda RX4 21.0 33.810
 ## 2     Mazda RX4 Wag 21.0 33.810
@@ -574,12 +802,12 @@ out &lt;-<span class="st"> </span><span class="kw">dapply</span>(carsSubDF, func
 ## 5 Hornet Sportabout 18.7 30.107
 ## 6           Valiant 18.1 29.141</code></pre>
 <p>Like <code>dapply</code>, <code>dapplyCollect</code> can apply a function to each partition of a <code>SparkDataFrame</code> and collect the result back. The output of the function should be a <code>data.frame</code>, but no schema is required in this case. Note that <code>dapplyCollect</code> can fail if the output of the UDF on all partitions cannot be pulled into the driver’s memory.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out &lt;-<span class="st"> </span><span class="kw">dapplyCollect</span>(
-         carsSubDF,
-         function(x) {
-           x &lt;-<span class="st"> </span><span class="kw">cbind</span>(x, <span class="st">&quot;kmpg&quot;</span> =<span class="st"> </span>x$mpg *<span class="st"> </span><span class="fl">1.61</span>)
-         })
-<span class="kw">head</span>(out, <span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1">out &lt;-<span class="st"> </span><span class="kw">dapplyCollect</span>(</a>
+<a class="sourceLine" id="cb59-2" title="2">         carsSubDF,</a>
+<a class="sourceLine" id="cb59-3" title="3">         <span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb59-4" title="4">           x &lt;-<span class="st"> </span><span class="kw">cbind</span>(x, <span class="st">&quot;kmpg&quot;</span> =<span class="st"> </span>x<span class="op">$</span>mpg <span class="op">*</span><span class="st"> </span><span class="fl">1.61</span>)</a>
+<a class="sourceLine" id="cb59-5" title="5">         })</a>
+<a class="sourceLine" id="cb59-6" title="6"><span class="kw">head</span>(out, <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>##           model  mpg   kmpg
 ## 1     Mazda RX4 21.0 33.810
 ## 2 Mazda RX4 Wag 21.0 33.810
@@ -588,29 +816,29 @@ out &lt;-<span class="st"> </span><span class="kw">dapply</span>(carsSubDF, func
 <div id="apply-by-group" class="section level4">
 <h4>Apply by Group</h4>
 <p><code>gapply</code> can apply a function to each group of a <code>SparkDataFrame</code>. The function is to be applied to each group of the <code>SparkDataFrame</code> and should have only two parameters: grouping key and R <code>data.frame</code> corresponding to that key. The groups are chosen from <code>SparkDataFrames</code> column(s). The output of function should be a <code>data.frame</code>. Schema specifies the row format of the resulting <code>SparkDataFrame</code>. It must represent R function’s output schema on the basis of Spark data types. The column names of the returned <code>data.frame</code> are set by user. See <a href="#DataTypes">here</a> for mapping between R and Spark.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">schema &lt;-<span class="st"> </span><span class="kw">structType</span>(<span class="kw">structField</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;double&quot;</span>), <span class="kw">structField</span>(<span class="st">&quot;max_mpg&quot;</span>, <span class="st">&quot;double&quot;</span>))
-result &lt;-<span class="st"> </span><span class="kw">gapply</span>(
-    carsDF,
-    <span class="st">&quot;cyl&quot;</span>,
-    function(key, x) {
-        y &lt;-<span class="st"> </span><span class="kw">data.frame</span>(key, <span class="kw">max</span>(x$mpg))
-    },
-    schema)
-<span class="kw">head</span>(<span class="kw">arrange</span>(result, <span class="st">&quot;max_mpg&quot;</span>, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">schema &lt;-<span class="st"> </span><span class="kw">structType</span>(<span class="kw">structField</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;double&quot;</span>), <span class="kw">structField</span>(<span class="st">&quot;max_mpg&quot;</span>, <span class="st">&quot;double&quot;</span>))</a>
+<a class="sourceLine" id="cb61-2" title="2">result &lt;-<span class="st"> </span><span class="kw">gapply</span>(</a>
+<a class="sourceLine" id="cb61-3" title="3">    carsDF,</a>
+<a class="sourceLine" id="cb61-4" title="4">    <span class="st">&quot;cyl&quot;</span>,</a>
+<a class="sourceLine" id="cb61-5" title="5">    <span class="cf">function</span>(key, x) {</a>
+<a class="sourceLine" id="cb61-6" title="6">        y &lt;-<span class="st"> </span><span class="kw">data.frame</span>(key, <span class="kw">max</span>(x<span class="op">$</span>mpg))</a>
+<a class="sourceLine" id="cb61-7" title="7">    },</a>
+<a class="sourceLine" id="cb61-8" title="8">    schema)</a>
+<a class="sourceLine" id="cb61-9" title="9"><span class="kw">head</span>(<span class="kw">arrange</span>(result, <span class="st">&quot;max_mpg&quot;</span>, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>##   cyl max_mpg
 ## 1   4    33.9
 ## 2   6    21.4
 ## 3   8    19.2</code></pre>
 <p>Like <code>gapply</code>, <code>gapplyCollect</code> can apply a function to each partition of a <code>SparkDataFrame</code> and collect the result back to R <code>data.frame</code>. The output of the function should be a <code>data.frame</code> but no schema is required in this case. Note that <code>gapplyCollect</code> can fail if the output of the UDF on all partitions cannot be pulled into the driver’s memory.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">gapplyCollect</span>(
-    carsDF,
-    <span class="st">&quot;cyl&quot;</span>,
-    function(key, x) {
-         y &lt;-<span class="st"> </span><span class="kw">data.frame</span>(key, <span class="kw">max</span>(x$mpg))
-        <span class="kw">colnames</span>(y) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;max_mpg&quot;</span>)
-        y
-    })
-<span class="kw">head</span>(result[<span class="kw">order</span>(result$max_mpg, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), ])</code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">result &lt;-<span class="st"> </span><span class="kw">gapplyCollect</span>(</a>
+<a class="sourceLine" id="cb63-2" title="2">    carsDF,</a>
+<a class="sourceLine" id="cb63-3" title="3">    <span class="st">&quot;cyl&quot;</span>,</a>
+<a class="sourceLine" id="cb63-4" title="4">    <span class="cf">function</span>(key, x) {</a>
+<a class="sourceLine" id="cb63-5" title="5">         y &lt;-<span class="st"> </span><span class="kw">data.frame</span>(key, <span class="kw">max</span>(x<span class="op">$</span>mpg))</a>
+<a class="sourceLine" id="cb63-6" title="6">        <span class="kw">colnames</span>(y) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;max_mpg&quot;</span>)</a>
+<a class="sourceLine" id="cb63-7" title="7">        y</a>
+<a class="sourceLine" id="cb63-8" title="8">    })</a>
+<a class="sourceLine" id="cb63-9" title="9"><span class="kw">head</span>(result[<span class="kw">order</span>(result<span class="op">$</span>max_mpg, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), ])</a></code></pre></div>
 <pre><code>##   cyl max_mpg
 ## 2   4    33.9
 ## 3   6    21.4
@@ -620,18 +848,18 @@ result &lt;-<span class="st"> </span><span class="kw">gapply</span>(
 <h4>Distribute Local Functions</h4>
 <p>Similar to <code>lapply</code> in native R, <code>spark.lapply</code> runs a function over a list of elements and distributes the computations with Spark. <code>spark.lapply</code> works in a manner that is similar to <code>doParallel</code> or <code>lapply</code> to elements of a list. The results of all the computations should fit in a single machine. If that is not the case you can do something like <code>df &lt;- createDataFrame(list)</code> and then use <code>dapply</code>.</p>
 <p>We use <code>svm</code> in package <code>e1071</code> as an example. We use all default settings except for varying costs of constraints violation. <code>spark.lapply</code> can train those different models in parallel.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">costs &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="kw">log</span>(<span class="dv">1</span>), <span class="dt">to =</span> <span class="kw">log</span>(<span class="dv">1000</span>), <span class="dt">length.out =</span> <span class="dv">5</span>))
-train &lt;-<span class="st"> </span>function(cost) {
-  <span class="kw">stopifnot</span>(<span class="kw">requireNamespace</span>(<span class="st">&quot;e1071&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))
-  model &lt;-<span class="st"> </span>e1071::<span class="kw">svm</span>(Species ~<span class="st"> </span>., <span class="dt">data =</span> iris, <span class="dt">cost =</span> cost)
-  <span class="kw">summary</span>(model)
-}</code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1">costs &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="kw">log</span>(<span class="dv">1</span>), <span class="dt">to =</span> <span class="kw">log</span>(<span class="dv">1000</span>), <span class="dt">length.out =</span> <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb65-2" title="2">train &lt;-<span class="st"> </span><span class="cf">function</span>(cost) {</a>
+<a class="sourceLine" id="cb65-3" title="3">  <span class="kw">stopifnot</span>(<span class="kw">requireNamespace</span>(<span class="st">&quot;e1071&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb65-4" title="4">  model &lt;-<span class="st"> </span>e1071<span class="op">::</span><span class="kw">svm</span>(Species <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> iris, <span class="dt">cost =</span> cost)</a>
+<a class="sourceLine" id="cb65-5" title="5">  <span class="kw">summary</span>(model)</a>
+<a class="sourceLine" id="cb65-6" title="6">}</a></code></pre></div>
 <p>Return a list of model’s summaries.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model.summaries &lt;-<span class="st"> </span><span class="kw">spark.lapply</span>(costs, train)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(model.summaries)</code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">model.summaries &lt;-<span class="st"> </span><span class="kw">spark.lapply</span>(costs, train)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">class</span>(model.summaries)</a></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>To avoid lengthy display, we only present the partial result of the second fitted model. You are free to inspect other models as well.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(model.summaries[[<span class="dv">2</span>]])</code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">print</span>(model.summaries[[<span class="dv">2</span>]])</a></code></pre></div>
 <pre><code>## $call
 ## svm(formula = Species ~ ., data = iris, cost = cost)
 ## 
@@ -802,7 +1030,7 @@ train &lt;-<span class="st"> </span>function(cost) {
 ## attr(,&quot;response&quot;)
 ## [1] 1
 ## attr(,&quot;.Environment&quot;)
-## &lt;environment: 0x3161940&gt;
+## &lt;environment: 0x5624c9df5da0&gt;
 ## attr(,&quot;predvars&quot;)
 ## list(Species, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
 ## attr(,&quot;dataClasses&quot;)
@@ -816,13 +1044,13 @@ train &lt;-<span class="st"> </span>function(cost) {
 <div id="sql-queries" class="section level3">
 <h3>SQL Queries</h3>
 <p>A <code>SparkDataFrame</code> can also be registered as a temporary view in Spark SQL so that one can run SQL queries over its data. The sql function enables applications to run SQL queries programmatically and returns the result as a <code>SparkDataFrame</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">people &lt;-<span class="st"> </span><span class="kw">read.df</span>(<span class="kw">paste0</span>(<span class="kw">sparkR.conf</span>(<span class="st">&quot;spark.home&quot;</span>),
-                         <span class="st">&quot;/examples/src/main/resources/people.json&quot;</span>), <span class="st">&quot;json&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">people &lt;-<span class="st"> </span><span class="kw">read.df</span>(<span class="kw">paste0</span>(<span class="kw">sparkR.conf</span>(<span class="st">&quot;spark.home&quot;</span>),</a>
+<a class="sourceLine" id="cb71-2" title="2">                         <span class="st">&quot;/examples/src/main/resources/people.json&quot;</span>), <span class="st">&quot;json&quot;</span>)</a></code></pre></div>
 <p>Register this <code>SparkDataFrame</code> as a temporary view.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">createOrReplaceTempView</span>(people, <span class="st">&quot;people&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">createOrReplaceTempView</span>(people, <span class="st">&quot;people&quot;</span>)</a></code></pre></div>
 <p>SQL statements can be run using the sql method.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">teenagers &lt;-<span class="st"> </span><span class="kw">sql</span>(<span class="st">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span>)
-<span class="kw">head</span>(teenagers)</code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">teenagers &lt;-<span class="st"> </span><span class="kw">sql</span>(<span class="st">&quot;SELECT name FROM people WHERE age &gt;= 13 AND age &lt;= 19&quot;</span>)</a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="kw">head</span>(teenagers)</a></code></pre></div>
 <pre><code>##     name
 ## 1 Justin</code></pre>
 </div>
@@ -837,6 +1065,7 @@ train &lt;-<span class="st"> </span>function(cost) {
 <li><p>Logistic Regression</p></li>
 <li><p>Multilayer Perceptron (MLP)</p></li>
 <li><p>Naive Bayes</p></li>
+<li><p>Factorization Machines (FM) Classifier</p></li>
 </ul>
 </div>
 <div id="regression" class="section level4">
@@ -845,6 +1074,8 @@ train &lt;-<span class="st"> </span>function(cost) {
 <li><p>Accelerated Failure Time (AFT) Survival Model</p></li>
 <li><p>Generalized Linear Model (GLM)</p></li>
 <li><p>Isotonic Regression</p></li>
+<li><p>Linear Regression</p></li>
+<li><p>Factorization Machines (FM) Regressor</p></li>
 </ul>
 </div>
 <div id="tree---classification-and-regression" class="section level4">
@@ -862,6 +1093,7 @@ train &lt;-<span class="st"> </span>function(cost) {
 <li><p>Gaussian Mixture Model (GMM)</p></li>
 <li><p><span class="math inline">\(k\)</span>-means Clustering</p></li>
 <li><p>Latent Dirichlet Allocation (LDA)</p></li>
+<li><p>Power Iteration Clustering (PIC)</p></li>
 </ul>
 </div>
 <div id="collaborative-filtering" class="section level4">
@@ -874,6 +1106,7 @@ train &lt;-<span class="st"> </span>function(cost) {
 <h4>Frequent Pattern Mining</h4>
 <ul>
 <li>FP-growth</li>
+<li>PrefixSpan</li>
 </ul>
 </div>
 <div id="statistics" class="section level4">
@@ -889,50 +1122,50 @@ train &lt;-<span class="st"> </span>function(cost) {
 <div id="training-and-test-sets" class="section level3">
 <h3>Training and Test Sets</h3>
 <p>We can easily split <code>SparkDataFrame</code> into random training and test sets by the <code>randomSplit</code> function. It returns a list of split <code>SparkDataFrames</code> with provided <code>weights</code>. We use <code>carsDF</code> as an example and want to have about <span class="math inline">\(70%\)</span> training data and <span class="math inline">\(30%\)</span> test data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">splitDF_list &lt;-<span class="st"> </span><span class="kw">randomSplit</span>(carsDF, <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.3</span>), <span class="dt">seed =</span> <span class="dv">0</span>)
-carsDF_train &lt;-<span class="st"> </span>splitDF_list[[<span class="dv">1</span>]]
-carsDF_test &lt;-<span class="st"> </span>splitDF_list[[<span class="dv">2</span>]]</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count</span>(carsDF_train)</code></pre></div>
-<pre><code>## [1] 21</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(carsDF_train)</code></pre></div>
-<pre><code>##                model  mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## 1 Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
-## 2         Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
-## 3         Duster 360 14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-## 4           Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-## 5          Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
-## 6     Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count</span>(carsDF_test)</code></pre></div>
-<pre><code>## [1] 11</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(carsDF_test)</code></pre></div>
-<pre><code>##               model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
-## 1       AMC Javelin 15.2   8  304 150 3.15 3.435 17.30  0  0    3    2
-## 2 Chrysler Imperial 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
-## 3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-## 4  Dodge Challenger 15.5   8  318 150 2.76 3.520 16.87  0  0    3    2
-## 5      Ferrari Dino 19.7   6  145 175 3.62 2.770 15.50  0  1    5    6
-## 6     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">splitDF_list &lt;-<span class="st"> </span><span class="kw">randomSplit</span>(carsDF, <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.3</span>), <span class="dt">seed =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb75-2" title="2">carsDF_train &lt;-<span class="st"> </span>splitDF_list[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb75-3" title="3">carsDF_test &lt;-<span class="st"> </span>splitDF_list[[<span class="dv">2</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">count</span>(carsDF_train)</a></code></pre></div>
+<pre><code>## [1] 24</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">head</span>(carsDF_train)</a></code></pre></div>
+<pre><code>##                model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1 Cadillac Fleetwood 10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
+## 2         Camaro Z28 13.3   8  350 245 3.73 3.840 15.41  0  0    3    4
+## 3  Chrysler Imperial 14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
+## 4   Dodge Challenger 15.5   8  318 150 2.76 3.520 16.87  0  0    3    2
+## 5         Duster 360 14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
+## 6       Ferrari Dino 19.7   6  145 175 3.62 2.770 15.50  0  1    5    6</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">count</span>(carsDF_test)</a></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">head</span>(carsDF_test)</a></code></pre></div>
+<pre><code>##            model  mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## 1    AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## 2     Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## 3       Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## 4      Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## 5       Merc 280 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## 6 Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</code></pre>
 </div>
 <div id="models-and-algorithms" class="section level3">
 <h3>Models and Algorithms</h3>
 <div id="linear-support-vector-machine-svm-classifier" class="section level4">
 <h4>Linear Support Vector Machine (SVM) Classifier</h4>
 <p><a href="https://en.wikipedia.org/wiki/Support_vector_machine#Linear_SVM">Linear Support Vector Machine (SVM)</a> classifier is an SVM classifier with linear kernels. This is a binary classifier. We use a simple example to show how to use <code>spark.svmLinear</code> for binary classification.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load training data and create a DataFrame</span>
-t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-<span class="co"># fit a Linear SVM classifier model</span>
-model &lt;-<span class="st"> </span><span class="kw">spark.svmLinear</span>(training,  Survived ~<span class="st"> </span>., <span class="dt">regParam =</span> <span class="fl">0.01</span>, <span class="dt">maxIter =</span> <span class="dv">10</span>)
-<span class="kw">summary</span>(model)</code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="co"># load training data and create a DataFrame</span></a>
+<a class="sourceLine" id="cb84-2" title="2">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb84-3" title="3">training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb84-4" title="4"><span class="co"># fit a Linear SVM classifier model</span></a>
+<a class="sourceLine" id="cb84-5" title="5">model &lt;-<span class="st"> </span><span class="kw">spark.svmLinear</span>(training,  Survived <span class="op">~</span><span class="st"> </span>., <span class="dt">regParam =</span> <span class="fl">0.01</span>, <span class="dt">maxIter =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb84-6" title="6"><span class="kw">summary</span>(model)</a></code></pre></div>
 <pre><code>## $coefficients
 ##                 Estimate
-## (Intercept)  0.155016898
-## Class_Crew   0.616590877
+## (Intercept)  0.692635072
 ## Class_1st    0.000000000
-## Class_3rd    0.148622548
-## Sex_Male     0.210290445
-## Age_Adult    0.323480802
-## Freq        -0.004794042
+## Class_2nd   -0.307809398
+## Class_3rd    0.121448972
+## Sex_Female  -0.230857048
+## Age_Adult    0.663496285
+## Freq        -0.006489479
 ## 
 ## $numClasses
 ## [1] 2
@@ -940,8 +1173,8 @@ model &lt;-<span class="st"> </span><span class="kw">spark.svmLinear</span>(trai
 ## $numFeatures
 ## [1] 6</code></pre>
 <p>Predict values on training data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prediction &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)
-<span class="kw">head</span>(<span class="kw">select</span>(prediction, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">prediction &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)</a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(prediction, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
 <pre><code>##   Class    Sex   Age Freq Survived prediction
 ## 1   1st   Male Child    0       No        Yes
 ## 2   2nd   Male Child    0       No        Yes
@@ -955,22 +1188,22 @@ model &lt;-<span class="st"> </span><span class="kw">spark.svmLinear</span>(trai
 <p><a href="https://en.wikipedia.org/wiki/Logistic_regression">Logistic regression</a> is a widely-used model when the response is categorical. It can be seen as a special case of the <a href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized Linear Predictive Model</a>. We provide <code>spark.logit</code> on top of <code>spark.glm</code> to support logistic regression with advanced hyper-parameters. It supports both binary and multiclass classification with elastic-net regularization and feature standardization, similar to <code>glmnet</code>.</p>
 <p>We use a simple example to demonstrate <code>spark.logit</code> usage. In general, there are three steps of using <code>spark.logit</code>: 1). Create a dataframe from a proper data source; 2). Fit a logistic regression model using <code>spark.logit</code> with a proper parameter setting; and 3). Obtain the coefficient matrix of the fitted model using <code>summary</code> and use the model for prediction with <code>predict</code>.</p>
 <p>Binomial logistic regression</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-model &lt;-<span class="st"> </span><span class="kw">spark.logit</span>(training, Survived ~<span class="st"> </span>., <span class="dt">regParam =</span> <span class="fl">0.04741301</span>)
-<span class="kw">summary</span>(model)</code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb88-2" title="2">training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb88-3" title="3">model &lt;-<span class="st"> </span><span class="kw">spark.logit</span>(training, Survived <span class="op">~</span><span class="st"> </span>., <span class="dt">regParam =</span> <span class="fl">0.04741301</span>)</a>
+<a class="sourceLine" id="cb88-4" title="4"><span class="kw">summary</span>(model)</a></code></pre></div>
 <pre><code>## $coefficients
-##                 Estimate
-## (Intercept) -0.108748837
-## Class_Crew   0.152970953
-## Class_1st   -0.018199615
-## Class_3rd    0.116011205
-## Sex_Male     0.201436637
-## Age_Adult    0.326629954
-## Freq        -0.003310102</code></pre>
+##                  Estimate
+## (Intercept)  0.2255017883
+## Class_1st   -0.1338873857
+## Class_2nd   -0.1479799081
+## Class_3rd    0.0005688335
+## Sex_Female  -0.2011190940
+## Age_Adult    0.3263184079
+## Freq        -0.0033111194</code></pre>
 <p>Predict values on training data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitted &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)
-<span class="kw">head</span>(<span class="kw">select</span>(fitted, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">fitted &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)</a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(fitted, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
 <pre><code>##   Class    Sex   Age Freq Survived prediction
 ## 1   1st   Male Child    0       No        Yes
 ## 2   2nd   Male Child    0       No        Yes
@@ -979,18 +1212,18 @@ model &lt;-<span class="st"> </span><span class="kw">spark.logit</span>(training
 ## 5   1st Female Child    0       No         No
 ## 6   2nd Female Child    0       No         No</code></pre>
 <p>Multinomial logistic regression against three classes</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-<span class="co"># Note in this case, Spark infers it is multinomial logistic regression, so family = &quot;multinomial&quot; is optional.</span>
-model &lt;-<span class="st"> </span><span class="kw">spark.logit</span>(training, Class ~<span class="st"> </span>., <span class="dt">regParam =</span> <span class="fl">0.07815179</span>)
-<span class="kw">summary</span>(model)</code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb92-2" title="2">training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb92-3" title="3"><span class="co"># Note in this case, Spark infers it is multinomial logistic regression, so family = &quot;multinomial&quot; is optional.</span></a>
+<a class="sourceLine" id="cb92-4" title="4">model &lt;-<span class="st"> </span><span class="kw">spark.logit</span>(training, Class <span class="op">~</span><span class="st"> </span>., <span class="dt">regParam =</span> <span class="fl">0.07815179</span>)</a>
+<a class="sourceLine" id="cb92-5" title="5"><span class="kw">summary</span>(model)</a></code></pre></div>
 <pre><code>## $coefficients
-##                     Crew          1st          3rd          2nd
-## (Intercept)  0.055749216 -0.036372587  0.020150962 -0.039527591
-## Sex_Male    -0.131326302  0.088032755 -0.059233656  0.102527203
-## Age_Adult   -0.208864050  0.141940085 -0.102563703  0.169487668
-## Survived_No -0.081293328  0.052721700 -0.029409091  0.057980720
-## Freq         0.002222453 -0.001555913  0.001303827 -0.001970366</code></pre>
+##                      1st          2nd          3rd         Crew
+## (Intercept)  0.051660823  0.062998123 -0.039083216 -0.075575730
+## Sex_Female  -0.088032026 -0.102525921  0.059233608  0.131324339
+## Age_Adult    0.141939175  0.169486920 -0.102562454 -0.208863640
+## Survived_No  0.052720981  0.057981652 -0.029409574 -0.081293060
+## Freq        -0.001555915 -0.001970359  0.001303828  0.002222447</code></pre>
 </div>
 <div id="multilayer-perceptron" class="section level4">
 <h4>Multilayer Perceptron</h4>
@@ -1007,13 +1240,13 @@ f(z_i) = \frac{e^{z_i}}{\sum_{k=1}^N e^{z_k}}.
 <p>MLPC employs backpropagation for learning the model. We use the logistic loss function for optimization and L-BFGS as an optimization routine.</p>
 <p><code>spark.mlp</code> requires at least two columns in <code>data</code>: one named <code>&quot;label&quot;</code> and the other one <code>&quot;features&quot;</code>. The <code>&quot;features&quot;</code> column should be in libSVM-format.</p>
 <p>We use Titanic data set to show how to use <code>spark.mlp</code> in classification.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-<span class="co"># fit a Multilayer Perceptron Classification Model</span>
-model &lt;-<span class="st"> </span><span class="kw">spark.mlp</span>(training, Survived ~<span class="st"> </span>Age +<span class="st"> </span>Sex, <span class="dt">blockSize =</span> <span class="dv">128</span>, <span class="dt">layers =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">solver =</span> <span class="st">&quot;l-bfgs&quot;</span>, <span class="dt">maxIter =</span> <span class="dv">100</span>, <span class="dt">tol =</span> <span class="fl">0.5</span>, <span class="dt">stepSize =</span> <span class="dv">1</span>, <span class="dt">seed =</span> <span class="dv">1</span>, <span class="dt">initialWeights =</span> <span class="kw">c</span>( <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>))</code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb94-2" title="2">training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb94-3" title="3"><span class="co"># fit a Multilayer Perceptron Classification Model</span></a>
+<a class="sourceLine" id="cb94-4" title="4">model &lt;-<span class="st"> </span><span class="kw">spark.mlp</span>(training, Survived <span class="op">~</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>Sex, <span class="dt">blockSize =</span> <span class="dv">128</span>, <span class="dt">layers =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">solver =</span> <span class="st">&quot;l-bfgs&quot;</span>, <span class="dt">maxIter =</span> <span class="dv">100</span>, <span class="dt">tol =</span> <span class="fl">0.5</span>, <span class="dt">stepSize =</span> <span class="dv">1</span>, <span class="dt">seed =</span> <span class="dv">1</span>, <span class="dt">initialWeights =</span> <span class="kw">c</span>( <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>))</a></code></pre></div>
 <p>To avoid lengthy display, we only present partial results of the model summary. You can check the full result from your sparkR shell.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># check the summary of the fitted model</span>
-<span class="kw">summary</span>(model)</code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="co"># check the summary of the fitted model</span></a>
+<a class="sourceLine" id="cb95-2" title="2"><span class="kw">summary</span>(model)</a></code></pre></div>
 <pre><code>## $numOfInputs
 ## [1] 2
 ## 
@@ -1041,9 +1274,9 @@ model &lt;-<span class="st"> </span><span class="kw">spark.mlp</span>(training, 
 ## 
 ## $weights[[6]]
 ## [1] 9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make predictions use the fitted model</span>
-predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)
-<span class="kw">head</span>(<span class="kw">select</span>(predictions, predictions$prediction))</code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="co"># make predictions use the fitted model</span></a>
+<a class="sourceLine" id="cb97-2" title="2">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)</a>
+<a class="sourceLine" id="cb97-3" title="3"><span class="kw">head</span>(<span class="kw">select</span>(predictions, predictions<span class="op">$</span>prediction))</a></code></pre></div>
 <pre><code>##   prediction
 ## 1         No
 ## 2         No
@@ -1055,20 +1288,20 @@ predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(model,
 <div id="naive-bayes" class="section level4">
 <h4>Naive Bayes</h4>
 <p>Naive Bayes model assumes independence among the features. <code>spark.naiveBayes</code> fits a <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Bernoulli_naive_Bayes">Bernoulli naive Bayes model</a> against a SparkDataFrame. The data should be all categorical. These models are often used for document classification.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">titanic &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-titanicDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(titanic[titanic$Freq &gt;<span class="st"> </span><span class="dv">0</span>, -<span class="dv">5</span>])
-naiveBayesModel &lt;-<span class="st"> </span><span class="kw">spark.naiveBayes</span>(titanicDF, Survived ~<span class="st"> </span>Class +<span class="st"> </span>Sex +<span class="st"> </span>Age)
-<span class="kw">summary</span>(naiveBayesModel)</code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">titanic &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb99-2" title="2">titanicDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(titanic[titanic<span class="op">$</span>Freq <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="dv">-5</span>])</a>
+<a class="sourceLine" id="cb99-3" title="3">naiveBayesModel &lt;-<span class="st"> </span><span class="kw">spark.naiveBayes</span>(titanicDF, Survived <span class="op">~</span><span class="st"> </span>Class <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age)</a>
+<a class="sourceLine" id="cb99-4" title="4"><span class="kw">summary</span>(naiveBayesModel)</a></code></pre></div>
 <pre><code>## $apriori
 ##            Yes        No
 ## [1,] 0.5769231 0.4230769
 ## 
 ## $tables
-##     Class_3rd Class_1st Class_2nd Sex_Male Age_Adult
-## Yes 0.3125    0.3125    0.3125    0.5      0.5625   
-## No  0.4166667 0.25      0.25      0.5      0.75</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">naiveBayesPrediction &lt;-<span class="st"> </span><span class="kw">predict</span>(naiveBayesModel, titanicDF)
-<span class="kw">head</span>(<span class="kw">select</span>(naiveBayesPrediction, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+##     Class_3rd Class_1st Class_2nd Sex_Female Age_Adult
+## Yes 0.3125    0.3125    0.3125    0.5        0.5625   
+## No  0.4166667 0.25      0.25      0.5        0.75</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">naiveBayesPrediction &lt;-<span class="st"> </span><span class="kw">predict</span>(naiveBayesModel, titanicDF)</a>
+<a class="sourceLine" id="cb101-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(naiveBayesPrediction, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
 <pre><code>##   Class    Sex   Age Survived prediction
 ## 1   3rd   Male Child       No        Yes
 ## 2   3rd Female Child       No        Yes
@@ -1077,22 +1310,63 @@ naiveBayesModel &lt;-<span class="st"> </span><span class="kw">spark.naiveBayes<
 ## 5   3rd   Male Adult       No         No
 ## 6  Crew   Male Adult       No        Yes</code></pre>
 </div>
+<div id="factorization-machines-classifier" class="section level4">
+<h4>Factorization Machines Classifier</h4>
+<p>Factorization Machines for classification problems.</p>
+<p>For background and details about the implementation of factorization machines, refer to the <a href="https://spark.apache.org/docs/latest/ml-classification-regression.html#factorization-machines">Factorization Machines section</a>.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb103-2" title="2">training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb103-3" title="3"></a>
+<a class="sourceLine" id="cb103-4" title="4">model &lt;-<span class="st"> </span><span class="kw">spark.fmClassifier</span>(training, Survived <span class="op">~</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>Sex)</a>
+<a class="sourceLine" id="cb103-5" title="5"><span class="kw">summary</span>(model)</a></code></pre></div>
+<pre><code>## $coefficients
+##                 Estimate
+## (Intercept) 0.0064275991
+## Age_Adult   0.0001294448
+## Sex_Female  0.0001294448
+## 
+## $factors
+##            [,1]        [,2]      [,3]       [,4]        [,5]        [,6]
+## [1,] -0.3256224  0.11912568 0.1460235  0.1620567  0.13153516  0.06403695
+## [2,] -0.1382155 -0.03658261 0.1717808 -0.1602241 -0.08446129 -0.19287098
+##             [,7]        [,8]
+## [1,] -0.03292446 -0.05166818
+## [2,]  0.19252571  0.06237194
+## 
+## $numClasses
+## [1] 2
+## 
+## $numFeatures
+## [1] 2
+## 
+## $factorSize
+## [1] 8</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)</a>
+<a class="sourceLine" id="cb105-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(predictions, predictions<span class="op">$</span>prediction))</a></code></pre></div>
+<pre><code>##   prediction
+## 1        Yes
+## 2        Yes
+## 3        Yes
+## 4        Yes
+## 5        Yes
+## 6        Yes</code></pre>
+</div>
 <div id="accelerated-failure-time-survival-model" class="section level4">
 <h4>Accelerated Failure Time Survival Model</h4>
 <p>Survival analysis studies the expected duration of time until an event happens, and often the relationship with risk factors or treatment taken on the subject. In contrast to standard regression analysis, survival modeling has to deal with special characteristics in the data including non-negative survival time and censoring.</p>
 <p>Accelerated Failure Time (AFT) model is a parametric survival model for censored data that assumes the effect of a covariate is to accelerate or decelerate the life course of an event by some constant. For more information, refer to the Wikipedia page <a href="https://en.wikipedia.org/wiki/Accelerated_failure_time_model">AFT Model</a> and the references there. Different from a <a href="https://en.wikipedia.org/wiki/Proportional_hazards_model">Proportional Hazards Model</a> designed for the same purpose, the AFT model is easier to parallelize because each instance contributes to the objective function independently.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(survival)
-ovarianDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(ovarian)
-aftModel &lt;-<span class="st"> </span><span class="kw">spark.survreg</span>(ovarianDF, <span class="kw">Surv</span>(futime, fustat) ~<span class="st"> </span>ecog_ps +<span class="st"> </span>rx)
-<span class="kw">summary</span>(aftModel)</code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">library</span>(survival)</a>
+<a class="sourceLine" id="cb107-2" title="2">ovarianDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(ovarian)</a>
+<a class="sourceLine" id="cb107-3" title="3">aftModel &lt;-<span class="st"> </span><span class="kw">spark.survreg</span>(ovarianDF, <span class="kw">Surv</span>(futime, fustat) <span class="op">~</span><span class="st"> </span>ecog_ps <span class="op">+</span><span class="st"> </span>rx)</a>
+<a class="sourceLine" id="cb107-4" title="4"><span class="kw">summary</span>(aftModel)</a></code></pre></div>
 <pre><code>## $coefficients
 ##                  Value
 ## (Intercept)  6.8966930
 ## ecog_ps     -0.3850426
 ## rx           0.5286457
 ## Log(scale)  -0.1234418</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aftPredictions &lt;-<span class="st"> </span><span class="kw">predict</span>(aftModel, ovarianDF)
-<span class="kw">head</span>(aftPredictions)</code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">aftPredictions &lt;-<span class="st"> </span><span class="kw">predict</span>(aftModel, ovarianDF)</a>
+<a class="sourceLine" id="cb109-2" title="2"><span class="kw">head</span>(aftPredictions)</a></code></pre></div>
 <pre><code>##   futime fustat     age resid_ds rx ecog_ps label prediction
 ## 1     59      1 72.3315        2  1       1    59  1141.7256
 ## 2    115      1 74.4932        2  1       1   115  1141.7256
@@ -1107,48 +1381,48 @@ aftModel &lt;-<span class="st"> </span><span class="kw">spark.survreg</span>(ova
 <table>
 <thead>
 <tr class="header">
-<th align="left">Family</th>
-<th align="left">Link Function</th>
+<th>Family</th>
+<th>Link Function</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">gaussian</td>
-<td align="left">identity, log, inverse</td>
+<td>gaussian</td>
+<td>identity, log, inverse</td>
 </tr>
 <tr class="even">
-<td align="left">binomial</td>
-<td align="left">logit, probit, cloglog (complementary log-log)</td>
+<td>binomial</td>
+<td>logit, probit, cloglog (complementary log-log)</td>
 </tr>
 <tr class="odd">
-<td align="left">poisson</td>
-<td align="left">log, identity, sqrt</td>
+<td>poisson</td>
+<td>log, identity, sqrt</td>
 </tr>
 <tr class="even">
-<td align="left">gamma</td>
-<td align="left">inverse, identity, log</td>
+<td>gamma</td>
+<td>inverse, identity, log</td>
 </tr>
 <tr class="odd">
-<td align="left">tweedie</td>
-<td align="left">power link function</td>
+<td>tweedie</td>
+<td>power link function</td>
 </tr>
 </tbody>
 </table>
 <p>There are three ways to specify the <code>family</code> argument.</p>
 <ul>
-<li><p>Family name as a character string, e.g. <code>family = &quot;gaussian&quot;</code>.</p></li>
-<li><p>Family function, e.g. <code>family = binomial</code>.</p></li>
-<li><p>Result returned by a family function, e.g. <code>family = poisson(link = log)</code>.</p></li>
-<li>Note that there are two ways to specify the tweedie family:</li>
-</ul>
+<li><p>Family name as a character string, e.g. <code>family = &quot;gaussian&quot;</code>.</p></li>
+<li><p>Family function, e.g. <code>family = binomial</code>.</p></li>
+<li><p>Result returned by a family function, e.g. <code>family = poisson(link = log)</code>.</p></li>
+<li>Note that there are two ways to specify the tweedie family:
 <ol style="list-style-type: lower-alpha">
 <li>Set <code>family = &quot;tweedie&quot;</code> and specify the <code>var.power</code> and <code>link.power</code></li>
 <li>When package <code>statmod</code> is loaded, the tweedie family is specified using the family definition therein, i.e., <code>tweedie()</code>.</li>
-</ol>
+</ol></li>
+</ul>
 <p>For more information regarding the families and their link functions, see the Wikipedia page <a href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized Linear Model</a>.</p>
 <p>We use the <code>mtcars</code> dataset as an illustration. The corresponding <code>SparkDataFrame</code> is <code>carsDF</code>. After fitting the model, we print out a summary and see the fitted values by making predictions on the original dataset. We can also pass into a new <code>SparkDataFrame</code> of same schema to predict on new data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gaussianGLM &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(carsDF, mpg ~<span class="st"> </span>wt +<span class="st"> </span>hp)
-<span class="kw">summary</span>(gaussianGLM)</code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">gaussianGLM &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(carsDF, mpg <span class="op">~</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>hp)</a>
+<a class="sourceLine" id="cb111-2" title="2"><span class="kw">summary</span>(gaussianGLM)</a></code></pre></div>
 <pre><code>## 
 ## Deviance Residuals: 
 ## (Note: These are approximate quantiles with relative error &lt;= 0.01)
@@ -1169,8 +1443,8 @@ aftModel &lt;-<span class="st"> </span><span class="kw">spark.survreg</span>(ova
 ## 
 ## Number of Fisher Scoring iterations: 1</code></pre>
 <p>When doing prediction, a new column called <code>prediction</code> will be appended. Let’s look at only a subset of columns here.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gaussianFitted &lt;-<span class="st"> </span><span class="kw">predict</span>(gaussianGLM, carsDF)
-<span class="kw">head</span>(<span class="kw">select</span>(gaussianFitted, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;prediction&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">gaussianFitted &lt;-<span class="st"> </span><span class="kw">predict</span>(gaussianGLM, carsDF)</a>
+<a class="sourceLine" id="cb113-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(gaussianFitted, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;prediction&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;hp&quot;</span>))</a></code></pre></div>
 <pre><code>##               model prediction  mpg    wt  hp
 ## 1         Mazda RX4   23.57233 21.0 2.620 110
 ## 2     Mazda RX4 Wag   22.58348 21.0 2.875 110
@@ -1179,8 +1453,8 @@ aftModel &lt;-<span class="st"> </span><span class="kw">spark.survreg</span>(ova
 ## 5 Hornet Sportabout   18.32727 18.7 3.440 175
 ## 6           Valiant   20.47382 18.1 3.460 105</code></pre>
 <p>The following is the same fit using the tweedie family:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tweedieGLM1 &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(carsDF, mpg ~<span class="st"> </span>wt +<span class="st"> </span>hp, <span class="dt">family =</span> <span class="st">&quot;tweedie&quot;</span>, <span class="dt">var.power =</span> <span class="fl">0.0</span>)
-<span class="kw">summary</span>(tweedieGLM1)</code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">tweedieGLM1 &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(carsDF, mpg <span class="op">~</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>hp, <span class="dt">family =</span> <span class="st">&quot;tweedie&quot;</span>, <span class="dt">var.power =</span> <span class="fl">0.0</span>)</a>
+<a class="sourceLine" id="cb115-2" title="2"><span class="kw">summary</span>(tweedieGLM1)</a></code></pre></div>
 <pre><code>## 
 ## Deviance Residuals: 
 ## (Note: These are approximate quantiles with relative error &lt;= 0.01)
@@ -1201,9 +1475,9 @@ aftModel &lt;-<span class="st"> </span><span class="kw">spark.survreg</span>(ova
 ## 
 ## Number of Fisher Scoring iterations: 1</code></pre>
 <p>We can try other distributions in the tweedie family, for example, a compound Poisson distribution with a log link:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tweedieGLM2 &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(carsDF, mpg ~<span class="st"> </span>wt +<span class="st"> </span>hp, <span class="dt">family =</span> <span class="st">&quot;tweedie&quot;</span>,
-                         <span class="dt">var.power =</span> <span class="fl">1.2</span>, <span class="dt">link.power =</span> <span class="fl">0.0</span>)
-<span class="kw">summary</span>(tweedieGLM2)</code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">tweedieGLM2 &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(carsDF, mpg <span class="op">~</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>hp, <span class="dt">family =</span> <span class="st">&quot;tweedie&quot;</span>,</a>
+<a class="sourceLine" id="cb117-2" title="2">                         <span class="dt">var.power =</span> <span class="fl">1.2</span>, <span class="dt">link.power =</span> <span class="fl">0.0</span>)</a>
+<a class="sourceLine" id="cb117-3" title="3"><span class="kw">summary</span>(tweedieGLM2)</a></code></pre></div>
 <pre><code>## 
 ## Deviance Residuals: 
 ## (Note: These are approximate quantiles with relative error &lt;= 0.01)
@@ -1236,14 +1510,14 @@ aftModel &lt;-<span class="st"> </span><span class="kw">spark.survreg</span>(ova
 <li><p><code>featureIndex</code>: the index of the feature on the right hand side of the formula if it is a vector column (default: 0), no effect otherwise.</p></li>
 </ul>
 <p>We use an artificial example to show the use.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>, <span class="fl">6.0</span>, <span class="fl">8.0</span>, <span class="fl">5.0</span>, <span class="fl">7.0</span>)
-x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.5</span>, <span class="fl">3.0</span>, <span class="fl">4.0</span>)
-w &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="fl">1.0</span>, <span class="dv">5</span>)
-data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">y =</span> y, <span class="dt">x =</span> x, <span class="dt">w =</span> w)
-df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(data)
-isoregModel &lt;-<span class="st"> </span><span class="kw">spark.isoreg</span>(df, y ~<span class="st"> </span>x, <span class="dt">weightCol =</span> <span class="st">&quot;w&quot;</span>)
-isoregFitted &lt;-<span class="st"> </span><span class="kw">predict</span>(isoregModel, df)
-<span class="kw">head</span>(<span class="kw">select</span>(isoregFitted, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.0</span>, <span class="fl">6.0</span>, <span class="fl">8.0</span>, <span class="fl">5.0</span>, <span class="fl">7.0</span>)</a>
+<a class="sourceLine" id="cb119-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.5</span>, <span class="fl">3.0</span>, <span class="fl">4.0</span>)</a>
+<a class="sourceLine" id="cb119-3" title="3">w &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="fl">1.0</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb119-4" title="4">data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">y =</span> y, <span class="dt">x =</span> x, <span class="dt">w =</span> w)</a>
+<a class="sourceLine" id="cb119-5" title="5">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(data)</a>
+<a class="sourceLine" id="cb119-6" title="6">isoregModel &lt;-<span class="st"> </span><span class="kw">spark.isoreg</span>(df, y <span class="op">~</span><span class="st"> </span>x, <span class="dt">weightCol =</span> <span class="st">&quot;w&quot;</span>)</a>
+<a class="sourceLine" id="cb119-7" title="7">isoregFitted &lt;-<span class="st"> </span><span class="kw">predict</span>(isoregModel, df)</a>
+<a class="sourceLine" id="cb119-8" title="8"><span class="kw">head</span>(<span class="kw">select</span>(isoregFitted, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
 <pre><code>##     x y prediction
 ## 1 1.0 3        3.0
 ## 2 2.0 6        5.5
@@ -1257,26 +1531,85 @@ isoregFitted &lt;-<span class="st"> </span><span class="kw">predict</span>(isore
 <li><p>If the prediction input falls between two training features then prediction is treated as piecewise linear function and interpolated value is calculated from the predictions of the two closest features. In case there are multiple values with the same feature then the same rules as in previous point are used.</p></li>
 </ul>
 <p>For example, when the input is <span class="math inline">\(3.2\)</span>, the two closest feature values are <span class="math inline">\(3.0\)</span> and <span class="math inline">\(3.5\)</span>, then predicted value would be a linear interpolation between the predicted values at <span class="math inline">\(3.0\)</span> and <span class="math inline">\(3.5\)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">3.2</span>)))
-<span class="kw">head</span>(<span class="kw">predict</span>(isoregModel, newDF))</code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">newDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">3.2</span>)))</a>
+<a class="sourceLine" id="cb121-2" title="2"><span class="kw">head</span>(<span class="kw">predict</span>(isoregModel, newDF))</a></code></pre></div>
 <pre><code>##     x prediction
 ## 1 1.5       4.25
 ## 2 3.2       6.30</code></pre>
+</div>
+<div id="linear-regression" class="section level4">
+<h4>Linear Regression</h4>
+<p>Linear regression model.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">model &lt;-<span class="st"> </span><span class="kw">spark.lm</span>(carsDF, mpg <span class="op">~</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>hp)</a>
+<a class="sourceLine" id="cb123-2" title="2"></a>
+<a class="sourceLine" id="cb123-3" title="3"><span class="kw">summary</span>(model)</a></code></pre></div>
+<pre><code>## $coefficients
+##                Estimate
+## (Intercept) 37.22727012
+## wt          -3.87783074
+## hp          -0.03177295
+## 
+## $numFeatures
+## [1] 2</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(model, carsDF)</a>
+<a class="sourceLine" id="cb125-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(predictions, predictions<span class="op">$</span>prediction))</a></code></pre></div>
+<pre><code>##   prediction
+## 1   23.57233
+## 2   22.58348
+## 3   25.27582
+## 4   21.26502
+## 5   18.32727
+## 6   20.47382</code></pre>
+</div>
+<div id="factorization-machines-regressor" class="section level4">
+<h4>Factorization Machines Regressor</h4>
+<p>Factorization Machines for regression problems.</p>
+<p>For background and details about the implementation of factorization machines, refer to the <a href="https://spark.apache.org/docs/latest/ml-classification-regression.html#factorization-machines">Factorization Machines section</a>.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">model &lt;-<span class="st"> </span><span class="kw">spark.fmRegressor</span>(carsDF, mpg <span class="op">~</span><span class="st"> </span>wt <span class="op">+</span><span class="st"> </span>hp)</a>
+<a class="sourceLine" id="cb127-2" title="2"><span class="kw">summary</span>(model)</a></code></pre></div>
+<pre><code>## $coefficients
+##              Estimate
+## (Intercept) 0.1518559
+## wt          3.6472555
+## hp          2.8026828
+## 
+## $factors
+##            [,1]       [,2]       [,3]       [,4]      [,5]       [,6]
+## [1,]  0.1424420 -0.1178110 -0.3970272 -0.4696695  0.400288  0.3690930
+## [2,] -0.1626185  0.1512138  0.3690435  0.4076975 -0.625752 -0.3715109
+##             [,7]       [,8]
+## [1,]  0.03472468 -0.1703219
+## [2,] -0.02109148 -0.2006249
+## 
+## $numFeatures
+## [1] 2
+## 
+## $factorSize
+## [1] 8</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(model, carsDF)</a>
+<a class="sourceLine" id="cb129-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(predictions, predictions<span class="op">$</span>prediction))</a></code></pre></div>
+<pre><code>##   prediction
+## 1  106.70996
+## 2   87.07526
+## 3  111.07931
+## 4   60.89565
+## 5   61.81374
+## 6   40.70095</code></pre>
 </div>
 <div id="decision-tree" class="section level4">
 <h4>Decision Tree</h4>
 <p><code>spark.decisionTree</code> fits a <a href="https://en.wikipedia.org/wiki/Decision_tree_learning">decision tree</a> classification or regression model on a <code>SparkDataFrame</code>. Users can call <code>summary</code> to get a summary of the fitted model, <code>predict</code> to make predictions, and <code>write.ml</code>/<code>read.ml</code> to save/load fitted models.</p>
 <p>We use the <code>Titanic</code> dataset to train a decision tree and make predictions:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-dtModel &lt;-<span class="st"> </span><span class="kw">spark.decisionTree</span>(df, Survived ~<span class="st"> </span>., <span class="dt">type =</span> <span class="st">&quot;classification&quot;</span>, <span class="dt">maxDepth =</span> <span class="dv">2</span>)
-<span class="kw">summary</span>(dtModel)</code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb131-2" title="2">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb131-3" title="3">dtModel &lt;-<span class="st"> </span><span class="kw">spark.decisionTree</span>(df, Survived <span class="op">~</span><span class="st"> </span>., <span class="dt">type =</span> <span class="st">&quot;classification&quot;</span>, <span class="dt">maxDepth =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb131-4" title="4"><span class="kw">summary</span>(dtModel)</a></code></pre></div>
 <pre><code>## Formula:  Survived ~ .
 ## Number of features:  6
-## Features:  Class_Crew Class_1st Class_3rd Sex_Male Age_Adult Freq
+## Features:  Class_1st Class_2nd Class_3rd Sex_Female Age_Adult Freq
 ## Feature importances:  (6,[5],[1.0])
 ## Max Depth:  2
-##  DecisionTreeClassificationModel (uid=dtc_e48a58151308) of depth 2 with 5 nodes
+##  DecisionTreeClassificationModel: uid=dtc_7de86b855ddf, depth=2, numNodes=5, numClasses=2, numFeatures=6
 ##   If (feature 5 &lt;= 4.5)
 ##    Predict: 0.0
 ##   Else (feature 5 &gt; 4.5)
@@ -1285,8 +1618,8 @@ dtModel &lt;-<span class="st"> </span><span class="kw">spark.decisionTree</span>
 ##    Else (feature 5 &gt; 84.5)
 ##     Predict: 0.0
 ## </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(dtModel, df)
-<span class="kw">head</span>(<span class="kw">select</span>(predictions, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(dtModel, df)</a>
+<a class="sourceLine" id="cb133-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(predictions, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
 <pre><code>##   Class    Sex   Age Freq Survived prediction
 ## 1   1st   Male Child    0       No         No
 ## 2   2nd   Male Child    0       No         No
@@ -1299,23 +1632,23 @@ dtModel &lt;-<span class="st"> </span><span class="kw">spark.decisionTree</span>
 <h4>Gradient-Boosted Trees</h4>
 <p><code>spark.gbt</code> fits a <a href="https://en.wikipedia.org/wiki/Gradient_boosting">gradient-boosted tree</a> classification or regression model on a <code>SparkDataFrame</code>. Users can call <code>summary</code> to get a summary of the fitted model, <code>predict</code> to make predictions, and <code>write.ml</code>/<code>read.ml</code> to save/load fitted models.</p>
 <p>We use the <code>Titanic</code> dataset to train a gradient-boosted tree and make predictions:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-gbtModel &lt;-<span class="st"> </span><span class="kw">spark.gbt</span>(df, Survived ~<span class="st"> </span>., <span class="dt">type =</span> <span class="st">&quot;classification&quot;</span>, <span class="dt">maxDepth =</span> <span class="dv">2</span>, <span class="dt">maxIter =</span> <span class="dv">2</span>)
-<span class="kw">summary</span>(gbtModel)</code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb135-2" title="2">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb135-3" title="3">gbtModel &lt;-<span class="st"> </span><span class="kw">spark.gbt</span>(df, Survived <span class="op">~</span><span class="st"> </span>., <span class="dt">type =</span> <span class="st">&quot;classification&quot;</span>, <span class="dt">maxDepth =</span> <span class="dv">2</span>, <span class="dt">maxIter =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb135-4" title="4"><span class="kw">summary</span>(gbtModel)</a></code></pre></div>
 <pre><code>## Formula:  Survived ~ .
 ## Number of features:  6
-## Features:  Class_Crew Class_1st Class_3rd Sex_Male Age_Adult Freq
-## Feature importances:  (6,[0,4,5],[0.13232868918568455,0.04105571847507324,0.8266155923392422])
+## Features:  Class_1st Class_2nd Class_3rd Sex_Female Age_Adult Freq
+## Feature importances:  (6,[1,2,5],[0.03336902858878361,0.16099525743106016,0.8056357139801562])
 ## Max Depth:  2
 ## Number of trees:  2
 ## Tree weights:  1 0.1
-##  GBTClassificationModel (uid=gbtc_79d0eb3dc568) with 2 trees
+##  GBTClassificationModel: uid = gbtc_830f339b9306, numTrees=2, numClasses=2, numFeatures=6
 ##   Tree 0 (weight 1.0):
 ##     If (feature 5 &lt;= 4.5)
-##      If (feature 4 in {1.0})
+##      If (feature 1 in {1.0})
 ##       Predict: -1.0
-##      Else (feature 4 not in {1.0})
+##      Else (feature 1 not in {1.0})
 ##       Predict: -0.3333333333333333
 ##     Else (feature 5 &gt; 4.5)
 ##      If (feature 5 &lt;= 84.5)
@@ -1323,19 +1656,19 @@ gbtModel &lt;-<span class="st"> </span><span class="kw">spark.gbt</span>(df, Sur
 ##      Else (feature 5 &gt; 84.5)
 ##       Predict: -0.42857142857142855
 ##   Tree 1 (weight 0.1):
-##     If (feature 0 in {0.0})
-##      If (feature 5 &lt;= 0.5)
-##       Predict: -1.3569745249367313
-##      Else (feature 5 &gt; 0.5)
-##       Predict: 0.03904410748693565
-##     Else (feature 0 not in {0.0})
-##      If (feature 5 &lt;= 289.5)
-##       Predict: 0.8386754830442805
-##      Else (feature 5 &gt; 289.5)
-##       Predict: -1.1917465204842816
+##     If (feature 2 in {1.0})
+##      If (feature 5 &lt;= 15.5)
+##       Predict: 0.9671846896296403
+##      Else (feature 5 &gt; 15.5)
+##       Predict: -1.0857923804083338
+##     Else (feature 2 not in {1.0})
+##      If (feature 5 &lt;= 13.5)
+##       Predict: -0.08651035613926407
+##      Else (feature 5 &gt; 13.5)
+##       Predict: 0.6566673506774614
 ## </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(gbtModel, df)
-<span class="kw">head</span>(<span class="kw">select</span>(predictions, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(gbtModel, df)</a>
+<a class="sourceLine" id="cb137-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(predictions, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
 <pre><code>##   Class    Sex   Age Freq Survived prediction
 ## 1   1st   Male Child    0       No         No
 ## 2   2nd   Male Child    0       No         No
@@ -1348,37 +1681,40 @@ gbtModel &lt;-<span class="st"> </span><span class="kw">spark.gbt</span>(df, Sur
 <h4>Random Forest</h4>
 <p><code>spark.randomForest</code> fits a <a href="https://en.wikipedia.org/wiki/Random_forest">random forest</a> classification or regression model on a <code>SparkDataFrame</code>. Users can call <code>summary</code> to get a summary of the fitted model, <code>predict</code> to make predictions, and <code>write.ml</code>/<code>read.ml</code> to save/load fitted models.</p>
 <p>In the following example, we use the <code>Titanic</code> dataset to train a random forest and make predictions:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-rfModel &lt;-<span class="st"> </span><span class="kw">spark.randomForest</span>(df, Survived ~<span class="st"> </span>., <span class="dt">type =</span> <span class="st">&quot;classification&quot;</span>, <span class="dt">maxDepth =</span> <span class="dv">2</span>, <span class="dt">numTrees =</span> <span class="dv">2</span>)
-<span class="kw">summary</span>(rfModel)</code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb139-2" title="2">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb139-3" title="3">rfModel &lt;-<span class="st"> </span><span class="kw">spark.randomForest</span>(df, Survived <span class="op">~</span><span class="st"> </span>., <span class="dt">type =</span> <span class="st">&quot;classification&quot;</span>, <span class="dt">maxDepth =</span> <span class="dv">2</span>, <span class="dt">numTrees =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb139-4" title="4"><span class="kw">summary</span>(rfModel)</a></code></pre></div>
 <pre><code>## Formula:  Survived ~ .
 ## Number of features:  6
-## Features:  Class_Crew Class_1st Class_3rd Sex_Male Age_Adult Freq
-## Feature importances:  (6,[1,5],[0.3304780506160942,0.6695219493839059])
+## Features:  Class_1st Class_2nd Class_3rd Sex_Female Age_Adult Freq
+## Feature importances:  (6,[3,4,5],[0.17058779274099098,0.09676977311565654,0.7326424341433525])
 ## Max Depth:  2
 ## Number of trees:  2
 ## Tree weights:  1 1
-##  RandomForestClassificationModel (uid=rfc_aef42cb97220) with 2 trees
+##  RandomForestClassificationModel: uid=rfc_df7f53c9cfeb, numTrees=2, numClasses=2, numFeatures=6
 ##   Tree 0 (weight 1.0):
-##     If (feature 5 &lt;= 0.5)
-##      Predict: 0.0
-##     Else (feature 5 &gt; 0.5)
-##      If (feature 1 in {1.0})
-##       Predict: 1.0
-##      Else (feature 1 not in {1.0})
+##     If (feature 4 in {0.0})
+##      If (feature 3 in {0.0})
 ##       Predict: 0.0
+##      Else (feature 3 not in {0.0})
+##       Predict: 1.0
+##     Else (feature 4 not in {0.0})
+##      If (feature 5 &lt;= 13.5)
+##       Predict: 0.0
+##      Else (feature 5 &gt; 13.5)
+##       Predict: 1.0
 ##   Tree 1 (weight 1.0):
 ##     If (feature 5 &lt;= 84.5)
-##      If (feature 1 in {1.0})
+##      If (feature 5 &lt;= 4.5)
 ##       Predict: 0.0
-##      Else (feature 1 not in {1.0})
+##      Else (feature 5 &gt; 4.5)
 ##       Predict: 1.0
 ##     Else (feature 5 &gt; 84.5)
 ##      Predict: 0.0
 ## </code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(rfModel, df)
-<span class="kw">head</span>(<span class="kw">select</span>(predictions, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(rfModel, df)</a>
+<a class="sourceLine" id="cb141-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(predictions, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;Survived&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
 <pre><code>##   Class    Sex   Age Freq Survived prediction
 ## 1   1st   Male Child    0       No         No
 ## 2   2nd   Male Child    0       No         No
@@ -1390,10 +1726,10 @@ rfModel &lt;-<span class="st"> </span><span class="kw">spark.randomForest</span>
 <div id="bisecting-k-means" class="section level4">
 <h4>Bisecting k-Means</h4>
 <p><code>spark.bisectingKmeans</code> is a kind of <a href="https://en.wikipedia.org/wiki/Hierarchical_clustering">hierarchical clustering</a> using a divisive (or “top-down”) approach: all observations start in one cluster, and splits are performed recursively as one moves down the hierarchy.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-model &lt;-<span class="st"> </span><span class="kw">spark.bisectingKmeans</span>(training, Class ~<span class="st"> </span>Survived, <span class="dt">k =</span> <span class="dv">4</span>)
-<span class="kw">summary</span>(model)</code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb143-2" title="2">training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb143-3" title="3">model &lt;-<span class="st"> </span><span class="kw">spark.bisectingKmeans</span>(training, Class <span class="op">~</span><span class="st"> </span>Survived, <span class="dt">k =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb143-4" title="4"><span class="kw">summary</span>(model)</a></code></pre></div>
 <pre><code>## $k
 ## [1] 4
 ## 
@@ -1423,8 +1759,8 @@ model &lt;-<span class="st"> </span><span class="kw">spark.bisectingKmeans</span
 ## 
 ## $is.loaded
 ## [1] FALSE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitted &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)
-<span class="kw">head</span>(<span class="kw">select</span>(fitted, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">fitted &lt;-<span class="st"> </span><span class="kw">predict</span>(model, training)</a>
+<a class="sourceLine" id="cb145-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(fitted, <span class="st">&quot;Class&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
 <pre><code>##   Class prediction
 ## 1   1st          1
 ## 2   2nd          1
@@ -1437,76 +1773,76 @@ model &lt;-<span class="st"> </span><span class="kw">spark.bisectingKmeans</span
 <h4>Gaussian Mixture Model</h4>
 <p><code>spark.gaussianMixture</code> fits multivariate <a href="https://en.wikipedia.org/wiki/Mixture_model#Multivariate_Gaussian_mixture_model">Gaussian Mixture Model</a> (GMM) against a <code>SparkDataFrame</code>. <a href="https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm">Expectation-Maximization</a> (EM) is used to approximate the maximum likelihood estimator (MLE) of the model.</p>
 <p>We use a simulated example to demonstrate the usage.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">V1 =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>), <span class="dt">V2 =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>))
-X2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">V1 =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>, <span class="dv">3</span>), <span class="dt">V2 =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>, <span class="dv">4</span>))
-data &lt;-<span class="st"> </span><span class="kw">rbind</span>(X1, X2)
-df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(data)
-gmmModel &lt;-<span class="st"> </span><span class="kw">spark.gaussianMixture</span>(df, ~<span class="st"> </span>V1 +<span class="st"> </span>V2, <span class="dt">k =</span> <span class="dv">2</span>)
-<span class="kw">summary</span>(gmmModel)</code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1">X1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">V1 =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>), <span class="dt">V2 =</span> <span class="kw">rnorm</span>(<span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb147-2" title="2">X2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">V1 =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>, <span class="dv">3</span>), <span class="dt">V2 =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>, <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb147-3" title="3">data &lt;-<span class="st"> </span><span class="kw">rbind</span>(X1, X2)</a>
+<a class="sourceLine" id="cb147-4" title="4">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(data)</a>
+<a class="sourceLine" id="cb147-5" title="5">gmmModel &lt;-<span class="st"> </span><span class="kw">spark.gaussianMixture</span>(df, <span class="op">~</span><span class="st"> </span>V1 <span class="op">+</span><span class="st"> </span>V2, <span class="dt">k =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb147-6" title="6"><span class="kw">summary</span>(gmmModel)</a></code></pre></div>
 <pre><code>## $lambda
-## [1] 0.4 0.6
+## [1] 0.3755116 0.6244884
 ## 
 ## $mu
 ## $mu[[1]]
-## [1] -0.4276707  0.4366670
+## [1] 1.031339 2.732232
 ## 
 ## $mu[[2]]
-## [1] 3.392521 3.500786
+## [1] 1.662376 2.899603
 ## 
 ## 
 ## $sigma
 ## $sigma[[1]]
-##      [,1]       [,2]      
-## [1,] 0.566911   -0.3786895
-## [2,] -0.3786895 0.9832479 
+##      [,1]     [,2]    
+## [1,] 2.919757 4.761197
+## [2,] 4.761197 7.99808 
 ## 
 ## $sigma[[2]]
-##      [,1]        [,2]       
-## [1,] 0.7178286   -0.08640876
-## [2,] -0.08640876 0.07402954 
+##      [,1]     [,2]   
+## [1,] 5.787585 4.49216
+## [2,] 4.49216  3.59925
 ## 
 ## 
 ## $loglik
-## [1] -24.08647
+## [1] -32.21842
 ## 
 ## $posterior
 ## SparkDataFrame[posterior:array&lt;double&gt;]
 ## 
 ## $is.loaded
 ## [1] FALSE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gmmFitted &lt;-<span class="st"> </span><span class="kw">predict</span>(gmmModel, df)
-<span class="kw">head</span>(<span class="kw">select</span>(gmmFitted, <span class="st">&quot;V1&quot;</span>, <span class="st">&quot;V2&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</code></pre></div>
-<pre><code>##            V1          V2 prediction
-## 1 -1.01032155  1.81989956          0
-## 2 -1.30079527  0.01143861          0
-## 3  0.53062385 -0.87298369          0
-## 4  0.06981002  0.78831354          0
-## 5  3.06486500  3.72902869          1
-## 6  2.04644938  3.40323307          1</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1">gmmFitted &lt;-<span class="st"> </span><span class="kw">predict</span>(gmmModel, df)</a>
+<a class="sourceLine" id="cb149-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(gmmFitted, <span class="st">&quot;V1&quot;</span>, <span class="st">&quot;V2&quot;</span>, <span class="st">&quot;prediction&quot;</span>))</a></code></pre></div>
+<pre><code>##           V1          V2 prediction
+## 1 -1.1872749  0.58521244          1
+## 2 -0.9836603  0.08262731          0
+## 3 -1.9022187  0.32487879          1
+## 4 -0.5298349 -0.30976369          0
+## 5  2.6664955  3.49662230          1
+## 6  4.2422584  4.45708170          1</code></pre>
 </div>
 <div id="k-means-clustering" class="section level4">
 <h4>k-Means Clustering</h4>
 <p><code>spark.kmeans</code> fits a <span class="math inline">\(k\)</span>-means clustering model against a <code>SparkDataFrame</code>. As an unsupervised learning method, we don’t need a response variable. Hence, the left hand side of the R formula should be left blank. The clustering is based only on the variables on the right hand side.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kmeansModel &lt;-<span class="st"> </span><span class="kw">spark.kmeans</span>(carsDF, ~<span class="st"> </span>mpg +<span class="st"> </span>hp +<span class="st"> </span>wt, <span class="dt">k =</span> <span class="dv">3</span>)
-<span class="kw">summary</span>(kmeansModel)</code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1">kmeansModel &lt;-<span class="st"> </span><span class="kw">spark.kmeans</span>(carsDF, <span class="op">~</span><span class="st"> </span>mpg <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">k =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb151-2" title="2"><span class="kw">summary</span>(kmeansModel)</a></code></pre></div>
 <pre><code>## $k
 ## [1] 3
 ## 
 ## $coefficients
-##        mpg        hp     wt
-## 1 23.28947  99.47368 2.6920
-## 2 15.45000 205.75000 4.0195
-## 3 15.00000 335.00000 3.5700
+##        mpg        hp       wt
+## 1 24.22353  93.52941 2.599588
+## 2 15.80000 178.50000 3.926400
+## 3 14.62000 263.80000 3.899000
 ## 
 ## $size
 ## $size[[1]]
-## [1] 19
+## [1] 17
 ## 
 ## $size[[2]]
-## [1] 12
+## [1] 10
 ## 
 ## $size[[3]]
-## [1] 1
+## [1] 5
 ## 
 ## 
 ## $cluster
@@ -1517,8 +1853,8 @@ gmmModel &lt;-<span class="st"> </span><span class="kw">spark.gaussianMixture</s
 ## 
 ## $clusterSize
 ## [1] 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kmeansPredictions &lt;-<span class="st"> </span><span class="kw">predict</span>(kmeansModel, carsDF)
-<span class="kw">head</span>(<span class="kw">select</span>(kmeansPredictions, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;hp&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;prediction&quot;</span>), <span class="dt">n =</span> 20L)</code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1">kmeansPredictions &lt;-<span class="st"> </span><span class="kw">predict</span>(kmeansModel, carsDF)</a>
+<a class="sourceLine" id="cb153-2" title="2"><span class="kw">head</span>(<span class="kw">select</span>(kmeansPredictions, <span class="st">&quot;model&quot;</span>, <span class="st">&quot;mpg&quot;</span>, <span class="st">&quot;hp&quot;</span>, <span class="st">&quot;wt&quot;</span>, <span class="st">&quot;prediction&quot;</span>), <span class="dt">n =</span> 20L)</a></code></pre></div>
 <pre><code>##                  model  mpg  hp    wt prediction
 ## 1            Mazda RX4 21.0 110 2.620          0
 ## 2        Mazda RX4 Wag 21.0 110 2.875          0
@@ -1526,7 +1862,7 @@ gmmModel &lt;-<span class="st"> </span><span class="kw">spark.gaussianMixture</s
 ## 4       Hornet 4 Drive 21.4 110 3.215          0
 ## 5    Hornet Sportabout 18.7 175 3.440          1
 ## 6              Valiant 18.1 105 3.460          0
-## 7           Duster 360 14.3 245 3.570          1
+## 7           Duster 360 14.3 245 3.570          2
 ## 8            Merc 240D 24.4  62 3.190          0
 ## 9             Merc 230 22.8  95 3.150          0
 ## 10            Merc 280 19.2 123 3.440          0
@@ -1536,7 +1872,7 @@ gmmModel &lt;-<span class="st"> </span><span class="kw">spark.gaussianMixture</s
 ## 14         Merc 450SLC 15.2 180 3.780          1
 ## 15  Cadillac Fleetwood 10.4 205 5.250          1
 ## 16 Lincoln Continental 10.4 215 5.424          1
-## 17   Chrysler Imperial 14.7 230 5.345          1
+## 17   Chrysler Imperial 14.7 230 5.345          2
 ## 18            Fiat 128 32.4  66 2.200          0
 ## 19         Honda Civic 30.4  52 1.615          0
 ## 20      Toyota Corolla 33.9  65 1.835          0</code></pre>
@@ -1561,22 +1897,22 @@ gmmModel &lt;-<span class="st"> </span><span class="kw">spark.gaussianMixture</s
 </ul>
 <p>For more information, see the help document <code>?spark.lda</code>.</p>
 <p>Let’s look an artificial example.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">corpus &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">features =</span> <span class="kw">c</span>(
-  <span class="st">&quot;1 2 6 0 2 3 1 1 0 0 3&quot;</span>,
-  <span class="st">&quot;1 3 0 1 3 0 0 2 0 0 1&quot;</span>,
-  <span class="st">&quot;1 4 1 0 0 4 9 0 1 2 0&quot;</span>,
-  <span class="st">&quot;2 1 0 3 0 0 5 0 2 3 9&quot;</span>,
-  <span class="st">&quot;3 1 1 9 3 0 2 0 0 1 3&quot;</span>,
-  <span class="st">&quot;4 2 0 3 4 5 1 1 1 4 0&quot;</span>,
-  <span class="st">&quot;2 1 0 3 0 0 5 0 2 2 9&quot;</span>,
-  <span class="st">&quot;1 1 1 9 2 1 2 0 0 1 3&quot;</span>,
-  <span class="st">&quot;4 4 0 3 4 2 1 3 0 0 0&quot;</span>,
-  <span class="st">&quot;2 8 2 0 3 0 2 0 2 7 2&quot;</span>,
-  <span class="st">&quot;1 1 1 9 0 2 2 0 0 3 3&quot;</span>,
-  <span class="st">&quot;4 1 0 0 4 5 1 3 0 1 0&quot;</span>))
-corpusDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(corpus)
-model &lt;-<span class="st"> </span><span class="kw">spark.lda</span>(<span class="dt">data =</span> corpusDF, <span class="dt">k =</span> <span class="dv">5</span>, <span class="dt">optimizer =</span> <span class="st">&quot;em&quot;</span>)
-<span class="kw">summary</span>(model)</code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">corpus &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">features =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb155-2" title="2">  <span class="st">&quot;1 2 6 0 2 3 1 1 0 0 3&quot;</span>,</a>
+<a class="sourceLine" id="cb155-3" title="3">  <span class="st">&quot;1 3 0 1 3 0 0 2 0 0 1&quot;</span>,</a>
+<a class="sourceLine" id="cb155-4" title="4">  <span class="st">&quot;1 4 1 0 0 4 9 0 1 2 0&quot;</span>,</a>
+<a class="sourceLine" id="cb155-5" title="5">  <span class="st">&quot;2 1 0 3 0 0 5 0 2 3 9&quot;</span>,</a>
+<a class="sourceLine" id="cb155-6" title="6">  <span class="st">&quot;3 1 1 9 3 0 2 0 0 1 3&quot;</span>,</a>
+<a class="sourceLine" id="cb155-7" title="7">  <span class="st">&quot;4 2 0 3 4 5 1 1 1 4 0&quot;</span>,</a>
+<a class="sourceLine" id="cb155-8" title="8">  <span class="st">&quot;2 1 0 3 0 0 5 0 2 2 9&quot;</span>,</a>
+<a class="sourceLine" id="cb155-9" title="9">  <span class="st">&quot;1 1 1 9 2 1 2 0 0 1 3&quot;</span>,</a>
+<a class="sourceLine" id="cb155-10" title="10">  <span class="st">&quot;4 4 0 3 4 2 1 3 0 0 0&quot;</span>,</a>
+<a class="sourceLine" id="cb155-11" title="11">  <span class="st">&quot;2 8 2 0 3 0 2 0 2 7 2&quot;</span>,</a>
+<a class="sourceLine" id="cb155-12" title="12">  <span class="st">&quot;1 1 1 9 0 2 2 0 0 3 3&quot;</span>,</a>
+<a class="sourceLine" id="cb155-13" title="13">  <span class="st">&quot;4 1 0 0 4 5 1 3 0 1 0&quot;</span>))</a>
+<a class="sourceLine" id="cb155-14" title="14">corpusDF &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(corpus)</a>
+<a class="sourceLine" id="cb155-15" title="15">model &lt;-<span class="st"> </span><span class="kw">spark.lda</span>(<span class="dt">data =</span> corpusDF, <span class="dt">k =</span> <span class="dv">5</span>, <span class="dt">optimizer =</span> <span class="st">&quot;em&quot;</span>)</a>
+<a class="sourceLine" id="cb155-16" title="16"><span class="kw">summary</span>(model)</a></code></pre></div>
 <pre><code>## $docConcentration
 ## [1] 11 11 11 11 11
 ## 
@@ -1606,48 +1942,63 @@ model &lt;-<span class="st"> </span><span class="kw">spark.lda</span>(<span clas
 ## 
 ## $logPrior
 ## [1] -980.2974</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">posterior &lt;-<span class="st"> </span><span class="kw">spark.posterior</span>(model, corpusDF)
-<span class="kw">head</span>(posterior)</code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1">posterior &lt;-<span class="st"> </span><span class="kw">spark.posterior</span>(model, corpusDF)</a>
+<a class="sourceLine" id="cb157-2" title="2"><span class="kw">head</span>(posterior)</a></code></pre></div>
 <pre><code>##                features                                     topicDistribution
-## 1 1 2 6 0 2 3 1 1 0 0 3 0.1972184, 0.1986638, 0.2021999, 0.2006561, 0.2012619
-## 2 1 3 0 1 3 0 0 2 0 0 1 0.1989991, 0.1988731, 0.2015953, 0.2006363, 0.1998962
-## 3 1 4 1 0 0 4 9 0 1 2 0 0.2020618, 0.2026065, 0.1968833, 0.1987281, 0.1997203
-## 4 2 1 0 3 0 0 5 0 2 3 9 0.2004085, 0.1981929, 0.2013000, 0.2006297, 0.1994689
-## 5 3 1 1 9 3 0 2 0 0 1 3 0.1971490, 0.1983949, 0.2023562, 0.2011568, 0.2009432
-## 6 4 2 0 3 4 5 1 1 1 4 0 0.2020250, 0.2041799, 0.1955392, 0.1997217, 0.1985343</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">perplexity &lt;-<span class="st"> </span><span class="kw">spark.perplexity</span>(model, corpusDF)
-perplexity</code></pre></div>
+## 1 1 2 6 0 2 3 1 1 0 0 3 0.1972166, 0.1986645, 0.2021993, 0.2006560, 0.2012635
+## 2 1 3 0 1 3 0 0 2 0 0 1 0.1989969, 0.1988741, 0.2015949, 0.2006364, 0.1998977
+## 3 1 4 1 0 0 4 9 0 1 2 0 0.2020588, 0.2026081, 0.1968831, 0.1987282, 0.1997218
+## 4 2 1 0 3 0 0 5 0 2 3 9 0.2004060, 0.1981938, 0.2012998, 0.2006299, 0.1994705
+## 5 3 1 1 9 3 0 2 0 0 1 3 0.1971472, 0.1983957, 0.2023556, 0.2011567, 0.2009448
+## 6 4 2 0 3 4 5 1 1 1 4 0 0.2020220, 0.2041818, 0.1955389, 0.1997218, 0.1985355</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1">perplexity &lt;-<span class="st"> </span><span class="kw">spark.perplexity</span>(model, corpusDF)</a>
+<a class="sourceLine" id="cb159-2" title="2">perplexity</a></code></pre></div>
 <pre><code>## [1] 2.676476</code></pre>
 </div>
 <div id="alternating-least-squares" class="section level4">
 <h4>Alternating Least Squares</h4>
-<p><code>spark.als</code> learns latent factors in <a href="https://en.wikipedia.org/wiki/Recommender_system#Collaborative_filtering">collaborative filtering</a> via <a href="https://dl.acm.org/citation.cfm?id=1608614">alternating least squares</a>.</p>
+<p><code>spark.als</code> learns latent factors in <a href="https://en.wikipedia.org/wiki/Recommender_system#Collaborative_filtering">collaborative filtering</a> via <a href="https://dl.acm.org/doi/10.1109/MC.2009.263">alternating least squares</a>.</p>
 <p>There are multiple options that can be configured in <code>spark.als</code>, including <code>rank</code>, <code>reg</code>, and <code>nonnegative</code>. For a complete list, refer to the help file.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ratings &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">4.0</span>), <span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">2.0</span>), <span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">3.0</span>), <span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">4.0</span>),
-                <span class="kw">list</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">1.0</span>), <span class="kw">list</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="fl">5.0</span>))
-df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(ratings, <span class="kw">c</span>(<span class="st">&quot;user&quot;</span>, <span class="st">&quot;item&quot;</span>, <span class="st">&quot;rating&quot;</span>))
-model &lt;-<span class="st"> </span><span class="kw">spark.als</span>(df, <span class="st">&quot;rating&quot;</span>, <span class="st">&quot;user&quot;</span>, <span class="st">&quot;item&quot;</span>, <span class="dt">rank =</span> <span class="dv">10</span>, <span class="dt">reg =</span> <span class="fl">0.1</span>, <span class="dt">nonnegative =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">ratings &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">4.0</span>), <span class="kw">list</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">2.0</span>), <span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">3.0</span>), <span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">4.0</span>),</a>
+<a class="sourceLine" id="cb161-2" title="2">                <span class="kw">list</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">1.0</span>), <span class="kw">list</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="fl">5.0</span>))</a>
+<a class="sourceLine" id="cb161-3" title="3">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(ratings, <span class="kw">c</span>(<span class="st">&quot;user&quot;</span>, <span class="st">&quot;item&quot;</span>, <span class="st">&quot;rating&quot;</span>))</a>
+<a class="sourceLine" id="cb161-4" title="4">model &lt;-<span class="st"> </span><span class="kw">spark.als</span>(df, <span class="st">&quot;rating&quot;</span>, <span class="st">&quot;user&quot;</span>, <span class="st">&quot;item&quot;</span>, <span class="dt">rank =</span> <span class="dv">10</span>, <span class="dt">reg =</span> <span class="fl">0.1</span>, <span class="dt">nonnegative =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Extract latent factors.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stats &lt;-<span class="st"> </span><span class="kw">summary</span>(model)
-userFactors &lt;-<span class="st"> </span>stats$userFactors
-itemFactors &lt;-<span class="st"> </span>stats$itemFactors
-<span class="kw">head</span>(userFactors)
-<span class="kw">head</span>(itemFactors)</code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">stats &lt;-<span class="st"> </span><span class="kw">summary</span>(model)</a>
+<a class="sourceLine" id="cb162-2" title="2">userFactors &lt;-<span class="st"> </span>stats<span class="op">$</span>userFactors</a>
+<a class="sourceLine" id="cb162-3" title="3">itemFactors &lt;-<span class="st"> </span>stats<span class="op">$</span>itemFactors</a>
+<a class="sourceLine" id="cb162-4" title="4"><span class="kw">head</span>(userFactors)</a>
+<a class="sourceLine" id="cb162-5" title="5"><span class="kw">head</span>(itemFactors)</a></code></pre></div>
 <p>Make predictions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">predicted &lt;-<span class="st"> </span><span class="kw">predict</span>(model, df)
-<span class="kw">head</span>(predicted)</code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1">predicted &lt;-<span class="st"> </span><span class="kw">predict</span>(model, df)</a>
+<a class="sourceLine" id="cb163-2" title="2"><span class="kw">head</span>(predicted)</a></code></pre></div>
+</div>
+<div id="power-iteration-clustering" class="section level4">
+<h4>Power Iteration Clustering</h4>
+<p>Power Iteration Clustering (PIC) is a scalable graph clustering algorithm. <code>spark.assignClusters</code> method runs the PIC algorithm and returns a cluster assignment for each input vertex.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(<span class="kw">list</span>(<span class="kw">list</span>(0L, 1L, <span class="fl">1.0</span>), <span class="kw">list</span>(0L, 2L, <span class="fl">1.0</span>),</a>
+<a class="sourceLine" id="cb164-2" title="2">                           <span class="kw">list</span>(1L, 2L, <span class="fl">1.0</span>), <span class="kw">list</span>(3L, 4L, <span class="fl">1.0</span>),</a>
+<a class="sourceLine" id="cb164-3" title="3">                           <span class="kw">list</span>(4L, 0L, <span class="fl">0.1</span>)),</a>
+<a class="sourceLine" id="cb164-4" title="4">                      <span class="dt">schema =</span> <span class="kw">c</span>(<span class="st">&quot;src&quot;</span>, <span class="st">&quot;dst&quot;</span>, <span class="st">&quot;weight&quot;</span>))</a>
+<a class="sourceLine" id="cb164-5" title="5"><span class="kw">head</span>(<span class="kw">spark.assignClusters</span>(df, <span class="dt">initMode =</span> <span class="st">&quot;degree&quot;</span>, <span class="dt">weightCol =</span> <span class="st">&quot;weight&quot;</span>))</a></code></pre></div>
+<pre><code>##   id cluster
+## 1  4       1
+## 2  0       0
+## 3  1       0
+## 4  3       1
+## 5  2       0</code></pre>
 </div>
 <div id="fp-growth" class="section level4">
 <h4>FP-growth</h4>
 <p><code>spark.fpGrowth</code> executes FP-growth algorithm to mine frequent itemsets on a <code>SparkDataFrame</code>. <code>itemsCol</code> should be an array of values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">selectExpr</span>(<span class="kw">createDataFrame</span>(<span class="kw">data.frame</span>(<span class="dt">rawItems =</span> <span class="kw">c</span>(
-  <span class="st">&quot;T,R,U&quot;</span>, <span class="st">&quot;T,S&quot;</span>, <span class="st">&quot;V,R&quot;</span>, <span class="st">&quot;R,U,T,V&quot;</span>, <span class="st">&quot;R,S&quot;</span>, <span class="st">&quot;V,S,U&quot;</span>, <span class="st">&quot;U,R&quot;</span>, <span class="st">&quot;S,T&quot;</span>, <span class="st">&quot;V,R&quot;</span>, <span class="st">&quot;V,U,S&quot;</span>,
-  <span class="st">&quot;T,V,U&quot;</span>, <span class="st">&quot;R,V&quot;</span>, <span class="st">&quot;T,S&quot;</span>, <span class="st">&quot;T,S&quot;</span>, <span class="st">&quot;S,T&quot;</span>, <span class="st">&quot;S,U&quot;</span>, <span class="st">&quot;T,R&quot;</span>, <span class="st">&quot;V,R&quot;</span>, <span class="st">&quot;S,V&quot;</span>, <span class="st">&quot;T,S,U&quot;</span>
-))), <span class="st">&quot;split(rawItems, ',') AS items&quot;</span>)
-
-fpm &lt;-<span class="st"> </span><span class="kw">spark.fpGrowth</span>(df, <span class="dt">minSupport =</span> <span class="fl">0.2</span>, <span class="dt">minConfidence =</span> <span class="fl">0.5</span>)</code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1">df &lt;-<span class="st"> </span><span class="kw">selectExpr</span>(<span class="kw">createDataFrame</span>(<span class="kw">data.frame</span>(<span class="dt">rawItems =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb166-2" title="2">  <span class="st">&quot;T,R,U&quot;</span>, <span class="st">&quot;T,S&quot;</span>, <span class="st">&quot;V,R&quot;</span>, <span class="st">&quot;R,U,T,V&quot;</span>, <span class="st">&quot;R,S&quot;</span>, <span class="st">&quot;V,S,U&quot;</span>, <span class="st">&quot;U,R&quot;</span>, <span class="st">&quot;S,T&quot;</span>, <span class="st">&quot;V,R&quot;</span>, <span class="st">&quot;V,U,S&quot;</span>,</a>
+<a class="sourceLine" id="cb166-3" title="3">  <span class="st">&quot;T,V,U&quot;</span>, <span class="st">&quot;R,V&quot;</span>, <span class="st">&quot;T,S&quot;</span>, <span class="st">&quot;T,S&quot;</span>, <span class="st">&quot;S,T&quot;</span>, <span class="st">&quot;S,U&quot;</span>, <span class="st">&quot;T,R&quot;</span>, <span class="st">&quot;V,R&quot;</span>, <span class="st">&quot;S,V&quot;</span>, <span class="st">&quot;T,S,U&quot;</span></a>
+<a class="sourceLine" id="cb166-4" title="4">))), <span class="st">&quot;split(rawItems, &#39;,&#39;) AS items&quot;</span>)</a>
+<a class="sourceLine" id="cb166-5" title="5"></a>
+<a class="sourceLine" id="cb166-6" title="6">fpm &lt;-<span class="st"> </span><span class="kw">spark.fpGrowth</span>(df, <span class="dt">minSupport =</span> <span class="fl">0.2</span>, <span class="dt">minConfidence =</span> <span class="fl">0.5</span>)</a></code></pre></div>
 <p><code>spark.freqItemsets</code> method can be used to retrieve a <code>SparkDataFrame</code> with the frequent itemsets.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">spark.freqItemsets</span>(fpm))</code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="kw">head</span>(<span class="kw">spark.freqItemsets</span>(fpm))</a></code></pre></div>
 <pre><code>##   items freq
 ## 1     R    9
 ## 2     U    8
@@ -1656,16 +2007,16 @@ fpm &lt;-<span class="st"> </span><span class="kw">spark.fpGrowth</span>(df, <sp
 ## 5  U, S    4
 ## 6     T   10</code></pre>
 <p><code>spark.associationRules</code> returns a <code>SparkDataFrame</code> with the association rules.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">spark.associationRules</span>(fpm))</code></pre></div>
-<pre><code>##   antecedent consequent confidence     lift
-## 1          V          R  0.5555556 1.234568
-## 2          S          T  0.5454545 1.090909
-## 3          T          S  0.6000000 1.090909
-## 4          R          V  0.5555556 1.234568
-## 5          U          T  0.5000000 1.000000
-## 6          U          V  0.5000000 1.111111</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="kw">head</span>(<span class="kw">spark.associationRules</span>(fpm))</a></code></pre></div>
+<pre><code>##   antecedent consequent confidence     lift support
+## 1          V          R  0.5555556 1.234568    0.25
+## 2          S          T  0.5454545 1.090909    0.30
+## 3          T          S  0.6000000 1.090909    0.30
+## 4          R          V  0.5555556 1.234568    0.25
+## 5          U          T  0.5000000 1.000000    0.20
+## 6          U          V  0.5000000 1.111111    0.20</code></pre>
 <p>We can make predictions based on the <code>antecedent</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">predict</span>(fpm, df))</code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="kw">head</span>(<span class="kw">predict</span>(fpm, df))</a></code></pre></div>
 <pre><code>##        items prediction
 ## 1    T, R, U       S, V
 ## 2       T, S       NULL
@@ -1674,19 +2025,35 @@ fpm &lt;-<span class="st"> </span><span class="kw">spark.fpGrowth</span>(df, <sp
 ## 5       R, S       T, V
 ## 6    V, S, U       R, T</code></pre>
 </div>
+<div id="prefixspan" class="section level4">
+<h4>PrefixSpan</h4>
+<p><code>spark.findFrequentSequentialPatterns</code> method can be used to find the complete set of frequent sequential patterns in the input sequences of itemsets.</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(<span class="kw">list</span>(<span class="kw">list</span>(<span class="kw">list</span>(<span class="kw">list</span>(1L, 2L), <span class="kw">list</span>(3L))),</a>
+<a class="sourceLine" id="cb173-2" title="2">                           <span class="kw">list</span>(<span class="kw">list</span>(<span class="kw">list</span>(1L), <span class="kw">list</span>(3L, 2L), <span class="kw">list</span>(1L, 2L))),</a>
+<a class="sourceLine" id="cb173-3" title="3">                           <span class="kw">list</span>(<span class="kw">list</span>(<span class="kw">list</span>(1L, 2L), <span class="kw">list</span>(5L))),</a>
+<a class="sourceLine" id="cb173-4" title="4">                           <span class="kw">list</span>(<span class="kw">list</span>(<span class="kw">list</span>(6L)))),</a>
+<a class="sourceLine" id="cb173-5" title="5">                      <span class="dt">schema =</span> <span class="kw">c</span>(<span class="st">&quot;sequence&quot;</span>))</a>
+<a class="sourceLine" id="cb173-6" title="6"><span class="kw">head</span>(<span class="kw">spark.findFrequentSequentialPatterns</span>(df, <span class="dt">minSupport =</span> <span class="fl">0.5</span>, <span class="dt">maxPatternLength =</span> 5L))</a></code></pre></div>
+<pre><code>##   sequence freq
+## 1        1    3
+## 2        3    2
+## 3        2    3
+## 4     1, 2    3
+## 5     1, 3    2</code></pre>
+</div>
 <div id="kolmogorov-smirnov-test" class="section level4">
 <h4>Kolmogorov-Smirnov Test</h4>
 <p><code>spark.kstest</code> runs a two-sided, one-sample <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test">Kolmogorov-Smirnov (KS) test</a>. Given a <code>SparkDataFrame</code>, the test compares continuous data in a given column <code>testCol</code> with the theoretical distribution specified by parameter <code>nullHypothesis</code>. Users can call <code>summary</code> to get a summary of the test results.</p>
 <p>In the following example, we test whether the <code>Titanic</code> dataset’s <code>Freq</code> column follows a normal distribution. We set the parameters of the normal distribution using the mean and standard deviation of the sample.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-freqStats &lt;-<span class="st"> </span><span class="kw">head</span>(<span class="kw">select</span>(df, <span class="kw">mean</span>(df$Freq), <span class="kw">sd</span>(df$Freq)))
-freqMean &lt;-<span class="st"> </span>freqStats[<span class="dv">1</span>]
-freqStd &lt;-<span class="st"> </span>freqStats[<span class="dv">2</span>]
-
-test &lt;-<span class="st"> </span><span class="kw">spark.kstest</span>(df, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;norm&quot;</span>, <span class="kw">c</span>(freqMean, freqStd))
-testSummary &lt;-<span class="st"> </span><span class="kw">summary</span>(test)
-testSummary</code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb175-2" title="2">df &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb175-3" title="3">freqStats &lt;-<span class="st"> </span><span class="kw">head</span>(<span class="kw">select</span>(df, <span class="kw">mean</span>(df<span class="op">$</span>Freq), <span class="kw">sd</span>(df<span class="op">$</span>Freq)))</a>
+<a class="sourceLine" id="cb175-4" title="4">freqMean &lt;-<span class="st"> </span>freqStats[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb175-5" title="5">freqStd &lt;-<span class="st"> </span>freqStats[<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb175-6" title="6"></a>
+<a class="sourceLine" id="cb175-7" title="7">test &lt;-<span class="st"> </span><span class="kw">spark.kstest</span>(df, <span class="st">&quot;Freq&quot;</span>, <span class="st">&quot;norm&quot;</span>, <span class="kw">c</span>(freqMean, freqStd))</a>
+<a class="sourceLine" id="cb175-8" title="8">testSummary &lt;-<span class="st"> </span><span class="kw">summary</span>(test)</a>
+<a class="sourceLine" id="cb175-9" title="9">testSummary</a></code></pre></div>
 <pre><code>## Kolmogorov-Smirnov test summary:
 ## degrees of freedom = 0 
 ## statistic = 0.3065126710255011 
@@ -1697,25 +2064,25 @@ testSummary</code></pre></div>
 <div id="model-persistence" class="section level3">
 <h3>Model Persistence</h3>
 <p>The following example shows how to save/load an ML model in SparkR.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)
-training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)
-gaussianGLM &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(training, Freq ~<span class="st"> </span>Sex +<span class="st"> </span>Age, <span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>)
-
-<span class="co"># Save and then load a fitted MLlib model</span>
-modelPath &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">pattern =</span> <span class="st">&quot;ml&quot;</span>, <span class="dt">fileext =</span> <span class="st">&quot;.tmp&quot;</span>)
-<span class="kw">write.ml</span>(gaussianGLM, modelPath)
-gaussianGLM2 &lt;-<span class="st"> </span><span class="kw">read.ml</span>(modelPath)
-
-<span class="co"># Check model summary</span>
-<span class="kw">summary</span>(gaussianGLM2)</code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1">t &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Titanic)</a>
+<a class="sourceLine" id="cb177-2" title="2">training &lt;-<span class="st"> </span><span class="kw">createDataFrame</span>(t)</a>
+<a class="sourceLine" id="cb177-3" title="3">gaussianGLM &lt;-<span class="st"> </span><span class="kw">spark.glm</span>(training, Freq <span class="op">~</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Age, <span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>)</a>
+<a class="sourceLine" id="cb177-4" title="4"></a>
+<a class="sourceLine" id="cb177-5" title="5"><span class="co"># Save and then load a fitted MLlib model</span></a>
+<a class="sourceLine" id="cb177-6" title="6">modelPath &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">pattern =</span> <span class="st">&quot;ml&quot;</span>, <span class="dt">fileext =</span> <span class="st">&quot;.tmp&quot;</span>)</a>
+<a class="sourceLine" id="cb177-7" title="7"><span class="kw">write.ml</span>(gaussianGLM, modelPath)</a>
+<a class="sourceLine" id="cb177-8" title="8">gaussianGLM2 &lt;-<span class="st"> </span><span class="kw">read.ml</span>(modelPath)</a>
+<a class="sourceLine" id="cb177-9" title="9"></a>
+<a class="sourceLine" id="cb177-10" title="10"><span class="co"># Check model summary</span></a>
+<a class="sourceLine" id="cb177-11" title="11"><span class="kw">summary</span>(gaussianGLM2)</a></code></pre></div>
 <pre><code>## 
-## Saved-loaded model does not support output 'Deviance Residuals'.
+## Saved-loaded model does not support output &#39;Deviance Residuals&#39;.
 ## 
 ## Coefficients:
-##              Estimate  Std. Error   t value   Pr(&gt;|t|)
-## (Intercept)   -32.594      35.994  -0.90553  0.3726477
-## Sex_Male       78.812      41.562   1.89624  0.0679311
-## Age_Adult     123.938      41.562   2.98196  0.0057522
+##              Estimate  Std. Error  t value   Pr(&gt;|t|)
+## (Intercept)    46.219      35.994   1.2841  0.2092846
+## Sex_Female    -78.812      41.562  -1.8962  0.0679311
+## Age_Adult     123.938      41.562   2.9820  0.0057522
 ## 
 ## (Dispersion parameter for gaussian family taken to be 13819.52)
 ## 
@@ -1724,9 +2091,9 @@ gaussianGLM2 &lt;-<span class="st"> </span><span class="kw">read.ml</span>(model
 ## AIC: 400.7
 ## 
 ## Number of Fisher Scoring iterations: 1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Check model prediction</span>
-gaussianPredictions &lt;-<span class="st"> </span><span class="kw">predict</span>(gaussianGLM2, training)
-<span class="kw">head</span>(gaussianPredictions)</code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="co"># Check model prediction</span></a>
+<a class="sourceLine" id="cb179-2" title="2">gaussianPredictions &lt;-<span class="st"> </span><span class="kw">predict</span>(gaussianGLM2, training)</a>
+<a class="sourceLine" id="cb179-3" title="3"><span class="kw">head</span>(gaussianPredictions)</a></code></pre></div>
 <pre><code>##   Class    Sex   Age Survived Freq label prediction
 ## 1   1st   Male Child       No    0     0   46.21875
 ## 2   2nd   Male Child       No    0     0   46.21875
@@ -1734,7 +2101,7 @@ gaussianPredictions &lt;-<span class="st"> </span><span class="kw">predict</span
 ## 4  Crew   Male Child       No    0     0   46.21875
 ## 5   1st Female Child       No    0     0  -32.59375
 ## 6   2nd Female Child       No    0     0  -32.59375</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unlink</span>(modelPath)</code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">unlink</span>(modelPath)</a></code></pre></div>
 </div>
 </div>
 <div id="structured-streaming" class="section level2">
@@ -1744,51 +2111,51 @@ gaussianPredictions &lt;-<span class="st"> </span><span class="kw">predict</span
 <div id="simple-source-and-sink" class="section level3">
 <h3>Simple Source and Sink</h3>
 <p>Spark has a few built-in input sources. As an example, to test with a socket source reading text into words and displaying the computed word counts:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create DataFrame representing the stream of input lines from connection</span>
-lines &lt;-<span class="st"> </span><span class="kw">read.stream</span>(<span class="st">&quot;socket&quot;</span>, <span class="dt">host =</span> hostname, <span class="dt">port =</span> port)
-
-<span class="co"># Split the lines into words</span>
-words &lt;-<span class="st"> </span><span class="kw">selectExpr</span>(lines, <span class="st">&quot;explode(split(value, ' ')) as word&quot;</span>)
-
-<span class="co"># Generate running word count</span>
-wordCounts &lt;-<span class="st"> </span><span class="kw">count</span>(<span class="kw">groupBy</span>(words, <span class="st">&quot;word&quot;</span>))
-
-<span class="co"># Start running the query that prints the running counts to the console</span>
-query &lt;-<span class="st"> </span><span class="kw">write.stream</span>(wordCounts, <span class="st">&quot;console&quot;</span>, <span class="dt">outputMode =</span> <span class="st">&quot;complete&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="co"># Create DataFrame representing the stream of input lines from connection</span></a>
+<a class="sourceLine" id="cb182-2" title="2">lines &lt;-<span class="st"> </span><span class="kw">read.stream</span>(<span class="st">&quot;socket&quot;</span>, <span class="dt">host =</span> hostname, <span class="dt">port =</span> port)</a>
+<a class="sourceLine" id="cb182-3" title="3"></a>
+<a class="sourceLine" id="cb182-4" title="4"><span class="co"># Split the lines into words</span></a>
+<a class="sourceLine" id="cb182-5" title="5">words &lt;-<span class="st"> </span><span class="kw">selectExpr</span>(lines, <span class="st">&quot;explode(split(value, &#39; &#39;)) as word&quot;</span>)</a>
+<a class="sourceLine" id="cb182-6" title="6"></a>
+<a class="sourceLine" id="cb182-7" title="7"><span class="co"># Generate running word count</span></a>
+<a class="sourceLine" id="cb182-8" title="8">wordCounts &lt;-<span class="st"> </span><span class="kw">count</span>(<span class="kw">groupBy</span>(words, <span class="st">&quot;word&quot;</span>))</a>
+<a class="sourceLine" id="cb182-9" title="9"></a>
+<a class="sourceLine" id="cb182-10" title="10"><span class="co"># Start running the query that prints the running counts to the console</span></a>
+<a class="sourceLine" id="cb182-11" title="11">query &lt;-<span class="st"> </span><span class="kw">write.stream</span>(wordCounts, <span class="st">&quot;console&quot;</span>, <span class="dt">outputMode =</span> <span class="st">&quot;complete&quot;</span>)</a></code></pre></div>
 </div>
 <div id="kafka-source" class="section level3">
 <h3>Kafka Source</h3>
 <p>It is simple to read data from Kafka. For more information, see <a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#input-sources">Input Sources</a> supported by Structured Streaming.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">topic &lt;-<span class="st"> </span><span class="kw">read.stream</span>(<span class="st">&quot;kafka&quot;</span>,
-                     <span class="dt">kafka.bootstrap.servers =</span> <span class="st">&quot;host1:port1,host2:port2&quot;</span>,
-                     <span class="dt">subscribe =</span> <span class="st">&quot;topic1&quot;</span>)
-keyvalue &lt;-<span class="st"> </span><span class="kw">selectExpr</span>(topic, <span class="st">&quot;CAST(key AS STRING)&quot;</span>, <span class="st">&quot;CAST(value AS STRING)&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1">topic &lt;-<span class="st"> </span><span class="kw">read.stream</span>(<span class="st">&quot;kafka&quot;</span>,</a>
+<a class="sourceLine" id="cb183-2" title="2">                     <span class="dt">kafka.bootstrap.servers =</span> <span class="st">&quot;host1:port1,host2:port2&quot;</span>,</a>
+<a class="sourceLine" id="cb183-3" title="3">                     <span class="dt">subscribe =</span> <span class="st">&quot;topic1&quot;</span>)</a>
+<a class="sourceLine" id="cb183-4" title="4">keyvalue &lt;-<span class="st"> </span><span class="kw">selectExpr</span>(topic, <span class="st">&quot;CAST(key AS STRING)&quot;</span>, <span class="st">&quot;CAST(value AS STRING)&quot;</span>)</a></code></pre></div>
 </div>
 <div id="operations-and-sinks" class="section level3">
 <h3>Operations and Sinks</h3>
 <p>Most of the common operations on <code>SparkDataFrame</code> are supported for streaming, including selection, projection, and aggregation. Once you have defined the final result, to start the streaming computation, you will call the <code>write.stream</code> method setting a sink and <code>outputMode</code>.</p>
 <p>A streaming <code>SparkDataFrame</code> can be written for debugging to the console, to a temporary in-memory table, or for further processing in a fault-tolerant manner to a File Sink in different formats.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">noAggDF &lt;-<span class="st"> </span><span class="kw">select</span>(<span class="kw">where</span>(deviceDataStreamingDf, <span class="st">&quot;signal &gt; 10&quot;</span>), <span class="st">&quot;device&quot;</span>)
-
-<span class="co"># Print new data to console</span>
-<span class="kw">write.stream</span>(noAggDF, <span class="st">&quot;console&quot;</span>)
-
-<span class="co"># Write new data to Parquet files</span>
-<span class="kw">write.stream</span>(noAggDF,
-             <span class="st">&quot;parquet&quot;</span>,
-             <span class="dt">path =</span> <span class="st">&quot;path/to/destination/dir&quot;</span>,
-             <span class="dt">checkpointLocation =</span> <span class="st">&quot;path/to/checkpoint/dir&quot;</span>)
-
-<span class="co"># Aggregate</span>
-aggDF &lt;-<span class="st"> </span><span class="kw">count</span>(<span class="kw">groupBy</span>(noAggDF, <span class="st">&quot;device&quot;</span>))
-
-<span class="co"># Print updated aggregations to console</span>
-<span class="kw">write.stream</span>(aggDF, <span class="st">&quot;console&quot;</span>, <span class="dt">outputMode =</span> <span class="st">&quot;complete&quot;</span>)
-
-<span class="co"># Have all the aggregates in an in memory table. The query name will be the table name</span>
-<span class="kw">write.stream</span>(aggDF, <span class="st">&quot;memory&quot;</span>, <span class="dt">queryName =</span> <span class="st">&quot;aggregates&quot;</span>, <span class="dt">outputMode =</span> <span class="st">&quot;complete&quot;</span>)
-
-<span class="kw">head</span>(<span class="kw">sql</span>(<span class="st">&quot;select * from aggregates&quot;</span>))</code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1">noAggDF &lt;-<span class="st"> </span><span class="kw">select</span>(<span class="kw">where</span>(deviceDataStreamingDf, <span class="st">&quot;signal &gt; 10&quot;</span>), <span class="st">&quot;device&quot;</span>)</a>
+<a class="sourceLine" id="cb184-2" title="2"></a>
+<a class="sourceLine" id="cb184-3" title="3"><span class="co"># Print new data to console</span></a>
+<a class="sourceLine" id="cb184-4" title="4"><span class="kw">write.stream</span>(noAggDF, <span class="st">&quot;console&quot;</span>)</a>
+<a class="sourceLine" id="cb184-5" title="5"></a>
+<a class="sourceLine" id="cb184-6" title="6"><span class="co"># Write new data to Parquet files</span></a>
+<a class="sourceLine" id="cb184-7" title="7"><span class="kw">write.stream</span>(noAggDF,</a>
+<a class="sourceLine" id="cb184-8" title="8">             <span class="st">&quot;parquet&quot;</span>,</a>
+<a class="sourceLine" id="cb184-9" title="9">             <span class="dt">path =</span> <span class="st">&quot;path/to/destination/dir&quot;</span>,</a>
+<a class="sourceLine" id="cb184-10" title="10">             <span class="dt">checkpointLocation =</span> <span class="st">&quot;path/to/checkpoint/dir&quot;</span>)</a>
+<a class="sourceLine" id="cb184-11" title="11"></a>
+<a class="sourceLine" id="cb184-12" title="12"><span class="co"># Aggregate</span></a>
+<a class="sourceLine" id="cb184-13" title="13">aggDF &lt;-<span class="st"> </span><span class="kw">count</span>(<span class="kw">groupBy</span>(noAggDF, <span class="st">&quot;device&quot;</span>))</a>
+<a class="sourceLine" id="cb184-14" title="14"></a>
+<a class="sourceLine" id="cb184-15" title="15"><span class="co"># Print updated aggregations to console</span></a>
+<a class="sourceLine" id="cb184-16" title="16"><span class="kw">write.stream</span>(aggDF, <span class="st">&quot;console&quot;</span>, <span class="dt">outputMode =</span> <span class="st">&quot;complete&quot;</span>)</a>
+<a class="sourceLine" id="cb184-17" title="17"></a>
+<a class="sourceLine" id="cb184-18" title="18"><span class="co"># Have all the aggregates in an in memory table. The query name will be the table name</span></a>
+<a class="sourceLine" id="cb184-19" title="19"><span class="kw">write.stream</span>(aggDF, <span class="st">&quot;memory&quot;</span>, <span class="dt">queryName =</span> <span class="st">&quot;aggregates&quot;</span>, <span class="dt">outputMode =</span> <span class="st">&quot;complete&quot;</span>)</a>
+<a class="sourceLine" id="cb184-20" title="20"></a>
+<a class="sourceLine" id="cb184-21" title="21"><span class="kw">head</span>(<span class="kw">sql</span>(<span class="st">&quot;select * from aggregates&quot;</span>))</a></code></pre></div>
 </div>
 </div>
 <div id="advanced-topics" class="section level2">
@@ -1831,74 +2198,74 @@ aggDF &lt;-<span class="st"> </span><span class="kw">count</span>(<span class="k
 <table>
 <thead>
 <tr class="header">
-<th align="left">R</th>
-<th align="left">Spark</th>
+<th>R</th>
+<th>Spark</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">byte</td>
-<td align="left">byte</td>
+<td>byte</td>
+<td>byte</td>
 </tr>
 <tr class="even">
-<td align="left">integer</td>
-<td align="left">integer</td>
+<td>integer</td>
+<td>integer</td>
 </tr>
 <tr class="odd">
-<td align="left">float</td>
-<td align="left">float</td>
+<td>float</td>
+<td>float</td>
 </tr>
 <tr class="even">
-<td align="left">double</td>
-<td align="left">double</td>
+<td>double</td>
+<td>double</td>
 </tr>
 <tr class="odd">
-<td align="left">numeric</td>
-<td align="left">double</td>
+<td>numeric</td>
+<td>double</td>
 </tr>
 <tr class="even">
-<td align="left">character</td>
-<td align="left">string</td>
+<td>character</td>
+<td>string</td>
 </tr>
 <tr class="odd">
-<td align="left">string</td>
-<td align="left">string</td>
+<td>string</td>
+<td>string</td>
 </tr>
 <tr class="even">
-<td align="left">binary</td>
-<td align="left">binary</td>
+<td>binary</td>
+<td>binary</td>
 </tr>
 <tr class="odd">
-<td align="left">raw</td>
-<td align="left">binary</td>
+<td>raw</td>
+<td>binary</td>
 </tr>
 <tr class="even">
-<td align="left">logical</td>
-<td align="left">boolean</td>
+<td>logical</td>
+<td>boolean</td>
 </tr>
 <tr class="odd">
-<td align="left">POSIXct</td>
-<td align="left">timestamp</td>
+<td>POSIXct</td>
+<td>timestamp</td>
 </tr>
 <tr class="even">
-<td align="left">POSIXlt</td>
-<td align="left">timestamp</td>
+<td>POSIXlt</td>
+<td>timestamp</td>
 </tr>
 <tr class="odd">
-<td align="left">Date</td>
-<td align="left">date</td>
+<td>Date</td>
+<td>date</td>
 </tr>
 <tr class="even">
-<td align="left">array</td>
-<td align="left">array</td>
+<td>array</td>
+<td>array</td>
 </tr>
 <tr class="odd">
-<td align="left">list</td>
-<td align="left">array</td>
+<td>list</td>
+<td>array</td>
 </tr>
 <tr class="even">
-<td align="left">env</td>
-<td align="left">map</td>
+<td>env</td>
+<td>map</td>
 </tr>
 </tbody>
 </table>

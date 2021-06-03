@@ -2,8 +2,12 @@
 % Please edit documentation in R/generics.R, R/column.R
 \name{asc}
 \alias{asc}
+\alias{asc_nulls_first}
+\alias{asc_nulls_last}
 \alias{contains}
 \alias{desc}
+\alias{desc_nulls_first}
+\alias{desc_nulls_last}
 \alias{getField}
 \alias{getItem}
 \alias{isNaN}
@@ -16,9 +20,17 @@
 \usage{
 asc(x)
 
+asc_nulls_first(x)
+
+asc_nulls_last(x)
+
 contains(x, ...)
 
 desc(x)
+
+desc_nulls_first(x)
+
+desc_nulls_last(x)
 
 getField(x, ...)
 

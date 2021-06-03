@@ -80,6 +80,6 @@ print.summary.KSTest(testSummary)
 }
 }
 \seealso{
-\href{http://spark.apache.org/docs/latest/mllib-statistics.html#hypothesis-testing}{
+\href{https://spark.apache.org/docs/latest/mllib-statistics.html#hypothesis-testing}{
          MLlib: Hypothesis Testing}
 }

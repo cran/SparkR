@@ -2,10 +2,9 @@
 % Please edit documentation in R/catalog.R
 \name{dropTempTable}
 \alias{dropTempTable}
-\alias{dropTempTable.default}
 \title{(Deprecated) Drop Temporary Table}
 \usage{
-\method{dropTempTable}{default}(tableName)
+dropTempTable(tableName)
 }
 \arguments{
 \item{tableName}{The name of the SparkSQL table to be dropped.}

@@ -19,6 +19,9 @@
 \alias{ltrim,Column,missing-method}
 \alias{ltrim}
 \alias{ltrim,Column,character-method}
+\alias{overlay,Column,Column,numericOrColumn-method}
+\alias{overlay}
+\alias{overlay,Column-method,numericOrColumn-method}
 \alias{rtrim,Column,missing-method}
 \alias{rtrim}
 \alias{rtrim,Column,character-method}
@@ -91,6 +94,8 @@ lpad(x, len, pad)
 
 ltrim(x, trimString)
 
+overlay(x, replace, pos, ...)
+
 regexp_extract(x, pattern, idx)
 
 regexp_replace(x, pattern, replacement)
@@ -101,7 +106,7 @@ rpad(x, len, pad)
 
 rtrim(x, trimString)
 
-split_string(x, pattern)
+split_string(x, pattern, ...)
 
 soundex(x)
 
@@ -132,6 +137,8 @@ upper(x)
 \S4method{ltrim}{Column,missing}(x, trimString)
 
 \S4method{ltrim}{Column,character}(x, trimString)
+
+\S4method{overlay}{Column,Column,numericOrColumn}(x, replace, pos, len = -1)
 
 \S4method{rtrim}{Column,missing}(x, trimString)
 
@@ -171,7 +178,7 @@ upper(x)
 
 \S4method{translate}{Column,character,character}(x, matchingString, replaceString)
 
-\S4method{split_string}{Column,character}(x, pattern)
+\S4method{split_string}{Column,character}(x, pattern, limit = -1)
 
 \S4method{repeat_string}{Column,numeric}(x, n)
 }
@@ -198,11 +205,21 @@ upper(x)
 
 \item{str}{a Column where matches are sought for each entry.}
 
-\item{len}{maximum length of each output result.}
+\item{len}{In \itemize{
+\item \code{lpad} the maximum length of each output result.
+\item \code{overlay} a number of bytes to replace.
+}}
 
 \item{pad}{a character string to be padded with.}
 
 \item{trimString}{a character string to trim with}
+
+\item{replace}{a Column with replacement.}
+
+\item{pos}{In \itemize{
+\item \code{locate}: a start position of search.
+\item \code{overlay}: a start position for replacement.
+}}
 
 \item{pattern}{a regular expression.}
 
@@ -224,7 +241,11 @@ counting from the right.}
 be replaced by the character in \code{replaceString}
 at the same location, if any.}
 
-\item{pos}{start position of search.}
+\item{limit}{determines the length of the returned array.
+\itemize{
+\item \code{limit > 0}: length of the array will be at most \code{limit}
+\item \code{limit <= 0}: the returned array can have any length
+}}
 }
 \description{
 String functions defined for \code{Column}.
@@ -254,6 +275,10 @@ The length of binary data includes binary zeros.
 
 \code{ltrim}: Trims the spaces from left end for the specified string value. Optionally a
 \code{trimString} can be specified.
+
+\code{overlay}: Overlay the specified portion of \code{x} with \code{replace},
+starting from byte position \code{pos} of \code{src} and proceeding for
+\code{len} bytes.
 
 \code{rtrim}: Trims the spaces from right end for the specified string value. Optionally a
 \code{trimString} can be specified.
@@ -314,7 +339,8 @@ The translate will happen when any character in the string matching with the cha
 in the matchingString.
 
 \code{split_string}: Splits string on regular expression.
-Equivalent to \code{split} SQL function.
+Equivalent to \code{split} SQL function. Optionally a
+\code{limit} can be specified
 
 \code{repeat_string}: Repeats string n times.
 Equivalent to \code{repeat} SQL function.
@@ -337,6 +363,8 @@ lower since 1.4.0
 ltrim since 1.5.0
 
 ltrim(Column, character) since 2.3.0
+
+overlay since 3.0.0
 
 rtrim since 1.5.0
 
@@ -448,6 +476,7 @@ tmp <- mutate(df, s1 = regexp_extract(df$Class, "(\\\\d+)\\\\w+", 1),
 head(tmp)}
 
 \dontrun{
+head(select(df, split_string(df$Class, "\\\\d", 2)))
 head(select(df, split_string(df$Sex, "a")))
 head(select(df, split_string(df$Class, "\\\\d")))
 # This is equivalent to the following SQL expression

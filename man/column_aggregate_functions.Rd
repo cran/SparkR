@@ -2,6 +2,8 @@
 % Please edit documentation in R/generics.R, R/functions.R
 \name{column_aggregate_functions}
 \alias{column_aggregate_functions}
+\alias{approx_count_distinct,Column-method}
+\alias{approx_count_distinct}
 \alias{approxCountDistinct,Column-method}
 \alias{approxCountDistinct}
 \alias{kurtosis,Column-method}
@@ -12,6 +14,9 @@
 \alias{mean}
 \alias{min,Column-method}
 \alias{min}
+\alias{percentile_approx,characterOrColumn,numericOrColumn-method}
+\alias{percentile_approx}
+\alias{percentile_approx,Column-method}
 \alias{sd,Column-method}
 \alias{sd}
 \alias{skewness,Column-method}
@@ -48,6 +53,8 @@
 \alias{grouping_id}
 \title{Aggregate functions for Column operations}
 \usage{
+approx_count_distinct(x, ...)
+
 approxCountDistinct(x, ...)
 
 collect_list(x)
@@ -63,6 +70,8 @@ grouping_id(x, ...)
 kurtosis(x)
 
 n_distinct(x, ...)
+
+percentile_approx(x, percentage, ...)
 
 sd(x, na.rm = FALSE)
 
@@ -84,6 +93,8 @@ var_pop(x)
 
 var_samp(x)
 
+\S4method{approx_count_distinct}{Column}(x, rsd = 0.05)
+
 \S4method{approxCountDistinct}{Column}(x, rsd = 0.05)
 
 \S4method{kurtosis}{Column}(x)
@@ -93,6 +104,8 @@ var_samp(x)
 \S4method{mean}{Column}(x)
 
 \S4method{min}{Column}(x)
+
+\S4method{percentile_approx}{characterOrColumn,numericOrColumn}(x, percentage, accuracy = 10000)
 
 \S4method{sd}{Column}(x)
 
@@ -116,6 +129,8 @@ var_samp(x)
 
 \S4method{var_samp}{Column}(x)
 
+\S4method{approx_count_distinct}{Column}(x, rsd = 0.05)
+
 \S4method{approxCountDistinct}{Column}(x, rsd = 0.05)
 
 \S4method{countDistinct}{Column}(x, ...)
@@ -135,14 +150,26 @@ var_samp(x)
 
 \item{...}{additional argument(s). For example, it could be used to pass additional Columns.}
 
+\item{percentage}{Numeric percentage at which percentile should be computed
+All values should be between 0 and 1.
+If length equals to 1 resulting column is of type double,
+otherwise, array type of double.}
+
 \item{y, na.rm, use}{currently not used.}
 
-\item{rsd}{maximum estimation error allowed (default = 0.05).}
+\item{rsd}{maximum relative standard deviation allowed (default = 0.05).}
+
+\item{accuracy}{A positive numeric literal (default: 10000) which
+controls approximation accuracy at the cost of memory.
+Higher value of accuracy yields better accuracy, 1.0/accuracy
+is the relative error of the approximation.}
 }
 \description{
 Aggregate functions defined for \code{Column}.
 }
 \details{
+\code{approx_count_distinct}: Returns the approximate number of distinct items in a group.
+
 \code{approxCountDistinct}: Returns the approximate number of distinct items in a group.
 
 \code{kurtosis}: Returns the kurtosis of the values in a group.
@@ -152,6 +179,11 @@ Aggregate functions defined for \code{Column}.
 \code{mean}: Returns the average of the values in a group. Alias for \code{avg}.
 
 \code{min}: Returns the minimum value of the expression in a group.
+
+\code{percentile_approx} Returns the approximate \code{percentile} of the numeric column
+\code{col} which is the smallest value in the ordered \code{col} values (sorted from least to
+greatest) such that no more than \code{percentage} of \code{col} values is less than the value
+or equal to that value.
 
 \code{sd}: Alias for \code{stddev_samp}.
 
@@ -179,11 +211,11 @@ Aggregate functions defined for \code{Column}.
 
 \code{collect_list}: Creates a list of objects with duplicates.
 Note: the function is non-deterministic because the order of collected results depends
-on order of rows which may be non-deterministic after a shuffle.
+on the order of the rows which may be non-deterministic after a shuffle.
 
 \code{collect_set}: Creates a list of objects with duplicate elements eliminated.
 Note: the function is non-deterministic because the order of collected results depends
-on order of rows which may be non-deterministic after a shuffle.
+on the order of the rows which may be non-deterministic after a shuffle.
 
 \code{grouping_bit}: Indicates whether a specified column in a GROUP BY list is aggregated or
 not, returns 1 for aggregated or 0 for not aggregated in the result set. Same as \code{GROUPING}
@@ -195,6 +227,8 @@ grouping_bit(c1) * 2^(n - 1) + grouping_bit(c2) * 2^(n - 2)  + ... + grouping_bi
 }.
 }
 \note{
+approx_count_distinct(Column) since 3.0.0
+
 approxCountDistinct(Column) since 1.4.0
 
 kurtosis since 1.6.0
@@ -204,6 +238,8 @@ max since 1.5.0
 mean since 1.5.0
 
 min since 1.5.0
+
+percentile_approx since 3.1.0
 
 sd since 1.6.0
 
@@ -227,6 +263,8 @@ var_pop since 1.5.0
 
 var_samp since 1.6.0
 
+approx_count_distinct(Column, numeric) since 3.0.0
+
 approxCountDistinct(Column, numeric) since 1.4.0
 
 countDistinct since 1.4.0
@@ -247,8 +285,8 @@ grouping_id since 2.3.0
 df <- createDataFrame(cbind(model = rownames(mtcars), mtcars))}
 
 \dontrun{
-head(select(df, approxCountDistinct(df$gear)))
-head(select(df, approxCountDistinct(df$gear, 0.02)))
+head(select(df, approx_count_distinct(df$gear)))
+head(select(df, approx_count_distinct(df$gear, 0.02)))
 head(select(df, countDistinct(df$gear, df$cyl)))
 head(select(df, n_distinct(df$gear)))
 head(distinct(select(df, "gear")))}
